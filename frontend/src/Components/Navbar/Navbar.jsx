@@ -1,17 +1,23 @@
 import React from "react";
 
-import { NavbarOuter } from "./NavbarStyles";
+import { NavbarOuter, NavbarLine, NavbarProfileOuter, NavbarProfileImg, Logo } from "./NavbarStyles";
+
+import SeriesTrackerLogo from "../../Assets/Images/logo.png";
+import Loffi from "../../Assets/Images/loffi.png";
 
 const Navbar = () => {
   return (
     <>
-      <NavbarOuter>Hei marcus</NavbarOuter>
-      <NavbarOuter>Hei marcus</NavbarOuter>
-      <NavbarOuter>Hei marcus</NavbarOuter>
-      <NavbarOuter>Hei marcus</NavbarOuter>
-      <NavbarOuter>Hei marcus</NavbarOuter>
-      <NavbarOuter>Hei marcus</NavbarOuter>
-      <NavbarOuter>Hei marcus</NavbarOuter>
+      <NavbarOuter>
+        <Logo src={SeriesTrackerLogo} alt="Logo" />
+        <div>sfsdfdsfdsfds</div>
+        <NavbarProfileOuter>
+          WELCOME BACK LUFFY
+          <NavbarProfileImg src={Loffi} alt="Profile pic" />
+          SIGN OUT
+        </NavbarProfileOuter>
+      </NavbarOuter>
+      <NavbarLine />
     </>
   );
 };
