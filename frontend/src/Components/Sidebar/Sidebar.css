@@ -1,0 +1,29 @@
+.searchForm {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .searchForm label {
+    position: absolute;
+    left: -99999px;
+  }
+  
+  .searchForm input[type='text'] {
+    flex-grow: 1;
+    max-width: 100%;
+    min-height: 48px;
+    font-size: 1rem;
+    border-radius: 5px;
+    padding: 10px;
+    outline: none;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .category {
+      color: #A63FCB;
+  }
