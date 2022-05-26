@@ -20,7 +20,7 @@ const Navbar = () => {
         <Logo src={SeriesTrackerLogo} alt="Logo" />
         <NavbarLinksOuter>
           <div style={{ paddingRight: "10px" }}>Find Series</div>
-          <div>Find Friends</div>
+          <div className="FindSeries">Find Friends</div>
         </NavbarLinksOuter>
         <NavbarProfileOuter>
           <WelcomeBack>WELCOME BACK LUFFY</WelcomeBack>
