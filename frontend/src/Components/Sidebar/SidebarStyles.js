@@ -21,10 +21,10 @@ export const SidebarOuter = styled.div`
   align-items: flex-start;
   font-family: "Anek Malayalam", sans-serif;
   font-weight: 300;
-  width: 15%;
+  width: 250px;
   height: 100%;
   font-size: 18px;
-  margin: 200px 0 0 0;
+  margin: 150px 0 0 0;
   padding: 30px;
   white-space: nowrap;
   @media (max-width: 638px) {
