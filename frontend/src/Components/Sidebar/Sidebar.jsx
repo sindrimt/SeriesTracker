@@ -10,6 +10,9 @@ import {
   Icons,
   SidebarBottomLine,
   Trademark,
+  Hamburger,
+  ListItem,
+  CategoryItem
 } from "./SidebarStyles";
 
 import notifications from "../../Assets/Sidebar/bell.svg";
@@ -17,10 +20,12 @@ import dashboard from "../../Assets/Sidebar/grid.svg";
 import messages from "../../Assets/Sidebar/message-square.svg";
 import settings from "../../Assets/Sidebar/settings.svg";
 import friends from "../../Assets/Sidebar/users.svg";
+import hamburger from "../../Assets/Sidebar/hamburger.svg";
 
 const Sidebar = () => {
   return (
     <>
+      <Hamburger src={hamburger} alt="Sidebar menu" />
       <SidebarOuter>
         <SearchOuter>
           Search series
@@ -33,36 +38,63 @@ const Sidebar = () => {
           <ul className="categoryParent">
             <li>Categories</li>
             <ul className="category">
-              <li>Action</li>
-              <li>Anime</li>
-              <li>Fiction</li>
-              <li>View more ...</li>
+              <CategoryItem>
+                <label class="checkboxOuter">One
+                  <input type="checkbox" />
+                  <span class="checkmark"></span>
+                </label>
+              </CategoryItem>
+              <CategoryItem>
+                <li>
+                  Anime
+                </li>
+              </CategoryItem>
+              <CategoryItem>
+                <li>
+                  Fiction
+                </li>
+              </CategoryItem>
+              <CategoryItem>
+                <li>
+                  View more ...
+                </li>
+              </CategoryItem>
             </ul>
           </ul>
         </CategoriesOuter>
         <SidebarLine></SidebarLine>
         <PanelOuter>
-          <ul>
-            <li>
-              <Icons src={dashboard} alt="Dashboard icon" />
-              Dashboard
-            </li>
-            <li>
-              <Icons src={friends} alt="Friends icon" />
-              Friends
-            </li>
-            <li>
-              <Icons src={messages} alt="Messages icon" />
-              Direct Messages
-            </li>
-            <li>
-              <Icons src={notifications} alt="Notifications icon" />
-              Notifications
-            </li>
-            <li>
-              <Icons src={settings} alt="Settings icon" />
-              Settings
-            </li>
+          <ul className="panel">
+            <ListItem>
+              <li>
+                <Icons src={dashboard} alt="Dashboard icon" />
+                Dashboard
+              </li>
+            </ListItem>
+            <ListItem>
+              <li className="panelItem">
+                <Icons src={friends} alt="Friends icon" />
+                Friends
+              </li>
+            </ListItem>
+            <ListItem>
+              <li className="panelItem">
+                <Icons src={messages} alt="Messages icon" />
+                Direct Messages
+              </li>
+            </ListItem>
+            <ListItem>
+              <li className="panelItem">
+                <Icons src={notifications} alt="Notifications icon" />
+                Notifications
+              </li>
+            </ListItem>
+            <ListItem>
+              <li className="panelItem">
+                <Icons src={settings} alt="Settings icon" />
+                Settings
+              </li>
+            </ListItem>
           </ul>
         </PanelOuter>
         <SidebarBottomLine />

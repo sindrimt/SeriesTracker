@@ -1,5 +1,19 @@
 import styled from "styled-components";
 
+export const Hamburger = styled.img`
+  position: absolute;
+  visibility: hidden;
+  @media (max-width: 638px) {
+    visibility: visible;
+    position: absolute;
+    top: 230px;
+    left: 30px;
+  } &:hover {
+    cursor: pointer;
+  }
+
+`;
+
 export const SidebarOuter = styled.div`
   position: absolute;
   display: flex;
@@ -12,6 +26,10 @@ export const SidebarOuter = styled.div`
   font-size: 18px;
   margin: 200px 0 0 0;
   padding: 30px;
+  white-space: nowrap;
+  @media (max-width: 638px) {
+    display: none;
+  }
 `;
 
 export const SearchOuter = styled.div`
@@ -63,4 +81,19 @@ export const Trademark = styled.div`
   position: absolute;
   bottom: 25px;
   padding: 0 0 15px 0;
+`;
+
+export const ListItem = styled.div`
+  &:hover {
+    cursor: pointer;
+  };
+  margin: 0 0 20px 0;
+`;
+
+export const CategoryItem = styled.div`
+  &:hover {
+    cursor: pointer;
+  };
+  color: #A63FCB;
+  margin: 10px 0 0 10px;
 `;
