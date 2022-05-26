@@ -17,7 +17,7 @@ export const ContentContainerGrid = styled.div`
   margin-top: 10px;
   display: grid;
   /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
-  row-gap: 5rem;
+  row-gap: 1rem;
 `;
 
 /**

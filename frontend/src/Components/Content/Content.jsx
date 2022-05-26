@@ -24,6 +24,9 @@ const Content = () => {
         </PickUp>
         <ContentContainerGrid>
           <Card />
+          <Card />
+          <Card />
+          <Card />
         </ContentContainerGrid>
       </ContentContainerOuter>
     </>
