@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Sidebar.css";
 
 import {
@@ -19,9 +19,30 @@ import settings from "../../Assets/Sidebar/settings.svg";
 import friends from "../../Assets/Sidebar/users.svg";
 
 const Sidebar = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  let fixed = false;
+
+  if (scrollPosition > 65) {
+    fixed = true;
+  }
+
   return (
     <>
-      <SidebarOuter>
+      <SidebarOuter isFixed={fixed}>
         <SearchOuter>
           Search series
           <form className="searchForm" onSubmit={(e) => e.preventDefault()}>

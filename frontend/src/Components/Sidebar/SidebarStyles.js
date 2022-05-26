@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SidebarOuter = styled.div`
-  position: absolute;
+  position: ${(props) => (props.isFixed ? "fixed" : "absolute")};
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -10,7 +10,7 @@ export const SidebarOuter = styled.div`
   width: 250px;
   height: 100%;
   font-size: 18px;
-  margin: 150px 0 0 0;
+  margin-top: ${(props) => (props.isFixed ? "85px" : "150px")};
   padding: 30px;
 `;
 
