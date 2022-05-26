@@ -1,6 +1,14 @@
 import React from "react";
 
-import { NavbarOuter, NavbarLine, NavbarProfileOuter, NavbarProfileImg, Logo } from "./NavbarStyles";
+import {
+  NavbarOuter,
+  NavbarLine,
+  NavbarProfileOuter,
+  NavbarProfileImg,
+  NavbarLinksOuter,
+  Logo,
+  WelcomeBack,
+} from "./NavbarStyles";
 
 import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 import Loffi from "../../Assets/Images/loffi.png";
@@ -10,11 +18,14 @@ const Navbar = () => {
     <>
       <NavbarOuter>
         <Logo src={SeriesTrackerLogo} alt="Logo" />
-        <div>sfsdfdsfdsfds</div>
+        <NavbarLinksOuter>
+          <div style={{ paddingRight: "10px" }}>Find Series</div>
+          <div>Find Friends</div>
+        </NavbarLinksOuter>
         <NavbarProfileOuter>
-          WELCOME BACK LUFFY
+          <WelcomeBack>WELCOME BACK LUFFY</WelcomeBack>
           <NavbarProfileImg src={Loffi} alt="Profile pic" />
-          SIGN OUT
+          <span style={{ whiteSpace: "nowrap" }}>SIGN OUT</span>
         </NavbarProfileOuter>
       </NavbarOuter>
       <NavbarLine />
