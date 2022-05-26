@@ -1,22 +1,28 @@
 import styled from "styled-components";
 
 export const NavbarOuter = styled.div`
-  position: absolute;
+  background-color: ${(props) => (props.showBgColor ? "white" : "")};
+  transition: 0.25s ease-in-out;
+  position: fixed;
+  z-index: 100000000;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 120px;
+  height: 110px;
   font-family: "Anek Malayalam", sans-serif;
   font-weight: 300;
 `;
 
 export const NavbarLine = styled.div`
   position: absolute;
-  top: 120px;
-  border-top: 1.5px solid rgba(137, 137, 137, 0.15);
+  transition: 0.3s ease;
+  top: 110px;
+  border-radius: 5px;
   left: 5%;
   width: 90vw;
+  border-top: ${(props) =>
+    props.showLine ? "1.5px solid rgba(137, 137, 137, 0)" : "1.5px solid rgba(137, 137, 137, 0.15)"};
 `;
 
 export const Logo = styled.img`
