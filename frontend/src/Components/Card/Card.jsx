@@ -6,12 +6,16 @@ import {
   SeriesCardImage,
   WatchTimeContainer,
   CardInformationContainer,
-  CardRating,
   EpisodeContainer,
   CardTitle,
   EpisodeCount,
   EpisodeLineGray,
   EpisodeLineProgress,
+  CardRatingImg,
+  CardRatingContainer,
+  CardRatingTxt,
+  CardDescription,
+  CardRatingCenter,
 } from "./CardStyles";
 
 import loffi from "../../Assets/Images/loffi.png";
@@ -30,9 +34,15 @@ const Card = () => {
               <EpisodeLineGray />
               <EpisodeLineProgress />
             </EpisodeContainer>
+            <CardDescription>Wealth, fame, power. Gold Roger obtained ever ...</CardDescription>
           </CardInformationContainer>
 
-          <CardRating src={star} alt="Star" />
+          <CardRatingContainer>
+            <CardRatingCenter>
+              <CardRatingImg src={star} alt="Star" />
+              <CardRatingTxt>9.2</CardRatingTxt>
+            </CardRatingCenter>
+          </CardRatingContainer>
         </SeriesCardInner>
         <WatchTimeContainer />
       </SeriesCardOuter>

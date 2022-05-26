@@ -6,6 +6,7 @@ export const SeriesCardOuter = styled.div`
   height: 180px;
   /* background-color: #fcfcfc; */
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fcfcfc;
 `;
 
 export const SeriesCardInner = styled.div`
@@ -33,11 +34,6 @@ export const CardInformationContainer = styled.div`
   margin-left: 20px;
   width: 60%;
   /* background-color: #00ff00; */
-`;
-
-export const CardRating = styled.div`
-  background-color: #0000ff;
-  width: 20%;
 `;
 
 export const CardTitle = styled.div`
@@ -70,4 +66,40 @@ export const EpisodeLineProgress = styled.div`
   background-color: #a63fcb;
   border-radius: 5px;
   top: -2px;
+`;
+
+export const CardRatingContainer = styled.div`
+  display: flex;
+  padding-left: 70px;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+`;
+
+export const CardRatingImg = styled.img`
+  display: flex;
+  width: 40px;
+`;
+
+export const CardRatingTxt = styled.div`
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+  font-size: 20px;
+`;
+
+export const CardRatingCenter = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 100px;
+`;
+
+export const CardDescription = styled.div`
+  margin-top: 10px;
+  font-size: 16px;
+  display: flex;
+  left: 0;
 `;
