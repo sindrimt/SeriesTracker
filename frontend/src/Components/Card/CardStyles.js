@@ -1,12 +1,18 @@
 import styled from "styled-components";
 
 export const SeriesCardOuter = styled.div`
-  width: 97%;
+  width: 70%;
   padding: 20px 20px 25px 20px;
   height: 180px;
-  /* background-color: #fcfcfc; */
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   background-color: #fcfcfc;
+  transition: 0.1s ease;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: rgba(166, 63, 203, 0.1);
+    cursor: pointer;
+  }
 `;
 
 export const SeriesCardInner = styled.div`
@@ -20,6 +26,7 @@ export const SeriesCardImage = styled.img`
   width: 300px;
   height: 100%;
   object-fit: cover;
+  border-radius: 5px;
 `;
 
 export const WatchTimeContainer = styled.div`

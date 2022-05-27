@@ -10,10 +10,10 @@ import "./Styles/app.css";
 const App = () => {
   return (
     <>
-      <Login />
-      {/* <Navbar />
+      {/* <Login /> */}
+      <Navbar />
       <Sidebar />
-      <Content /> */}
+      <Content />
     </>
   );
 };
