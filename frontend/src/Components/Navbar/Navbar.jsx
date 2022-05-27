@@ -13,10 +13,8 @@ import {
 import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 import Loffi from "../../Assets/Images/loffi.png";
 
-const Navbar = ({ backgroundColor }) => {
+const Navbar = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [showNavbarColor, setShowNavbarColor] = useState(false);
-  const [showLine, setShowLine] = useState(false);
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -31,8 +29,14 @@ const Navbar = ({ backgroundColor }) => {
     };
   }, []);
 
+  /**
+   * color: boolean - true: show navbar background color
+   * line: boolean - true: hide navbar line
+   */
+
   let color = false;
   let line = false;
+
   if (scrollPosition >= 95) {
     color = true;
   }
@@ -45,13 +49,17 @@ const Navbar = ({ backgroundColor }) => {
       <NavbarOuter showBgColor={color}>
         <Logo src={SeriesTrackerLogo} alt="Logo" />
         <NavbarLinksOuter>
-          <div style={{ paddingRight: "10px" }}>Find Series</div>
-          <div className="FindSeries">Find Friends</div>
+          <div className="findsSeries">Find Series</div>
+          <div classNAme="findfriends">Find Friends</div>
         </NavbarLinksOuter>
         <NavbarProfileOuter>
-          <WelcomeBack>WELCOME BACK LUFFY</WelcomeBack>
+          <div>
+            <WelcomeBack>WELCOME BACK LUFFY</WelcomeBack>
+          </div>
           <NavbarProfileImg src={Loffi} alt="Profile pic" />
-          <span style={{ whiteSpace: "nowrap" }}>SIGN OUT</span>
+          <span className="signout" style={{ whiteSpace: "nowrap" }}>
+            SIGN OUT
+          </span>
         </NavbarProfileOuter>
         <NavbarLine showLine={line} />
       </NavbarOuter>

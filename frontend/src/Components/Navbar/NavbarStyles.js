@@ -44,6 +44,17 @@ export const NavbarProfileOuter = styled.div`
   margin-right: 20px;
   color: rgba(0, 0, 0, 0.6);
   align-items: center;
+
+  div,
+  span {
+    border-bottom: 1px solid rgba(166, 63, 203, 0);
+    transition: 0.1s;
+  }
+
+  & .signout:hover {
+    border-bottom: 1px solid rgba(166, 63, 203, 1);
+    cursor: pointer;
+  }
 `;
 
 export const NavbarProfileImg = styled.img`
@@ -61,7 +72,18 @@ export const NavbarLinksOuter = styled.div`
   font-weight: 300;
   font-size: 18px;
   white-space: nowrap;
+
+  div {
+    border-bottom: 1px solid rgba(166, 63, 203, 0);
+    transition: 0.1s;
+  }
+
   @media (max-width: 638px) {
     display: none;
+  }
+
+  div:hover {
+    border-bottom: 1px solid rgba(166, 63, 203, 1);
+    cursor: pointer;
   }
 `;
