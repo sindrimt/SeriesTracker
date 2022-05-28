@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Hamburger = styled.img`
   position: absolute;
   visibility: hidden;
-  @media (max-width: 638px) {
+  @media (max-width: 450px) {
     visibility: visible;
     position: absolute;
     top: 230px;
@@ -27,7 +27,7 @@ export const SidebarOuter = styled.div`
   margin-top: ${(props) => (props.isFixed ? "85px" : "150px")};
   padding: 30px;
   white-space: nowrap;
-  @media (max-width: 638px) {
+  @media (max-width: 1000px) {
     display: none;
   }
 `;
