@@ -27,7 +27,7 @@ export const ContentContainerGrid = styled.div`
  */
 export const PickUp = styled.div`
   display: flex;
-  width: 97%;
+  width: 70%;
   font-size: 24px;
   font-weight: 300;
   white-space: nowrap;

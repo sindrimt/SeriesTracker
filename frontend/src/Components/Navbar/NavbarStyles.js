@@ -29,6 +29,10 @@ export const Logo = styled.img`
   width: 240px;
   padding-left: 30px;
   padding-right: 20px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const WelcomeBack = styled.span`
