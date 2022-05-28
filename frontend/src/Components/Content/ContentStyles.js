@@ -7,22 +7,23 @@ import styled from "styled-components";
  */
 
 export const ContentContainerOuter = styled.div`
-  position: relative;
   float: left;
-  margin: 185px 0px 0px 0px;
-  width: 100%;
-
-  @media (max-width: 1400px) {
-    margin-left: 30px;
-  }
+  margin: 165px 0px 0px 0px;
+  padding-left: 260px;
+  width: 70%;
 `;
 
 export const ContentContainerGrid = styled.div`
   float: left;
   margin-top: 10px;
   display: grid;
-  padding-left: 0px;
-  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+  row-gap: 1rem;
+`;
+
+export const ContentContainerGridIcons = styled.div`
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   row-gap: 1rem;
   width: 66%;
 
@@ -38,7 +39,7 @@ export const ContentContainerGrid = styled.div`
  */
 export const PickUp = styled.div`
   display: flex;
-  width: 66%;
+  width: 60%;
   font-size: 24px;
   font-weight: 300;
   white-space: nowrap;
@@ -62,4 +63,8 @@ export const GridTypeIcons = styled.div`
   width: 100%;
   height: 30px;
   margin-right: 40px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;

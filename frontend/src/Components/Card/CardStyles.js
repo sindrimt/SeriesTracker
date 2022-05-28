@@ -76,6 +76,7 @@ export const EpisodeLineProgress = styled.div`
 `;
 
 export const CardRatingContainer = styled.div`
+  position: relative;
   display: flex;
   padding-left: 70px;
   justify-content: center;
