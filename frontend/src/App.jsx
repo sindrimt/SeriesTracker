@@ -6,6 +6,7 @@ import Content from "./Components/Content/Content.jsx";
 import Login from "./Pages/LoginPage/Login.jsx";
 
 import "./Styles/app.css";
+import ContentRight from "./Components/ContentRight/ContentRight.jsx";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Navbar />
       <Sidebar />
       <Content />
+      <ContentRight />
     </>
   );
 };
