@@ -11,7 +11,6 @@ export const ContentContainerOuter = styled.div`
   margin: 165px 0px 0px 0px;
   padding-left: 260px;
   width: 70%;
-  background-color: red;
 `;
 
 export const ContentContainerGrid = styled.div`
