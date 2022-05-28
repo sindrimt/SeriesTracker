@@ -33,7 +33,7 @@ export const ContentContainerGridIcons = styled.div`
  */
 export const PickUp = styled.div`
   display: flex;
-  width: 60%;
+  width: 100%;
   font-size: 24px;
   font-weight: 300;
   white-space: nowrap;
