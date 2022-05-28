@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SeriesCardOuter = styled.div`
-  width: 70%;
+  width: 100%;
   padding: 20px 20px 25px 20px;
   height: 180px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
