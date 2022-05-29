@@ -8,14 +8,28 @@ import Login from "./Pages/LoginPage/Login.jsx";
 import "./Styles/app.css";
 import ContentRight from "./Components/ContentRight/ContentRight.jsx";
 
+import { useAuth } from "./firebase.js";
+
 const App = () => {
+  const currentUser = useAuth();
+
   return (
     <>
-      {/* <Login /> */}
-      <Navbar />
+      {currentUser ? (
+        <>
+          <Navbar />
+          <Sidebar />
+          <Content />
+          <ContentRight />
+        </>
+      ) : (
+        <Login />
+      )}
+      {/*  <Login /> */}
+      {/* <Navbar />
       <Sidebar />
       <Content />
-      <ContentRight />
+      <ContentRight /> */}
     </>
   );
 };
