@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const NavbarOuter = styled.div`
-  background-color: ${(props) => (props.showBgColor ? "white" : "")};
-  transition: 0.25s ease-in-out;
+  background-color: ${(props) => (props.showBgColor ? "rgb(250, 250, 250)" : "")};
+  transition: 0.2s ease-in-out;
   position: fixed;
   z-index: 100000000;
   display: flex;

@@ -55,10 +55,6 @@ const Login = () => {
     }
   };
 
-  const handleLogout = () => {
-    logOut();
-  };
-
   const handleGoogleSignIn = () => {
     signInWithGoogle().then(() => console.log("eyy"));
   };
@@ -81,7 +77,6 @@ const Login = () => {
         </LoginPreviewOuter>
       </LoginOuterContainer>
       <LoginBoxMain>
-        {`Logged in as ${currentUser?.email}`}
         <input ref={emailRef} placeholder="email" />
         <input ref={passwordRef} type="password" placeholder="password" />
         <input type="file" multiple accept="image/*" onChange={onImageChange} />
@@ -89,7 +84,6 @@ const Login = () => {
          */}{" "}
         <button onClick={handleSignup}>Sign Up</button>
         <button onClick={handleLogin}>Log In</button>
-        <button onClick={handleLogout}>Log Out</button>
         <button onClick={handleGoogleSignIn}>Google Sign In</button>
       </LoginBoxMain>
       <Footer />
