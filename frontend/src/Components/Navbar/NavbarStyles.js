@@ -63,10 +63,10 @@ export const NavbarProfileOuter = styled.div`
 `;
 
 export const NavbarProfileImg = styled.img`
-  height: 50px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
-  width: 50px;
+  width: 40px;
   margin: 0px 10px 0px 10px;
 `;
 
