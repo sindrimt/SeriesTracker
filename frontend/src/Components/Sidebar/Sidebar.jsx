@@ -13,7 +13,11 @@ import {
   Hamburger,
   ListItem,
   CategoryItem,
+  ItemText,
+  SearchIcon,
 } from "./SidebarStyles";
+
+import { AiOutlineSearch } from "react-icons/ai";
 
 import notifications from "../../Assets/Sidebar/bell.svg";
 import dashboard from "../../Assets/Sidebar/grid.svg";
@@ -52,7 +56,10 @@ const Sidebar = () => {
           Search series
           <form className="searchForm" onSubmit={(e) => e.preventDefault()}>
             <label htmlFor="searchSeries">Search series</label>
-            <input id="searchSeries" type="text" role="searchbox" placeholder="One Piece" value="" />
+            <input id="searchSeries" type="text" role="searchbox" placeholder="Search" />
+            <SearchIcon>
+              <AiOutlineSearch color="rgba(0, 0, 0, 0.8)" />
+            </SearchIcon>
           </form>
         </SearchOuter>
         <CategoriesOuter>
@@ -60,17 +67,16 @@ const Sidebar = () => {
             <li>Categories</li>
             <ul className="category">
               <CategoryItem>
-                <label class="checkboxOuter">
-                  One
-                  <input type="checkbox" />
-                  <span class="checkmark"></span>
-                </label>
+                <input type="checkbox" />
+                <ItemText>Epic</ItemText>
               </CategoryItem>
               <CategoryItem>
-                <li>Anime</li>
+                <input type="checkbox" />
+                <ItemText>Anime</ItemText>
               </CategoryItem>
               <CategoryItem>
-                <li>Fiction</li>
+                <input type="checkbox" />
+                <ItemText>Fiction</ItemText>
               </CategoryItem>
               <CategoryItem>
                 <li>View more ...</li>

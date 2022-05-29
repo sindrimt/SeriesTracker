@@ -3,15 +3,17 @@ import styled from "styled-components";
 export const Hamburger = styled.img`
   position: absolute;
   visibility: hidden;
+
   @media (max-width: 638px) {
     visibility: visible;
     position: absolute;
     top: 230px;
     left: 30px;
-  } &:hover {
-    cursor: pointer;
   }
 
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const SidebarOuter = styled.div`
@@ -27,6 +29,7 @@ export const SidebarOuter = styled.div`
   margin-top: ${(props) => (props.isFixed ? "85px" : "150px")};
   padding: 30px;
   white-space: nowrap;
+
   @media (max-width: 638px) {
     display: none;
   }
@@ -38,14 +41,18 @@ export const SearchOuter = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 0 0 20px;
+  font-size: 16px;
 `;
 
 export const CategoriesOuter = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   padding: 0 0 15px 0;
+
+  .categoryParent {
+    font-size: 16px;
+  }
 `;
 
 export const SidebarLine = styled.div`
@@ -79,21 +86,46 @@ export const SidebarBottomLine = styled.div`
 
 export const Trademark = styled.div`
   position: absolute;
-  bottom: 25px;
-  padding: 0 0 15px 0;
+  bottom: 180px;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 15px;
+
+  &:before {
+    content: "";
+    position: absolute;
+
+    border-top: 1.5px solid rgba(137, 137, 137, 0.8);
+    width: 100%;
+    top: -10px;
+  }
 `;
 
 export const ListItem = styled.div`
   &:hover {
     cursor: pointer;
-  };
+  }
   margin: 0 0 20px 0;
+  font-size: 15px;
 `;
 
 export const CategoryItem = styled.div`
   &:hover {
     cursor: pointer;
-  };
-  color: #A63FCB;
+  }
+  color: #a63fcb;
   margin: 10px 0 0 10px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+`;
+
+export const ItemText = styled.div`
+  margin-left: 3px;
+`;
+
+export const SearchIcon = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
 `;
