@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ContentRightOuter = styled.div`
   position: fixed;
-  margin: 110px 90px 0px 0px;
+  margin: 110px 80px 0px 0px;
   width: 20%;
   height: 89%;
   right: 0;
@@ -17,14 +17,7 @@ export const ContentRightOuter = styled.div`
     overflow-y: overlay;
 
     ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      border: 4px solid rgba(0, 0, 0, 0);
-      background-clip: padding-box;
-      border-radius: 9999px;
-      background-color: rgba(0, 0, 0, 0.3);
+      display: none;
     }
   }
 `;
