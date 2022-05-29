@@ -119,7 +119,6 @@ const Sidebar = () => {
             </ListItem>
           </ul>
         </PanelOuter>
-        <SidebarBottomLine />
         <Trademark>SeriesTracker 2022&reg; corporation</Trademark>
       </SidebarOuter>
     </>

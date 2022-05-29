@@ -4,13 +4,28 @@ export const ContentRightOuter = styled.div`
   position: fixed;
   margin: 110px 90px 0px 0px;
   width: 20%;
-  height: 100%;
+  height: 89%;
   right: 0;
   @media (max-width: 1260px) {
     display: none;
   }
-  &:hover{
-    overflow-y: scroll;
+  &:hover {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    overflow-x: none;
+    overflow-y: overlay;
+
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      border: 4px solid rgba(0, 0, 0, 0);
+      background-clip: padding-box;
+      border-radius: 9999px;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
   }
 `;
 
@@ -29,7 +44,6 @@ export const Chart = styled.div`
   @media (max-width: 1400px) {
     flex-direction: column-reverse;
   }
-  
 `;
 
 export const EntryImg = styled.img`

@@ -38,9 +38,17 @@ const Content = () => {
             <Card />
             <Card />
             <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
           </ContentContainerGridIcons>
         ) : (
           <ContentContainerGrid>
+            <Card />
+            <Card />
+            <Card />
+            <Card />
             <Card />
             <Card />
             <Card />

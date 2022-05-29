@@ -86,7 +86,7 @@ export const SidebarBottomLine = styled.div`
 
 export const Trademark = styled.div`
   position: absolute;
-  bottom: 180px;
+  bottom: 12%;
   color: rgba(0, 0, 0, 0.5);
   font-size: 15px;
 
