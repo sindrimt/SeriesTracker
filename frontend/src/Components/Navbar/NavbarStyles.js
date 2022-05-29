@@ -36,18 +36,19 @@ export const Logo = styled.img`
 `;
 
 export const WelcomeBack = styled.span`
+  white-space: nowrap;
   @media (max-width: 1000px) {
-    visibility: hidden;
+    display: none;
   }
 `;
 
 export const NavbarProfileOuter = styled.div`
   display: flex;
-  width: 300px;
   height: 70px;
   margin-right: 20px;
   color: rgba(0, 0, 0, 0.6);
   align-items: center;
+  justify-content: flex-end;
 
   div,
   span {
@@ -82,7 +83,7 @@ export const NavbarLinksOuter = styled.div`
     transition: 0.1s;
   }
 
-  @media (max-width: 638px) {
+  @media (max-width: 600px) {
     display: none;
   }
 
