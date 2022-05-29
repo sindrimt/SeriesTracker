@@ -10,6 +10,9 @@ import {
   signOut,
   signInWithEmailAndPassword,
   updateProfile,
+  signInWithRedirect,
+  GoogleAuthProvider,
+  getRedirectResult,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -65,5 +68,11 @@ export const useAuth = () => {
 
   return currentUser;
 };
+
+const provider = new GoogleAuthProvider();
+
+export const signInWithGoogle = () => signInWithRedirect(auth, provider);
+
+export const getGoogleRedirectResults = () => getRedirectResult(auth);
 
 const analytics = getAnalytics(app);
