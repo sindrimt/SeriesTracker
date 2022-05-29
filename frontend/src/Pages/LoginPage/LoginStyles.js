@@ -72,7 +72,13 @@ export const LoginBoxOuter = styled.div`
   background-color: gray;
 `;
 
-export const LoginBoxMain = styled.div``;
+export const LoginBoxMain = styled.div`
+  position: absolute;
+  right: 100px;
+  background-color: red;
+  width: 300px;
+  height: 300px;
+`;
 
 export const LoginBoxLogo = styled.div``;
 

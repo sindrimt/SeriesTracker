@@ -14,7 +14,7 @@ import "./login.css";
 import previewImg from "../../Assets/Login/homescreen.png";
 import Footer from "../../Components/Footer/Footer";
 
-import { signup, useAuth, logOut, logIn, userProfileUpdate } from "../../firebase.js";
+import { signup, useAuth, logOut, logIn, userProfileUpdate, signInWithGoogle } from "../../firebase.js";
 
 const Login = () => {
   const emailRef = useRef();
@@ -59,6 +59,10 @@ const Login = () => {
     logOut();
   };
 
+  const handleGoogleSignIn = () => {
+    signInWithGoogle().then(() => console.log("eyy"));
+  };
+
   /*  const checkUrl = () => {
     console.log(url);
   }; */
@@ -86,6 +90,7 @@ const Login = () => {
         <button onClick={handleSignup}>Sign Up</button>
         <button onClick={handleLogin}>Log In</button>
         <button onClick={handleLogout}>Log Out</button>
+        <button onClick={handleGoogleSignIn}>Google Sign In</button>
       </LoginBoxMain>
       <Footer />
     </>
