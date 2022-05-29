@@ -45,7 +45,7 @@ const Navbar = () => {
   if (scrollPosition >= 95) {
     color = true;
   }
-  if (scrollPosition >= 65) {
+  if (scrollPosition >= 5) {
     line = true;
   }
 
