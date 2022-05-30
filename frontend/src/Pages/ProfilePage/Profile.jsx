@@ -34,14 +34,24 @@ import editbutton from "../../Assets/Profile/editbutton.jpg";
 
 import Navbar from "../../Components/Navbar/Navbar";
 
+import { useAuth } from "../../firebase";
+
 const Profile = () => {
+  const currentUser = useAuth();
+
   return (
     <>
-      <Navbar />
       <ProfileOuter>
         <LeftOuter>
           <LeftUpper>
-            <ProfileImg src={pfp} alt="Profile picture" />
+            <ProfileImg
+              src={
+                currentUser?.photoURL
+                  ? currentUser?.photoURL
+                  : "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+              }
+              alt="Profile picture"
+            />
             <ProfileInfo>
               <FullName>Monkey D. Luffy</FullName>
               <UserName>Luffy</UserName>

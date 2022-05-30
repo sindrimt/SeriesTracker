@@ -18,10 +18,17 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/" element={<Homepage />} />
-      </Routes>
+      {currentUser ? (
+        <>
+          <Navbar />
+          <Routes>
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/" element={<Homepage />} />
+          </Routes>
+        </>
+      ) : (
+        <Login />
+      )}
     </BrowserRouter>
   );
 };

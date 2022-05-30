@@ -15,7 +15,6 @@ const Home = () => {
     <>
       {currentUser ? (
         <>
-          <Navbar />
           <Sidebar />
           <Content />
           <ContentRight />
