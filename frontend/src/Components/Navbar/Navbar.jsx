@@ -15,12 +15,14 @@ import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 import Loffi from "../../Assets/Images/loffi.png";
 
 import { logOut, useAuth, userProfileUpdate, getGoogleRedirectResults } from "../../firebase.js";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [done, setDone] = useState(false);
 
   const currentUser = useAuth();
+  let navigate = useNavigate();
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -64,7 +66,7 @@ const Navbar = () => {
   return (
     <>
       <NavbarOuter showBgColor={color}>
-        <Logo src={SeriesTrackerLogo} alt="Logo" />
+        <Logo src={SeriesTrackerLogo} alt="Logo" onClick={() => navigate("/")} />
         <NavbarLinksOuter>
           <div className="findsSeries">Find Series</div>
           <div className="findfriends">Find Friends</div>
@@ -80,6 +82,7 @@ const Navbar = () => {
           </div>
           <NavbarProfileImgBack>
             <NavbarProfileImg
+              onClick={() => navigate("/profile")}
               src={
                 currentUser?.photoURL
                   ? currentUser?.photoURL
