@@ -5,10 +5,18 @@ export const ProfileOuter = styled.div`
   width: 100%;
   height: 100vh;
   /* background-color: gray; */
-  top: 110px;
+  top: 130px;
+  padding-right: 20px;
+  padding-left: 20px;
   
   display: grid;
   grid-template-columns: 1fr 2fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+
+  @media (max-width: 1180px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const LeftOuter = styled.div`
@@ -17,6 +25,8 @@ export const LeftOuter = styled.div`
   /* background-color: lightsalmon; */
   display: grid;
   grid-template-rows: 1fr 1fr;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border-radius: 5px;
 `;
 
 export const LeftUpper = styled.div`
@@ -60,6 +70,8 @@ export const UserName = styled.div`
 export const Description = styled.div`
   font-weight: 300;
   font-size: 18px;
+  padding-right: 5px;
+  padding-left: 5px;
   /* background-color: lightsteelblue; */
   text-align: center;
 `;
@@ -123,6 +135,7 @@ export const Followers = styled.div`
 export const EditProfile = styled.img`
     display: flex;
     justify-self: center;
+    padding: 0 10px 0 10px;
     &:hover {
       cursor: pointer;
     }
@@ -134,6 +147,7 @@ export const RightOuter = styled.div`
   /* background-color: lightskyblue; */
   display: grid;
   grid-template-rows: 2fr 1.5fr;
+  grid-gap: 20px;
 `;
 
 export const RightUpper = styled.div`
@@ -143,6 +157,8 @@ export const RightUpper = styled.div`
   /* background-color: papayawhip; */
   display: grid;
   grid-template-rows: 1fr 6fr;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border-radius: 5px;
 `;
 
 export const HeaderContainer = styled.div`
@@ -184,6 +200,8 @@ export const RightLower = styled.div`
   display: flex;
   justify-self: center;
   align-self: center;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border-radius: 5px;
 `;
 
 export const Graph = styled.img`
