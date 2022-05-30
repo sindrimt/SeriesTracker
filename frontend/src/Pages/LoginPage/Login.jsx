@@ -11,6 +11,8 @@ import {
   LoginBoxLogo,
   LoginBoxLogoOuter,
   LoginFields,
+  LoginBoxSecondary,
+  LoginBoxOuter,
 } from "./LoginStyles";
 
 import "./login.css";
@@ -21,6 +23,8 @@ import Footer from "../../Components/Footer/Footer";
 import { signup, useAuth, logOut, logIn, userProfileUpdate, signInWithGoogle } from "../../firebase.js";
 import GoogleLoginButton from "../../Components/Buttons/GoogleButton/GoogleLoginButton";
 import SeriesTrackerLogo from "../../Assets/Images/logo.png";
+
+import FButton from "../../Components/Buttons/FormButton/FormButton";
 import Loading from "../LoadingPage/Loading";
 
 const Login = () => {
@@ -96,24 +100,28 @@ const Login = () => {
           </TxtOuter>
           <LoginPreviewImg src={previewImg} alt="Homescreen preview" />
         </LoginPreviewOuter>
-      </LoginOuterContainer>
-      <LoginBoxMain>
-        <LoginBoxLogoOuter>
-          <LoginBoxLogo src={SeriesTrackerLogo} />
-        </LoginBoxLogoOuter>
+        <LoginBoxOuter>
+          <LoginBoxMain>
+            <LoginBoxLogoOuter>
+              <LoginBoxLogo src={SeriesTrackerLogo} />
+            </LoginBoxLogoOuter>
 
-        <LoginFields>
-          <input ref={emailRef} placeholder="email" />
-          <input ref={passwordRef} type="password" placeholder="password" />
-          <input type="file" multiple accept="image/*" onChange={onImageChange} />
-          {/*         <button onClick={checkUrl}>URL</button>
-           */}{" "}
-          <button onClick={handleSignup}>Sign Up</button>
-          <button onClick={handleLogin}>Log In</button>
-          <button onClick={handleGoogleSignIn}>Google Sign In</button>
-        </LoginFields>
-        <GoogleLoginButton action={handleGoogleSignIn} />
-      </LoginBoxMain>
+            <LoginFields>
+              <input ref={emailRef} placeholder="email" />
+              <input ref={passwordRef} type="password" placeholder="password" />
+              {/*  <input type="file" multiple accept="image/*" onChange={onImageChange} /> */}
+              {/*         <button onClick={checkUrl}>URL</button>
+               */}
+              <FButton buttonText="Log In" />
+            </LoginFields>
+            <GoogleLoginButton action={handleGoogleSignIn} />
+          </LoginBoxMain>
+          <LoginBoxSecondary>
+            Don't have an account?
+            <span style={{ borderBottom: "1px solid black", marginLeft: "5px" }}>Register here</span>
+          </LoginBoxSecondary>
+        </LoginBoxOuter>
+      </LoginOuterContainer>
       <Footer />
     </>
   );
