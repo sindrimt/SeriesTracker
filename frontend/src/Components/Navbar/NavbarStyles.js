@@ -63,11 +63,28 @@ export const NavbarProfileOuter = styled.div`
 `;
 
 export const NavbarProfileImg = styled.img`
-  height: 40px;
+  height: 42px;
   border-radius: 50%;
   object-fit: cover;
-  width: 40px;
-  margin: 0px 10px 0px 10px;
+  width: 42px;
+  margin: 0px 0px -1px 0px;
+`;
+export const NavbarProfileImgBack = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 47px;
+  border-radius: 50%;
+  height: 47px;
+  margin: 0px 8px 0px 8px;
+  outline: 2px solid rgba(166, 63, 203, 0);
+
+  &:hover {
+    transition: 0.2s ease-in-out;
+    outline: 2px solid rgba(166, 63, 203, 1);
+    border-radius: 50%;
+    cursor: pointer;
+  }
 `;
 
 export const NavbarLinksOuter = styled.div`
