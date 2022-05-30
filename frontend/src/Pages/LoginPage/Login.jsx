@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 import {
   LoginOuterContainer,
@@ -8,13 +8,19 @@ import {
   TxtOuter,
   LoginPreviewImg,
   LoginBoxMain,
+  LoginBoxLogo,
+  LoginBoxLogoOuter,
+  LoginFields,
 } from "./LoginStyles";
 
 import "./login.css";
+
 import previewImg from "../../Assets/Login/homescreen.png";
 import Footer from "../../Components/Footer/Footer";
 
 import { signup, useAuth, logOut, logIn, userProfileUpdate, signInWithGoogle } from "../../firebase.js";
+import GoogleLoginButton from "../../Components/Buttons/GoogleButton/GoogleLoginButton";
+import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 
 const Login = () => {
   const emailRef = useRef();
@@ -62,6 +68,9 @@ const Login = () => {
   /*  const checkUrl = () => {
     console.log(url);
   }; */
+  useEffect(() => {
+    document.body.style.backgroundColor = "#FAFAFA";
+  }, []);
 
   return (
     <>
@@ -77,14 +86,21 @@ const Login = () => {
         </LoginPreviewOuter>
       </LoginOuterContainer>
       <LoginBoxMain>
-        <input ref={emailRef} placeholder="email" />
-        <input ref={passwordRef} type="password" placeholder="password" />
-        <input type="file" multiple accept="image/*" onChange={onImageChange} />
-        {/*         <button onClick={checkUrl}>URL</button>
-         */}{" "}
-        <button onClick={handleSignup}>Sign Up</button>
-        <button onClick={handleLogin}>Log In</button>
-        <button onClick={handleGoogleSignIn}>Google Sign In</button>
+        <LoginBoxLogoOuter>
+          <LoginBoxLogo src={SeriesTrackerLogo} />
+        </LoginBoxLogoOuter>
+
+        <LoginFields>
+          <input ref={emailRef} placeholder="email" />
+          <input ref={passwordRef} type="password" placeholder="password" />
+          <input type="file" multiple accept="image/*" onChange={onImageChange} />
+          {/*         <button onClick={checkUrl}>URL</button>
+           */}{" "}
+          <button onClick={handleSignup}>Sign Up</button>
+          <button onClick={handleLogin}>Log In</button>
+          <button onClick={handleGoogleSignIn}>Google Sign In</button>
+        </LoginFields>
+        <GoogleLoginButton action={handleGoogleSignIn} />
       </LoginBoxMain>
       <Footer />
     </>

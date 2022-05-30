@@ -13,7 +13,7 @@ export const LoginPreviewOuter = styled.div`
       position: absolute;
       height: calc(30vw + 15%);
       border: 1px solid rgba(0, 0, 0, 0.2);
-      margin-left: 70px;
+      margin-left: 100px;
       top: 80px;
       border-radius: 5px;
     }
@@ -63,26 +63,41 @@ export const LoginPreviewImg = styled.img`
   filter: drop-shadow(0px 6px 4px rgba(0, 0, 0, 0.25));
 `;
 
-export const LoginBoxOuter = styled.div`
-  position: absolute;
-  top: 4%;
-  right: 8%;
-  width: 400px;
-  height: 520px;
-  background-color: gray;
-`;
-
 export const LoginBoxMain = styled.div`
+  display: flex;
+  flex-direction: column;
   position: absolute;
-  right: 100px;
-  background-color: red;
-  width: 300px;
-  height: 300px;
+  background-color: white;
+  align-items: center;
+  top: 150px;
+  right: 23%;
+  border: 1px solid gray;
+  width: 380px;
+  height: 540px;
 `;
 
-export const LoginBoxLogo = styled.div``;
+export const LoginBoxLogo = styled.img`
+  width: 260px;
+  height: 60px;
+`;
+export const LoginBoxLogoOuter = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  background-color: blue;
+`;
 
-export const LoginFields = styled.div``;
+export const LoginFields = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: green;
+  height: 200px;
+`;
 
 export const LoginButton = styled.div``;
 
