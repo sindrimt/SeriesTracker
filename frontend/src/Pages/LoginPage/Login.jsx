@@ -112,7 +112,7 @@ const Login = () => {
               {/*  <input type="file" multiple accept="image/*" onChange={onImageChange} /> */}
               {/*         <button onClick={checkUrl}>URL</button>
                */}
-              <FButton buttonText="Log In" />
+              <FButton buttonText="Sign Up" action={handleSignup} />
             </LoginFields>
             <GoogleLoginButton action={handleGoogleSignIn} />
           </LoginBoxMain>

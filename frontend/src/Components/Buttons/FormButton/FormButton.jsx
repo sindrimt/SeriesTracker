@@ -1,15 +1,9 @@
 import React from "react";
 
-import { 
-    FButton, 
+import { FButton } from "./FormButtonStyles";
 
-} from "./FormButtonStyles";
-
-const FormButton = ({buttonText}) => {
-  return (
-
-    <FButton>{buttonText}</FButton>
-  );
+const FormButton = ({ buttonText, action }) => {
+  return <FButton onClick={action}>{buttonText}</FButton>;
 };
 
 export default FormButton;
