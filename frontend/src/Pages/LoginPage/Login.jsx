@@ -21,6 +21,7 @@ import Footer from "../../Components/Footer/Footer";
 import { signup, useAuth, logOut, logIn, userProfileUpdate, signInWithGoogle } from "../../firebase.js";
 import GoogleLoginButton from "../../Components/Buttons/GoogleButton/GoogleLoginButton";
 import SeriesTrackerLogo from "../../Assets/Images/logo.png";
+import Loading from "../LoadingPage/Loading";
 
 const Login = () => {
   const emailRef = useRef();
@@ -29,6 +30,8 @@ const Login = () => {
   const currentUser = useAuth();
   const [image, setImage] = useState();
   const [url, setUrl] = useState();
+
+  const [loading, setLoading] = useState(false);
 
   const onImageChange = (e) => {
     // Takes image input from user
@@ -46,7 +49,9 @@ const Login = () => {
   const handleSignup = async () => {
     userProfileUpdate(url);
     try {
+      setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -55,14 +60,17 @@ const Login = () => {
   const handleLogin = async () => {
     userProfileUpdate(url);
     try {
+      setLoading(true);
       await logIn(emailRef.current.value, passwordRef.current.value);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
 
   const handleGoogleSignIn = () => {
-    signInWithGoogle().then(() => console.log("eyy"));
+    setLoading(true);
+    signInWithGoogle().then(() => setLoading(false));
   };
 
   /*  const checkUrl = () => {
@@ -71,6 +79,10 @@ const Login = () => {
   useEffect(() => {
     document.body.style.backgroundColor = "#FAFAFA";
   }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <>

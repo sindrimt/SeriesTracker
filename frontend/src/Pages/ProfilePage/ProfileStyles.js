@@ -8,7 +8,7 @@ export const ProfileOuter = styled.div`
   top: 130px;
   padding-right: 20px;
   padding-left: 20px;
-  
+
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-column-gap: 20px;
@@ -38,10 +38,11 @@ export const LeftUpper = styled.div`
 `;
 
 export const ProfileImg = styled.img`
-    display: flex;
-    justify-self: center;
-    align-self: center;
-    width: 220px;
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  width: 220px;
+  border-radius: 50%;
 `;
 
 export const ProfileInfo = styled.div`
@@ -115,14 +116,14 @@ export const Friendslist = styled.div`
 `;
 
 export const Friend = styled.img`
-    display: flex;
-    justify-self: center;
-    align-self: center;
-    width: 80px;
-    padding: 0 5px 0 5px;
-    &:hover {
-      cursor: pointer;
-    }
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  width: 80px;
+  padding: 0 5px 0 5px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const Followers = styled.div`
@@ -133,12 +134,12 @@ export const Followers = styled.div`
 `;
 
 export const EditProfile = styled.img`
-    display: flex;
-    justify-self: center;
-    padding: 0 10px 0 10px;
-    &:hover {
-      cursor: pointer;
-    }
+  display: flex;
+  justify-self: center;
+  padding: 0 10px 0 10px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const RightOuter = styled.div`
@@ -205,12 +206,12 @@ export const RightLower = styled.div`
 `;
 
 export const Graph = styled.img`
-    width: 800px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  width: 800px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const BoxShadow = styled.div`
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 `;
