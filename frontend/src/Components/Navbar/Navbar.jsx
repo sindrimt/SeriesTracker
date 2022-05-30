@@ -8,6 +8,7 @@ import {
   NavbarLinksOuter,
   Logo,
   WelcomeBack,
+  NavbarProfileImgBack,
 } from "./NavbarStyles";
 
 import SeriesTrackerLogo from "../../Assets/Images/logo.png";
@@ -77,12 +78,17 @@ const Navbar = () => {
               WELCOME BACK <span style={{ fontWeight: "400" }}>{currentUser?.email.split("@")[0].toUpperCase()}</span>
             </WelcomeBack>
           </div>
-          <NavbarProfileImg
-            src={
-              currentUser?.photoURL ? currentUser?.photoURL : "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-            }
-            alt="Profile pic"
-          />
+          <NavbarProfileImgBack>
+            <NavbarProfileImg
+              src={
+                currentUser?.photoURL
+                  ? currentUser?.photoURL
+                  : "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+              }
+              alt="Profile pic"
+            />
+          </NavbarProfileImgBack>
+
           <span className="signout" style={{ whiteSpace: "nowrap" }} onClick={handleLogOut}>
             SIGN OUT
           </span>
