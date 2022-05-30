@@ -26,10 +26,16 @@ import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 
 import FButton from "../../Components/Buttons/FormButton/FormButton";
 import Loading from "../LoadingPage/Loading";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/");
+  }, []);
 
   const currentUser = useAuth();
   const [image, setImage] = useState();
