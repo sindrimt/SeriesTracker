@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
-import { getFirestore, collection, addDoc, setDoc, doc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, setDoc, doc, getDoc } from "firebase/firestore";
 
 import {
   getAuth,
@@ -73,13 +73,23 @@ export const useAuth = () => {
   return currentUser;
 };
 
-export const saveData = async (userId) => {
+export const saveData = async (userId, data) => {
   try {
-    const docRef = await setDoc(doc(db, "users", userId), {
-      hei: "marcus",
-    });
+    const docRef = await setDoc(doc(db, "users", userId), data);
   } catch (e) {
     console.error("Error adding document: ", e);
+  }
+};
+
+export const getUserData = async (userId) => {
+  const docRef = doc(db, "users", userId);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    //console.log("Document data:", docSnap.data().photoUrl);
+    return docSnap.data();
+  } else {
+    console.log("No such document!");
   }
 };
 
