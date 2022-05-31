@@ -12,7 +12,6 @@ import {
 } from "./NavbarStyles";
 
 import SeriesTrackerLogo from "../../Assets/Images/logo.png";
-import Loffi from "../../Assets/Images/loffi.png";
 
 import { logOut, useAuth, getUserData } from "../../firebase.js";
 import { useNavigate } from "react-router-dom";
@@ -67,10 +66,6 @@ const Navbar = () => {
     });
   };
 
-  /*  console.log(currentUser?.uid);
-  //getUserData(currentUser?.uid);
-  console.log(user.photoUrl); */
-
   return (
     <>
       <NavbarOuter showBgColor={color}>
@@ -95,9 +90,6 @@ const Navbar = () => {
           <span className="signout" style={{ whiteSpace: "nowrap" }} onClick={handleLogOut}>
             SIGN OUT
           </span>
-          <button onClick={checkUser}>Check user</button>
-
-          {/* <button onClick={() => console.log(currentUser)}>Chck user</button> */}
         </NavbarProfileOuter>
         <NavbarLine showLine={line} />
       </NavbarOuter>
