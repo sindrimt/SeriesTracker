@@ -42,7 +42,9 @@ export const ProfileImg = styled.img`
   justify-self: center;
   align-self: center;
   width: 220px;
+  height: 220px;
   border-radius: 50%;
+  object-fit: cover;
 `;
 
 export const ProfileInfo = styled.div`
