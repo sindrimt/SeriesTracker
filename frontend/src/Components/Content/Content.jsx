@@ -59,6 +59,7 @@ const Content = () => {
         )}
       </ContentContainerOuter>
       <Link to="/createPost">
+        {/*  //TODO Add series button was here */}
         <AddSerieButton />
       </Link>
     </>

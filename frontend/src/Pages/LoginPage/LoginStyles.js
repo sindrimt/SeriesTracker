@@ -5,13 +5,13 @@ export const LoginOuterContainer = styled.div`
   width: 100%;
   padding-right: 2vw;
   padding-left: 2vw;
-  height: 100vh;
-  
+  height: 100%;
+
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-column-gap: 20px;
   grid-row-gap: 20px;
-  padding-bottom: 100px;
+  padding-bottom: 120px;
 
   @media (max-width: 1250px) {
     grid-template-columns: 1fr;
@@ -22,10 +22,9 @@ export const LoginOuterContainer = styled.div`
 export const LoginPreviewOuter = styled.div`
   justify-self: center;
   align-self: center;
-  
+
   @media (min-width: 1250px) {
-    
-    &:after{
+    &:after {
       content: "";
       position: absolute;
       height: 60%;
@@ -34,14 +33,12 @@ export const LoginPreviewOuter = styled.div`
       top: 130px;
       border-radius: 5px;
     }
-
   }
 `;
 export const TxtOuter = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 150px;
   align-items: center;
   justify-content: flex-end;
 `;
@@ -62,49 +59,60 @@ export const LoginPreviewTxt = styled.div`
 `;
 
 export const LoginPreviewImg = styled.img`
-  width: 700px;
+  width: 45vw;
   object-fit: fill;
   border-radius: 3px;
   filter: drop-shadow(0px 6px 4px rgba(0, 0, 0, 0.25));
-  
+
   @media (max-width: 1250px) {
     display: none;
   }
 `;
 
 export const LoginBoxOuter = styled.div`
-  margin-top: 150px;
+  margin-top: 11vh;
   display: grid;
-  height: 500px;
+  height: 65vh;
   grid-template-rows: 8fr 2fr;
   grid-row-gap: 20px;
   justify-content: center;
-  
+  margin-right: 50px;
+
   @media (max-width: 1250px) {
     margin-top: -30px;
+    margin: 0;
   }
-`
+`;
 export const LoginBoxMain = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   justify-self: center;
-  width: 380px;
+  width: 27vw;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   border-radius: 5px;
   padding-bottom: 20px;
   background-color: white;
+
+  @media (max-width: 1250px) {
+    width: calc(100% + 40px);
+  }
 `;
 
 export const LoginBoxSecondary = styled.div`
   display: flex;
-  width: 380px;
+  width: 27vw;
   height: 100%;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   border-radius: 5px;
   align-items: center;
   justify-content: center;
   background-color: white;
+
+  @media (max-width: 1250px) {
+    width: calc(100% + 40px);
+    margin: 0;
+  }
 `;
 
 export const LoginBoxLogo = styled.img`
@@ -130,8 +138,17 @@ export const LoginFields = styled.div`
   margin-bottom: 20px;
 `;
 
-export const LoginButton = styled.div`
+export const RegisterText = styled.span`
+  border-bottom: 1px solid #a63fcb;
+  margin-left: 5px;
+
+  &:hover {
+    cursor: pointer;
+    color: rgba(166, 63, 203, 0.6);
+  }
 `;
+
+export const LoginButton = styled.div``;
 
 export const LoginForgot = styled.div``;
 
