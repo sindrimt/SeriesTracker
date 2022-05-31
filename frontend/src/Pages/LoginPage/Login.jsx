@@ -142,7 +142,7 @@ const Login = () => {
             </LoginBoxLogoOuter>
 
             <LoginFields>
-              <input ref={emailRef} placeholder="email" />
+              <input ref={emailRef} type="text" placeholder="email" />
               <input ref={passwordRef} type="password" placeholder="password" />
               <input type="file" multiple accept="image/*" onChange={onImageChange} />
               <FButton buttonText="Sign Up" action={handleSignup} />

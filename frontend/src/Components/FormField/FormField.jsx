@@ -5,9 +5,7 @@ import { FieldContainer } from "./FormFieldStyles";
 import "./FormField.css";
 
 const FormField = forwardRef(({ type, placeholder }, ref) => (
-  <FieldContainer>
-    <input ref={ref} type={type} placeholder={placeholder} />
-  </FieldContainer>
+  <input className="input_field" ref={ref} type={type} placeholder={placeholder} />
 ));
 
 export default FormField;
