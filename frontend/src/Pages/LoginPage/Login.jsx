@@ -20,7 +20,7 @@ import "./login.css";
 import previewImg from "../../Assets/Login/homescreen.png";
 import Footer from "../../Components/Footer/Footer";
 
-import { signup, useAuth, logOut, logIn, userProfileUpdate, signInWithGoogle } from "../../firebase.js";
+import { signup, useAuth, logOut, logIn, userProfileUpdate, signInWithGoogle, saveData } from "../../firebase.js";
 import GoogleLoginButton from "../../Components/Buttons/GoogleButton/GoogleLoginButton";
 import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 
@@ -32,6 +32,8 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
+  const testRef = useRef();
+
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -61,7 +63,18 @@ const Login = () => {
     userProfileUpdate(url);
     try {
       setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
+
+      await signup(emailRef.current.value, passwordRef.current.value).then((cred) => {
+        saveData(cred.user.uid);
+      });
+      /* .then((cred) => {
+          return db.collection("users").addDoc(cred.user.uid).set({
+            test: testRef.current.value,
+          });
+        })
+        .then(() => {
+          console.log("Worked");
+        }); */
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -114,8 +127,14 @@ const Login = () => {
             </LoginBoxLogoOuter>
 
             <LoginFields>
+<<<<<<< HEAD
               <InputField ref={emailRef} placeholder="Username or email" />
               <InputField ref={passwordRef} type="password" placeholder="Password" />
+=======
+              <input ref={emailRef} placeholder="email" />
+              <input ref={passwordRef} type="password" placeholder="password" />
+              <input ref={testRef} type="text" placeholder="test" />
+>>>>>>> 3578e3602ea39a75bb8cecb83b2cc31a6fc39a51
               {/*  <input type="file" multiple accept="image/*" onChange={onImageChange} /> */}
               {/*         <button onClick={checkUrl}>URL</button>
                */}

@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 export const ContentRightOuter = styled.div`
-  position: fixed;
-  margin: 110px 80px 0px 0px;
-  width: 20%;
+  position: absolute;
+  margin: 110px 0px 0px 0px;
+  width: 27%;
   height: 89%;
   right: 0;
-  @media (max-width: 1260px) {
+  @media (max-width: 1400px) {
     display: none;
   }
-  &:hover {
+/*   &:hover {
     -ms-overflow-style: none;
     scrollbar-width: none;
 
@@ -19,7 +19,7 @@ export const ContentRightOuter = styled.div`
     ::-webkit-scrollbar {
       display: none;
     }
-  }
+  } */
 `;
 
 export const ChartsContainer = styled.div`
@@ -37,11 +37,22 @@ export const Chart = styled.div`
   @media (max-width: 1400px) {
     flex-direction: column-reverse;
   }
+
+  &:nth-child(odd) {
+    background-color: papayawhip;
+  }
+
+  @media (max-width: 1500px) {
+    background-color: none;
+  }
 `;
 
 export const EntryImg = styled.img`
   display: flex;
   flex-grow: 1;
+  @media (max-width: 1700px) {
+    width: 50%;
+  }
 `;
 
 export const EntryInfo = styled.div`
@@ -49,6 +60,7 @@ export const EntryInfo = styled.div`
   flex-direction: column;
   width: 100%;
   flex-grow: 5;
+
 `;
 
 export const EntryHeader = styled.div`
