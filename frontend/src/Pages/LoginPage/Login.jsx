@@ -20,7 +20,16 @@ import "./login.css";
 import previewImg from "../../Assets/Login/homescreen.png";
 import Footer from "../../Components/Footer/Footer";
 
-import { signup, useAuth, logOut, logIn, userProfileUpdate, signInWithGoogle, saveData } from "../../firebase.js";
+import {
+  signup,
+  useAuth,
+  logOut,
+  logIn,
+  userProfileUpdate,
+  signInWithGoogle,
+  saveData,
+  getGoogleRedirectResults,
+} from "../../firebase.js";
 import GoogleLoginButton from "../../Components/Buttons/GoogleButton/GoogleLoginButton";
 import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 
@@ -40,7 +49,7 @@ const Login = () => {
   }, []);
 
   const currentUser = useAuth();
-  const [image, setImage] = useState();
+  const [image, setImage] = useState("Jeg er image");
   const [url, setUrl] = useState();
 
   const [loading, setLoading] = useState(false);
@@ -60,20 +69,14 @@ const Login = () => {
 
   const handleSignup = async () => {
     userProfileUpdate(url);
+    setLoading(true);
     try {
-      setLoading(true);
-
       await signup(emailRef.current.value, passwordRef.current.value).then((cred) => {
-        saveData(cred.user.uid);
+        console.log(cred.user);
+        return saveData(cred.user.uid, {
+          photoURL: url,
+        });
       });
-      /* .then((cred) => {
-          return db.collection("users").addDoc(cred.user.uid).set({
-            test: testRef.current.value,
-          });
-        })
-        .then(() => {
-          console.log("Worked");
-        }); */
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -91,10 +94,22 @@ const Login = () => {
     }
   };
 
-  const handleGoogleSignIn = () => {
+  const handleGoogleSignIn = async () => {
     setLoading(true);
-    signInWithGoogle().then(() => setLoading(false));
+    await signInWithGoogle().then(() => {
+      setLoading(false);
+    });
   };
+
+  // Gets the data from the google log in
+  useEffect(() => {
+    getGoogleRedirectResults().then((res) => {
+      console.log(res);
+      return saveData(res.user.uid, {
+        photoURL: res.user.photoURL,
+      });
+    });
+  }, []);
 
   /*  const checkUrl = () => {
     console.log(url);
@@ -128,10 +143,7 @@ const Login = () => {
             <LoginFields>
               <input ref={emailRef} placeholder="email" />
               <input ref={passwordRef} type="password" placeholder="password" />
-              <input ref={testRef} type="text" placeholder="test" />
-              {/*  <input type="file" multiple accept="image/*" onChange={onImageChange} /> */}
-              {/*         <button onClick={checkUrl}>URL</button>
-               */}
+              <input type="file" multiple accept="image/*" onChange={onImageChange} />
               <FButton buttonText="Sign Up" action={handleSignup} />
             </LoginFields>
             <GoogleLoginButton action={handleGoogleSignIn} />
