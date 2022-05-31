@@ -25,6 +25,7 @@ import GoogleLoginButton from "../../Components/Buttons/GoogleButton/GoogleLogin
 import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 
 import FButton from "../../Components/Buttons/FormButton/FormButton";
+import InputField from "../../Components/FormField/FormField";
 import Loading from "../LoadingPage/Loading";
 import { useNavigate } from "react-router-dom";
 
@@ -113,8 +114,8 @@ const Login = () => {
             </LoginBoxLogoOuter>
 
             <LoginFields>
-              <input ref={emailRef} placeholder="email" />
-              <input ref={passwordRef} type="password" placeholder="password" />
+              <InputField ref={emailRef} placeholder="Email" />
+              <InputField ref={passwordRef} type="password" placeholder="Password" />
               {/*  <input type="file" multiple accept="image/*" onChange={onImageChange} /> */}
               {/*         <button onClick={checkUrl}>URL</button>
                */}
