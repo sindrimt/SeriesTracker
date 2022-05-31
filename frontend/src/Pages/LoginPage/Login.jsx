@@ -13,6 +13,7 @@ import {
   LoginFields,
   LoginBoxSecondary,
   LoginBoxOuter,
+  RegisterText,
 } from "./LoginStyles";
 
 import "./login.css";
@@ -37,6 +38,7 @@ import FButton from "../../Components/Buttons/FormButton/FormButton";
 import InputField from "../../Components/FormField/FormField";
 import Loading from "../LoadingPage/Loading";
 import { useNavigate } from "react-router-dom";
+import FormField from "../../Components/FormField/FormField";
 
 const Login = () => {
   const emailRef = useRef();
@@ -50,10 +52,10 @@ const Login = () => {
   }, []);
 
   const currentUser = useAuth();
-  const [image, setImage] = useState("Jeg er image");
-  const [url, setUrl] = useState();
 
+  const [url, setUrl] = useState();
   const [loading, setLoading] = useState(false);
+  const [register, setRegister] = useState(false);
 
   const onImageChange = (e) => {
     // Takes image input from user
@@ -136,17 +138,20 @@ const Login = () => {
             </LoginBoxLogoOuter>
 
             <LoginFields>
-              <input ref={emailRef} type="text" placeholder="email" />
-              <input ref={passwordRef} type="password" placeholder="password" />
+              <FormField ref={emailRef} type="text" placeholder="email" />
+              <FormField ref={passwordRef} type="password" placeholder="password" />
+              {register ? (
+                <FButton buttonText="Sign Up" action={handleSignup} />
+              ) : (
+                <FButton buttonText="Log In" action={handleLogin} />
+              )}
               <input type="file" multiple accept="image/*" onChange={onImageChange} />
-              <FButton buttonText="Sign Up" action={handleSignup} />
-              <FButton buttonText="Log In" action={handleLogin} />
             </LoginFields>
             <GoogleLoginButton action={handleGoogleSignIn} />
           </LoginBoxMain>
           <LoginBoxSecondary>
-            Don't have an account?
-            <span style={{ borderBottom: "1px solid black", marginLeft: "5px" }}>Register here</span>
+            {register ? "Already have an account?" : "Don't have an account?"}
+            <RegisterText onClick={() => setRegister(!register)}>{register ? "Log In" : "Register Here"}</RegisterText>
           </LoginBoxSecondary>
         </LoginBoxOuter>
       </LoginOuterContainer>
