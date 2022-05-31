@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   ProfileOuter,
   LeftOuter,
@@ -26,18 +26,27 @@ import {
   Graph,
 } from "./ProfileStyles";
 
-import pfp from "../../Assets/Profile/pfp.png";
 import pen from "../../Assets/Profile/pen.png";
 import graph from "../../Assets/Profile/graph.png";
 import friend from "../../Assets/Profile/chopper.png";
 import editbutton from "../../Assets/Profile/editbutton.jpg";
 
-import Navbar from "../../Components/Navbar/Navbar";
-
-import { useAuth } from "../../firebase";
+import { useAuth, getUserData } from "../../firebase";
 
 const Profile = () => {
   const currentUser = useAuth();
+  const [user, setUser] = useState({});
+
+  // Loads checks the database for updates
+  useEffect(() => {
+    checkUser();
+  });
+
+  const checkUser = async () => {
+    await getUserData(currentUser?.uid).then((res) => {
+      setUser(res);
+    });
+  };
 
   return (
     <>
@@ -45,12 +54,9 @@ const Profile = () => {
         <LeftOuter>
           <LeftUpper>
             <ProfileImg
-              src={
-                currentUser?.photoURL
-                  ? currentUser?.photoURL
-                  : "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-              }
-              alt="Profile picture"
+              onClick={() => console.log("CLicked image")}
+              src={user?.photoURL ? user?.photoURL : "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"}
+              alt="Profile pic"
             />
             <ProfileInfo>
               <FullName>Monkey D. Luffy</FullName>
