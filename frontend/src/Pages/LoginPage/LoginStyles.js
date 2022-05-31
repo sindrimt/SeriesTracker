@@ -95,7 +95,7 @@ export const LoginBoxMain = styled.div`
   background-color: white;
 
   @media (max-width: 1250px) {
-    width: calc(100% + 40px);
+    width: 340px;
   }
 `;
 
@@ -110,8 +110,7 @@ export const LoginBoxSecondary = styled.div`
   background-color: white;
 
   @media (max-width: 1250px) {
-    width: calc(100% + 40px);
-    margin: 0;
+    width: 340px;
   }
 `;
 
