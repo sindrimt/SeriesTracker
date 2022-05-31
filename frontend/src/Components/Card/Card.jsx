@@ -16,6 +16,9 @@ import {
   CardRatingTxt,
   CardDescription,
   CardRatingCenter,
+  ProgressLine,
+  ProgressLineGray,
+  ProgressLineText,
 } from "./CardStyles";
 
 import loffi from "../../Assets/Images/loffi.png";
@@ -45,6 +48,9 @@ const Card = () => {
           </CardRatingContainer>
         </SeriesCardInner>
         <WatchTimeContainer />
+        <ProgressLineText>07:33 / 22:23</ProgressLineText>
+        <ProgressLine />
+        <ProgressLineGray />
       </SeriesCardOuter>
     </>
   );

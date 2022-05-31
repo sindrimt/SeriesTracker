@@ -111,3 +111,42 @@ export const CardDescription = styled.div`
   display: flex;
   left: 0;
 `;
+
+export const ProgressLine = styled.div`
+  position: relative;
+  width: 60%;
+  height: 2px;
+  background-color: #a63fcb;
+  bottom: 8px;
+  border-radius: 999px;
+  z-index: 999;
+  margin-left: 11%;
+
+  &:after {
+    content: "";
+    position: absolute;
+    background-color: #a63fcb;
+    width: 10px;
+    height: 10px;
+    right: 0px;
+    margin-bottom: 5px;
+    transform: translate(0px, -4px);
+    border-radius: 50%;
+  }
+`;
+
+export const ProgressLineGray = styled.div`
+  position: relative;
+  width: 89%;
+  height: 2px;
+  background-color: rgba(201, 201, 201, 0.8);
+  bottom: 10px;
+  border-radius: 999px;
+  margin-left: 11%;
+`;
+
+export const ProgressLineText = styled.div`
+  position: absolute;
+  font-size: 11px;
+  transform: translate(0px, -15px);
+`;
