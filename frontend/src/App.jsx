@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -34,15 +34,3 @@ const App = () => {
 };
 
 export default App;
-{
-  /*  {currentUser ? (
-        <>
-          <Navbar />
-          <Sidebar />
-          <Content />
-          <ContentRight />
-        </>
-      ) : (
-        <Login />
-      )} */
-}
