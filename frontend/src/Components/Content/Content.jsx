@@ -11,12 +11,14 @@ import {
 } from "./ContentStyles";
 
 import Card from "../Card/Card";
+import { Link } from "react-router-dom";
 
 import filter from "../../Assets/Content/Adjust.svg";
 import rowView from "../../Assets/Content/Playlist.svg";
 import iconViewIcon from "../../Assets/Content/Apps.svg";
 
 import loffi from "../../Assets/Images/loffi.png";
+import AddSerieButton from "../AddSerie/AddSerieButton/AddSerieButton";
 
 const Content = () => {
   const [iconView, setIconView] = useState(false);
@@ -56,6 +58,9 @@ const Content = () => {
           </ContentContainerGrid>
         )}
       </ContentContainerOuter>
+      <Link to="/createPost">
+        <AddSerieButton />
+      </Link>
     </>
   );
 };

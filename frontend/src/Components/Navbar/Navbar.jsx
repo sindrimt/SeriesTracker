@@ -13,7 +13,7 @@ import {
 
 import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 
-import { logOut, useAuth, getUserData } from "../../firebase.js";
+import { logOut, useAuth, getUserData, updateUserData } from "../../firebase.js";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {

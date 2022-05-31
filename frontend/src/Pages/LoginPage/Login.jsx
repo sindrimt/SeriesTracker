@@ -57,12 +57,10 @@ const Login = () => {
 
   const onImageChange = (e) => {
     // Takes image input from user
-    //todo not currently working as intended
     const reader = new FileReader();
 
     reader.addEventListener("load", () => {
       setUrl(reader.result);
-      //localStorage.setItem("profilePic", reader.result);
     });
 
     reader.readAsDataURL(e.target.files[0]);
@@ -105,16 +103,12 @@ const Login = () => {
   // Gets the data from the google log in
   useEffect(() => {
     getGoogleRedirectResults().then((res) => {
-      console.log(res);
-      return saveData(res.user.uid, {
-        photoURL: res.user.photoURL,
+      return saveData(res?.user?.uid, {
+        photoURL: res?.user?.photoURL,
       });
     });
   }, []);
 
-  /*  const checkUrl = () => {
-    console.log(url);
-  }; */
   useEffect(() => {
     document.body.style.backgroundColor = "#FAFAFA";
   }, []);
@@ -146,6 +140,7 @@ const Login = () => {
               <input ref={passwordRef} type="password" placeholder="password" />
               <input type="file" multiple accept="image/*" onChange={onImageChange} />
               <FButton buttonText="Sign Up" action={handleSignup} />
+              <FButton buttonText="Log In" action={handleLogin} />
             </LoginFields>
             <GoogleLoginButton action={handleGoogleSignIn} />
           </LoginBoxMain>
