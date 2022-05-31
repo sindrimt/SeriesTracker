@@ -127,14 +127,9 @@ const Login = () => {
             </LoginBoxLogoOuter>
 
             <LoginFields>
-<<<<<<< HEAD
-              <InputField ref={emailRef} placeholder="Username or email" />
-              <InputField ref={passwordRef} type="password" placeholder="Password" />
-=======
               <input ref={emailRef} placeholder="email" />
               <input ref={passwordRef} type="password" placeholder="password" />
               <input ref={testRef} type="text" placeholder="test" />
->>>>>>> 3578e3602ea39a75bb8cecb83b2cc31a6fc39a51
               {/*  <input type="file" multiple accept="image/*" onChange={onImageChange} /> */}
               {/*         <button onClick={checkUrl}>URL</button>
                */}
