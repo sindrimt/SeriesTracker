@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
+import { getFirestore, collection, addDoc, setDoc, doc } from "firebase/firestore";
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -29,6 +31,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth();
+
+export const db = getFirestore(app);
 
 export const signup = (email, password) => {
   return createUserWithEmailAndPassword(auth, email, password);
@@ -67,6 +71,16 @@ export const useAuth = () => {
   }, []);
 
   return currentUser;
+};
+
+export const saveData = async (userId) => {
+  try {
+    const docRef = await setDoc(doc(db, "users", userId), {
+      hei: "marcus",
+    });
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
 };
 
 const provider = new GoogleAuthProvider();
