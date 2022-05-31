@@ -34,6 +34,7 @@ import GoogleLoginButton from "../../Components/Buttons/GoogleButton/GoogleLogin
 import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 
 import FButton from "../../Components/Buttons/FormButton/FormButton";
+import InputField from "../../Components/FormField/FormField";
 import Loading from "../LoadingPage/Loading";
 import { useNavigate } from "react-router-dom";
 
