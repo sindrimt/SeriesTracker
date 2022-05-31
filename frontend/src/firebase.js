@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
-import { getFirestore, collection, addDoc, setDoc, doc, getDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, setDoc, doc, getDoc, updateDoc, increment } from "firebase/firestore";
 
 import {
   getAuth,
@@ -91,6 +91,25 @@ export const getUserData = async (userId) => {
   } else {
     console.log("No such document!");
   }
+};
+
+// Puts in new data into Users
+
+export const updateUserData = async (userId, title, description, image) => {
+  const userRef = doc(db, "users", userId);
+
+  setDoc(
+    userRef,
+    {
+      posts: {
+        id: increment(1),
+        title: title,
+        description: description,
+        image: image,
+      },
+    },
+    { merge: true }
+  );
 };
 
 const provider = new GoogleAuthProvider();
