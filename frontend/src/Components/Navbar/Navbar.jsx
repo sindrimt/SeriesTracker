@@ -14,12 +14,14 @@ import {
 import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 import Loffi from "../../Assets/Images/loffi.png";
 
-import { logOut, useAuth, userProfileUpdate, getGoogleRedirectResults } from "../../firebase.js";
+import { logOut, useAuth, getUserData } from "../../firebase.js";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [done, setDone] = useState(false);
+
+  const [user, setUser] = useState({});
 
   const currentUser = useAuth();
   let navigate = useNavigate();
@@ -45,7 +47,7 @@ const Navbar = () => {
   let color = false;
   let line = false;
 
-  if (scrollPosition >= 95) {
+  if (scrollPosition >= 45) {
     color = true;
   }
   if (scrollPosition >= 5) {
@@ -55,13 +57,19 @@ const Navbar = () => {
   const handleLogOut = () => {
     logOut();
   };
+  useEffect(() => {
+    checkUser();
+  });
 
-  /*  const handleUpdate = () => {
-    profilePic = localStorage.getItem("profilePic");
+  const checkUser = async () => {
+    await getUserData(currentUser?.uid).then((res) => {
+      setUser(res);
+    });
+  };
 
-    userProfileUpdate();
-    // console.log(`"${localStorage.getItem("profilePic")}"`);
-  }; */
+  /*  console.log(currentUser?.uid);
+  //getUserData(currentUser?.uid);
+  console.log(user.photoUrl); */
 
   return (
     <>
@@ -72,9 +80,6 @@ const Navbar = () => {
           <div className="findfriends">Find Friends</div>
         </NavbarLinksOuter>
         <NavbarProfileOuter>
-          {/* <button onClick={() => console.log(currentUser)}>check user</button>
-          <button onClick={() => console.log(localStorage.getItem("profilePic"))}>check pp</button>
-          <button onClick={handleUpdate}>update</button> */}
           <div>
             <WelcomeBack>
               WELCOME BACK <span style={{ fontWeight: "400" }}>{currentUser?.email.split("@")[0].toUpperCase()}</span>
@@ -83,18 +88,15 @@ const Navbar = () => {
           <NavbarProfileImgBack>
             <NavbarProfileImg
               onClick={() => navigate("/profile")}
-              src={
-                currentUser?.photoURL
-                  ? currentUser?.photoURL
-                  : "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-              }
+              src={user?.photoURL ? user?.photoURL : "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"}
               alt="Profile pic"
             />
           </NavbarProfileImgBack>
-
           <span className="signout" style={{ whiteSpace: "nowrap" }} onClick={handleLogOut}>
             SIGN OUT
           </span>
+          <button onClick={checkUser}>Check user</button>
+
           {/* <button onClick={() => console.log(currentUser)}>Chck user</button> */}
         </NavbarProfileOuter>
         <NavbarLine showLine={line} />
