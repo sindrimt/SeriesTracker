@@ -16,6 +16,8 @@ import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 import { logOut, useAuth, getUserData, updateUserData } from "../../firebase.js";
 import { useNavigate } from "react-router-dom";
 
+import { getUser, postUser } from "../../axios/axios";
+
 const Navbar = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [done, setDone] = useState(false);
@@ -66,6 +68,16 @@ const Navbar = () => {
     });
   };
 
+  const handlePost = () => {
+    postUser({
+      username: "marc",
+      email: "sindrimt@gmail.com",
+    });
+  };
+  const handleGet = () => {
+    getUser();
+  };
+
   return (
     <>
       <NavbarOuter showBgColor={color}>
@@ -75,6 +87,8 @@ const Navbar = () => {
           <div className="findfriends">Find Friends</div>
         </NavbarLinksOuter>
         <NavbarProfileOuter>
+          <button onClick={handlePost}>post</button>
+          <button onClick={handleGet}>get</button>
           <div>
             <WelcomeBack>
               WELCOME BACK <span style={{ fontWeight: "400" }}>{currentUser?.email.split("@")[0].toUpperCase()}</span>
