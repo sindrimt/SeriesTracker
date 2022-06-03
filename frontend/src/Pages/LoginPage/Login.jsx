@@ -40,6 +40,8 @@ import Loading from "../LoadingPage/Loading";
 import { useNavigate } from "react-router-dom";
 import FormField from "../../Components/FormField/FormField";
 
+import { postUser } from "../../axios/axios";
+
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -74,6 +76,12 @@ const Login = () => {
     try {
       await signup(emailRef.current.value, passwordRef.current.value).then((cred) => {
         console.log(cred.user);
+
+        postUser({
+          _id: cred.user.uid,
+          username: cred.user.email.split("@")[0],
+        });
+
         return saveData(cred.user.uid, {
           photoURL: url,
         });

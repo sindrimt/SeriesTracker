@@ -60,7 +60,7 @@ const Profile = () => {
             />
             <ProfileInfo>
               <FullName>Monkey D. Luffy</FullName>
-              <UserName>Luffy</UserName>
+              <UserName>Luffy, {currentUser?.uid}</UserName>
               <Description>Im gonna become the king of the pirates!</Description>
             </ProfileInfo>
           </LeftUpper>
