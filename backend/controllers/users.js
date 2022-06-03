@@ -10,6 +10,17 @@ export const getUser = async (req, res) => {
   }
 };
 
+export const getUserById = async (req, res) => {
+  try {
+    const urlId = req.params.id;
+    const user = await UserData.findById(urlId);
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
 export const createUser = async (req, res) => {
   const user = req.body;
   const newUser = new UserData(user);
