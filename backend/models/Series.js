@@ -1,29 +1,31 @@
 import mongoose from "mongoose";
 
 const series = mongoose.Schema({
-  connectedTo: {
+  username: {
     type: String,
     required: true,
   },
 
-  series: {
-    title: {
-      type: String,
-      required: true,
-    },
-
-    description: String,
-
-    rating: Number,
-
-    photoUrl: String,
-
-    episodesWatched: Number,
-
-    episodeCount: Number,
-
-    watchTime: String,
+  title: {
+    type: String,
+    required: true,
   },
+
+  description: String,
+
+  rating: Number,
+
+  photoUrl: String,
+
+  episodesWatched: Number,
+
+  episodeCount: Number,
+
+  watchTime: String,
+
+  age: String,
+
+  websiteUrl: String,
 });
 
 // Transforms the Schema into a model
