@@ -13,10 +13,11 @@ import {
 
 import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 
-import { logOut, useAuth, getUserData, updateUserData } from "../../firebase.js";
+import { logOut, useAuth, getUserData } from "../../firebase.js";
 import { useNavigate } from "react-router-dom";
 
-import { getUser, postUser, postSerie, getSerie } from "../../axios/axios";
+import { getUser, postUser, postSerie, getSerie, putUser } from "../../axios/axios";
+import axios from "axios";
 
 const Navbar = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -95,18 +96,22 @@ const Navbar = () => {
     getSerie();
   };
 
+  //TODO: does not work idk why
+  const handlePutUser = async () => {
+    await axios
+      .put("/api/users/2342sfs1312321", { username: "test" })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const handlePostSerie = () => {
     postSerie({
-      connectedTo: "sindrimt",
-      series: {
-        title: "naruto",
-        description: "so shit",
-        rating: 1,
-        photoUrl: "http://dogwater.png",
-        episodesWatched: 1,
-        episodeCount: 999,
-        watchTime: "01:00",
-      },
+      username: "testqe13131231",
+      title: "testtitle",
     });
   };
 
@@ -119,10 +124,9 @@ const Navbar = () => {
           <div className="findfriends">Find Friends</div>
         </NavbarLinksOuter>
         <NavbarProfileOuter>
-          <button onClick={handlePost}>post</button>
+          <button onClick={handlePostSerie}>post</button>
           <button onClick={handleGet}>get</button>
-          <button onClick={handlePostSerie}>postserie</button>
-          <button onClick={handleGetSerie}>getserie</button>
+          <button onClick={handlePutUser}>putUser</button>
           <div>
             <WelcomeBack>
               WELCOME BACK <span style={{ fontWeight: "400" }}>{currentUser?.email.split("@")[0].toUpperCase()}</span>
