@@ -16,7 +16,7 @@ import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 import { logOut, useAuth, getUserData, updateUserData } from "../../firebase.js";
 import { useNavigate } from "react-router-dom";
 
-import { getUser, postUser } from "../../axios/axios";
+import { getUser, postUser, postSerie, getSerie } from "../../axios/axios";
 
 const Navbar = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -70,12 +70,44 @@ const Navbar = () => {
 
   const handlePost = () => {
     postUser({
-      username: "marc",
+      _id: "2342sfsssss1312321",
+      username: "marc3",
       email: "sindrimt@gmail.com",
+      series: [
+        {
+          title: "One Piece",
+          description: "Super good!!",
+          rating: 8,
+          photoUrl: "http://fsfdsfsfdsfsd.jpg",
+          episodesWatched: 76,
+          episodesCount: 230,
+          watchTime: "18:23",
+        },
+      ],
     });
   };
+
   const handleGet = () => {
     getUser();
+  };
+
+  const handleGetSerie = () => {
+    getSerie();
+  };
+
+  const handlePostSerie = () => {
+    postSerie({
+      connectedTo: "sindrimt",
+      series: {
+        title: "naruto",
+        description: "so shit",
+        rating: 1,
+        photoUrl: "http://dogwater.png",
+        episodesWatched: 1,
+        episodeCount: 999,
+        watchTime: "01:00",
+      },
+    });
   };
 
   return (
@@ -89,6 +121,8 @@ const Navbar = () => {
         <NavbarProfileOuter>
           <button onClick={handlePost}>post</button>
           <button onClick={handleGet}>get</button>
+          <button onClick={handlePostSerie}>postserie</button>
+          <button onClick={handleGetSerie}>getserie</button>
           <div>
             <WelcomeBack>
               WELCOME BACK <span style={{ fontWeight: "400" }}>{currentUser?.email.split("@")[0].toUpperCase()}</span>
