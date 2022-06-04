@@ -13,7 +13,7 @@ import {
 
 import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 
-import { logOut, useAuth, getUserData } from "../../firebase.js";
+import { logOut, useAuth, getUserData, promiseexample } from "../../firebase.js";
 import { useNavigate } from "react-router-dom";
 
 import { getUser, postUser, postSerie, getSerie, putUser } from "../../axios/axios";
@@ -25,8 +25,9 @@ const Navbar = () => {
 
   const [user, setUser] = useState({});
 
-  const currentUser = useAuth();
   let navigate = useNavigate();
+
+  const currentUser = useAuth();
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -59,9 +60,6 @@ const Navbar = () => {
   const handleLogOut = () => {
     logOut();
   };
-  useEffect(() => {
-    checkUser();
-  });
 
   const checkUser = async () => {
     await getUserData(currentUser?.uid).then((res) => {
@@ -69,51 +67,7 @@ const Navbar = () => {
     });
   };
 
-  const handlePost = () => {
-    postUser({
-      _id: "2342sfsssss1312321",
-      username: "marc3",
-      email: "sindrimt@gmail.com",
-      series: [
-        {
-          title: "One Piece",
-          description: "Super good!!",
-          rating: 8,
-          photoUrl: "http://fsfdsfsfdsfsd.jpg",
-          episodesWatched: 76,
-          episodesCount: 230,
-          watchTime: "18:23",
-        },
-      ],
-    });
-  };
-
-  const handleGet = () => {
-    getUser();
-  };
-
-  const handleGetSerie = () => {
-    getSerie();
-  };
-
-  //TODO: does not work idk why
-  const handlePutUser = async () => {
-    await axios
-      .put("/api/users/2342sfs1312321", { username: "test" })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const handlePostSerie = () => {
-    postSerie({
-      username: "testqe13131231",
-      title: "testtitle",
-    });
-  };
+  const fetchUser = async () => {};
 
   return (
     <>
@@ -124,18 +78,18 @@ const Navbar = () => {
           <div className="findfriends">Find Friends</div>
         </NavbarLinksOuter>
         <NavbarProfileOuter>
-          <button onClick={handlePostSerie}>post</button>
+          {/* <button onClick={handlePost}>post</button>
           <button onClick={handleGet}>get</button>
-          <button onClick={handlePutUser}>putUser</button>
+          <button onClick={handlePutUser}>putUser</button> */}
           <div>
             <WelcomeBack>
-              WELCOME BACK <span style={{ fontWeight: "400" }}>{currentUser?.email.split("@")[0].toUpperCase()}</span>
+              WELCOME BACK <span style={{ fontWeight: "400" }}>{user?.username}</span>
             </WelcomeBack>
           </div>
           <NavbarProfileImgBack>
             <NavbarProfileImg
               onClick={() => navigate("/profile")}
-              src={user?.photoURL ? user?.photoURL : "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"}
+              src={user?.photoUrl ? user?.photoUrl : "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"}
               alt="Profile pic"
             />
           </NavbarProfileImgBack>

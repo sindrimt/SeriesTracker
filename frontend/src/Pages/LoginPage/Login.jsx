@@ -77,9 +77,10 @@ const Login = () => {
       await signup(emailRef.current.value, passwordRef.current.value).then((cred) => {
         console.log(cred.user);
 
-        postUser({
+        postUser("api/users", {
           _id: cred.user.uid,
           username: cred.user.email.split("@")[0],
+          photoUrl: url,
         });
 
         return saveData(cred.user.uid, {
