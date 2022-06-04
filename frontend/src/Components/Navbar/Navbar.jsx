@@ -22,6 +22,7 @@ import axios from "axios";
 const Navbar = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [done, setDone] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [user, setUser] = useState({});
 
@@ -67,7 +68,26 @@ const Navbar = () => {
     });
   };
 
-  const fetchUser = async () => {};
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
+  const fetchUser = async () => {
+    setLoading(true);
+    await axios
+      .get(`api/users/${currentUser?.uid}`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    setLoading(false);
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
