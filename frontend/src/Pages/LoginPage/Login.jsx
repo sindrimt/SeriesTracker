@@ -114,9 +114,26 @@ const Login = () => {
   // Gets the data from the google log in
   useEffect(() => {
     getGoogleRedirectResults().then((res) => {
-      return saveData(res?.user?.uid, {
-        photoURL: res?.user?.photoURL,
-      });
+      console.log(res?.user);
+
+      const data = {
+        _id: res.user.uid,
+        photoUrl: res.user.photoURL,
+        username: res.user.displayName,
+        email: res.user.email,
+      };
+
+      postUser(`api/users`, data)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      // return saveData(res?.user?.uid, {
+      //   photoURL: res?.user?.photoURL,
+      // });
     });
   }, []);
 
