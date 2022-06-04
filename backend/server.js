@@ -11,6 +11,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import userRoutes from "./routes/users.js";
+import seriesRoutes from "./routes/series.js";
 
 const app = express();
 
@@ -29,6 +30,7 @@ createProxyMiddleware({
 });
 
 app.use("/api", userRoutes);
+app.use("/api", seriesRoutes);
 
 // Default landing page for /
 app.get("/", (req, res) => {
@@ -54,5 +56,5 @@ const __dirname = path.dirname(__filename); */
 
 mongoose
   .connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => app.listen(PORT || 8000, () => console.log(`Server running on port ${PORT || 8000}`)))
+  .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
   .catch((error) => console.log(error.message));

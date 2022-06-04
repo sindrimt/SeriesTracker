@@ -1,36 +1,31 @@
 import axios from "axios";
 
-const apiUrlUsers = "/api/users";
-const apiUrlUsersId = "/api/users/2342sfs1312321"; //todo ID ONLY FOR TEST
-
-const apiUrlSeries = "/api/series";
-
-export const getUser = () =>
+export const getUser = (url) =>
   axios
-    .get("/api/users/2342sfs1312321")
+    .get(url)
     .then((response) => console.log(response))
     .catch((error) => console.log(error));
 
-export const postUser = (postUser) =>
+export const postUser = (url, data) =>
   axios
-    .post(apiUrlUsers, postUser)
+    .post(url, data)
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 
-export const putUser = (data) =>
+export const putUser = (url, data) =>
   axios
-    .put(apiUrlUsersId, data)
+    .put(url, data)
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 
-export const postSerie = (postSerie) =>
+export const postSerie = (url, data) =>
   axios
-    .post(apiUrlSeries, postSerie)
+    .post(url, data)
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 
-export const getSerie = () =>
+export const getSerie = (url) =>
   axios
-    .get(apiUrlSeries)
+    .get(url)
     .then((response) => console.log(response))
     .catch((error) => console.log(error));
