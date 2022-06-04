@@ -15,3 +15,5 @@ Install dependencies by running:
 **Run backend:**
 
 ```(root) npm run server```
+
+You also need a .env file with MogoDbUri connection string and Port number :)
