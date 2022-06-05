@@ -16,7 +16,8 @@ import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 import { logOut } from "../../firebase.js";
 import { useNavigate } from "react-router-dom";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutUser } from "../../redux/features/user/userSlice";
 
 const Navbar = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -25,6 +26,7 @@ const Navbar = () => {
   let navigate = useNavigate();
 
   const globalUser = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -55,6 +57,7 @@ const Navbar = () => {
   }
 
   const handleLogOut = () => {
+    dispatch(logoutUser());
     logOut();
   };
 
