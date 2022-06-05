@@ -10,7 +10,7 @@ Install dependencies by running:
 
 **Run frontend:**
 
-```(/frontend ) npm start```
+```(frontend ) npm start```
 
 **Run backend:**
 
