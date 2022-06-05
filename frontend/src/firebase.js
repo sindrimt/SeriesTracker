@@ -59,13 +59,16 @@ export const userProfileUpdate = (photo) => {
       // ...
     });
 };
-
-export const useAuth = () => {
+// made async
+export const useAuth = async () => {
   const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
+      //todo write user to global redux user state here (make currentUser into global state)
+      // TODO: NO, BETTER IDEA: in app component, call this hook to get the firebase object for the user id and stuff... -
+      // TODO - then set a global USER object to a combination of both firebase user object and response from mongodb user object
     });
     return unsub;
   }, []);
