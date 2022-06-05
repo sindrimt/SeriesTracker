@@ -17,6 +17,12 @@ import {
   getRedirectResult,
 } from "firebase/auth";
 
+import { useSelector, useDispatch } from "react-redux";
+import { loginUser, logoutUser } from "./redux/features/user/userSlice";
+
+import { getUser } from "./axios/axios";
+import axios from "axios";
+
 const firebaseConfig = {
   apiKey: "AIzaSyCdr-T5BQAP-XykI0aHKOzaScHdUtzKMoM",
   authDomain: "seriestracker-ff79c.firebaseapp.com",
@@ -66,9 +72,6 @@ export const useAuth = () => {
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
-      //todo write user to global redux user state here (make currentUser into global state)
-      // TODO: NO, BETTER IDEA: in app component, call this hook to get the firebase object for the user id and stuff... -
-      // TODO - then set a global USER object to a combination of both firebase user object and response from mongodb user object
     });
     return unsub;
   }, []);
