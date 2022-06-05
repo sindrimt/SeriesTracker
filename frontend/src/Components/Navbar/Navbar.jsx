@@ -13,22 +13,20 @@ import {
 
 import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 
-import { logOut, useAuth, getUserData, promiseexample } from "../../firebase.js";
+import { logOut } from "../../firebase.js";
 import { useNavigate } from "react-router-dom";
 
-import { getUser, postUser, postSerie, getSerie, putUser } from "../../axios/axios";
-import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutUser } from "../../redux/features/user/userSlice";
 
 const Navbar = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [done, setDone] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  const [user, setUser] = useState({});
 
   let navigate = useNavigate();
 
-  const currentUser = useAuth();
+  const globalUser = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -59,38 +57,8 @@ const Navbar = () => {
   }
 
   const handleLogOut = () => {
+    dispatch(logoutUser());
     logOut();
-  };
-
-  const checkUser = async () => {
-    await getUserData(currentUser?.uid).then((res) => {
-      setUser(res);
-    });
-  };
-
-  // Recursion until currentUser is defined
-  // 200 ms timeout to prevent overflow
-  useEffect(() => {
-    if (currentUser) {
-      fetchUser();
-    } else {
-      setTimeout(200);
-
-      console.log("KEKW");
-      setDone(!done);
-    }
-  }, [done]);
-
-  const fetchUser = () => {
-    axios
-      .get(`api/users/${currentUser?.uid}`)
-      .then(({ data }) => {
-        console.log(data);
-        setUser(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   };
 
   if (loading) {
@@ -104,20 +72,20 @@ const Navbar = () => {
         <NavbarLinksOuter>
           <div className="findsSeries">Find Series</div>
           <div className="findfriends">Find Friends</div>
+          {/*  <button onClick={() => console.log(globalUser)}>check</button> */}
         </NavbarLinksOuter>
         <NavbarProfileOuter>
-          {/* <button onClick={handlePost}>post</button>
-          <button onClick={handleGet}>get</button>
-          <button onClick={handlePutUser}>putUser</button> */}
           <div>
             <WelcomeBack>
-              WELCOME BACK <span style={{ fontWeight: "400" }}>{user?.username}</span>
+              WELCOME BACK <span style={{ fontWeight: "400" }}>{globalUser?.username}</span>
             </WelcomeBack>
           </div>
           <NavbarProfileImgBack>
             <NavbarProfileImg
               onClick={() => navigate("/profile")}
-              src={user?.photoUrl ? user?.photoUrl : "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"}
+              src={
+                globalUser?.photoUrl ? globalUser?.photoUrl : "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+              }
               alt="Profile pic"
             />
           </NavbarProfileImgBack>

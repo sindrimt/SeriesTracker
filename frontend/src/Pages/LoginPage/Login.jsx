@@ -42,6 +42,9 @@ import FormField from "../../Components/FormField/FormField";
 
 import { postUser } from "../../axios/axios";
 
+import { useSelector, useDispatch } from "react-redux";
+import { loginUser, logoutUser } from "../../redux/features/user/userSlice";
+
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -113,27 +116,17 @@ const Login = () => {
 
   // Gets the data from the google log in
   useEffect(() => {
-    getGoogleRedirectResults().then((res) => {
-      console.log(res?.user);
+    getGoogleRedirectResults().then(({ user }) => {
+      console.log(user);
 
-      const data = {
-        _id: res.user.uid,
-        photoUrl: res.user.photoURL,
-        username: res.user.displayName,
-        email: res.user.email,
-      };
+      postUser("api/users", {
+        _id: user.uid,
+        photoUrl: user.photoURL,
+        username: user.displayName,
+        email: user.email,
+      });
 
-      postUser(`api/users`, data)
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-
-      // return saveData(res?.user?.uid, {
-      //   photoURL: res?.user?.photoURL,
-      // });
+      window.location.reload();
     });
   }, []);
 
