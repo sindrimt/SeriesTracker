@@ -33,9 +33,13 @@ import editbutton from "../../Assets/Profile/editbutton.jpg";
 
 import { useAuth, getUserData } from "../../firebase";
 
+import { useSelector } from "react-redux";
+
 const Profile = () => {
   const currentUser = useAuth();
   const [user, setUser] = useState({});
+
+  const globalUser = useSelector((state) => state.user.user);
 
   // Loads checks the database for updates
   useEffect(() => {
@@ -55,12 +59,14 @@ const Profile = () => {
           <LeftUpper>
             <ProfileImg
               onClick={() => console.log("CLicked image")}
-              src={user?.photoURL ? user?.photoURL : "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"}
+              src={
+                globalUser?.photoUrl ? globalUser?.photoUrl : "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+              }
               alt="Profile pic"
             />
             <ProfileInfo>
               <FullName>Monkey D. Luffy</FullName>
-              <UserName>Luffy, {currentUser?.uid}</UserName>
+              <UserName>Luffy, {globalUser?._id}</UserName>
               <Description>Im gonna become the king of the pirates!</Description>
             </ProfileInfo>
           </LeftUpper>
