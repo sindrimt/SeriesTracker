@@ -68,21 +68,29 @@ const Navbar = () => {
     });
   };
 
+  // Recursion until currentUser is defined
+  // 200 ms timeout to prevent overflow
   useEffect(() => {
-    fetchUser();
-  }, []);
+    if (currentUser) {
+      fetchUser();
+    } else {
+      setTimeout(200);
 
-  const fetchUser = async () => {
-    setLoading(true);
-    await axios
+      console.log("KEKW");
+      setDone(!done);
+    }
+  }, [done]);
+
+  const fetchUser = () => {
+    axios
       .get(`api/users/${currentUser?.uid}`)
-      .then((res) => {
-        console.log(res);
+      .then(({ data }) => {
+        console.log(data);
+        setUser(data);
       })
       .catch((error) => {
         console.log(error);
       });
-    setLoading(false);
   };
 
   if (loading) {
