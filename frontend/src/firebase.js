@@ -60,7 +60,7 @@ export const userProfileUpdate = (photo) => {
     });
 };
 // made async
-export const useAuth = async () => {
+export const useAuth = () => {
   const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
