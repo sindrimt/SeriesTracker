@@ -82,7 +82,7 @@ const Profile = () => {
           <LeftUpper>
             <ProfileImg onClick={() => showModal()} src={decideProfilePic()} alt="Profile pic" />
             <ProfileInfo>
-              <FullName>Monkey D. Luffy</FullName>
+              <FullName>{globalUser?.username}</FullName>
               <UserName>Luffy, {globalUser?._id}</UserName>
               <Description>Im gonna become the king of the pirates!</Description>
             </ProfileInfo>

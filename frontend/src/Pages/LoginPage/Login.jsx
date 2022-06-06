@@ -25,8 +25,6 @@ import Footer from "../../Components/Footer/Footer";
 
 import {
   signup,
-  useAuth,
-  logOut,
   logIn,
   userProfileUpdate,
   signInWithGoogle,
@@ -38,28 +36,21 @@ import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 
 import FButton from "../../Components/Buttons/FormButton/FormButton";
 import FButtonInverted from "../../Components/Buttons/FormButtonInverted/FormButtonInverted";
-import InputField from "../../Components/FormField/FormField";
 import Loading from "../LoadingPage/Loading";
 import { useNavigate } from "react-router-dom";
 import FormField from "../../Components/FormField/FormField";
 
 import { postUser } from "../../axios/axios";
 
-import { useSelector, useDispatch } from "react-redux";
-import { loginUser, logoutUser } from "../../redux/features/user/userSlice";
-
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const testRef = useRef();
 
   let navigate = useNavigate();
 
   useEffect(() => {
     navigate("/");
   }, []);
-
-  const currentUser = useAuth();
 
   const [url, setUrl] = useState();
   const [image, setImage] = useState("");
@@ -76,8 +67,6 @@ const Login = () => {
     setLoading(true);
     try {
       await signup(emailRef.current.value, passwordRef.current.value).then((cred) => {
-        console.log(cred.user);
-
         let formdata = new FormData();
 
         formdata.append("image", image);
@@ -92,7 +81,6 @@ const Login = () => {
           .then((res) => res.text())
           .then((resBody) => {
             console.log("Success");
-            console.log(resBody);
           });
       });
       setLoading(false);
@@ -122,8 +110,6 @@ const Login = () => {
   // Gets the data from the google log in
   useEffect(() => {
     getGoogleRedirectResults().then(({ user }) => {
-      console.log(user);
-
       postUser("api/users", {
         _id: user.uid,
         username: user.displayName,
