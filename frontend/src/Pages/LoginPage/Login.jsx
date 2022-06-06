@@ -14,6 +14,7 @@ import {
   LoginBoxSecondary,
   LoginBoxOuter,
   RegisterText,
+  AlternativeLoginMethods,
 } from "./LoginStyles";
 
 import "./login.css";
@@ -35,6 +36,7 @@ import GoogleLoginButton from "../../Components/Buttons/GoogleButton/GoogleLogin
 import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 
 import FButton from "../../Components/Buttons/FormButton/FormButton";
+import FButtonInverted from "../../Components/Buttons/FormButtonInverted/FormButtonInverted";
 import InputField from "../../Components/FormField/FormField";
 import Loading from "../LoadingPage/Loading";
 import { useNavigate } from "react-router-dom";
@@ -61,6 +63,7 @@ const Login = () => {
   const [url, setUrl] = useState();
   const [loading, setLoading] = useState(false);
   const [register, setRegister] = useState(false);
+  const [buttonColor, setButtonColor] = useState(false);
 
   const onImageChange = (e) => {
     // Takes image input from user
@@ -162,15 +165,24 @@ const Login = () => {
               {register ? (
                 <FButton buttonText="Sign Up" action={handleSignup} />
               ) : (
-                <FButton buttonText="Log In" action={handleLogin} />
+                <FButtonInverted buttonText="Log In" action={handleLogin} />
               )}
-              <input type="file" multiple accept="image/*" onChange={onImageChange} />
+              {register ? <input type="file" multiple accept="image/*" onChange={onImageChange} /> : <></>}
             </LoginFields>
-            <GoogleLoginButton action={handleGoogleSignIn} />
+            <AlternativeLoginMethods>
+              <GoogleLoginButton action={handleGoogleSignIn} />
+            </AlternativeLoginMethods>
           </LoginBoxMain>
           <LoginBoxSecondary>
             {register ? "Already have an account?" : "Don't have an account?"}
-            <RegisterText onClick={() => setRegister(!register)}>{register ? "Log In" : "Register Here"}</RegisterText>
+            <RegisterText
+              onClick={() => {
+                setRegister(!register);
+                setButtonColor(!buttonColor);
+              }}
+            >
+              {register ? "Log In" : "Register Here"}
+            </RegisterText>
           </LoginBoxSecondary>
         </LoginBoxOuter>
       </LoginOuterContainer>
