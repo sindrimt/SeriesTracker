@@ -31,6 +31,7 @@ createProxyMiddleware({
 
 app.use("/api", userRoutes);
 app.use("/api", seriesRoutes);
+app.use("/api/uploads", express.static("uploads"));
 
 // Default landing page for /
 app.get("/", (req, res) => {
