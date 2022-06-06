@@ -3,11 +3,11 @@ import { GoogleButtonOuter, GoogleIcon, Text } from "./GoogleLoginButtonStyles";
 
 import googleIcon from "../../../Assets/Buttons/GoogleButton/icons8-google-48.svg";
 
-const GoogleLoginButton = ({ action }) => {
+const GoogleLoginButton = ({ action, text }) => {
   return (
     <GoogleButtonOuter onClick={action}>
       <GoogleIcon src={googleIcon} />
-      <Text>Sign in with Google</Text>
+      <Text>{text}</Text>
     </GoogleButtonOuter>
   );
 };

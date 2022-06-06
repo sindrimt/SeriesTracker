@@ -179,7 +179,10 @@ const Login = () => {
               )}
             </LoginFields>
             <AlternativeLoginMethods>
-              <GoogleLoginButton action={handleGoogleSignIn} />
+              <GoogleLoginButton
+                action={handleGoogleSignIn}
+                text={register ? "Sign up with Google" : "Sign in with Google"}
+              />
             </AlternativeLoginMethods>
           </LoginBoxMain>
           <LoginBoxSecondary>
