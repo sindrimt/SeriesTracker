@@ -147,7 +147,18 @@ export const RegisterText = styled.span`
   }
 `;
 
-export const LoginButton = styled.div``;
+export const AlternativeLoginMethods = styled.div`
+  padding: 30px 0 30px 0;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid rgba(137, 137, 137, 0.2);
+`; 
+
+export const FileLabel = styled.label`
+  cursor: pointer;
+
+`;
 
 export const LoginForgot = styled.div``;
 
