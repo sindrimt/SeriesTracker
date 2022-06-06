@@ -59,18 +59,12 @@ const Login = () => {
   const currentUser = useAuth();
 
   const [url, setUrl] = useState();
+  const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
   const [register, setRegister] = useState(false);
 
   const onImageChange = (e) => {
-    // Takes image input from user
-    const reader = new FileReader();
-
-    reader.addEventListener("load", () => {
-      setUrl(reader.result);
-    });
-
-    reader.readAsDataURL(e.target.files[0]);
+    setImage(e.target.files[0]);
   };
 
   const handleSignup = async () => {
@@ -80,15 +74,22 @@ const Login = () => {
       await signup(emailRef.current.value, passwordRef.current.value).then((cred) => {
         console.log(cred.user);
 
-        postUser("api/users", {
-          _id: cred.user.uid,
-          username: cred.user.email.split("@")[0],
-          photoUrl: url,
-        });
+        let formdata = new FormData();
 
-        return saveData(cred.user.uid, {
-          photoURL: url,
-        });
+        formdata.append("image", image);
+        formdata.append("_id", cred.user.uid);
+        formdata.append("username", cred.user.email.split("@")[0]);
+        formdata.append("email", cred.user.email);
+
+        fetch("api/users", {
+          method: "POST",
+          body: formdata,
+        })
+          .then((res) => res.text())
+          .then((resBody) => {
+            console.log("Success");
+            console.log(resBody);
+          });
       });
       setLoading(false);
     } catch (error) {
@@ -121,11 +122,12 @@ const Login = () => {
 
       postUser("api/users", {
         _id: user.uid,
-        photoUrl: user.photoURL,
         username: user.displayName,
         email: user.email,
+        googlePhotoUrl: user.photoURL,
       });
 
+      //TODO: Finn bedre solution
       window.location.reload();
     });
   }, []);
