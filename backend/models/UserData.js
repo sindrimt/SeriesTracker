@@ -13,6 +13,8 @@ const user = mongoose.Schema({
   email: String,
 
   photoUrl: String,
+
+  googlePhotoUrl: String,
 });
 
 // Transforms the Schema into a model

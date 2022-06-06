@@ -21,9 +21,28 @@ export const getUserById = async (req, res) => {
   }
 };
 
+export const patchUserById = async (req, res) => {
+  try {
+    const urlId = req.params.id;
+    const user = await UserData.findByIdAndUpdate(urlId);
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
 export const createUser = async (req, res) => {
-  const user = req.body;
-  const newUser = new UserData(user);
+  console.log(req?.body);
+  const newUser = new UserData({
+    _id: req.body._id,
+    username: req.body.username,
+    series: req.body.series,
+    email: req.body.email,
+    photoUrl: req?.file?.path,
+    googlePhotoUrl: req?.body?.googlePhotoUrl,
+  });
+
   try {
     await newUser.save();
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   ProfileOuter,
   LeftOuter,
@@ -38,6 +38,9 @@ import { useSelector } from "react-redux";
 const Profile = () => {
   const currentUser = useAuth();
   const [user, setUser] = useState({});
+  const [image, setImage] = useState({});
+
+  let inputRef = useRef();
 
   const globalUser = useSelector((state) => state.user.user);
 
@@ -52,18 +55,32 @@ const Profile = () => {
     });
   };
 
+  const decideProfilePic = () => {
+    if (globalUser?.googlePhotoUrl) {
+      return globalUser?.googlePhotoUrl;
+    } else if (globalUser?.photoUrl) {
+      return `api/${globalUser?.photoUrl}`;
+    } else {
+      return "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
+    }
+  };
+
+  const showModal = () => {
+    console.log(inputRef);
+    inputRef.current.click();
+  };
+
+  const onImageChange = (e) => {
+    setImage(e.target.files[0]);
+    console.log(e.target.files[0]);
+  };
+
   return (
     <>
       <ProfileOuter>
         <LeftOuter>
           <LeftUpper>
-            <ProfileImg
-              onClick={() => console.log("CLicked image")}
-              src={
-                globalUser?.photoUrl ? globalUser?.photoUrl : "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-              }
-              alt="Profile pic"
-            />
+            <ProfileImg onClick={() => showModal()} src={decideProfilePic()} alt="Profile pic" />
             <ProfileInfo>
               <FullName>Monkey D. Luffy</FullName>
               <UserName>Luffy, {globalUser?._id}</UserName>
@@ -106,6 +123,14 @@ const Profile = () => {
             <Graph src={graph} alt="Graph" />
           </RightLower>
         </RightOuter>
+        <input
+          type="file"
+          accept="images/*"
+          onClick={showModal}
+          style={{ display: "none" }}
+          ref={inputRef}
+          onChange={onImageChange}
+        />
       </ProfileOuter>
     </>
   );
