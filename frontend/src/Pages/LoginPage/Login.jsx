@@ -15,6 +15,7 @@ import {
   LoginBoxOuter,
   RegisterText,
   AlternativeLoginMethods,
+  FileLabel,
 } from "./LoginStyles";
 
 import "./login.css";
@@ -167,7 +168,13 @@ const Login = () => {
               ) : (
                 <FButtonInverted buttonText="Log In" action={handleLogin} />
               )}
-              {register ? <input type="file" multiple accept="image/*" onChange={onImageChange} /> : <></>}
+              {register ? (
+                <FileLabel>
+                  <input type="file" multiple accept="image/*" onChange={onImageChange} />
+                </FileLabel>
+              ) : (
+                <></>
+              )}
             </LoginFields>
             <AlternativeLoginMethods>
               <GoogleLoginButton action={handleGoogleSignIn} />

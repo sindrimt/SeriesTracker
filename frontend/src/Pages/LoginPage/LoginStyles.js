@@ -155,7 +155,10 @@ export const AlternativeLoginMethods = styled.div`
   border-top: 1px solid rgba(137, 137, 137, 0.2);
 `; 
 
-export const LoginButton = styled.div``;
+export const FileLabel = styled.label`
+  cursor: pointer;
+
+`;
 
 export const LoginForgot = styled.div``;
 
