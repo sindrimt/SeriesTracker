@@ -1,43 +1,34 @@
 import React, { useRef, useState, useEffect } from "react";
 import { CreatePostOuter } from "./CreatePostStyles";
 
-import { logOut, useAuth, getUserData, updateUserData } from "../../firebase.js";
-
 const CreatePost = () => {
-  const serieNameRef = useRef();
-  const serieDescriptionRef = useRef();
-  const serieImageRef = useRef();
+  const [image, setImage] = useState({});
 
-  const [user, setUser] = useState({});
-
-  const currentUser = useAuth();
-
-  useEffect(() => {
-    checkUser();
-  });
-
-  const checkUser = async () => {
-    await getUserData(currentUser?.uid).then((res) => {
-      setUser(res);
-    });
+  const fileOnChange = (e) => {
+    setImage(e.target.files[0]);
   };
 
-  const handleSubmit = () => {
-    updateUserData(
-      currentUser?.uid,
-      serieNameRef.current.value,
-      serieDescriptionRef.current.value,
-      serieImageRef.current.value
-    );
+  const sendImage = (e) => {
+    let formdata = new FormData();
+
+    formdata.append("image", image);
+    formdata.append("_id", "asdaas76345345");
+
+    fetch("api/users", {
+      method: "POST",
+      body: formdata,
+    })
+      .then((res) => res.text())
+      .then((resBody) => {
+        console.log(resBody);
+      });
   };
 
   return (
     <CreatePostOuter>
-      <input ref={serieNameRef} type="text" placeholder="Serie name" />
-      <input ref={serieDescriptionRef} type="text" placeholder="Serie description" />
-      <input ref={serieImageRef} type="file" multiple accept="image/*" />
+      <input type="file" onChange={fileOnChange} />
 
-      <button onClick={handleSubmit}>Submit</button>
+      <button onClick={sendImage}>Upload</button>
     </CreatePostOuter>
   );
 };
