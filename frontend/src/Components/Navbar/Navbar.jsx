@@ -61,6 +61,16 @@ const Navbar = () => {
     logOut();
   };
 
+  const decideProfilePic = () => {
+    if (globalUser?.googlePhotoUrl) {
+      return globalUser?.googlePhotoUrl;
+    } else if (globalUser?.photoUrl) {
+      return `api/${globalUser?.photoUrl}`;
+    } else {
+      return "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
+    }
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -76,18 +86,16 @@ const Navbar = () => {
         </NavbarLinksOuter>
         <NavbarProfileOuter>
           <div>
+            {/* <NavbarProfileImg
+              src="api/uploads/1654538220742klistremerker-glad-smiley-emoticon-face.jpg.jpg"
+              alt="bilde"
+            /> */}
             <WelcomeBack>
               WELCOME BACK <span style={{ fontWeight: "400" }}>{globalUser?.username}</span>
             </WelcomeBack>
           </div>
           <NavbarProfileImgBack>
-            <NavbarProfileImg
-              onClick={() => navigate("/profile")}
-              src={
-                globalUser?.photoUrl ? globalUser?.photoUrl : "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-              }
-              alt="Profile pic"
-            />
+            <NavbarProfileImg onClick={() => navigate("/profile")} src={decideProfilePic()} alt="Profile pic" />
           </NavbarProfileImgBack>
           <span className="signout" style={{ whiteSpace: "nowrap" }} onClick={handleLogOut}>
             SIGN OUT
