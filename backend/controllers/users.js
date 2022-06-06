@@ -33,7 +33,7 @@ export const patchUserById = async (req, res) => {
 };
 
 export const createUser = async (req, res) => {
-  console.log(req?.body);
+  //console.log(req?.body);
   const newUser = new UserData({
     _id: req.body._id,
     username: req.body.username,
