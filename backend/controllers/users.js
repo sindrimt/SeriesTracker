@@ -23,12 +23,10 @@ export const getUserById = async (req, res) => {
 
 export const patchUserById = async (req, res) => {
   try {
-    const urlId = req.params.id;
-    //const serieNr = req.body.serieNr;
-    // console.log(serieNr);
-    //Hardcoded patch value
-    //todo kanskje findoneandupdate
-    const user = await UserData.findByIdAndUpdate(urlId, { $push: { series: 100 } }, (error, success) => {
+    const filter = { _id: req.params.id };
+    const update = { $push: { series: req.body.series } };
+
+    const user = await UserData.findOneAndUpdate(filter, update, (error, success) => {
       console.log(req.body);
       if (error) {
         console.log(error);
