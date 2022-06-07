@@ -10,7 +10,7 @@ import {
   ContentContainerGridIcons,
 } from "./ContentStyles";
 
-import Card from "../Card/Card";
+import HomepageCard from "../Cards/HomepageCard/Card";
 import { Link } from "react-router-dom";
 
 import filter from "../../Assets/Content/Adjust.svg";
@@ -36,25 +36,21 @@ const Content = () => {
         </PickUp>
         {iconView ? (
           <ContentContainerGridIcons>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            <HomepageCard />
+            <HomepageCard />
+            <HomepageCard />
+            <HomepageCard />
+            <HomepageCard />
+            <HomepageCard />
+            <HomepageCard />
           </ContentContainerGridIcons>
         ) : (
           <ContentContainerGrid>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            <HomepageCard />
+            <HomepageCard />
+            <HomepageCard />
+            <HomepageCard />
+            <HomepageCard />
           </ContentContainerGrid>
         )}
       </ContentContainerOuter>
