@@ -21,8 +21,8 @@ import {
   ProgressLineText,
 } from "./CardStyles";
 
-import loffi from "../../Assets/Images/loffi.png";
-import star from "../../Assets/Content/Star.svg";
+import loffi from "../../../Assets/Images/loffi.png";
+import star from "../../../Assets/Content/Star.svg";
 
 const Card = () => {
   return (
