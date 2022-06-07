@@ -26,21 +26,10 @@ import settings from "../../Assets/Sidebar/settings.svg";
 import friends from "../../Assets/Sidebar/users.svg";
 import hamburger from "../../Assets/Sidebar/hamburger.svg";
 
+import { useScroll } from "../../Hooks/useScroll";
+
 const Sidebar = () => {
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const scrollPosition = useScroll();
 
   let fixed = false;
 

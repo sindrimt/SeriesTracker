@@ -19,32 +19,18 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../../redux/features/user/userSlice";
 
+import { useScroll } from "../../Hooks/useScroll";
+
 const Navbar = () => {
-  const [scrollPosition, setScrollPosition] = useState(0);
+  //const [scrollPosition, setScrollPosition] = useState(0);
   const [loading, setLoading] = useState(false);
+
+  const scrollPosition = useScroll();
 
   let navigate = useNavigate();
 
   const globalUser = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
-
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  /**
-   * color: boolean - true: show navbar background color
-   * line: boolean - true: hide navbar line
-   */
 
   let color = false;
   let line = false;
