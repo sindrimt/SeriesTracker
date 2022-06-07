@@ -24,7 +24,20 @@ export const getUserById = async (req, res) => {
 export const patchUserById = async (req, res) => {
   try {
     const urlId = req.params.id;
-    const user = await UserData.findByIdAndUpdate(urlId);
+    //const serieNr = req.body.serieNr;
+    // console.log(serieNr);
+    //Hardcoded patch value
+    //todo kanskje findoneandupdate
+    const user = await UserData.findByIdAndUpdate(urlId, { $push: { series: 100 } }, (error, success) => {
+      console.log(req.body);
+      if (error) {
+        console.log(error);
+        // res.status(404).json({ message: error.message });
+      } else {
+        console.log(success);
+        //res.status(200).json(success);
+      }
+    });
 
     res.status(200).json(user);
   } catch (error) {
