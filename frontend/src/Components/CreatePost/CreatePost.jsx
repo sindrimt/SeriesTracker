@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useRef, useState, useEffect } from "react";
-import { CreatePostOuter, Gridcontainer } from "./CreatePostStyles";
+import { CreatePostOuter, Gridcontainer, SearchOuter } from "./CreatePostStyles";
 
 import Loading from "../../Pages/LoadingPage/Loading";
 
@@ -77,26 +77,21 @@ const CreatePost = () => {
   console.log(show);
   return (
     <>
-      {show ? <Overlay /> : <></>}
-
       <CreatePostOuter>
-        {/* <input type="file" onChange={fileOnChange} />
-
-<button onClick={sendImage}>Upload</button> */}
-        <motion.div Layout style={{ width: "70%" }}>
+        <SearchOuter>
           <input type="text" placeholder="serach" onChange={(e) => setSearchTerm(e.target.value)} />
-          <Gridcontainer>
-            {filtered?.map((anime, index) => {
-              return (
-                <>
-                  <div>
-                    <AnimeCard title={anime.title} episodes={anime.episodes} image={anime.image_url} />
-                  </div>
-                </>
-              );
-            })}
-          </Gridcontainer>
-        </motion.div>
+        </SearchOuter>
+        {/* <motion.div Layout style={{ width: "100%" }}> */}
+        <Gridcontainer>
+          {filtered?.map((anime, index) => {
+            return (
+              <>
+                <AnimeCard title={anime.title} episodes={anime.episodes} image={anime.image_url} />
+              </>
+            );
+          })}
+        </Gridcontainer>
+        {/*  </motion.div> */}
       </CreatePostOuter>
     </>
   );
