@@ -6,14 +6,22 @@ Install dependencies by running:
 
 > In both root and frontend folders
 
-<br />
+<h3>You can start the frontend and backend separately by:</h3>
 
-**Run frontend:**
+**Running frontend:**
 
 ```(frontend ) npm start```
 
-**Run backend:**
+**Running backend:**
 
 ```(root) npm run server```
 
+<h3>OR</h3>
+
+**You can run both front and backend with this command:** 
+    
+```(root) npm run dev```
+  
+  
+PS.
 You also need a .env file with MogoDbUri connection string and Port number :)
