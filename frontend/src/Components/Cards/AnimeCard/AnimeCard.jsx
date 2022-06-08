@@ -13,6 +13,8 @@ import {
 
 import plus from "../../../Assets/Cards/AnimeCard/plus.svg";
 
+import { motion, AnimateSharedLayout } from "framer-motion";
+
 const AnimeCard = ({ title, episodes, image }) => {
   return (
     <AnimeCardOuter onClick={() => console.log(title)}>
