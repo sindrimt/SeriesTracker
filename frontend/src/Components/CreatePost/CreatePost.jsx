@@ -7,8 +7,7 @@ import Loading from "../../Pages/LoadingPage/Loading";
 import AnimeCard from "../Cards/AnimeCard/AnimeCard";
 
 import Overlay from "../Overlay/Overlay";
-
-import { motion, AnimateSharedLayout } from "framer-motion";
+import { useScroll } from "../../Hooks/useScroll";
 
 const CreatePost = () => {
   const [topAnime, setTopAnime] = useState([]);
@@ -22,6 +21,14 @@ const CreatePost = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const [filtered, setFiltered] = useState([]);
+
+  const scrollPosition = useScroll();
+
+  let fixed = false;
+
+  if (scrollPosition > 30) {
+    fixed = true;
+  }
 
   const GetTopAnime = () => {
     setLoading(true);
@@ -78,20 +85,18 @@ const CreatePost = () => {
   return (
     <>
       <CreatePostOuter>
-        <SearchOuter>
+        <SearchOuter isFixed={fixed}>
           <input type="text" placeholder="serach" onChange={(e) => setSearchTerm(e.target.value)} />
         </SearchOuter>
-        {/* <motion.div Layout style={{ width: "100%" }}> */}
         <Gridcontainer>
           {filtered?.map((anime, index) => {
             return (
               <>
-                <AnimeCard title={anime.title} episodes={anime.episodes} image={anime.image_url} />
+                <AnimeCard title={anime.title} episodes={anime.episodes} image={anime.image_url} key={index} />
               </>
             );
           })}
         </Gridcontainer>
-        {/*  </motion.div> */}
       </CreatePostOuter>
     </>
   );

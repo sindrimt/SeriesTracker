@@ -19,15 +19,16 @@ export const Gridcontainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   row-gap: 1rem;
   column-gap: 2rem;
-  background-color: red;
 `;
 
 export const SearchOuter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: ${(props) => (props.isFixed ? "fixed" : "absolute")};
   width: 400px;
-  height: 50px;
-  top: -50px;
+  height: 70px;
+  top: ${(props) => (props.isFixed ? "100px" : "-50px")};
+  background-color: ${(props) => (props.isFixed ? "papayawhip" : "")};
+  z-index: 999999999999999999;
 `;
