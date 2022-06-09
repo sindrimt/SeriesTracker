@@ -11,6 +11,8 @@ const series = mongoose.Schema({
     required: true,
   },
 
+  username: String,
+
   description: String,
 
   rating: Number,
