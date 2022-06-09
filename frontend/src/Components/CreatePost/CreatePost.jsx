@@ -90,7 +90,6 @@ const CreatePost = () => {
     setOpen(false);
   };
 
-  console.log(show);
   return (
     <>
       <CreatePostOuter>

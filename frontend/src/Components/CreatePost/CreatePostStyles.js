@@ -29,6 +29,6 @@ export const SearchOuter = styled.div`
   width: 400px;
   height: 70px;
   top: ${(props) => (props.isFixed ? "100px" : "-50px")};
-  background-color: ${(props) => (props.isFixed ? "papayawhip" : "")};
-  z-index: 999999999999999999;
+  background-color: ${(props) => (props.isFixed ? "rgb(250, 250, 250)" : "")};
+  z-index: 10;
 `;
