@@ -39,7 +39,7 @@ const Content = () => {
     setLoading(true);
     console.log(currentUser);
     axios
-      .get(`api/series/NXHxzbjtLTMAubLCdWkGAVMNYV42`)
+      .get(`api/series/${currentUser?.uid}`)
       .then(({ data }) => {
         setSeries(data);
         console.log(data);
