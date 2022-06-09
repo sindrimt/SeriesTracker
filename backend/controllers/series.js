@@ -28,7 +28,7 @@ export const createSerie = async (req, res) => {
     username: req.body.username,
     description: req.body.description,
     rating: req.body.rating,
-    photoUrl: req?.file?.path,
+    photoUrl: req?.file?.path ? req?.file?.path : req.body.image,
     episodesWatched: req.body.episodesWatched,
     episodeCount: req.body.episodeCount,
     watchTime: req.body.watchTime,
