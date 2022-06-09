@@ -7,6 +7,7 @@ import Loading from "../../Pages/LoadingPage/Loading";
 import AnimeCard from "../Cards/AnimeCard/AnimeCard";
 
 import Overlay from "../Overlay/Overlay";
+import Dialog from "@mui/material/Dialog";
 
 const CreatePost = () => {
   const [topAnime, setTopAnime] = useState([]);
@@ -16,6 +17,8 @@ const CreatePost = () => {
   const [form, setForm] = useState(false);
 
   const [show, setShow] = useState(false);
+
+  const [open, setOpen] = useState(false);
 
   const GetTopAnime = () => {
     setLoading(true);
@@ -61,6 +64,14 @@ const CreatePost = () => {
     return <Loading />;
   }
 
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   console.log(show);
   return (
     <>
@@ -76,7 +87,7 @@ const CreatePost = () => {
             return (
               <>
                 <div>
-                  <AnimeCard title={anime.title} episodes={anime.episodes} image={anime.image_url} />
+                  <AnimeCard title={anime.title} episodes={anime.episodes} image={anime.image_url} setOpen={setOpen} />
                 </div>
               </>
             );
