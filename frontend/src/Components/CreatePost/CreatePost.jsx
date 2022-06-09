@@ -51,26 +51,6 @@ const CreatePost = () => {
     GetTopAnime();
   }, []);
 
-  // const fileOnChange = (e) => {
-  //   setImage(e.target.files[0]);
-  // };
-
-  // const sendImage = (e) => {
-  //   let formdata = new FormData();
-
-  //   formdata.append("image", image);
-  //   formdata.append("_id", "asdaas76345345");
-
-  //   fetch("api/users", {
-  //     method: "POST",
-  //     body: formdata,
-  //   })
-  //     .then((res) => res.text())
-  //     .then((resBody) => {
-  //       console.log(resBody);
-  //     });
-  // };
-
   useEffect(() => {
     let animeFilter = topAnime.filter((anime) => {
       return anime?.title?.toLowerCase().includes(searchTerm.toLowerCase());
@@ -102,7 +82,7 @@ const CreatePost = () => {
               <>
                 <AnimeCard
                   title={anime.title}
-                  episodes={anime.episodes}
+                  episodes={anime.episodes ? anime.episodes : 0} //TODO: Rather pass something else
                   image={anime.image_url}
                   key={index}
                   setOpen={setOpen}
