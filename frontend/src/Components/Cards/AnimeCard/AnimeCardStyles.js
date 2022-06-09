@@ -57,6 +57,7 @@ export const RightOuter = styled.div`
 
 export const EpisodeCount = styled.div`
   margin-right: 10px;
+  white-space: nowrap;
   font-size: 18px;
   font-weight: 500;
 `;
@@ -65,4 +66,21 @@ export const CounterButton = styled.img`
   &:hover {
     cursor: pointer;
   }
+`;
+
+export const DialogOuter = styled.div`
+  width: 600px;
+  height: 400px;
+  padding: 30px;
+`;
+
+export const FormFieldOuter = styled.div`
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin-left: 15%;
+  margin-bottom: 5px;
 `;

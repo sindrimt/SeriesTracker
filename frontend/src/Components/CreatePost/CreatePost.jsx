@@ -6,7 +6,6 @@ import Loading from "../../Pages/LoadingPage/Loading";
 
 import AnimeCard from "../Cards/AnimeCard/AnimeCard";
 
-import Overlay from "../Overlay/Overlay";
 import { useScroll } from "../../Hooks/useScroll";
 
 const CreatePost = () => {
@@ -17,6 +16,8 @@ const CreatePost = () => {
   const [form, setForm] = useState(false);
 
   const [show, setShow] = useState(false);
+
+  const [open, setOpen] = useState(false);
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -81,7 +82,14 @@ const CreatePost = () => {
     return <Loading />;
   }
 
-  console.log(show);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <>
       <CreatePostOuter>
@@ -92,7 +100,13 @@ const CreatePost = () => {
           {filtered?.map((anime, index) => {
             return (
               <>
-                <AnimeCard title={anime.title} episodes={anime.episodes} image={anime.image_url} key={index} />
+                <AnimeCard
+                  title={anime.title}
+                  episodes={anime.episodes}
+                  image={anime.image_url}
+                  key={index}
+                  setOpen={setOpen}
+                />
               </>
             );
           })}

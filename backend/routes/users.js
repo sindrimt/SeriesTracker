@@ -1,6 +1,7 @@
 import express from "express";
 
 import { getUser, createUser, getUserById, patchUserById } from "../controllers/users.js";
+import { createSerie } from "../controllers/series.js";
 
 import multer from "multer";
 
@@ -35,5 +36,7 @@ router.put("/users/:id", patchUserById);
 router.patch("/users/:id", patchUserById);
 
 router.post("/users", upload.single("image"), createUser);
+
+router.post("/series", upload.single("image"), createSerie);
 
 export default router;

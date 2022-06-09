@@ -8,6 +8,6 @@ router.get("/series", getSeries);
 
 router.get("/series/:id", getSerieById);
 
-router.post("/series", createSerie);
+//router.post("/series", createSerie);
 
 export default router;
