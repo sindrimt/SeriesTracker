@@ -28,7 +28,8 @@ const AnimeCard = ({ title, episodes, image }) => {
   const [episodesWatched, setEpisodesWatched] = useState("");
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState();
-  const [rating, setRating] = useState();
+  const [formImage, setFormImage] = useState({});
+  const [rating, setRating] = useState(1);
 
   const currentUser = useAuth();
 
@@ -41,7 +42,7 @@ const AnimeCard = ({ title, episodes, image }) => {
   };
 
   const handleSliderChange = (name) => (e, value) => {
-    setRating(value);
+    setRating(parseInt(value));
   };
 
   useEffect(() => {
@@ -51,6 +52,7 @@ const AnimeCard = ({ title, episodes, image }) => {
     }
 
     const objectUrl = URL.createObjectURL(selectedFile);
+
     setPreview(objectUrl);
 
     return () => URL.revokeObjectURL(objectUrl);
@@ -68,17 +70,19 @@ const AnimeCard = ({ title, episodes, image }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(currentUser?.uid);
-    console.log(animeTitle);
-    console.log(rating);
-
     let formdata = new FormData();
 
     //formdata.append("image", image);
     formdata.append("userId", currentUser?.uid);
     formdata.append("title", animeTitle);
+    formdata.append("username", currentUser?.email.split("@")[0]);
+    formdata.append("episodesWatched", episodesWatched);
+    formdata.append("episodeCount", episodes);
     formdata.append("rating", rating);
+    formdata.append("image", selectedFile ? selectedFile : image);
 
+    // The reason why this ancient technology is used is because multer (image upload)
+    //requires form data format or something cringe
     fetch("api/series", {
       method: "POST",
       body: formdata,
@@ -87,6 +91,11 @@ const AnimeCard = ({ title, episodes, image }) => {
       .then((resBody) => {
         console.log(resBody);
       });
+  };
+
+  const handleRemoveImage = () => {
+    setPreview();
+    setFormImage("");
   };
 
   return (
@@ -117,7 +126,7 @@ const AnimeCard = ({ title, episodes, image }) => {
               <input type="file" onChange={onSelectFile} />
               {preview && (
                 <span
-                  onClick={() => setPreview()}
+                  onClick={handleRemoveImage}
                   style={{ backgroundColor: "papayawhip", color: "red", padding: "2px" }}
                 >
                   Remove image
