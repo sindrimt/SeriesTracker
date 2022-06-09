@@ -22,8 +22,19 @@ export const getSerieById = async (req, res) => {
 };
 
 export const createSerie = async (req, res) => {
-  const serie = req.body;
-  const newSerie = new Series(serie);
+  const newSerie = new Series({
+    userId: req.body.userId,
+    title: req.body.title,
+    username: req.body.username,
+    description: req.body.description,
+    rating: req.body.rating,
+    photoUrl: req?.file?.path,
+    episodesWatched: req.body.episodesWatched,
+    episodeCount: req.body.episodeCount,
+    watchTime: req.body.watchTime,
+    age: req.body.age,
+    websiteUrl: req.body.websiteUrl,
+  });
   try {
     await newSerie.save();
 
