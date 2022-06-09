@@ -6,10 +6,10 @@ export const ContentRightOuter = styled.div`
   width: 27%;
   height: 89%;
   right: 0;
-  @media (max-width: 1400px) {
+  @media (max-width: 1250px) {
     display: none;
   }
-/*   &:hover {
+  /*   &:hover {
     -ms-overflow-style: none;
     scrollbar-width: none;
 
@@ -60,7 +60,6 @@ export const EntryInfo = styled.div`
   flex-direction: column;
   width: 100%;
   flex-grow: 5;
-
 `;
 
 export const EntryHeader = styled.div`
