@@ -1,13 +1,12 @@
 import axios from "axios";
 import React, { useRef, useState, useEffect } from "react";
-import { CreatePostOuter, Gridcontainer } from "./CreatePostStyles";
+import { CreatePostOuter, Gridcontainer, SearchOuter } from "./CreatePostStyles";
 
 import Loading from "../../Pages/LoadingPage/Loading";
 
 import AnimeCard from "../Cards/AnimeCard/AnimeCard";
 
-import Overlay from "../Overlay/Overlay";
-import Dialog from "@mui/material/Dialog";
+import { useScroll } from "../../Hooks/useScroll";
 
 const CreatePost = () => {
   const [topAnime, setTopAnime] = useState([]);
@@ -20,6 +19,18 @@ const CreatePost = () => {
 
   const [open, setOpen] = useState(false);
 
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const [filtered, setFiltered] = useState([]);
+
+  const scrollPosition = useScroll();
+
+  let fixed = false;
+
+  if (scrollPosition > 30) {
+    fixed = true;
+  }
+
   const GetTopAnime = () => {
     setLoading(true);
     axios
@@ -27,6 +38,7 @@ const CreatePost = () => {
       //https://api.jikan.moe/v3/top/type/page/subtype
       .then(({ data }) => {
         setTopAnime(data.top.slice(0, 50));
+        setFiltered(data.top.slice(0, 50));
         setLoading(false);
       })
       .catch((error) => {
@@ -35,10 +47,9 @@ const CreatePost = () => {
   };
 
   useEffect(() => {
+    console.log("Fetched anime");
     GetTopAnime();
   }, []);
-
-  console.log(topAnime);
 
   // const fileOnChange = (e) => {
   //   setImage(e.target.files[0]);
@@ -60,6 +71,13 @@ const CreatePost = () => {
   //     });
   // };
 
+  useEffect(() => {
+    let animeFilter = topAnime.filter((anime) => {
+      return anime?.title?.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+    setFiltered(animeFilter);
+  }, [searchTerm]);
+
   if (loading) {
     return <Loading />;
   }
@@ -75,20 +93,21 @@ const CreatePost = () => {
   console.log(show);
   return (
     <>
-      {show ? <Overlay /> : <></>}
-
       <CreatePostOuter>
-        {/* <input type="file" onChange={fileOnChange} />
-
-      <button onClick={sendImage}>Upload</button> */}
-
+        <SearchOuter isFixed={fixed}>
+          <input type="text" placeholder="serach" onChange={(e) => setSearchTerm(e.target.value)} />
+        </SearchOuter>
         <Gridcontainer>
-          {topAnime.map((anime, index) => {
+          {filtered?.map((anime, index) => {
             return (
               <>
-                <div>
-                  <AnimeCard title={anime.title} episodes={anime.episodes} image={anime.image_url} setOpen={setOpen} />
-                </div>
+                <AnimeCard
+                  title={anime.title}
+                  episodes={anime.episodes}
+                  image={anime.image_url}
+                  key={index}
+                  setOpen={setOpen}
+                />
               </>
             );
           })}

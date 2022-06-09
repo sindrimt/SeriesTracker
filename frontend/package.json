@@ -17,6 +17,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "firebase": "^9.8.2",
+    "framer-motion": "^6.3.11",
     "lottie-react": "^2.2.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
