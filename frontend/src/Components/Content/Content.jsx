@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   ContentContainerOuter,
@@ -10,6 +10,8 @@ import {
   ContentContainerGridIcons,
 } from "./ContentStyles";
 
+import Loading from "../../Pages/LoadingPage/Loading";
+
 import HomepageCard from "../Cards/HomepageCard/Card";
 import { Link } from "react-router-dom";
 
@@ -19,9 +21,48 @@ import iconViewIcon from "../../Assets/Content/Apps.svg";
 
 import loffi from "../../Assets/Images/loffi.png";
 import AddSerieButton from "../AddSerie/AddSerieButton/AddSerieButton";
+import { useSelector } from "react-redux";
+
+import { useAuth } from "../../firebase";
+
+import axios from "axios";
 
 const Content = () => {
   const [iconView, setIconView] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [series, setSeries] = useState([]);
+  const [done, setDone] = useState(false);
+
+  const currentUser = useAuth();
+
+  const getUserSeries = () => {
+    setLoading(true);
+    console.log(currentUser);
+    axios
+      .get(`api/series/NXHxzbjtLTMAubLCdWkGAVMNYV42`)
+      .then(({ data }) => {
+        setSeries(data);
+        console.log(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    if (currentUser) {
+      console.log(currentUser);
+      getUserSeries();
+    } else {
+      setTimeout(200);
+      setDone(!done);
+    }
+  }, [done]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <>
@@ -36,21 +77,31 @@ const Content = () => {
         </PickUp>
         {iconView ? (
           <ContentContainerGridIcons>
-            <HomepageCard />
-            <HomepageCard />
-            <HomepageCard />
-            <HomepageCard />
-            <HomepageCard />
-            <HomepageCard />
-            <HomepageCard />
+            {series?.map((serie) => {
+              return (
+                <HomepageCard
+                  title={serie?.title}
+                  episodesWatched={serie?.episodesWatched}
+                  episodeCount={serie?.episodeCount}
+                  rating={serie?.rating}
+                  image={serie?.photoUrl}
+                />
+              );
+            })}
           </ContentContainerGridIcons>
         ) : (
           <ContentContainerGrid>
-            <HomepageCard />
-            <HomepageCard />
-            <HomepageCard />
-            <HomepageCard />
-            <HomepageCard />
+            {series?.map((serie) => {
+              return (
+                <HomepageCard
+                  title={serie?.title}
+                  episodesWatched={serie?.episodesWatched}
+                  episodeCount={serie?.episodeCount}
+                  rating={serie?.rating}
+                  image={serie?.photoUrl}
+                />
+              );
+            })}
           </ContentContainerGrid>
         )}
       </ContentContainerOuter>

@@ -12,10 +12,11 @@ export const getSeries = async (req, res) => {
 
 export const getSerieById = async (req, res) => {
   try {
-    const urlId = req.params.id;
-    const serie = await Series.findById(urlId);
+    console.log(req.params.userId);
+    const userid = req.params.userId;
+    const series = await Series.find({ userId: userid });
 
-    res.status(200).json(serie);
+    res.status(200).json(series);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -29,11 +30,11 @@ export const createSerie = async (req, res) => {
     description: req.body.description,
     rating: req.body.rating,
     photoUrl: req?.file?.path ? req?.file?.path : req.body.image,
-    episodesWatched: req.body.episodesWatched,
-    episodeCount: req.body.episodeCount,
-    watchTime: req.body.watchTime,
-    age: req.body.age,
-    websiteUrl: req.body.websiteUrl,
+    episodesWatched: req?.body?.episodesWatched,
+    episodeCount: req?.body?.episodeCount,
+    watchTime: req?.body?.watchTime,
+    age: req?.body?.age,
+    websiteUrl: req?.body?.websiteUrl,
   });
   try {
     await newSerie.save();

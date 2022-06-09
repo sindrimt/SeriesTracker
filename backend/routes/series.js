@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get("/series", getSeries);
 
-router.get("/series/:id", getSerieById);
+router.get("/series/:userId", getSerieById);
 
 //router.post("/series", createSerie);
 

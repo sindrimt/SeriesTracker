@@ -24,16 +24,18 @@ import {
 import loffi from "../../../Assets/Images/loffi.png";
 import star from "../../../Assets/Content/Star.svg";
 
-const Card = () => {
+const Card = ({ title, episodesWatched, episodeCount, description, rating, image }) => {
   return (
     <>
       <SeriesCardOuter>
         <SeriesCardInner>
-          <SeriesCardImage src={loffi} />
+          <SeriesCardImage src={image?.includes("upload") ? `api/${image}` : image} />
           <CardInformationContainer>
-            <CardTitle>One Piece</CardTitle>
+            <CardTitle>{title}</CardTitle>
             <EpisodeContainer>
-              <EpisodeCount>Ep 694 / 1016</EpisodeCount>
+              <EpisodeCount>
+                Ep {episodesWatched} / {episodeCount}
+              </EpisodeCount>
               <EpisodeLineGray />
               <EpisodeLineProgress />
             </EpisodeContainer>
@@ -43,7 +45,7 @@ const Card = () => {
           <CardRatingContainer>
             <CardRatingCenter>
               <CardRatingImg src={star} alt="Star" />
-              <CardRatingTxt>9.2</CardRatingTxt>
+              <CardRatingTxt>{rating}</CardRatingTxt>
             </CardRatingCenter>
           </CardRatingContainer>
         </SeriesCardInner>
