@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const series = mongoose.Schema({
-  username: {
+  userId: {
     type: String,
     required: true,
   },
