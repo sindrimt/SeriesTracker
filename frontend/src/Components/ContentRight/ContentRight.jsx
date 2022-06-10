@@ -1,64 +1,45 @@
-import React from "react";
-import { 
-  ContentRightOuter,
-  ChartsContainer,
-  Chart,
-  EntryImg,
-  EntryInfo,
-  EntryHeader,
-  EntryTxt,
+import React, { useState, useEffect } from "react";
 
-} from "./ContentRightStyles";
+import ChartCard from "../Cards/ChartCard/ChartCard";
 
-import deathnote from "../../Assets/ContentRight/DeathNote.jpg";
-import fmab from "../../Assets/ContentRight/FMAB.jpg";
-import onepiece from "../../Assets/ContentRight/OnePiece.jpg";
-import onepunchman from "../../Assets/ContentRight/OnePunchMan.jpg";
-import steinsgate from "../../Assets/ContentRight/SteinsGate.jpg";
+import axios from "axios";
+
+import { ContentRightOuter, ChartsContainer } from "../Cards/ChartCard/ChartCardStyles";
 
 const ContentRight = () => {
+  const [topAnimes, setTopAnimes] = useState([]);
+
+  const fetchTopAnimes = () => {
+    return new Promise((resolve, reject) => {
+      axios
+        .get(`https://api.jikan.moe/v3/top/anime/1/bypopularity`)
+        //https://api.jikan.moe/v3/top/type/page/subtype
+        .then(({ data }) => {
+          resolve(data);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  };
+
+  useEffect(() => {
+    fetchTopAnimes().then((res) => {
+      setTopAnimes(res.top);
+      console.log(res);
+    });
+  }, []);
+
   return (
-  <ContentRightOuter>
-    <ChartsContainer>
-      <Chart>
-        <EntryImg src={onepiece} alt="Entry Image"/>
-        <EntryInfo>
-          <EntryHeader>One Piece</EntryHeader>
-          <EntryTxt>Chopper is da best</EntryTxt>
-        </EntryInfo>
-      </Chart>
-      <Chart>
-        <EntryImg src={fmab} alt="Entry Image"/>
-        <EntryInfo>
-          <EntryHeader>FMA:B</EntryHeader>
-          <EntryTxt>Chopper is da best</EntryTxt>
-        </EntryInfo>
-      </Chart>
-      <Chart>
-        <EntryImg src={deathnote} alt="Entry Image"/>
-        <EntryInfo>
-          <EntryHeader>Death Note</EntryHeader>
-          <EntryTxt>L</EntryTxt>
-        </EntryInfo>
-      </Chart>
-      <Chart>
-        <EntryImg src={steinsgate} alt="Entry Image"/>
-        <EntryInfo>
-          <EntryHeader>Steins;Gate</EntryHeader>
-          <EntryTxt>Banana</EntryTxt>
-        </EntryInfo>
-      </Chart>
-      <Chart>
-        <EntryImg src={onepunchman} alt="Entry Image"/>
-        <EntryInfo>
-          <EntryHeader>One Punch Man</EntryHeader>
-          <EntryTxt>He do be punching</EntryTxt>
-        </EntryInfo>
-      </Chart>
-      
-    </ChartsContainer>
-  </ContentRightOuter>
-  
+    <>
+      <ContentRightOuter>
+        <ChartsContainer>
+          {topAnimes?.map((anime, index) => {
+            return <ChartCard key={index} image={anime.image_url} title={anime.title} rating={anime.score} />;
+          })}
+        </ChartsContainer>
+      </ContentRightOuter>
+    </>
   );
 };
 
