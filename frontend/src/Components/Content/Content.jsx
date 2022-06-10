@@ -27,43 +27,11 @@ import { useAuth } from "../../firebase";
 
 import axios from "axios";
 
-const Content = () => {
+const Content = ({ series }) => {
   const [iconView, setIconView] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [series, setSeries] = useState([]);
-  const [done, setDone] = useState(false);
 
   const currentUser = useAuth();
-
-  const getUserSeries = () => {
-    setLoading(true);
-    console.log(currentUser);
-    axios
-      .get(`api/series/${currentUser?.uid}`)
-      .then(({ data }) => {
-        setSeries(data);
-        console.log(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  useEffect(() => {
-    if (currentUser) {
-      console.log(currentUser);
-      getUserSeries();
-    } else {
-      setTimeout(() => {
-        setDone(!done);
-      }, 100);
-    }
-  }, [done]);
-
-  if (loading) {
-    return <Loading />;
-  }
 
   return (
     <>
