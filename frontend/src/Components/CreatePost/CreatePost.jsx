@@ -13,10 +13,6 @@ const CreatePost = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const [form, setForm] = useState(false);
-
-  const [show, setShow] = useState(false);
-
   const [open, setOpen] = useState(false);
 
   const [searchTerm, setSearchTerm] = useState("");
