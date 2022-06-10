@@ -9,7 +9,7 @@ import styled from "styled-components";
 export const ContentContainerOuter = styled.div`
   float: left;
   margin: 140px 0px 0px 0px;
-  padding-left: 260px;
+  padding-left: 270px;
   width: 70%;
 
   @media (max-width: 640px) {
@@ -21,6 +21,7 @@ export const ContentContainerGrid = styled.div`
   margin-top: 10px;
   display: grid;
   row-gap: 1rem;
+  padding-bottom: 10px;
 `;
 
 export const ContentContainerGridIcons = styled.div`

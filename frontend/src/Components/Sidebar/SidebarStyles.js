@@ -26,9 +26,10 @@ export const SidebarOuter = styled.div`
   width: 250px;
   height: 100%;
   font-size: 18px;
-  margin-top: ${(props) => (props.isFixed ? "85px" : "150px")};
-  padding: 30px;
+  margin-top: ${(props) => (props.isFixed ? "4.6%" : "7.8%")};
+  padding: 40px 0 0 30px;
   white-space: nowrap;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 638px) {
     display: none;
