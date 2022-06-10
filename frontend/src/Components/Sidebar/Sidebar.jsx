@@ -33,7 +33,7 @@ const Sidebar = () => {
 
   let fixed = false;
 
-  if (scrollPosition > 65) {
+  if (scrollPosition > 45) {
     fixed = true;
   }
 
