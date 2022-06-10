@@ -8,6 +8,7 @@ export const SeriesCardOuter = styled.div`
   background-color: #fcfcfc;
   transition: 0.1s ease;
   border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 
   &:hover {
     background-color: rgba(166, 63, 203, 0.1);
