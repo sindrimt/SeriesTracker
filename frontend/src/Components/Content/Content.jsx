@@ -55,8 +55,9 @@ const Content = () => {
       console.log(currentUser);
       getUserSeries();
     } else {
-      setTimeout(200);
-      setDone(!done);
+      setTimeout(() => {
+        setDone(!done);
+      }, 100);
     }
   }, [done]);
 
