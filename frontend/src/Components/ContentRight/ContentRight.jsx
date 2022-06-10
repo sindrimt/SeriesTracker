@@ -6,16 +6,17 @@ import axios from "axios";
 
 import { ContentRightOuter, ChartsContainer } from "../Cards/ChartCard/ChartCardStyles";
 
-const ContentRight = () => {
+import Loading from "../../Pages/LoadingPage/Loading";
+
+const ContentRight = ({ arrayLength }) => {
   const [topAnimes, setTopAnimes] = useState([]);
 
   const fetchTopAnimes = () => {
     return new Promise((resolve, reject) => {
       axios
         .get(`https://api.jikan.moe/v3/top/anime/1/bypopularity`)
-        //https://api.jikan.moe/v3/top/type/page/subtype
         .then(({ data }) => {
-          resolve(data);
+          resolve([data, arrayLength]);
         })
         .catch((error) => {
           reject(error);
@@ -25,10 +26,10 @@ const ContentRight = () => {
 
   useEffect(() => {
     fetchTopAnimes().then((res) => {
-      setTopAnimes(res.top);
       console.log(res);
+      setTopAnimes(res[0].top.slice(0, res[1] + 1));
     });
-  }, []);
+  }, [arrayLength]);
 
   return (
     <>
