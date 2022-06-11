@@ -9,6 +9,7 @@ import {
   Logo,
   WelcomeBack,
   NavbarProfileImgBack,
+  ThemeIcon,
 } from "./NavbarStyles";
 
 import SeriesTrackerLogo from "../../Assets/Images/logo.png";
@@ -21,16 +22,22 @@ import { logoutUser } from "../../redux/features/user/userSlice";
 
 import { useScroll } from "../../Hooks/useScroll";
 
+import { toggleTheme } from "../../redux/features/theme/colorThemeSlice";
+
+import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
+
 const Navbar = () => {
   //const [scrollPosition, setScrollPosition] = useState(0);
   const [loading, setLoading] = useState(false);
 
   const scrollPosition = useScroll();
 
-  let navigate = useNavigate();
-
   const globalUser = useSelector((state) => state.user.user);
+  const colorTheme = useSelector((state) => state.theme.theme);
+
   const dispatch = useDispatch();
+
+  let navigate = useNavigate();
 
   let color = false;
   let line = false;
@@ -45,6 +52,11 @@ const Navbar = () => {
   const handleLogOut = () => {
     dispatch(logoutUser());
     logOut();
+  };
+
+  const handleToggle = () => {
+    dispatch(toggleTheme(colorTheme === "light" ? "dark" : "light"));
+    console.log(colorTheme);
   };
 
   const decideProfilePic = () => {
@@ -68,7 +80,13 @@ const Navbar = () => {
         <NavbarLinksOuter>
           <div className="findsSeries">Find Series</div>
           <div className="findfriends">Find Friends</div>
-          {/*  <button onClick={() => console.log(globalUser)}>check</button> */}
+          <ThemeIcon>
+            {colorTheme === "light" ? (
+              <MdOutlineLightMode onClick={handleToggle} size={25} />
+            ) : (
+              <MdOutlineDarkMode onClick={handleToggle} size={25} />
+            )}
+          </ThemeIcon>
         </NavbarLinksOuter>
         <NavbarProfileOuter>
           <div>

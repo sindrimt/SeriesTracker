@@ -17,11 +17,17 @@ import { useAuth } from "./firebase.js";
 import { useSelector, useDispatch } from "react-redux";
 import { loginUser, logoutUser } from "./redux/features/user/userSlice";
 
+import styled, { ThemeProvider } from "styled-components";
+
+import { lightTheme, darkTheme, GlobalStyles } from "./Styles/themes.js";
+
 import axios from "axios";
 
 const App = () => {
   const currentUser = useAuth();
   const [done, setDone] = useState(false);
+
+  const colorTheme = useSelector((state) => state.theme.theme);
 
   const globalUser = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
@@ -37,10 +43,6 @@ const App = () => {
   }, [done]);
 
   const fetchUser = () => {
-    console.log("=================================================");
-    console.log("CURRENTUSER IS SET FROM APP HERE");
-    console.log("=================================================");
-
     axios
       .get(`api/users/${currentUser?.uid}`)
       .then(({ data }) => {
@@ -53,20 +55,25 @@ const App = () => {
   };
 
   return (
-    <BrowserRouter>
-      {currentUser ? (
-        <>
-          <Navbar />
-          <Routes>
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/createPost" element={<CreatePost />} />
-            <Route path="/" element={<Homepage />} />
-          </Routes>
-        </>
-      ) : (
-        <Login />
-      )}
-    </BrowserRouter>
+    <ThemeProvider theme={colorTheme === "light" ? lightTheme : darkTheme}>
+      <>
+        <GlobalStyles />
+        <BrowserRouter>
+          {currentUser ? (
+            <>
+              <Navbar />
+              <Routes>
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/createPost" element={<CreatePost />} />
+                <Route path="/" element={<Homepage />} />
+              </Routes>
+            </>
+          ) : (
+            <Login />
+          )}
+        </BrowserRouter>
+      </>
+    </ThemeProvider>
   );
 };
 
