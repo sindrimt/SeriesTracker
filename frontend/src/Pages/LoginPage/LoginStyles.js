@@ -5,7 +5,6 @@ export const PageContainer = styled.div`
   width: 100%;
   display: grid;
   grid-template-rows: 5fr 1fr;
-  background-color: papayawhip;
   grid-row-gap: 20px;
 `;
 
