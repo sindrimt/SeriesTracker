@@ -33,7 +33,7 @@ const Sidebar = () => {
 
   let fixed = false;
 
-  if (scrollPosition > 45) {
+  if (scrollPosition > 38) {
     fixed = true;
   }
 
@@ -108,6 +108,7 @@ const Sidebar = () => {
             </ListItem>
           </ul>
         </PanelOuter>
+
         <Trademark>SeriesTracker 2022&reg; corporation</Trademark>
       </SidebarOuter>
     </>

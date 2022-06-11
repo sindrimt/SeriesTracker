@@ -19,6 +19,7 @@ export const Hamburger = styled.img`
 export const SidebarOuter = styled.div`
   position: ${(props) => (props.isFixed ? "fixed" : "absolute")};
   display: flex;
+  background-color: ${(props) => props.theme.sidebar.background};
   flex-direction: column;
   align-items: flex-start;
   font-family: "Anek Malayalam", sans-serif;
@@ -26,10 +27,9 @@ export const SidebarOuter = styled.div`
   width: 250px;
   height: 100%;
   font-size: 18px;
-  margin-top: ${(props) => (props.isFixed ? "4.6%" : "7.8%")};
+  margin-top: ${(props) => (props.isFixed ? "73px" : "111px")};
   padding: 40px 0 0 30px;
   white-space: nowrap;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 638px) {
     display: none;
@@ -43,6 +43,8 @@ export const SearchOuter = styled.div`
   align-items: flex-start;
   padding: 0 0 20px;
   font-size: 16px;
+  background-color: ${(props) => props.theme.sidebar.search};
+  color: ${(props) => props.theme.white};
 `;
 
 export const CategoriesOuter = styled.div`
@@ -90,6 +92,7 @@ export const Trademark = styled.div`
   bottom: 12%;
   color: rgba(0, 0, 0, 0.5);
   font-size: 15px;
+  color: ${(props) => props.theme.white};
 
   &:before {
     content: "";
