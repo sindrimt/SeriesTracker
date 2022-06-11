@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
 export const FooterOuter = styled.div`
-  position: absolute;
   display: flex;
   column-gap: 5rem;
-  bottom: 0;
   width: 100%;
   height: 140px;
   padding-right: 10px;
