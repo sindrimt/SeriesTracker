@@ -38,7 +38,7 @@ export const Chart = styled.div`
     flex-direction: column-reverse;
   }
 
-  &:nth-child(odd) {
+  &:nth-child(even) {
     background-color: ${(props) => props.theme.homepageCard.background};
   }
 
