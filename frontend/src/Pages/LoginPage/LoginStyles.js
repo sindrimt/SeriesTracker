@@ -1,12 +1,18 @@
 import styled from "styled-components";
 
-export const LoginOuterContainer = styled.div`
+export const PageContainer = styled.div`
   position: absolute;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 5fr 1fr;
+  background-color: papayawhip;
+  grid-row-gap: 20px;
+`;
+
+export const LoginOuterContainer = styled.div`
   width: 100%;
   padding-right: 2vw;
   padding-left: 2vw;
-  height: 100%;
-
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-column-gap: 20px;
@@ -153,11 +159,10 @@ export const AlternativeLoginMethods = styled.div`
   display: flex;
   justify-content: center;
   border-top: 1px solid rgba(137, 137, 137, 0.2);
-`; 
+`;
 
 export const FileLabel = styled.label`
   cursor: pointer;
-
 `;
 
 export const LoginForgot = styled.div``;
