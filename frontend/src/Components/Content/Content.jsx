@@ -19,6 +19,11 @@ import filter from "../../Assets/Content/Adjust.svg";
 import rowView from "../../Assets/Content/Playlist.svg";
 import iconViewIcon from "../../Assets/Content/Apps.svg";
 
+/*Darkmode icons*/
+import filter_darkmode from "../../Assets/Content/Adjust_darkmode.svg";
+import rowView_darkmode from "../../Assets/Content/Playlist_darkmode.svg";
+import iconViewIcon_darkmode from "../../Assets/Content/Apps_darkmode.svg";
+
 import loffi from "../../Assets/Images/loffi.png";
 import AddSerieButton from "../AddSerie/AddSerieButton/AddSerieButton";
 import { useSelector } from "react-redux";
@@ -31,6 +36,8 @@ const Content = ({ series }) => {
   const [iconView, setIconView] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const colorTheme = useSelector((state) => state.theme.theme);
+
   const currentUser = useAuth();
 
   return (
@@ -38,10 +45,13 @@ const Content = ({ series }) => {
       <ContentContainerOuter>
         <PickUp>
           Pick up where you left
-          <Filter src={filter} />
+          <Filter src={colorTheme === "light" ? filter : filter_darkmode} />
           <GridTypeIcons>
-            <Icon src={rowView} />
-            <Icon src={iconViewIcon} onClick={() => setIconView(!iconView)} />
+            <Icon src={colorTheme === "light" ? rowView : rowView_darkmode} />
+            <Icon
+              src={colorTheme === "light" ? iconViewIcon : iconViewIcon_darkmode}
+              onClick={() => setIconView(!iconView)}
+            />
           </GridTypeIcons>
         </PickUp>
         {iconView ? (
