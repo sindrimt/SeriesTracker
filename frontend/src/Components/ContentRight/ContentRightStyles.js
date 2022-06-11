@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ContentRightOuter = styled.div`
   position: absolute;
-  margin: 110px 0px 0px 0px;
+  margin: 140px 0px 0px 0px;
   width: 27%;
   height: 89%;
   right: 0;
@@ -36,10 +36,6 @@ export const Chart = styled.div`
   flex-grow: 1;
   @media (max-width: 1400px) {
     flex-direction: column-reverse;
-  }
-
-  &:nth-child(odd) {
-    background-color: papayawhip;
   }
 
   @media (max-width: 1500px) {
