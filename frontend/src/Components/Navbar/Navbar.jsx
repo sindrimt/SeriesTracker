@@ -12,7 +12,8 @@ import {
   ThemeIcon,
 } from "./NavbarStyles";
 
-import SeriesTrackerLogo from "../../Assets/Images/logo.png";
+import SeriesTrackerLogoLM from "../../Assets/Images/logo_lightmode.png";
+import SeriesTrackerLogoDM from "../../Assets/Images/logo_darkmode.png";
 
 import { logOut } from "../../firebase.js";
 import { useNavigate } from "react-router-dom";
@@ -76,7 +77,11 @@ const Navbar = () => {
   return (
     <>
       <NavbarOuter showBgColor={color}>
-        <Logo src={SeriesTrackerLogo} alt="Logo" onClick={() => navigate("/")} />
+        <Logo
+          src={colorTheme === "light" ? SeriesTrackerLogoLM : SeriesTrackerLogoDM}
+          alt="Logo"
+          onClick={() => navigate("/")}
+        />
         <NavbarLinksOuter>
           <div className="findsSeries">Find Series</div>
           <div className="findfriends">Find Friends</div>
