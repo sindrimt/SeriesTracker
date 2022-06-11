@@ -2,17 +2,18 @@ import styled from "styled-components";
 
 export const SeriesCardOuter = styled.div`
   width: 100%;
-  padding: 20px 20px 25px 20px;
-  height: 180px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 10px 22px 10px;
+  height: 150px;
+  box-shadow: 0px 4px 4px rgba(100, 100, 100, 0.1);
   background-color: #fcfcfc;
   transition: 0.1s ease;
-  border-radius: 10px;
+  border-radius: 3px;
   background-color: ${(props) => props.theme.homepageCard.background};
   border: 1px solid rgba(0, 0, 0, 0.1);
 
   &:hover {
-    background-color: rgba(166, 63, 203, 0.1);
+    //background-color: rgba(166, 63, 203, 0.1);
+    background-color: ${(props) => props.theme.lightgrey};
     cursor: pointer;
   }
 `;
@@ -28,7 +29,7 @@ export const SeriesCardImage = styled.img`
   width: 300px;
   height: 100%;
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: 2px;
 `;
 
 export const WatchTimeContainer = styled.div`
@@ -46,7 +47,7 @@ export const CardInformationContainer = styled.div`
 `;
 
 export const CardTitle = styled.div`
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 300;
 `;
 
@@ -88,14 +89,14 @@ export const CardRatingContainer = styled.div`
 
 export const CardRatingImg = styled.img`
   display: flex;
-  width: 40px;
+  width: 30px;
 `;
 
 export const CardRatingTxt = styled.div`
   display: flex;
   margin-top: 10px;
   justify-content: center;
-  font-size: 20px;
+  font-size: 18px;
 `;
 
 export const CardRatingCenter = styled.div`
