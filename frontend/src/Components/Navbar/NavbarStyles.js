@@ -109,3 +109,8 @@ export const NavbarLinksOuter = styled.div`
     cursor: pointer;
   }
 `;
+
+export const ThemeIcon = styled.div`
+  &:hover {
+  }
+`;
