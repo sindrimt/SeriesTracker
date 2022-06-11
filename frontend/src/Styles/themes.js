@@ -9,16 +9,19 @@ const darkModePalette = {
 
 export const lightTheme = {
   content: {
+    background: "white",
+  },
+  homepageCard: {
+    background: "white",
+  },
+};
+export const darkTheme = {
+  content: {
     background: darkModePalette.dark2,
   },
   homepageCard: {
     background: darkModePalette.dark1,
   },
-};
-export const darkTheme = {
-  body: "black",
-  font: "30px",
-  sidebarBg: "black",
 };
 
 export const GlobalStyles = createGlobalStyle`

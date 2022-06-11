@@ -90,10 +90,6 @@ const Navbar = () => {
         </NavbarLinksOuter>
         <NavbarProfileOuter>
           <div>
-            {/* <NavbarProfileImg
-              src="api/uploads/1654538220742klistremerker-glad-smiley-emoticon-face.jpg.jpg"
-              alt="bilde"
-            /> */}
             <WelcomeBack>
               WELCOME BACK <span style={{ fontWeight: "400" }}>{globalUser?.username}</span>
             </WelcomeBack>
