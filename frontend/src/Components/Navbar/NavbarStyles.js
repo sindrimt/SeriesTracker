@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const NavbarOuter = styled.div`
-  background-color: ${(props) => (props.showBgColor ? "rgb(250, 250, 250)" : "")};
+  background-color: ${(props) => props.theme.body.background};
+  //background-color: ${(props) => (props.showBgColor ? props.theme.body.background : "")};
   transition: 0.2s ease-in-out;
   position: fixed;
   z-index: 100000000;
@@ -11,6 +12,7 @@ export const NavbarOuter = styled.div`
   width: 100%;
   height: 110px;
   font-family: "Anek Malayalam", sans-serif;
+
   font-weight: 300;
 `;
 
@@ -19,8 +21,8 @@ export const NavbarLine = styled.div`
   transition: 0.3s ease;
   top: 110px;
   border-radius: 5px;
-  left: 5%;
-  width: 90vw;
+  //left: 5%;
+  width: 100vw;
   border-top: ${(props) =>
     props.showLine ? "1.5px solid rgba(137, 137, 137, 0)" : "1.5px solid rgba(137, 137, 137, 0.15)"};
 `;
@@ -46,7 +48,7 @@ export const NavbarProfileOuter = styled.div`
   display: flex;
   height: 70px;
   margin-right: 20px;
-  color: rgba(0, 0, 0, 0.6);
+  //color: rgba(0, 0, 0, 0.6);
   align-items: center;
   justify-content: flex-end;
 
