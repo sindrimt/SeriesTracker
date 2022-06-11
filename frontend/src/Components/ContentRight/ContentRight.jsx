@@ -27,7 +27,7 @@ const ContentRight = ({ arrayLength }) => {
   useEffect(() => {
     fetchTopAnimes().then((res) => {
       console.log(res);
-      setTopAnimes(res[0].top.slice(0, res[1] + 1));
+      setTopAnimes(res[0].top.slice(0, res[1] + 2));
     });
   }, [arrayLength]);
 
