@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ContentRightOuter = styled.div`
   position: absolute;
-  margin: 110px 0px 0px 0px;
+  margin: 145px 0px 0px 0px;
   width: 27%;
   height: 89%;
   right: 0;
@@ -39,7 +39,7 @@ export const Chart = styled.div`
   }
 
   &:nth-child(odd) {
-    background-color: papayawhip;
+    background-color: ${(props) => props.theme.homepageCard.background};
   }
 
   @media (max-width: 1500px) {
