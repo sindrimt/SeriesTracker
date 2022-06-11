@@ -48,6 +48,7 @@ export const PickUp = styled.div`
 export const Filter = styled.img`
   margin-left: 20px;
   width: 20px;
+  color: ${(props) => props.theme.content.filter};
 `;
 
 export const Icon = styled.img`
