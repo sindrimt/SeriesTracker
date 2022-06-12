@@ -10,10 +10,12 @@ import {
   WelcomeBack,
   NavbarProfileImgBack,
   ThemeIcon,
+  ShowMore,
 } from "./NavbarStyles";
 
 import SeriesTrackerLogoLM from "../../Assets/Images/logo_lightmode.png";
 import SeriesTrackerLogoDM from "../../Assets/Images/logo_darkmode.png";
+import SeriesTrackerLogoHD from "../../Assets/Images/logo_hotdog.png";
 
 import { logOut } from "../../firebase.js";
 import { useNavigate } from "react-router-dom";
@@ -25,11 +27,13 @@ import { useScroll } from "../../Hooks/useScroll";
 
 import { toggleTheme } from "../../redux/features/theme/colorThemeSlice";
 
-import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
+import { MdOutlineLightMode, MdOutlineDarkMode, MdExpandMore } from "react-icons/md";
+import { GiHotDog } from "react-icons/gi";
 
 const Navbar = () => {
   //const [scrollPosition, setScrollPosition] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [showMore, setShowMore] = useState(false);
 
   const scrollPosition = useScroll();
 
@@ -70,6 +74,11 @@ const Navbar = () => {
     }
   };
 
+  const handleColorTheme = (theme) => {
+    dispatch(toggleTheme(theme));
+    setShowMore(false);
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -78,7 +87,13 @@ const Navbar = () => {
     <>
       <NavbarOuter showBgColor={color}>
         <Logo
-          src={colorTheme === "light" ? SeriesTrackerLogoLM : SeriesTrackerLogoDM}
+          src={
+            colorTheme === "light"
+              ? SeriesTrackerLogoLM
+              : colorTheme === "dark"
+              ? SeriesTrackerLogoDM
+              : SeriesTrackerLogoHD
+          }
           alt="Logo"
           onClick={() => navigate("/")}
         />
@@ -86,12 +101,41 @@ const Navbar = () => {
           <div className="findsSeries">Find Series</div>
           <div className="findfriends">Find Friends</div>
           <ThemeIcon>
-            {colorTheme === "light" ? (
-              <MdOutlineLightMode onClick={handleToggle} size={25} />
-            ) : (
-              <MdOutlineDarkMode onClick={handleToggle} size={25} />
+            {colorTheme === "light" && (
+              <MdOutlineLightMode onClick={() => handleColorTheme("light")} size={25} className="themeIcon" />
             )}
+            {colorTheme === "dark" && (
+              <MdOutlineDarkMode onClick={() => handleColorTheme("dark")} size={25} className="themeIcon" />
+            )}
+            {colorTheme === "hotDog" && <GiHotDog size={25} onClick={() => handleColorTheme("hotDog")} />}
           </ThemeIcon>
+          {showMore && (
+            <ShowMore>
+              {colorTheme === "light" && (
+                <>
+                  <MdOutlineDarkMode size={25} onClick={() => handleColorTheme("dark")} className="icon" />
+                  <GiHotDog size={25} onClick={() => handleColorTheme("hotDog")} className="icon" />
+                </>
+              )}
+              {colorTheme === "dark" && (
+                <>
+                  <MdOutlineLightMode onClick={() => handleColorTheme("light")} size={25} className="icon" />
+                  <GiHotDog size={25} onClick={() => handleColorTheme("hotDog")} className="icon" />
+                </>
+              )}
+              {colorTheme === "hotDog" && (
+                <>
+                  <MdOutlineDarkMode size={25} onClick={() => handleColorTheme("dark")} className="icon" />
+                  <MdOutlineLightMode onClick={() => handleColorTheme("light")} size={25} className="icon" />
+                </>
+              )}
+            </ShowMore>
+          )}
+          {showMore ? (
+            <MdExpandMore size={22} onClick={() => setShowMore(!showMore)} className="showless" />
+          ) : (
+            <MdExpandMore size={22} onClick={() => setShowMore(!showMore)} className="showmore" />
+          )}
         </NavbarLinksOuter>
         <NavbarProfileOuter>
           <div>
