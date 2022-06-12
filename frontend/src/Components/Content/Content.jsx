@@ -24,6 +24,11 @@ import filter_darkmode from "../../Assets/Content/Adjust_darkmode.svg";
 import rowView_darkmode from "../../Assets/Content/Playlist_darkmode.svg";
 import iconViewIcon_darkmode from "../../Assets/Content/Apps_darkmode.svg";
 
+/*Hotdog icons*/
+import filter_hotdog from "../../Assets/Content/Adjust_hotdog.svg";
+import rowView_hotdog from "../../Assets/Content/Playlist_hotdog.svg";
+import iconViewIcon_hotdog from "../../Assets/Content/Apps_hotdog.svg";
+
 import loffi from "../../Assets/Images/loffi.png";
 import AddSerieButton from "../AddSerie/AddSerieButton/AddSerieButton";
 import { useSelector } from "react-redux";
@@ -45,11 +50,17 @@ const Content = ({ series }) => {
       <ContentContainerOuter>
         <PickUp>
           Pick up where you left
-          <Filter src={colorTheme === "light" ? filter : filter_darkmode} />
+          <Filter src={colorTheme === "light" ? filter : colorTheme === "dark" ? filter_darkmode : filter_hotdog} />
           <GridTypeIcons>
-            <Icon src={colorTheme === "light" ? rowView : rowView_darkmode} />
+            <Icon src={colorTheme === "light" ? rowView : colorTheme === "dark" ? rowView_darkmode : rowView_hotdog} />
             <Icon
-              src={colorTheme === "light" ? iconViewIcon : iconViewIcon_darkmode}
+              src={
+                colorTheme === "light"
+                  ? iconViewIcon
+                  : colorTheme === "dark"
+                  ? iconViewIcon_darkmode
+                  : iconViewIcon_hotdog
+              }
               onClick={() => setIconView(!iconView)}
             />
           </GridTypeIcons>
