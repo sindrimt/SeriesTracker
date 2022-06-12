@@ -9,11 +9,21 @@ const darkModePalette = {
   white: "#eee3c1ff",
 };
 
+const hotDogPalette = {
+  red: "rgb(242, 35, 0)",
+  yellow: "rgb(251, 251, 0)",
+  darkYellow: "rgb(240, 240, 10)",
+  brown: "rgb(74, 65, 42)",
+  green: "green",
+  magenta: "rgb(255, 0, 255)",
+  olive: "rgb(128,128,0)",
+};
+
 export const lightTheme = {
   black: "",
   lightBlack: "",
   grey: "",
-  lightgrey: "",
+  lightgrey: "rgba(166, 63, 203, 0.1)",
   pink: "",
   olive: "",
   white: "",
@@ -23,22 +33,35 @@ export const lightTheme = {
   },
   navbar: {
     fontColor: "",
+    line: "rgba(137, 137, 137, 0.15)",
+    underline: "rgba(166, 63, 203, 1)",
   },
   content: {
     background: "white",
     filter: "",
   },
   homepageCard: {
+    fontColor: "",
     background: "white",
+    border: " rgba(0, 0, 0, 0.1)",
+    episodeLineLeft: "#a63fcb",
+    episodeLineRight: "rgba(201, 201, 201, 0.8)",
+    ProgressLineLeft: "#a63fcb",
+    ProgressLineRight: "rgba(201, 201, 201, 0.8)",
   },
   sidebar: {
     background: "",
   },
   animeCard: {
+    fontColor: "",
     background: "#fafafa",
+    border: "1px solid rgba(200, 200, 200, 0.2)",
   },
   scrollbar: {
     background: "#aaaaaa",
+  },
+  chartCard: {
+    fontColor: "black",
   },
 };
 export const darkTheme = {
@@ -55,23 +78,80 @@ export const darkTheme = {
   },
   navbar: {
     fontColor: darkModePalette.white,
+    line: "rgba(137, 137, 137, 0.15)",
+    underline: "rgba(166, 63, 203, 1)",
   },
   content: {
     background: darkModePalette.dark2,
     filter: darkModePalette.white,
   },
   homepageCard: {
+    fontColor: "",
     background: darkModePalette.grey,
+    border: " rgba(0, 0, 0, 0.1)",
+    episodeLineLeft: "#a63fcb",
+    episodeLineRight: "rgba(201, 201, 201, 0.8)",
+    ProgressLineLeft: "#a63fcb",
+    ProgressLineRight: "rgba(201, 201, 201, 0.8)",
   },
   sidebar: {
     background: darkModePalette.grey,
     search: darkModePalette.grey,
   },
   animeCard: {
+    fontColor: "",
     background: darkModePalette.grey,
+    border: "1px solid rgba(200, 200, 200, 0.2)",
   },
   scrollbar: {
     background: "rgb(40, 38, 40)",
+  },
+  chartCard: {
+    fontColor: darkModePalette.white,
+  },
+};
+
+export const hotDogTheme = {
+  red: "rgb(242, 35, 0)",
+  yellow: "rgb(251, 251, 0)",
+  brown: "rgb(74, 65, 42)",
+
+  body: {
+    background: hotDogPalette.yellow,
+  },
+  navbar: {
+    fontColor: hotDogPalette.red,
+    line: "rgba(0, 0, 0, 1)",
+    underline: hotDogPalette.red,
+  },
+  content: {
+    background: hotDogPalette.yellow,
+    filter: hotDogPalette.red,
+  },
+  homepageCard: {
+    fontColor: hotDogPalette.yellow,
+    background: hotDogPalette.red,
+    border: " rgba(0, 0, 0, 1)",
+    episodeLineLeft: hotDogPalette.yellow,
+    episodeLineRight: hotDogPalette.olive,
+    ProgressLineLeft: hotDogPalette.yellow,
+    ProgressLineRight: hotDogPalette.olive,
+  },
+  sidebar: {
+    background: hotDogPalette.yellow,
+    search: hotDogPalette.yellow,
+  },
+  animeCard: {
+    background: hotDogPalette.red,
+    fontColor: hotDogPalette.yellow,
+    border: "1px solid rgba(200, 200, 200, 1)",
+  },
+  scrollbar: {
+    /* background: "rgb(40, 38, 40)", */
+    background: hotDogPalette.red,
+  },
+  chartCard: {
+    fontColor: hotDogPalette.yellow,
   },
 };
 

@@ -15,6 +15,10 @@ export const ContentContainerOuter = styled.div`
   @media (max-width: 640px) {
     padding-left: 30px;
   }
+
+  @media (max-width: 1000px) {
+    width: 98%;
+  }
 `;
 
 export const ContentContainerGrid = styled.div`

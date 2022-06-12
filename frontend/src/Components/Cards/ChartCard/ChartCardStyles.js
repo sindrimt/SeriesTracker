@@ -3,10 +3,10 @@ import styled from "styled-components";
 export const ContentRightOuter = styled.div`
   position: absolute;
   margin: 145px 0px 0px 0px;
-  width: 27%;
+  width: 22%;
   height: 89%;
   right: 0;
-  @media (max-width: 1250px) {
+  @media (max-width: 1000px) {
     display: none;
   }
   /*   &:hover {
@@ -34,13 +34,20 @@ export const Chart = styled.div`
   display: flex;
   flex-direction: row;
   flex-grow: 1;
+
   @media (max-width: 1400px) {
     flex-direction: column-reverse;
   }
 
   &:nth-child(even) {
     background-color: ${(props) => props.theme.homepageCard.background};
+    color: ${(props) => props.theme.chartCard.fontColor};
+    //border: 1px solid black;
   }
+
+  /* &:nth-child(odd) {
+    border: 1px solid black;
+  } */
 
   @media (max-width: 1500px) {
     background-color: none;
@@ -68,13 +75,23 @@ export const EntryHeader = styled.div`
   font-weight: 400;
   font-size: 20px;
   padding: 10px;
+
+  @media (max-width: 1400px) {
+    font-size: 18px;
+    padding: 5px;
+  }
 `;
 
 export const EntryTxt = styled.div`
   display: flex;
   flex-grow: 10;
   padding: 10px;
+
   @media (max-width: 1400px) {
+    padding: 5px;
+  }
+
+  @media (max-width: 1000px) {
     display: none;
   }
 `;

@@ -24,7 +24,7 @@ export const NavbarLine = styled.div`
   //left: 5%;
   width: 100vw;
   border-top: ${(props) =>
-    props.showLine ? "1.5px solid rgba(137, 137, 137, 0)" : "1.5px solid rgba(137, 137, 137, 0.15)"};
+    props.showLine ? "1.5px solid rgba(137, 137, 137, 0)" : `1.5px solid ${props.theme.navbar.line}`};
 `;
 
 export const Logo = styled.img`
@@ -59,7 +59,7 @@ export const NavbarProfileOuter = styled.div`
   }
 
   & .signout:hover {
-    border-bottom: 1px solid rgba(166, 63, 203, 1);
+    border-bottom: 1px solid ${(props) => props.theme.navbar.underline};
     cursor: pointer;
   }
 `;
@@ -83,7 +83,7 @@ export const NavbarProfileImgBack = styled.div`
 
   &:hover {
     transition: 0.2s ease-in-out;
-    outline: 2px solid rgba(166, 63, 203, 1);
+    outline: 2px solid ${(props) => props.theme.navbar.underline};
     border-radius: 50%;
     cursor: pointer;
   }
@@ -92,7 +92,7 @@ export const NavbarProfileImgBack = styled.div`
 export const NavbarLinksOuter = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 250px;
+  //width: 280px;
   font-weight: 300;
   font-size: 18px;
   white-space: nowrap;
@@ -106,13 +106,72 @@ export const NavbarLinksOuter = styled.div`
     display: none;
   }
 
-  div:hover {
-    border-bottom: 1px solid rgba(166, 63, 203, 1);
+  .findfriends:hover {
+    border-bottom: 1px solid ${(props) => props.theme.navbar.underline};
     cursor: pointer;
+  }
+
+  .findfriends {
+    padding: 0 10px 0 10px;
+  }
+
+  .findsSeries:hover {
+    border-bottom: 1px solid ${(props) => props.theme.navbar.underline};
+    cursor: pointer;
+  }
+
+  .showmore {
+    position: relative;
+    transform: rotate(-90deg);
+    bottom: -2px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .showless {
+    position: relative;
+    transform: rotate(90deg);
+    bottom: -2px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;
 
 export const ThemeIcon = styled.div`
-  &:hover {
+  margin-right: 3px;
+
+  .themeIcon {
+    &:hover {
+      border-bottom: 1px solid ${(props) => props.theme.navbar.underline};
+      cursor: pointer;
+    }
+  }
+`;
+
+export const ShowMore = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px 0 10px;
+  position: relative;
+  gap: 10px;
+  bottom: 2px;
+
+  .icon {
+    border-bottom: 1px solid rgba(166, 63, 203, 0);
+    &:hover {
+      cursor: pointer;
+      border-bottom: 1px solid ${(props) => props.theme.navbar.underline};
+    }
+  }
+
+  .expandIcon {
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;

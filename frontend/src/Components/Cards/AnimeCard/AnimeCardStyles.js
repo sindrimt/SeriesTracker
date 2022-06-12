@@ -4,10 +4,11 @@ export const AnimeCardOuter = styled.div`
   display: grid;
   grid-template-columns: 5fr 3fr 2fr;
   padding: 5px;
-  border: 1px solid rgba(200, 200, 200, 0.2);
+  border: ${(props) => props.theme.animeCard.border};
   background-color: ${(props) => props.theme.animeCard.background};
   border-radius: 5px;
   transition: 0.1s ease;
+  color: ${(props) => props.theme.animeCard.fontColor};
 
   &:hover {
     cursor: pointer;

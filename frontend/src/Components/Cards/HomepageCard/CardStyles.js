@@ -8,8 +8,9 @@ export const SeriesCardOuter = styled.div`
   background-color: #fcfcfc;
   transition: 0.1s ease;
   border-radius: 3px;
+  color: ${(props) => props.theme.homepageCard.fontColor};
   background-color: ${(props) => props.theme.homepageCard.background};
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1.5px solid ${(props) => props.theme.homepageCard.border};
 
   &:hover {
     //background-color: rgba(166, 63, 203, 0.1);
@@ -26,7 +27,7 @@ export const SeriesCardInner = styled.div`
 `;
 
 export const SeriesCardImage = styled.img`
-  width: 300px;
+  width: 150px;
   height: 100%;
   object-fit: cover;
   border-radius: 2px;
@@ -65,7 +66,7 @@ export const EpisodeLineGray = styled.div`
   position: relative;
   width: 100%;
   height: 2px;
-  background-color: rgba(201, 201, 201, 0.8);
+  background-color: ${(props) => props.theme.homepageCard.episodeLineRight};
   border-radius: 5px;
 `;
 
@@ -73,7 +74,7 @@ export const EpisodeLineProgress = styled.div`
   position: relative;
   width: 60%;
   height: 2px;
-  background-color: #a63fcb;
+  background-color: ${(props) => props.theme.homepageCard.episodeLineLeft};
   border-radius: 5px;
   top: -2px;
 `;
@@ -120,6 +121,7 @@ export const ProgressLine = styled.div`
   width: 60%;
   height: 2px;
   background-color: #a63fcb;
+  background-color: ${(props) => props.theme.homepageCard.ProgressLineLeft};
   bottom: 8px;
   border-radius: 999px;
   z-index: 999;
@@ -128,7 +130,7 @@ export const ProgressLine = styled.div`
   &:after {
     content: "";
     position: absolute;
-    background-color: #a63fcb;
+    background-color: ${(props) => props.theme.homepageCard.ProgressLineLeft};
     width: 10px;
     height: 10px;
     right: 0px;
@@ -143,6 +145,7 @@ export const ProgressLineGray = styled.div`
   width: 89%;
   height: 2px;
   background-color: rgba(201, 201, 201, 0.8);
+  background-color: ${(props) => props.theme.homepageCard.ProgressLineRight};
   bottom: 10px;
   border-radius: 999px;
   margin-left: 11%;
