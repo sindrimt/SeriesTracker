@@ -89,6 +89,7 @@ const AnimeCard = ({ title, episodes, image }) => {
     })
       .then((res) => res.text())
       .then((resBody) => {
+        setOpen(false);
         console.log(resBody);
       });
   };

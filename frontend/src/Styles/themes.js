@@ -19,7 +19,18 @@ const hotDogPalette = {
   olive: "rgb(128,128,0)",
 };
 
+const spillPalette = {
+  lightblue: "rgb(51, 102, 153)",
+  lightestblue: "rgb(126, 167, 228)",
+  blue: "rgb(53, 106, 157)",
+  yellow: "rgb(255, 204, 0)",
+  black: "rgb(0, 0, 0)",
+  grey: "rgb(31, 29, 31)",
+};
+
 export const lightTheme = {
+  currentTheme: "lightTheme",
+
   black: "",
   lightBlack: "",
   grey: "",
@@ -29,7 +40,7 @@ export const lightTheme = {
   white: "",
 
   body: {
-    background: "white",
+    background: "rgb(247, 247, 247)",
   },
   navbar: {
     fontColor: "",
@@ -50,7 +61,7 @@ export const lightTheme = {
     ProgressLineRight: "rgba(201, 201, 201, 0.8)",
   },
   sidebar: {
-    background: "",
+    background: "rgb(240, 240, 240)",
   },
   animeCard: {
     fontColor: "",
@@ -65,6 +76,8 @@ export const lightTheme = {
   },
 };
 export const darkTheme = {
+  currentTheme: "darkTheme",
+
   black: "#0a0a0aff",
   lightBlack: "#1a181aff",
   grey: "rgb(31, 29, 31)",
@@ -155,11 +168,69 @@ export const hotDogTheme = {
   },
 };
 
+export const spillTheme = {
+  currentTheme: "spillTheme",
+
+  black: "rgb(0, 0, 0)",
+  grey: "rgb(31, 29, 31)",
+  lightblue: "rgb(51, 102, 153)",
+  blue: "rgb(53, 106, 157)",
+  yellow: "rgb(255, 204, 0)",
+
+  body: {
+    background: spillPalette.lightblue,
+  },
+  navbar: {
+    fontColor: spillPalette.black,
+    fontColor2: "white",
+    line: "rgba(0, 0, 0, 1)",
+    underline: spillPalette.black,
+  },
+  content: {
+    background: spillPalette.blue,
+    filter: spillPalette.yellow,
+  },
+  homepageCard: {
+    fontColor: spillPalette.black,
+    background: spillPalette.yellow,
+    border: " rgba(0, 0, 0, 1)",
+    episodeLineLeft: spillPalette.blue,
+    episodeLineRight: spillPalette.lightestblue,
+    ProgressLineLeft: spillPalette.blue,
+    ProgressLineRight: spillPalette.lightestblue,
+  },
+  sidebar: {
+    background: spillPalette.yellow,
+    search: spillPalette.yellow,
+  },
+  animeCard: {
+    background: spillPalette.yellow,
+    fontColor: spillPalette.black,
+    border: "1px solid rgba(200, 200, 200, 1)",
+  },
+  scrollbar: {
+    /* background: "rgb(40, 38, 40)", */
+    background: spillPalette.lightblue,
+  },
+  chartCard: {
+    fontColor: "black",
+    fontColor2: "white",
+  },
+};
+
 export const GlobalStyles = createGlobalStyle`
     html {
         background-color: ${(props) => props.theme.body.background};
         color: ${(props) => props.theme.navbar.fontColor};
         
+       // background: repeating-linear-gradient(45deg,#606dbc,#606dbc 10px,#465298 10px,#465298 20px);
+
+      background: ${(props) =>
+        props.theme.currentTheme === "spillTheme" &&
+        `repeating-linear-gradient(-65deg,${props.theme.blue} 0 30px,${props.theme.lightblue} 25px 60px)`};
+    }
+    /* "repeating-linear-gradient(296deg,#606dbc,#606dbc 10px,#465298 10px,#465298 20px)" */
+
     ::-webkit-scrollbar {
         width: 16px;
     }
@@ -177,5 +248,5 @@ export const GlobalStyles = createGlobalStyle`
         background-clip: padding-box;
         border-radius: 9999px;
     }
-    }
+    
 `;

@@ -67,6 +67,7 @@ export const EpisodeLineGray = styled.div`
   width: 100%;
   height: 2px;
   background-color: ${(props) => props.theme.homepageCard.episodeLineRight};
+
   border-radius: 5px;
 `;
 

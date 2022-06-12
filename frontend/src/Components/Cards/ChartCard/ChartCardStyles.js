@@ -5,7 +5,7 @@ export const ContentRightOuter = styled.div`
   margin: 145px 0px 0px 0px;
   width: 22%;
   height: 89%;
-  right: 0;
+  right: 30px;
   @media (max-width: 1000px) {
     display: none;
   }
@@ -42,6 +42,10 @@ export const Chart = styled.div`
   &:nth-child(even) {
     background-color: ${(props) => props.theme.homepageCard.background};
     color: ${(props) => props.theme.chartCard.fontColor};
+    //border: 1px solid black;
+  }
+  &:nth-child(odd) {
+    color: ${(props) => props.theme.currentTheme === "spillTheme" && props.theme.chartCard.fontColor2};
     //border: 1px solid black;
   }
 

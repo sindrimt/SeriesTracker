@@ -19,7 +19,7 @@ import { loginUser, logoutUser } from "./redux/features/user/userSlice";
 
 import styled, { ThemeProvider } from "styled-components";
 
-import { lightTheme, darkTheme, hotDogTheme, GlobalStyles } from "./Styles/themes.js";
+import { lightTheme, darkTheme, hotDogTheme, spillTheme, GlobalStyles } from "./Styles/themes.js";
 
 import axios from "axios";
 
@@ -58,6 +58,7 @@ const App = () => {
     if (colorTheme === "light") return lightTheme;
     else if (colorTheme === "dark") return darkTheme;
     else if (colorTheme === "hotDog") return hotDogTheme;
+    else if (colorTheme === "spill") return spillTheme;
   };
 
   return (

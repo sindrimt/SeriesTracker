@@ -48,6 +48,7 @@ export const PickUp = styled.div`
   font-weight: 300;
   white-space: nowrap;
   align-items: center;
+  color: ${(props) => props.theme.navbar.fontColor2};
 `;
 
 export const Filter = styled.img`

@@ -6,8 +6,20 @@ export const CreatePostOuter = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  height: 100%;
-  margin-top: 180px;
+  height: 500vh;
+  padding-top: 180px;
+
+  background: ${(props) =>
+    props.theme.currentTheme === "spillTheme" &&
+    `repeating-linear-gradient(-65deg,${props.theme.blue} 0 30px,${props.theme.lightblue} 25px 60px)`};
+
+  @media (max-width: 1100px) {
+    height: 1000vh;
+  }
+
+  @media (min-width: 1600px) {
+    height: 300vh;
+  }
 `;
 
 export const Gridcontainer = styled.div`
@@ -28,7 +40,7 @@ export const SearchOuter = styled.div`
   position: ${(props) => (props.isFixed ? "fixed" : "absolute")};
   width: 400px;
   height: 70px;
-  top: ${(props) => (props.isFixed ? "100px" : "-50px")};
+  top: ${(props) => (props.isFixed ? "100px" : "130px")};
   background-color: ${(props) => (props.isFixed ? props.theme.animeCard.background : "")};
-  z-index: 10;
+  z-index: 10000000000000;
 `;

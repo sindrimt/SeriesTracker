@@ -4,6 +4,7 @@ export const NavbarOuter = styled.div`
   background-color: ${(props) => props.theme.body.background};
   //background-color: ${(props) => (props.showBgColor ? props.theme.body.background : "")};
   transition: 0.2s ease-in-out;
+  color: ${(props) => props.theme.navbar.fontColor2};
   position: fixed;
   z-index: 100000000;
   display: flex;
@@ -144,11 +145,8 @@ export const NavbarLinksOuter = styled.div`
 export const ThemeIcon = styled.div`
   margin-right: 3px;
 
-  .themeIcon {
-    &:hover {
-      border-bottom: 1px solid ${(props) => props.theme.navbar.underline};
-      cursor: pointer;
-    }
+  &:hover {
+    cursor: pointer;
   }
 `;
 
@@ -173,5 +171,14 @@ export const ShowMore = styled.div`
     &:hover {
       cursor: pointer;
     }
+  }
+`;
+
+export const Spill = styled.img`
+  width: 25px;
+  border-bottom: 1px solid rgba(166, 63, 203, 0);
+
+  &:hover {
+    cursor: pointer;
   }
 `;

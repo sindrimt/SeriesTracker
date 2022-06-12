@@ -11,11 +11,13 @@ import {
   NavbarProfileImgBack,
   ThemeIcon,
   ShowMore,
+  Spill,
 } from "./NavbarStyles";
 
 import SeriesTrackerLogoLM from "../../Assets/Images/logo_lightmode.png";
 import SeriesTrackerLogoDM from "../../Assets/Images/logo_darkmode.png";
 import SeriesTrackerLogoHD from "../../Assets/Images/logo_hotdog.png";
+import SpillLogo from "../../Assets/Images/123spill.png";
 
 import { logOut } from "../../firebase.js";
 import { useNavigate } from "react-router-dom";
@@ -36,7 +38,6 @@ const Navbar = () => {
   const [showMore, setShowMore] = useState(false);
 
   const scrollPosition = useScroll();
-
   const globalUser = useSelector((state) => state.user.user);
   const colorTheme = useSelector((state) => state.theme.theme);
 
@@ -101,13 +102,10 @@ const Navbar = () => {
           <div className="findsSeries">Find Series</div>
           <div className="findfriends">Find Friends</div>
           <ThemeIcon>
-            {colorTheme === "light" && (
-              <MdOutlineLightMode onClick={() => handleColorTheme("light")} size={25} className="themeIcon" />
-            )}
-            {colorTheme === "dark" && (
-              <MdOutlineDarkMode onClick={() => handleColorTheme("dark")} size={25} className="themeIcon" />
-            )}
-            {colorTheme === "hotDog" && <GiHotDog size={25} onClick={() => handleColorTheme("hotDog")} />}
+            {colorTheme === "light" && <MdOutlineLightMode onClick={() => setShowMore(!showMore)} size={25} />}
+            {colorTheme === "spill" && <Spill src={SpillLogo} onClick={() => setShowMore(!showMore)} />}
+            {colorTheme === "dark" && <MdOutlineDarkMode onClick={() => setShowMore(!showMore)} size={25} />}
+            {colorTheme === "hotDog" && <GiHotDog size={25} onClick={() => setShowMore(!showMore)} />}
           </ThemeIcon>
           {showMore && (
             <ShowMore>
@@ -115,18 +113,28 @@ const Navbar = () => {
                 <>
                   <MdOutlineDarkMode size={25} onClick={() => handleColorTheme("dark")} className="icon" />
                   <GiHotDog size={25} onClick={() => handleColorTheme("hotDog")} className="icon" />
+                  <Spill src={SpillLogo} onClick={() => handleColorTheme("spill")} className="icon" />
                 </>
               )}
               {colorTheme === "dark" && (
                 <>
                   <MdOutlineLightMode onClick={() => handleColorTheme("light")} size={25} className="icon" />
                   <GiHotDog size={25} onClick={() => handleColorTheme("hotDog")} className="icon" />
+                  <Spill src={SpillLogo} onClick={() => handleColorTheme("spill")} className="icon" />
                 </>
               )}
               {colorTheme === "hotDog" && (
                 <>
                   <MdOutlineDarkMode size={25} onClick={() => handleColorTheme("dark")} className="icon" />
                   <MdOutlineLightMode onClick={() => handleColorTheme("light")} size={25} className="icon" />
+                  <Spill src={SpillLogo} onClick={() => handleColorTheme("spill")} className="icon" />
+                </>
+              )}
+              {colorTheme === "spill" && (
+                <>
+                  <MdOutlineDarkMode size={25} onClick={() => handleColorTheme("dark")} className="icon" />
+                  <MdOutlineLightMode onClick={() => handleColorTheme("light")} size={25} className="icon" />
+                  <GiHotDog size={25} onClick={() => handleColorTheme("hotDog")} className="icon" />
                 </>
               )}
             </ShowMore>
