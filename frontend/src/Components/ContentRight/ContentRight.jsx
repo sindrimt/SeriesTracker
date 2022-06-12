@@ -24,10 +24,27 @@ const ContentRight = ({ arrayLength }) => {
     });
   };
 
+  const shuffle = (array) => {
+    let currentIndex = array.length,
+      randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+    }
+    return array;
+  };
+
   useEffect(() => {
     fetchTopAnimes().then((res) => {
       console.log(res);
-      setTopAnimes(res[0].top.slice(0, res[1] + 2));
+      let shuffledArray = shuffle(res[0].top);
+      setTopAnimes(shuffledArray.slice(0, res[1] + 2));
     });
   }, [arrayLength]);
 
