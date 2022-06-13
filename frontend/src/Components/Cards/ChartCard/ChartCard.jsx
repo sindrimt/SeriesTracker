@@ -1,18 +1,13 @@
 import React from "react";
 
-import {
-  ContentRightOuter,
-  ChartsContainer,
-  Chart,
-  EntryImg,
-  EntryInfo,
-  EntryHeader,
-  EntryTxt,
-} from "./ChartCardStyles";
+import { Chart, EntryImg, EntryInfo, EntryHeader, EntryTxt, Counter, CounterOuter } from "./ChartCardStyles";
 
 const ChartCard = ({ image, title, rating }) => {
   return (
     <Chart>
+      <CounterOuter>
+        <Counter> 1 </Counter>
+      </CounterOuter>
       <EntryImg src={image} alt="Entry Image" />
       <EntryInfo>
         <EntryHeader>{title}</EntryHeader>
