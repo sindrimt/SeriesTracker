@@ -31,6 +31,8 @@ const AnimeCard = ({ title, episodes, image }) => {
   const [formImage, setFormImage] = useState({});
   const [rating, setRating] = useState(1);
 
+  //TODO Add episodeCount to useState så bruker kan bestemme hvor mange episode det er i serien.
+
   const currentUser = useAuth();
 
   const handleClose = () => {
