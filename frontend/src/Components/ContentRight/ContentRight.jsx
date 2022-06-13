@@ -4,9 +4,16 @@ import ChartCard from "../Cards/ChartCard/ChartCard";
 
 import axios from "axios";
 
-import { ContentRightOuter, ChartsContainer } from "../Cards/ChartCard/ChartCardStyles";
-
-import Loading from "../../Pages/LoadingPage/Loading";
+import {
+  ContentRightOuter,
+  ChartsContainer,
+  TopAnimeImage,
+  ImageHeader,
+  ImageInformation,
+  ImageNumber,
+  ImageRating,
+} from "../ContentRight/ContentRightStyles";
+import { TopAnimeOuter } from "../ContentRight/ContentRightStyles";
 
 const ContentRight = ({ arrayLength }) => {
   const [topAnimes, setTopAnimes] = useState([]);
@@ -48,10 +55,22 @@ const ContentRight = ({ arrayLength }) => {
     });
   }, [arrayLength]);
 
+  //console.log(topAnimes[0]?.image_url);
+
   return (
     <>
       <ContentRightOuter>
         <ChartsContainer>
+          <TopAnimeOuter>
+            <TopAnimeImage
+              /* src={topAnimes[0]?.image_url} */ src="https://cdn.bagogames.com/wp-content/uploads/2021/03/31065408/one-piece-wano-arc.jpeg?strip=all&lossy=1&ssl=1"
+            />
+            <ImageInformation>
+              <ImageNumber>1</ImageNumber>
+              <ImageHeader>One Piece</ImageHeader>
+              <ImageRating>9.8</ImageRating>
+            </ImageInformation>
+          </TopAnimeOuter>
           {topAnimes?.map((anime, index) => {
             return <ChartCard key={index} image={anime.image_url} title={anime.title} rating={anime.score} />;
           })}

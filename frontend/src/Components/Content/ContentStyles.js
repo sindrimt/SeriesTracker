@@ -16,7 +16,7 @@ export const ContentContainerOuter = styled.div`
     padding-left: 30px;
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1060px) {
     width: 98%;
   }
 `;
