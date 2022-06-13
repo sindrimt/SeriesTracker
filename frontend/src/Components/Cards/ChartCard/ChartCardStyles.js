@@ -1,99 +1,62 @@
 import styled from "styled-components";
 
-export const ContentRightOuter = styled.div`
-  position: absolute;
-  margin: 145px 0px 0px 0px;
-  width: 22%;
-  height: 89%;
-  right: 30px;
-  @media (max-width: 1000px) {
-    display: none;
-  }
-  /*   &:hover {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-
-    overflow-x: none;
-    overflow-y: overlay;
-
-    ::-webkit-scrollbar {
-      display: none;
-    }
-  } */
+export const Chart = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 4fr;
+  grid-column-gap: 5pxx;
+  padding: 7px;
+  align-items: center;
 `;
 
-export const ChartsContainer = styled.div`
-  width: 100%;
-  height: 100%;
+export const Counter = styled.div`
   position: relative;
   display: flex;
-  flex-direction: column;
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(130, 130, 130, 1);
+  color: rgba(130, 130, 130, 1);
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
 `;
 
-export const Chart = styled.div`
+export const CounterOuter = styled.div`
   display: flex;
-  flex-direction: row;
-  flex-grow: 1;
-
-  @media (max-width: 1400px) {
-    flex-direction: column-reverse;
-  }
-
-  &:nth-child(even) {
-    background-color: ${(props) => props.theme.homepageCard.background};
-    color: ${(props) => props.theme.chartCard.fontColor};
-    //border: 1px solid black;
-  }
-  &:nth-child(odd) {
-    color: ${(props) => props.theme.currentTheme === "spillTheme" && props.theme.chartCard.fontColor2};
-    //border: 1px solid black;
-  }
-
-  /* &:nth-child(odd) {
-    border: 1px solid black;
-  } */
-
-  @media (max-width: 1500px) {
-    background-color: none;
-  }
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 `;
 
 export const EntryImg = styled.img`
-  display: flex;
-  flex-grow: 1;
-  @media (max-width: 1700px) {
-    width: 50%;
-  }
+  width: 110%;
+  height: 100px;
 `;
 
 export const EntryInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  flex-grow: 5;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  margin-left: 12px;
 `;
 
 export const EntryHeader = styled.div`
   display: flex;
-  flex-grow: 1;
   font-weight: 400;
-  font-size: 20px;
-  padding: 10px;
+  font-size: 18px;
+  color: grey;
+  padding: 5px;
 
   @media (max-width: 1400px) {
     font-size: 18px;
-    padding: 5px;
   }
 `;
 
 export const EntryTxt = styled.div`
   display: flex;
   flex-grow: 10;
-  padding: 10px;
-
-  @media (max-width: 1400px) {
-    padding: 5px;
-  }
+  padding: 5px;
+  color: lightgrey;
 
   @media (max-width: 1000px) {
     display: none;
