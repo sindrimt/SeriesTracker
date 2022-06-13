@@ -2,75 +2,90 @@ import styled from "styled-components";
 
 export const ContentRightOuter = styled.div`
   position: absolute;
-  margin: 140px 0px 0px 0px;
+  margin: 110px 0px 0px 0px;
   width: 27%;
-  height: 89%;
-  right: 0;
-  @media (max-width: 1250px) {
+  height: 500px;
+  right: 1.3%;
+
+  @media (max-width: 1060px) {
     display: none;
   }
-  /*   &:hover {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-
-    overflow-x: none;
-    overflow-y: overlay;
-
-    ::-webkit-scrollbar {
-      display: none;
-    }
-  } */
 `;
 
 export const ChartsContainer = styled.div`
   width: 100%;
-  height: 100%;
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 200px repeat(minmax(100px, 100px));
+  background-color: #1c1c1c;
 `;
-
-export const Chart = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-grow: 1;
-  @media (max-width: 1400px) {
-    flex-direction: column-reverse;
-  }
-
-  @media (max-width: 1500px) {
-    background-color: none;
-  }
-`;
-
-export const EntryImg = styled.img`
-  display: flex;
-  flex-grow: 1;
-  @media (max-width: 1700px) {
-    width: 50%;
-  }
-`;
-
-export const EntryInfo = styled.div`
-  display: flex;
-  flex-direction: column;
+export const TopAnimeOuter = styled.div`
   width: 100%;
-  flex-grow: 5;
-`;
-
-export const EntryHeader = styled.div`
-  display: flex;
-  flex-grow: 1;
-  font-weight: 400;
-  font-size: 20px;
-  padding: 10px;
-`;
-
-export const EntryTxt = styled.div`
-  display: flex;
-  flex-grow: 10;
-  padding: 10px;
-  @media (max-width: 1400px) {
-    display: none;
+  height: 200px;
+  &:after {
+    box-shadow: inset 0px -25px 50px 5px black;
+    content: "";
+    display: block;
+    height: 200.2px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
   }
+`;
+
+export const TopAnimeImage = styled.img`
+  filter: brightness(80%);
+  position: relative;
+  padding: 0px 0 0px 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+export const ImageInformation = styled.div`
+  display: flex;
+  z-index: 9999999;
+  position: relative;
+  width: 55%;
+  height: 50px;
+  bottom: 64px;
+  left: 12px;
+`;
+
+export const ImageHeader = styled.div`
+  position: relative;
+  font-size: 20px;
+  color: white;
+  font-weight: 400;
+  left: 10%;
+  letter-spacing: 0.15rem;
+  top: 3px;
+`;
+
+export const ImageRating = styled.div`
+  position: absolute;
+  font-size: 14px;
+  color: white;
+  font-weight: 300;
+  left: 64px;
+  letter-spacing: 0.15rem;
+  top: 30px;
+`;
+
+export const ImageNumber = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 50%;
+  left: 13%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: white;
+
+  color: black;
+  font-size: 22px;
+  font-weight: 600;
 `;
