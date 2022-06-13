@@ -22,6 +22,7 @@ export const ChartsContainer = styled.div`
 export const TopAnimeOuter = styled.div`
   width: 100%;
   height: 200px;
+  transition: 0.2s ease-in-out;
   &:after {
     box-shadow: inset 0px -25px 50px 5px black;
     content: "";
@@ -30,6 +31,19 @@ export const TopAnimeOuter = styled.div`
     position: absolute;
     top: 0px;
     width: 100%;
+  }
+
+  &:hover {
+    cursor: pointer;
+    &:after {
+      box-shadow: inset 0px -25px 60px 5px black;
+      content: "";
+      display: block;
+      height: 200.2px;
+      position: absolute;
+      top: 0px;
+      width: 100%;
+    }
   }
 `;
 
@@ -49,7 +63,7 @@ export const ImageInformation = styled.div`
   width: 55%;
   height: 50px;
   bottom: 64px;
-  left: 12px;
+  left: 8px;
 `;
 
 export const ImageHeader = styled.div`
@@ -67,7 +81,7 @@ export const ImageRating = styled.div`
   font-size: 14px;
   color: white;
   font-weight: 300;
-  left: 64px;
+  left: 62px;
   letter-spacing: 0.15rem;
   top: 30px;
 `;
