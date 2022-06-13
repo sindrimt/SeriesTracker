@@ -22,8 +22,8 @@ export const NavbarLine = styled.div`
   transition: 0.3s ease;
   top: 110px;
   border-radius: 5px;
-  //left: 5%;
-  width: 100vw;
+  //left: 3%;
+  width: 100%;
   border-top: ${(props) =>
     props.showLine ? "1.5px solid rgba(137, 137, 137, 0)" : `1.5px solid ${props.theme.navbar.line}`};
 `;
