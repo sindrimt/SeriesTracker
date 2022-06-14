@@ -72,7 +72,9 @@ const ContentRight = ({ arrayLength }) => {
             </ImageInformation>
           </TopAnimeOuter>
           {topAnimes?.map((anime, index) => {
-            return <ChartCard key={index} image={anime.image_url} title={anime.title} rating={anime.score} />;
+            return (
+              <ChartCard key={index} image={anime.image_url} title={anime.title} rating={anime.score} number={index} />
+            );
           })}
         </ChartsContainer>
       </ContentRightOuter>
