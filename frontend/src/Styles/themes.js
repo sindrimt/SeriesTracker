@@ -28,6 +28,16 @@ const spillPalette = {
   grey: "rgb(31, 29, 31)",
 };
 
+const lightPalette = {
+  black: "",
+  lightBlack: "",
+  grey: "rgb(230, 230, 230)",
+  lightgrey: "rgba(166, 63, 203, 0.1)",
+  pink: "",
+  olive: "",
+  white: "",
+};
+
 export const lightTheme = {
   currentTheme: "lightTheme",
 
@@ -73,6 +83,13 @@ export const lightTheme = {
   },
   chartCard: {
     fontColor: "black",
+    entryHeader: "black",
+    entryText: "rgb(80, 80, 80)",
+    counter: "rgb(80, 80, 80)",
+  },
+  contentRight: {
+    backgroundColor: lightPalette.grey,
+    accentColor: lightPalette.lightgrey,
   },
 };
 export const darkTheme = {
@@ -121,6 +138,11 @@ export const darkTheme = {
   },
   chartCard: {
     fontColor: darkModePalette.white,
+    counter: "rgba(130, 130, 130, 1)",
+  },
+  contentRight: {
+    backgroundColor: "#1c1c1c",
+    accentColor: "#1f1f1f",
   },
 };
 
@@ -165,6 +187,13 @@ export const hotDogTheme = {
   },
   chartCard: {
     fontColor: hotDogPalette.yellow,
+    counter: hotDogPalette.yellow,
+    entryText: "rgb(255, 213, 26)",
+    entryHeader: hotDogPalette.yellow,
+  },
+  contentRight: {
+    backgroundColor: hotDogPalette.red,
+    accentColor: "rgb(229, 22, 0)",
   },
 };
 
@@ -184,7 +213,7 @@ export const spillTheme = {
     fontColor: spillPalette.black,
     fontColor2: "white",
     line: "rgba(0, 0, 0, 1)",
-    underline: spillPalette.black,
+    underline: spillPalette.yellow,
   },
   content: {
     background: spillPalette.blue,
@@ -215,6 +244,11 @@ export const spillTheme = {
   chartCard: {
     fontColor: "black",
     fontColor2: "white",
+    counter: "rgba(130, 130, 130, 1)",
+  },
+  contentRight: {
+    backgroundColor: spillPalette.yellow,
+    accentColor: "rgb(255, 213, 26)",
   },
 };
 

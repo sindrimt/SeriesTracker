@@ -17,7 +17,7 @@ export const ChartsContainer = styled.div`
   position: relative;
   display: grid;
   grid-template-rows: 200px repeat(minmax(100px, 100px));
-  background-color: #1c1c1c;
+  background-color: ${(props) => props.theme.contentRight.backgroundColor};
 `;
 export const TopAnimeOuter = styled.div`
   width: 100%;
