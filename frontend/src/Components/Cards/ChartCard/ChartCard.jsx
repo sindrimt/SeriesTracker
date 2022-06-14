@@ -2,11 +2,11 @@ import React from "react";
 
 import { Chart, EntryImg, EntryInfo, EntryHeader, EntryTxt, Counter, CounterOuter } from "./ChartCardStyles";
 
-const ChartCard = ({ image, title, rating }) => {
+const ChartCard = ({ image, title, rating, number }) => {
   return (
     <Chart>
       <CounterOuter>
-        <Counter> 1 </Counter>
+        <Counter> {number + 2} </Counter>
       </CounterOuter>
       <EntryImg src={image} alt="Entry Image" />
       <EntryInfo>
