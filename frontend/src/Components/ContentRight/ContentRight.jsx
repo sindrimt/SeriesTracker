@@ -51,7 +51,8 @@ const ContentRight = ({ arrayLength }) => {
     fetchTopAnimes().then((res) => {
       console.log(res);
       let shuffledArray = shuffle(res[0].top);
-      setTopAnimes(shuffledArray.slice(0, res[1] + 2));
+
+      setTopAnimes(shuffledArray.slice(0, 9));
     });
   }, [arrayLength]);
 

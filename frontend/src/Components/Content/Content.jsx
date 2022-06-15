@@ -45,6 +45,8 @@ const Content = ({ series }) => {
 
   const currentUser = useAuth();
 
+  console.log(series?.length);
+
   return (
     <>
       <ContentContainerOuter>
@@ -67,31 +69,37 @@ const Content = ({ series }) => {
         </PickUp>
         {iconView ? (
           <ContentContainerGridIcons>
-            {series?.map((serie) => {
-              return (
-                <HomepageCard
-                  title={serie?.title}
-                  episodesWatched={serie?.episodesWatched}
-                  episodeCount={serie?.episodeCount}
-                  rating={serie?.rating}
-                  image={serie?.photoUrl}
-                />
-              );
-            })}
+            {series?.length === 0
+              ? "You have no watched series"
+              : series?.map((serie) => (
+                  <>
+                    <HomepageCard
+                      title={serie?.title}
+                      episodesWatched={serie?.episodesWatched}
+                      episodeCount={serie?.episodeCount}
+                      rating={serie?.rating}
+                      image={serie?.photoUrl}
+                      watchTime={serie?.watchTime}
+                    />
+                  </>
+                ))}
           </ContentContainerGridIcons>
         ) : (
           <ContentContainerGrid>
-            {series?.map((serie) => {
-              return (
-                <HomepageCard
-                  title={serie?.title}
-                  episodesWatched={serie?.episodesWatched}
-                  episodeCount={serie?.episodeCount}
-                  rating={serie?.rating}
-                  image={serie?.photoUrl}
-                />
-              );
-            })}
+            {series?.length === 0
+              ? "You have no watched series"
+              : series?.map((serie) => (
+                  <>
+                    <HomepageCard
+                      title={serie?.title}
+                      episodesWatched={serie?.episodesWatched}
+                      episodeCount={serie?.episodeCount}
+                      rating={serie?.rating}
+                      image={serie?.photoUrl}
+                      watchTime={serie?.watchTime}
+                    />
+                  </>
+                ))}
           </ContentContainerGrid>
         )}
       </ContentContainerOuter>
