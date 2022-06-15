@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const SeriesCardOuter = styled.div`
   width: 100%;
-  padding: 10px 10px 22px 10px;
-  height: 150px;
+  padding: ${(props) => (props.showProgress ? " 10px 10px 22px 10px" : " 10px 10px 12px 10px")};
+  height: 130px;
   box-shadow: 0px 4px 4px rgba(100, 100, 100, 0.1);
   background-color: #fcfcfc;
   transition: 0.1s ease;
@@ -73,7 +73,7 @@ export const EpisodeLineGray = styled.div`
 
 export const EpisodeLineProgress = styled.div`
   position: relative;
-  width: 60%;
+  width: ${(props) => props.progress}%;
   height: 2px;
   background-color: ${(props) => props.theme.homepageCard.episodeLineLeft};
   border-radius: 5px;
@@ -111,7 +111,7 @@ export const CardRatingCenter = styled.div`
 `;
 
 export const CardDescription = styled.div`
-  margin-top: 10px;
+  margin-top: 5px;
   font-size: 16px;
   display: flex;
   left: 0;
@@ -119,7 +119,7 @@ export const CardDescription = styled.div`
 
 export const ProgressLine = styled.div`
   position: relative;
-  width: 60%;
+  width: ${(props) => props.progress - 11}%;
   height: 2px;
   background-color: #a63fcb;
   background-color: ${(props) => props.theme.homepageCard.ProgressLineLeft};

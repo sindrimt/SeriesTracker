@@ -24,10 +24,16 @@ import {
 import loffi from "../../../Assets/Images/loffi.png";
 import star from "../../../Assets/Content/Star.svg";
 
-const Card = ({ title, episodesWatched, episodeCount, description, rating, image }) => {
+const Card = ({ title, episodesWatched, episodeCount, description, rating, image, watchTime }) => {
+  const totalSeconds = 22 * 60;
+  const totalSecondsWatched = parseInt(watchTime?.split(":")[0]) * 60 + parseInt(watchTime?.split(":")[1]);
+  const ratio = (totalSecondsWatched / totalSeconds) * 100;
+
+  const episodeRatio = (episodesWatched / episodeCount) * 100;
+
   return (
     <>
-      <SeriesCardOuter>
+      <SeriesCardOuter showProgress={watchTime}>
         <SeriesCardInner>
           <SeriesCardImage src={image?.includes("upload") ? `api/${image}` : image} />
           <CardInformationContainer>
@@ -37,7 +43,7 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
                 Ep {episodesWatched} / {episodeCount}
               </EpisodeCount>
               <EpisodeLineGray />
-              <EpisodeLineProgress />
+              <EpisodeLineProgress progress={episodeRatio} />
             </EpisodeContainer>
             <CardDescription>Wealth, fame, power. Gold Roger obtained ever ...</CardDescription>
           </CardInformationContainer>
@@ -50,9 +56,17 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
           </CardRatingContainer>
         </SeriesCardInner>
         <WatchTimeContainer />
-        <ProgressLineText>07:33 / 22:23</ProgressLineText>
-        <ProgressLine />
-        <ProgressLineGray />
+        {watchTime && (
+          <>
+            <ProgressLineText>{watchTime} / 22:00</ProgressLineText>
+          </>
+        )}
+        {watchTime && (
+          <>
+            <ProgressLine progress={ratio} />
+            <ProgressLineGray />
+          </>
+        )}
       </SeriesCardOuter>
     </>
   );
