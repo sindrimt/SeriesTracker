@@ -46,9 +46,6 @@ const Sidebar = () => {
           <form className="searchForm" onSubmit={(e) => e.preventDefault()}>
             <label htmlFor="searchSeries">Search series</label>
             <input id="searchSeries" type="text" role="searchbox" placeholder="Search" />
-            <SearchIcon>
-              <AiOutlineSearch color="rgba(0, 0, 0, 0.8)" />
-            </SearchIcon>
           </form>
         </SearchOuter>
         <CategoriesOuter>
