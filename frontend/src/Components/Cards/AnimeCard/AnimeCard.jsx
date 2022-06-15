@@ -23,13 +23,17 @@ import FormField from "../../FormField/FormField";
 import { useAuth } from "../../../firebase";
 
 const AnimeCard = ({ title, episodes, image }) => {
+  const episodeLength = "22:00";
+
   const [open, setOpen] = useState(false);
   const [animeTitle, setAnimeTitle] = useState(title);
-  const [episodesWatched, setEpisodesWatched] = useState("");
+  const [episodesWatched, setEpisodesWatched] = useState(1);
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState();
   const [formImage, setFormImage] = useState({});
   const [rating, setRating] = useState(1);
+  const [watchTime, setWatchTime] = useState("");
+  const [totalEpisodes, setTotalEpisodes] = useState(episodes);
 
   //TODO Add episodeCount to useState så bruker kan bestemme hvor mange episode det er i serien.
 
@@ -78,10 +82,11 @@ const AnimeCard = ({ title, episodes, image }) => {
     formdata.append("userId", currentUser?.uid);
     formdata.append("title", animeTitle);
     formdata.append("username", currentUser?.email.split("@")[0]);
-    formdata.append("episodesWatched", episodesWatched);
-    formdata.append("episodeCount", episodes);
+    formdata.append("episodesWatched", !episodesWatched ? 1 : episodesWatched);
+    formdata.append("episodeCount", !totalEpisodes ? episodes : totalEpisodes /* episodes */);
     formdata.append("rating", rating);
     formdata.append("image", selectedFile ? selectedFile : image);
+    formdata.append("watchTime", watchTime);
 
     // The reason why this ancient technology is used is because multer (image upload)
     //requires form data format or something cringe
@@ -108,12 +113,14 @@ const AnimeCard = ({ title, episodes, image }) => {
           <AnimeCardOuter hover={false}>
             <LeftOuter>
               <AnimeImage src={preview ? preview : image} alt="Image" />
-              <Title>{animeTitle === "" ? title : animeTitle}</Title>
+              <Title>{animeTitle === "" ? title : animeTitle.slice(0, 40)}</Title>
             </LeftOuter>
             <MiddleOuter></MiddleOuter>
             <RightOuter>
               <EpisodeCount style={{ color: episodesWatched > episodes ? "red" : "" }}>
-                {episodesWatched === "" ? episodes : episodesWatched + " / " + episodes}
+                {episodesWatched === ""
+                  ? 1 + " / " + (totalEpisodes === "" ? episodes : totalEpisodes)
+                  : episodesWatched + " / " + (totalEpisodes === "" ? episodes : totalEpisodes)}
               </EpisodeCount>
               <CounterButton src={plus} alt="Plus" />
             </RightOuter>
@@ -126,6 +133,8 @@ const AnimeCard = ({ title, episodes, image }) => {
                 placeholder="episodes watched"
                 change={(e) => setEpisodesWatched(e.target.value)}
               />
+              <FormField type="text" placeholder={episodeLength} change={(e) => setWatchTime(e.target.value)} />
+              <FormField type="text" placeholder={episodes} change={(e) => setTotalEpisodes(e.target.value)} />
               <input type="file" onChange={onSelectFile} />
               {preview && (
                 <span
