@@ -53,7 +53,7 @@ export const CardTitle = styled.div`
 `;
 
 export const EpisodeContainer = styled.div`
-  margin-top: 10px;
+  margin-top: ${(props) => (props.hasWatchTime ? "2px" : "9px")};
   width: 160px;
 `;
 
@@ -84,6 +84,7 @@ export const CardRatingContainer = styled.div`
   position: relative;
   display: flex;
   padding-left: 70px;
+  margin-top: 12px;
   justify-content: center;
   align-items: center;
   width: 20%;
@@ -91,14 +92,14 @@ export const CardRatingContainer = styled.div`
 
 export const CardRatingImg = styled.img`
   display: flex;
-  width: 30px;
+  width: 23px;
 `;
 
 export const CardRatingTxt = styled.div`
   display: flex;
   margin-top: 10px;
   justify-content: center;
-  font-size: 18px;
+  font-size: 16px;
 `;
 
 export const CardRatingCenter = styled.div`
