@@ -133,7 +133,11 @@ const AnimeCard = ({ title, episodes, image }) => {
                 placeholder="episodes watched"
                 change={(e) => setEpisodesWatched(e.target.value)}
               />
-              <FormField type="text" placeholder={episodeLength} change={(e) => setWatchTime(e.target.value)} />
+              <FormField
+                type="text"
+                placeholder={episodeLength + " (Optional)"}
+                change={(e) => setWatchTime(e.target.value)}
+              />
               <FormField type="text" placeholder={episodes} change={(e) => setTotalEpisodes(e.target.value)} />
               <input type="file" onChange={onSelectFile} />
               {preview && (
