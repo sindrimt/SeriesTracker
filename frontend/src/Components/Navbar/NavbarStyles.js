@@ -96,7 +96,7 @@ export const NavbarLinksOuter = styled.div`
   //width: 280px;
   font-weight: 300;
   font-size: 18px;
-  width: 25%;
+  column-gap: 10px;
   white-space: nowrap;
 
   div {
