@@ -1,35 +1,18 @@
 import styled from "styled-components";
 
-export const Hamburger = styled.img`
-  position: absolute;
-  visibility: hidden;
-
-  @media (max-width: 638px) {
-    visibility: visible;
-    position: absolute;
-    top: 230px;
-    left: 30px;
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-`;
-
 export const SidebarOuter = styled.div`
   position: ${(props) => (props.isFixed ? "fixed" : "absolute")};
-  display: flex;
   background-color: ${(props) => props.theme.sidebar.background};
-  flex-direction: column;
-  align-items: flex-start;
+  margin-top: ${(props) => (props.isFixed ? "73px" : "111px")};
   font-family: "Anek Malayalam", sans-serif;
   font-weight: 300;
-  width: 250px;
+  width: 230px;
   height: 100%;
   font-size: 18px;
-  margin-top: ${(props) => (props.isFixed ? "73px" : "111px")};
-  padding: 40px 0 0 30px;
+  padding: 40px 0 0 0;
   white-space: nowrap;
+  display: grid;
+  grid-template-rows: 1fr 8fr 1fr;
 
   @media (max-width: 638px) {
     display: none;
@@ -37,7 +20,7 @@ export const SidebarOuter = styled.div`
 `;
 
 export const SearchOuter = styled.div`
-  position: relative;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -45,17 +28,6 @@ export const SearchOuter = styled.div`
   font-size: 16px;
   background-color: ${(props) => props.theme.sidebar.search};
   color: ${(props) => props.theme.white};
-`;
-
-export const CategoriesOuter = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 0 0 15px 0;
-
-  .categoryParent {
-    font-size: 16px;
-  }
 `;
 
 export const SidebarLine = styled.div`
@@ -66,32 +38,27 @@ export const SidebarLine = styled.div`
 `;
 
 export const PanelOuter = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 30px 0 0 0;
-`;
-
-export const Icons = styled.img`
-  position: relative;
-  padding: 0 10px 0 0;
-  top: 6px;
+  width: 100%;
+  display: grid;
+  margin-top: 10px;
+  grid-template-rows: repeat(5, 50px);
+  grid-row-gap: 20px;
 `;
 
 export const SidebarBottomLine = styled.div`
   position: absolute;
   border-top: 1.5px solid rgba(137, 137, 137, 0.15);
-  width: 80%;
+  width: 100%;
   align-self: center;
   bottom: 100px;
 `;
 
 export const Trademark = styled.div`
   position: absolute;
-  bottom: 12%;
+  bottom: 18%;
   color: rgba(0, 0, 0, 0.5);
   font-size: 15px;
+  left: 6%;
   color: ${(props) => props.theme.white};
 
   &:before {
@@ -102,34 +69,4 @@ export const Trademark = styled.div`
     width: 100%;
     top: -10px;
   }
-`;
-
-export const ListItem = styled.div`
-  &:hover {
-    cursor: pointer;
-  }
-  margin: 0 0 20px 0;
-  font-size: 15px;
-`;
-
-export const CategoryItem = styled.div`
-  &:hover {
-    cursor: pointer;
-  }
-  color: #a63fcb;
-  margin: 10px 0 0 10px;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-`;
-
-export const ItemText = styled.div`
-  margin-left: 3px;
-`;
-
-export const SearchIcon = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin-right: 5px;
 `;
