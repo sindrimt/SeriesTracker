@@ -4,17 +4,11 @@ import "./Sidebar.css";
 import {
   SidebarOuter,
   SearchOuter,
-  CategoriesOuter,
   SidebarLine,
   PanelOuter,
   Icons,
   SidebarBottomLine,
   Trademark,
-  Hamburger,
-  ListItem,
-  CategoryItem,
-  ItemText,
-  SearchIcon,
 } from "./SidebarStyles";
 
 import { AiOutlineSearch } from "react-icons/ai";
@@ -24,9 +18,10 @@ import dashboard from "../../Assets/Sidebar/grid.svg";
 import messages from "../../Assets/Sidebar/message-square.svg";
 import settings from "../../Assets/Sidebar/settings.svg";
 import friends from "../../Assets/Sidebar/users.svg";
-import hamburger from "../../Assets/Sidebar/hamburger.svg";
 
 import { useScroll } from "../../Hooks/useScroll";
+
+import SidebarButton from "../../Components/Buttons/SidebarButton/SidebarButton";
 
 const Sidebar = () => {
   const scrollPosition = useScroll();
@@ -40,72 +35,20 @@ const Sidebar = () => {
   return (
     <>
       <SidebarOuter isFixed={fixed}>
-        <Hamburger src={hamburger} alt="Sidebar menu" />
-        <SearchOuter>
+        {/*  <SearchOuter>
           Search series
           <form className="searchForm" onSubmit={(e) => e.preventDefault()}>
             <label htmlFor="searchSeries">Search series</label>
             <input id="searchSeries" type="text" role="searchbox" placeholder="Search" />
           </form>
-        </SearchOuter>
-        <CategoriesOuter>
-          <ul className="categoryParent">
-            <li>Categories</li>
-            <ul className="category">
-              <CategoryItem>
-                <input type="checkbox" />
-                <ItemText>Epic</ItemText>
-              </CategoryItem>
-              <CategoryItem>
-                <input type="checkbox" />
-                <ItemText>Anime</ItemText>
-              </CategoryItem>
-              <CategoryItem>
-                <input type="checkbox" />
-                <ItemText>Fiction</ItemText>
-              </CategoryItem>
-              <CategoryItem>
-                <li>View more ...</li>
-              </CategoryItem>
-            </ul>
-          </ul>
-        </CategoriesOuter>
-        <SidebarLine></SidebarLine>
+        </SearchOuter> */}
         <PanelOuter>
-          <ul className="panel">
-            <ListItem>
-              <li>
-                <Icons src={dashboard} alt="Dashboard icon" />
-                Dashboard
-              </li>
-            </ListItem>
-            <ListItem>
-              <li className="panelItem">
-                <Icons src={friends} alt="Friends icon" />
-                Friends
-              </li>
-            </ListItem>
-            <ListItem>
-              <li className="panelItem">
-                <Icons src={messages} alt="Messages icon" />
-                Direct Messages
-              </li>
-            </ListItem>
-            <ListItem>
-              <li className="panelItem">
-                <Icons src={notifications} alt="Notifications icon" />
-                Notifications
-              </li>
-            </ListItem>
-            <ListItem>
-              <li className="panelItem">
-                <Icons src={settings} alt="Settings icon" />
-                Settings
-              </li>
-            </ListItem>
-          </ul>
+          <SidebarButton icon={dashboard} text="Dashboard" />
+          <SidebarButton icon={notifications} text="Notifications" />
+          <SidebarButton icon={messages} text="Messages" />
+          <SidebarButton icon={friends} text="Friends" />
+          <SidebarButton icon={settings} text="Settings" />
         </PanelOuter>
-
         <Trademark>SeriesTracker 2022&reg; corporation</Trademark>
       </SidebarOuter>
     </>

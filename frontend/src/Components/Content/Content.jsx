@@ -13,6 +13,8 @@ import {
 import Loading from "../../Pages/LoadingPage/Loading";
 
 import HomepageCard from "../Cards/HomepageCard/Card";
+import GridCard from "../Cards/HomepageCard/GridCard";
+
 import { Link } from "react-router-dom";
 
 import filter from "../../Assets/Content/Adjust.svg";
@@ -73,7 +75,7 @@ const Content = ({ series }) => {
               ? "You have no watched series"
               : series?.map((serie) => (
                   <>
-                    <HomepageCard
+                    <GridCard
                       title={serie?.title}
                       episodesWatched={serie?.episodesWatched}
                       episodeCount={serie?.episodeCount}
