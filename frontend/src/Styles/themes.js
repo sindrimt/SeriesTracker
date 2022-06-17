@@ -72,6 +72,8 @@ export const lightTheme = {
   },
   sidebar: {
     background: "rgb(240, 240, 240)",
+    backgroundColor: lightPalette.grey,
+    accentColor: lightPalette.lightgrey,
   },
   animeCard: {
     fontColor: "",
@@ -127,6 +129,8 @@ export const darkTheme = {
   sidebar: {
     background: darkModePalette.grey,
     search: darkModePalette.grey,
+    backgroundColor: "#1c1c1c",
+    accentColor: "#2c2c2c",
   },
   animeCard: {
     fontColor: "",
@@ -175,6 +179,8 @@ export const hotDogTheme = {
   sidebar: {
     background: hotDogPalette.yellow,
     search: hotDogPalette.yellow,
+    backgroundColor: hotDogPalette.red,
+    accentColor: "rgb(229, 22, 0)",
   },
   animeCard: {
     background: hotDogPalette.red,
@@ -231,6 +237,8 @@ export const spillTheme = {
   sidebar: {
     background: spillPalette.yellow,
     search: spillPalette.yellow,
+    backgroundColor: spillPalette.yellow,
+    accentColor: "rgb(255, 213, 26)",
   },
   animeCard: {
     background: spillPalette.yellow,
