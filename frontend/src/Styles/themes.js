@@ -7,6 +7,7 @@ const darkModePalette = {
   pink: "rgba(166, 63, 203, 0.1);",
   olive: "#434038ff",
   white: "#eee3c1ff",
+  purple: "#a63fcb",
 };
 
 const hotDogPalette = {
@@ -104,6 +105,7 @@ export const darkTheme = {
   pink: "rgba(166, 63, 203, 0.1)",
   olive: "#434038ff",
   white: "#eee3c1ff",
+  purple: "#a63fcb",
 
   body: {
     background: darkModePalette.lightBlack,
@@ -131,6 +133,7 @@ export const darkTheme = {
     search: darkModePalette.grey,
     backgroundColor: "#1c1c1c",
     accentColor: "#2c2c2c",
+    buttonBorder: darkModePalette.purple,
   },
   animeCard: {
     fontColor: "",
