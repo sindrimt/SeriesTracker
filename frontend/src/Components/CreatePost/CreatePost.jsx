@@ -27,14 +27,18 @@ const CreatePost = () => {
     fixed = true;
   }
 
+  //TODO: For more indepth filtering and such, use this format:
+  //TODO https://api.jikan.moe/v4/top/anime?type=tv&filter=bypopularity
+
   const GetTopAnime = () => {
     setLoading(true);
     axios
-      .get(`https://api.jikan.moe/v3/top/anime/1/bypopularity`)
-      //https://api.jikan.moe/v3/top/type/page/subtype
+      .get(`https://api.jikan.moe/v4/top/anime`)
+      //https://api.jikan.moe/v4/top/type/page/subtype
       .then(({ data }) => {
-        setTopAnime(data.top.slice(0, 50));
-        setFiltered(data.top.slice(0, 50));
+        console.log(data.data);
+        setTopAnime(data.data);
+        setFiltered(data.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -49,7 +53,7 @@ const CreatePost = () => {
 
   useEffect(() => {
     let animeFilter = topAnime.filter((anime) => {
-      return anime?.title?.toLowerCase().includes(searchTerm.toLowerCase());
+      return anime?.title_english?.toLowerCase().includes(searchTerm.toLowerCase());
     });
     setFiltered(animeFilter);
   }, [searchTerm]);
@@ -77,9 +81,10 @@ const CreatePost = () => {
             return (
               <>
                 <AnimeCard
-                  title={anime.title}
-                  episodes={anime.episodes ? anime.episodes : 0} //TODO: Rather pass something else
-                  image={anime.image_url}
+                  title={anime?.title_english ? anime?.title_english : anime?.title}
+                  episodes={anime?.episodes ? anime?.episodes : 0} //TODO: Rather pass something else
+                  image={anime?.images?.jpg?.large_image_url}
+                  description={anime?.background}
                   key={index}
                   setOpen={setOpen}
                 />
