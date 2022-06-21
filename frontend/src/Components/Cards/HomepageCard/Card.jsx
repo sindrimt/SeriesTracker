@@ -45,7 +45,7 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
               <EpisodeLineGray />
               <EpisodeLineProgress progress={episodeRatio} />
             </EpisodeContainer>
-            <CardDescription>Wealth, fame, power. Gold Roger obtained ever ...</CardDescription>
+            <CardDescription>{description.slice(0, 60)}</CardDescription>
           </CardInformationContainer>
 
           <CardRatingContainer>
