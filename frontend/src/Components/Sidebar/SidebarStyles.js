@@ -130,7 +130,7 @@ export const GithubBack = styled.div`
   border-radius: 50%;
   height: 40px;
   left: 50%;
-  bottom: 35px;
+  bottom: 28px;
   outline: 2px solid rgba(166, 63, 203, 0);
   transform: translateX(-50%);
 
