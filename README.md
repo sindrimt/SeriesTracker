@@ -4,7 +4,7 @@ Install dependencies by running:
 
 ```npm install```
 
-> In both root and frontend folders
+> In both root and frontend folder
 
 <h3>You can start the frontend and backend separately by:</h3>
 
