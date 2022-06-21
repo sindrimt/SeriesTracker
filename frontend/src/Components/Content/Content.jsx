@@ -99,6 +99,11 @@ const Content = ({ series }) => {
                       rating={serie?.rating}
                       image={serie?.photoUrl}
                       watchTime={serie?.watchTime}
+                      description={
+                        serie?.description
+                          ? serie?.description
+                          : "Gol D. Roger obtained everything the world had to offer ..."
+                      }
                     />
                   </>
                 ))}
