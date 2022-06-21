@@ -22,7 +22,7 @@ import FormField from "../../FormField/FormField";
 
 import { useAuth } from "../../../firebase";
 
-const AnimeCard = ({ title, episodes, image }) => {
+const AnimeCard = ({ title, episodes, image, description }) => {
   const episodeLength = "22:00";
 
   const [open, setOpen] = useState(false);
@@ -87,6 +87,7 @@ const AnimeCard = ({ title, episodes, image }) => {
     formdata.append("rating", rating);
     formdata.append("image", selectedFile ? selectedFile : image);
     formdata.append("watchTime", watchTime);
+    formdata.append("description", !description ? "" : description);
 
     // The reason why this ancient technology is used is because multer (image upload)
     //requires form data format or something cringe
@@ -113,7 +114,7 @@ const AnimeCard = ({ title, episodes, image }) => {
           <AnimeCardOuter hover={false}>
             <LeftOuter>
               <AnimeImage src={preview ? preview : image} alt="Image" />
-              <Title>{animeTitle === "" ? title : animeTitle.slice(0, 40)}</Title>
+              <Title>{animeTitle === "" ? title : animeTitle?.slice(0, 40)}</Title>
             </LeftOuter>
             <MiddleOuter></MiddleOuter>
             <RightOuter>
@@ -206,7 +207,7 @@ const AnimeCard = ({ title, episodes, image }) => {
       <AnimeCardOuter onClick={handleClick}>
         <LeftOuter>
           <AnimeImage src={image} alt="Image" />
-          <Title>{title.slice(0, 20)}</Title>
+          <Title>{title?.slice(0, 22)}</Title>
         </LeftOuter>
         <MiddleOuter></MiddleOuter>
         <RightOuter>
