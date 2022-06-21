@@ -32,6 +32,8 @@ import { toggleTheme } from "../../redux/features/theme/colorThemeSlice";
 import { MdOutlineLightMode, MdOutlineDarkMode, MdExpandMore } from "react-icons/md";
 import { GiHotDog } from "react-icons/gi";
 
+import axios from "axios";
+
 const Navbar = () => {
   //const [scrollPosition, setScrollPosition] = useState(0);
   const [loading, setLoading] = useState(false);
