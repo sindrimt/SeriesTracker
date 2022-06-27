@@ -8,6 +8,8 @@ import {
   Icon,
   ContentContainerGrid,
   ContentContainerGridIcons,
+  SearchOuter,
+  SearchOuterContainer,
 } from "./ContentStyles";
 
 import Loading from "../../Pages/LoadingPage/Loading";
@@ -37,24 +39,34 @@ import { useSelector } from "react-redux";
 
 import { useAuth } from "../../firebase";
 
-import axios from "axios";
-
 const Content = ({ series }) => {
   const [iconView, setIconView] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [seriesArray, setSeriesArray] = useState(series);
+  const [filtered, setFiltered] = useState(series);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const colorTheme = useSelector((state) => state.theme.theme);
-
   const currentUser = useAuth();
 
-  console.log(series?.length);
+  useEffect(() => {
+    let filter = seriesArray.filter((serie) => {
+      return serie?.title?.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+    setFiltered(filter);
+  }, [searchTerm]);
 
   return (
     <>
       <ContentContainerOuter>
         <PickUp>
-          Pick up where you left
-          <Filter src={colorTheme === "light" ? filter : colorTheme === "dark" ? filter_darkmode : filter_hotdog} />
+          <span className="pickupSpan">Pick up where you left</span>
+          <SearchOuterContainer>
+            <form style={{ width: "100%" }}>
+              <SearchOuter type="search" placeholder="search" onChange={(e) => setSearchTerm(e.target.value)} />
+            </form>
+            <Filter src={colorTheme === "light" ? filter : colorTheme === "dark" ? filter_darkmode : filter_hotdog} />
+          </SearchOuterContainer>
           <GridTypeIcons>
             <Icon src={colorTheme === "light" ? rowView : colorTheme === "dark" ? rowView_darkmode : rowView_hotdog} />
             <Icon
@@ -71,42 +83,46 @@ const Content = ({ series }) => {
         </PickUp>
         {iconView ? (
           <ContentContainerGridIcons>
-            {series?.length === 0
-              ? "You have no watched series"
-              : series?.map((serie) => (
-                  <>
-                    <GridCard
-                      title={serie?.title}
-                      episodesWatched={serie?.episodesWatched}
-                      episodeCount={serie?.episodeCount}
-                      rating={serie?.rating}
-                      image={serie?.photoUrl}
-                      watchTime={serie?.watchTime}
-                    />
-                  </>
-                ))}
+            {filtered?.length === 0 ? (
+              <span style={{ fontSize: "18px", paddingTop: "20px" }}>No results!</span>
+            ) : (
+              filtered?.map((serie) => (
+                <>
+                  <GridCard
+                    title={serie?.title}
+                    episodesWatched={serie?.episodesWatched}
+                    episodeCount={serie?.episodeCount}
+                    rating={serie?.rating}
+                    image={serie?.photoUrl}
+                    watchTime={serie?.watchTime}
+                  />
+                </>
+              ))
+            )}
           </ContentContainerGridIcons>
         ) : (
           <ContentContainerGrid>
-            {series?.length === 0
-              ? "You have no watched series"
-              : series?.map((serie) => (
-                  <>
-                    <HomepageCard
-                      title={serie?.title}
-                      episodesWatched={serie?.episodesWatched}
-                      episodeCount={serie?.episodeCount}
-                      rating={serie?.rating}
-                      image={serie?.photoUrl}
-                      watchTime={serie?.watchTime}
-                      description={
-                        serie?.description
-                          ? serie?.description
-                          : "Gol D. Roger obtained everything the world had to offer ..."
-                      }
-                    />
-                  </>
-                ))}
+            {filtered?.length === 0 ? (
+              <span style={{ fontSize: "18px", paddingTop: "20px" }}>No results!</span>
+            ) : (
+              filtered?.map((serie) => (
+                <>
+                  <HomepageCard
+                    title={serie?.title}
+                    episodesWatched={serie?.episodesWatched}
+                    episodeCount={serie?.episodeCount}
+                    rating={serie?.rating}
+                    image={serie?.photoUrl}
+                    watchTime={serie?.watchTime}
+                    description={
+                      serie?.description
+                        ? serie?.description
+                        : "Gol D. Roger obtained everything the world had to offer ..."
+                    }
+                  />
+                </>
+              ))
+            )}
           </ContentContainerGrid>
         )}
       </ContentContainerOuter>
