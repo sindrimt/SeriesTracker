@@ -94,6 +94,9 @@ export const lightTheme = {
     backgroundColor: lightPalette.grey,
     accentColor: lightPalette.lightgrey,
   },
+  search: {
+    fontColor: lightPalette.white,
+  },
 };
 export const darkTheme = {
   currentTheme: "darkTheme",
@@ -151,6 +154,9 @@ export const darkTheme = {
     backgroundColor: "#1c1c1c",
     accentColor: "#1f1f1f",
   },
+  search: {
+    fontColor: darkModePalette.white,
+  },
 };
 
 export const hotDogTheme = {
@@ -203,6 +209,9 @@ export const hotDogTheme = {
   contentRight: {
     backgroundColor: hotDogPalette.red,
     accentColor: "rgb(229, 22, 0)",
+  },
+  search: {
+    fontColor: hotDogPalette.yellow,
   },
 };
 
@@ -260,6 +269,9 @@ export const spillTheme = {
   contentRight: {
     backgroundColor: spillPalette.yellow,
     accentColor: "rgb(255, 213, 26)",
+  },
+  search: {
+    fontColor: spillPalette.black,
   },
 };
 
