@@ -114,7 +114,6 @@ export const CardRatingCenter = styled.div`
 export const CardDescription = styled.div`
   margin-top: 5px;
   font-size: 16px;
-  display: flex;
   left: 0;
 `;
 
