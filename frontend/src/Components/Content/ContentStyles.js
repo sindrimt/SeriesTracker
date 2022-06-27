@@ -90,6 +90,7 @@ export const SearchOuter = styled.input`
   width: 100%;
   font-size: 16px;
   padding: 10px;
+  color: ${(props) => props.theme.search.fontColor};
   border-bottom: 2px solid black;
   border-left: 1px solid black;
   border-right: 1px solid black;
