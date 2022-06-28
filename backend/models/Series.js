@@ -1,33 +1,35 @@
 import mongoose from "mongoose";
 
 const series = mongoose.Schema({
-  userId: {
-    type: String,
-    required: true,
-  },
+    userId: {
+        type: String,
+        required: true,
+    },
 
-  title: {
-    type: String,
-    required: true,
-  },
+    title: {
+        type: String,
+        required: true,
+    },
 
-  username: String,
+    username: String,
 
-  description: String,
+    description: String,
 
-  rating: Number,
+    rating: Number,
 
-  photoUrl: String,
+    photoUrl: String,
 
-  episodesWatched: Number,
+    episodesWatched: Number,
 
-  episodeCount: Number,
+    episodeCount: Number,
 
-  watchTime: String,
+    watchTime: String,
 
-  age: String,
+    age: String,
 
-  websiteUrl: String,
+    websiteUrl: String,
+
+    episodeLength: String,
 });
 
 // Transforms the Schema into a model
