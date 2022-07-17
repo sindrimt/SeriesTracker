@@ -1,29 +1,31 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
-  ProfileOuter,
-  LeftOuter,
-  RightOuter,
-  RightUpper,
-  RightLower,
-  LeftUpper,
-  LeftLower,
-  ProfileImg,
-  ProfileInfo,
-  FullName,
-  UserName,
-  Description,
-  Status,
-  FriendslistContainer,
-  FriendsTxt,
-  Friendslist,
-  Friend,
-  Followers,
-  EditProfile,
-  HeaderContainer,
-  Header,
-  EditHeader,
-  Content,
-  Graph,
+    ProfileOuter,
+    LeftOuter,
+    RightOuter,
+    RightUpper,
+    RightLower,
+    LeftUpper,
+    LeftLower,
+    ProfileImg,
+    ProfileInfo,
+    FullName,
+    UserName,
+    Description,
+    Status,
+    FriendslistContainer,
+    FriendsTxt,
+    Friendslist,
+    Friend,
+    Followers,
+    EditProfile,
+    HeaderContainer,
+    Header,
+    EditHeader,
+    Content,
+    Graph,
+    FormFieldOuter,
+    StatusTextBox,
 } from "./ProfileStyles";
 
 import pen from "../../Assets/Profile/pen.png";
@@ -35,105 +37,131 @@ import { useAuth, getUserData } from "../../firebase";
 
 import { useSelector } from "react-redux";
 
+import FormField from "../../Components/FormField/FormField";
+
 const Profile = () => {
-  const currentUser = useAuth();
-  const [user, setUser] = useState({});
-  const [image, setImage] = useState({});
+    const currentUser = useAuth();
+    const [user, setUser] = useState({});
+    const [image, setImage] = useState({});
+    const [profileStatus, setProfileStatus] = useState(false);
+    const [statusText, setStatusText] = useState("Lorem ipsum ...");
 
-  let inputRef = useRef();
+    let inputRef = useRef();
 
-  const globalUser = useSelector((state) => state.user.user);
+    const globalUser = useSelector((state) => state.user.user);
 
-  // Loads checks the database for updates
-  useEffect(() => {
-    checkUser();
-  });
-
-  const checkUser = async () => {
-    await getUserData(currentUser?.uid).then((res) => {
-      setUser(res);
+    // Loads checks the database for updates
+    useEffect(() => {
+        checkUser();
     });
-  };
 
-  const decideProfilePic = () => {
-    if (globalUser?.googlePhotoUrl) {
-      return globalUser?.googlePhotoUrl;
-    } else if (globalUser?.photoUrl) {
-      return `api/${globalUser?.photoUrl}`;
-    } else {
-      return "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
-    }
-  };
+    const checkUser = async () => {
+        await getUserData(currentUser?.uid).then((res) => {
+            setUser(res);
+        });
+    };
 
-  const showModal = () => {
-    console.log(inputRef);
-    inputRef.current.click();
-  };
+    const decideProfilePic = () => {
+        if (globalUser?.googlePhotoUrl) {
+            return globalUser?.googlePhotoUrl;
+        } else if (globalUser?.photoUrl) {
+            return `api/${globalUser?.photoUrl}`;
+        } else {
+            return "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
+        }
+    };
 
-  const onImageChange = (e) => {
-    setImage(e.target.files[0]);
-    console.log(e.target.files[0]);
-  };
+    const editProfileStatus = () => {
+        setProfileStatus(!profileStatus);
+        console.log("Toggled text box");
+    };
 
-  return (
-    <>
-      <ProfileOuter>
-        <LeftOuter>
-          <LeftUpper>
-            <ProfileImg onClick={() => showModal()} src={decideProfilePic()} alt="Profile pic" />
-            <ProfileInfo>
-              <FullName>{globalUser?.username}</FullName>
-              <UserName>Luffy, {globalUser?._id}</UserName>
-              <Description>Im gonna become the king of the pirates!</Description>
-            </ProfileInfo>
-          </LeftUpper>
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("Updated profile status");
+        setProfileStatus(false);
+    };
 
-          <LeftLower>
-            <Status>
-              <FriendslistContainer>
-                <FriendsTxt>Friends</FriendsTxt>
-                <Friendslist>
-                  <Friend src={friend} alt="Friend" />
-                  <Friend src={friend} alt="Friend" />
-                  <Friend src={friend} alt="Friend" />
-                  <Friend src={friend} alt="Friend" />
-                  <Friend src={friend} alt="Friend" />
-                  <Friend src={friend} alt="Friend" />
-                </Friendslist>
-              </FriendslistContainer>
-              <Followers>69 followers 14 following</Followers>
-            </Status>
-            <EditProfile src={editbutton} alt="Edit" />
-          </LeftLower>
-        </LeftOuter>
+    const showModal = () => {
+        console.log(inputRef);
+        inputRef.current.click();
+    };
 
-        <RightOuter>
-          <RightUpper>
-            <HeaderContainer>
-              <Header>Meshi Meshi!!!</Header>
-              <EditHeader src={pen} alt="Edit" />
-            </HeaderContainer>
-            <Content>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, pariatur illum? Earum inventore obcaecati
-              voluptatum. Deserunt ea temporibus nemo numquam?
-            </Content>
-          </RightUpper>
+    const onImageChange = (e) => {
+        setImage(e.target.files[0]);
+        console.log(e.target.files[0]);
+    };
 
-          <RightLower>
-            <Graph src={graph} alt="Graph" />
-          </RightLower>
-        </RightOuter>
-        <input
-          type="file"
-          accept="images/*"
-          onClick={showModal}
-          style={{ display: "none" }}
-          ref={inputRef}
-          onChange={onImageChange}
-        />
-      </ProfileOuter>
-    </>
-  );
+    return (
+        <>
+            <ProfileOuter>
+                <LeftOuter>
+                    <LeftUpper>
+                        <ProfileImg onClick={() => showModal()} src={decideProfilePic()} alt="Profile pic" />
+                        <ProfileInfo>
+                            <FullName>{globalUser?.username}</FullName>
+                            <UserName>Luffy, {globalUser?._id}</UserName>
+                            <Description>Im gonna become the king of the pirates!</Description>
+                        </ProfileInfo>
+                    </LeftUpper>
+
+                    <LeftLower>
+                        <Status>
+                            <FriendslistContainer>
+                                <FriendsTxt>Friends</FriendsTxt>
+                                <Friendslist>
+                                    <Friend src={friend} alt="Friend" />
+                                    <Friend src={friend} alt="Friend" />
+                                    <Friend src={friend} alt="Friend" />
+                                    <Friend src={friend} alt="Friend" />
+                                    <Friend src={friend} alt="Friend" />
+                                    <Friend src={friend} alt="Friend" />
+                                </Friendslist>
+                            </FriendslistContainer>
+                            <Followers>69 followers 14 following</Followers>
+                        </Status>
+                        <EditProfile src={editbutton} alt="Edit" />
+                    </LeftLower>
+                </LeftOuter>
+
+                <RightOuter>
+                    <RightUpper>
+                        <HeaderContainer>
+                            <Header>Meshi Meshi!!!</Header>
+                            <EditHeader src={pen} alt="Edit" onClick={() => editProfileStatus()} />
+                        </HeaderContainer>
+                        <Content>
+                            {profileStatus && (
+                                <FormFieldOuter>
+                                    <form onSubmit={handleSubmit}>
+                                        <FormField
+                                            type="text"
+                                            placeholder="Your profile status ..."
+                                            change={(e) => setStatusText(e.target.value)}
+                                        />
+                                        <button type="submit">Update</button>
+                                    </form>
+                                </FormFieldOuter>
+                            )}
+                            {!profileStatus && <StatusTextBox>{statusText}</StatusTextBox>}
+                        </Content>
+                    </RightUpper>
+
+                    <RightLower>
+                        <Graph src={graph} alt="Graph" />
+                    </RightLower>
+                </RightOuter>
+                <input
+                    type="file"
+                    accept="images/*"
+                    onClick={showModal}
+                    style={{ display: "none" }}
+                    ref={inputRef}
+                    onChange={onImageChange}
+                />
+            </ProfileOuter>
+        </>
+    );
 };
 
 export default Profile;
