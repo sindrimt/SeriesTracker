@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useRef, useState, useEffect } from "react";
-import { CreatePostOuter, Gridcontainer, SearchOuter } from "./CreatePostStyles";
+import { CreatePostOuter, Gridcontainer, SearchOuter, DropDownOuter, DropDownMenu } from "./CreatePostStyles";
 
 import Loading from "../../Pages/LoadingPage/Loading";
 
@@ -32,13 +32,32 @@ const CreatePost = () => {
 
     const GetTopAnime = () => {
         setLoading(true);
+
+        let animeAndMangaObject = {};
+
         axios
             .get(`https://api.jikan.moe/v4/top/anime`)
             //https://api.jikan.moe/v4/top/type/page/subtype
             .then(({ data }) => {
+                animeAndMangaObject.anime = data;
+
                 console.log(data.data);
-                setTopAnime(data.data);
-                setFiltered(data.data);
+                // setTopAnime(data.data);
+                // setFiltered(data.data);
+            })
+            .then(async () => {
+                await new Promise((r) => setTimeout(r, 1000));
+                return axios.get(`https://api.jikan.moe/v4/top/manga`);
+            })
+            .then(({ data }) => {
+                animeAndMangaObject.manga = data;
+
+                let mergedObject = animeAndMangaObject.anime.data.concat(animeAndMangaObject.manga.data);
+
+                let shuffeledMergedObject = shuffle(mergedObject);
+
+                setTopAnime(shuffeledMergedObject);
+                setFiltered(shuffeledMergedObject);
                 setLoading(false);
             })
             .catch((error) => {
@@ -73,8 +92,11 @@ const CreatePost = () => {
     return (
         <>
             <CreatePostOuter>
+                <DropDownOuter>
+                    <DropDownMenu>Anime Manga</DropDownMenu>
+                </DropDownOuter>
                 <SearchOuter isFixed={fixed}>
-                    <input type="text" placeholder="serach" onChange={(e) => setSearchTerm(e.target.value)} />
+                    <input type="text" placeholder="Search" onChange={(e) => setSearchTerm(e.target.value)} />
                 </SearchOuter>
                 <Gridcontainer>
                     {filtered?.map((anime, index) => {
@@ -82,17 +104,15 @@ const CreatePost = () => {
                         let animeDurationAsText;
 
                         // If anime duration in in minutes
-                        if (anime?.duration.includes("per")) {
+                        if (anime?.duration?.includes("per")) {
                             animeDurationAsNumber = parseInt(anime?.duration.split("per")[0]);
                             animeDurationAsText = `${anime?.duration.split("min")[0].replace(" ", "")}:00`;
                         }
 
                         // If anime is in hours
-                        else if (anime?.duration.includes("hr")) {
+                        else if (anime?.duration?.includes("hr")) {
                             // Convert hours into minutes
-                            animeDurationAsNumber =
-                                parseInt(anime?.duration.split("hr")[1]) +
-                                parseInt(anime?.duration.split("hr")[0]) * 60;
+                            animeDurationAsNumber = parseInt(anime?.duration.split("hr")[1]) + parseInt(anime?.duration.split("hr")[0]) * 60;
 
                             // Convert hours into 00:00 format
                             animeDurationAsText = `0${anime?.duration.split("hr")[0].trim()}:${`${anime?.duration
@@ -120,5 +140,22 @@ const CreatePost = () => {
         </>
     );
 };
+
+function shuffle(array) {
+    let currentIndex = array.length,
+        randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+    }
+
+    return array;
+}
 
 export default CreatePost;
