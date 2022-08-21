@@ -5,12 +5,12 @@
     "description": "Track your series",
     "main": "server.js",
     "scripts": {
-        "start": "concurrently \"npm run server\" \"cd frontend && npm start\"",
-        "dev": "node backend/server.js && cd frontend && npm start",
+        "install_all": "npm install && cd frontend && npm install",
+        "start": "node backend/server.js",
         "server": "nodemon backend/server.js",
         "client": "npm start --prefix frontend",
-        "build": "concurrently \"react-scripts build\" \"npm run server\" \"cd frontend && npm start\" ",
-        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --legacy-peer-deps --prefix frontend"
+        "dev": "concurrently \"npm run server\" \"npm run client\"",
+        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
     },
     "author": "Sindri and Marcus",
     "license": "MIT",
