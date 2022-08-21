@@ -3,9 +3,9 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 
-// import path from "path";
+import path from "path";
 
-//import { fileURLToPath } from "url";
+import { fileURLToPath } from "url";
 
 import dotenv from "dotenv";
 dotenv.config();
