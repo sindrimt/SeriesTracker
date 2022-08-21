@@ -1,34 +1,35 @@
 {
-  "name": "SeriesTracker",
-  "version": "1.0.0",
-  "type": "module",
-  "description": "Track your series",
-  "main": "server.js",
-  "scripts": {
-    "start": "node backend/server.js",
-    "server": "nodemon backend/server.js",
-    "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
-  },
-  "author": "Sindri and Marcus",
-  "license": "MIT",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.20.0",
-    "colors": "^1.4.0",
-    "cors": "^2.8.5",
-    "dotenv": "^15.0.1",
-    "express": "^4.18.1",
-    "express-async-handler": "^1.2.0",
-    "http-proxy-middleware": "^2.0.6",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.3.5",
-    "multer": "^1.4.5-lts.1",
-    "react-router-dom": "^6.3.0"
-  },
-  "devDependencies": {
-    "concurrently": "^7.0.0",
-    "nodemon": "^2.0.16"
-  }
+    "name": "SeriesTracker",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "Track your series",
+    "main": "server.js",
+    "scripts": {
+        "start": "concurrently \"npm run server\" \"cd frontend && npm start\"",
+        "dev": "node backend/server.js && cd frontend && npm start",
+        "server": "nodemon backend/server.js",
+        "client": "npm start --prefix frontend",
+        "build": "react-scripts build",
+        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+    },
+    "author": "Sindri and Marcus",
+    "license": "MIT",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.20.0",
+        "colors": "^1.4.0",
+        "cors": "^2.8.5",
+        "dotenv": "^15.0.1",
+        "express": "^4.18.1",
+        "express-async-handler": "^1.2.0",
+        "http-proxy-middleware": "^2.0.6",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^6.3.5",
+        "multer": "^1.4.5-lts.1",
+        "react-router-dom": "^6.3.0"
+    },
+    "devDependencies": {
+        "concurrently": "^7.0.0",
+        "nodemon": "^2.0.16"
+    }
 }

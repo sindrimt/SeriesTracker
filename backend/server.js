@@ -25,8 +25,8 @@ app.use(cors());
 import { createProxyMiddleware } from "http-proxy-middleware";
 
 createProxyMiddleware({
-  target: "http://localhost:8000",
-  changeOrigin: true,
+    target: "http://localhost:8000",
+    changeOrigin: true,
 });
 
 app.use("/api", userRoutes);
@@ -35,27 +35,27 @@ app.use("/api/uploads", express.static("uploads"));
 
 // Default landing page for /
 app.get("/", (req, res) => {
-  res.send("Home page");
+    res.send("Home page");
 });
 
 // Default landing page for /api
 app.get("/api", (req, res) => {
-  res.send("Api home page");
+    res.send("Api home page");
 });
 
 // ES module tull
-/* const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename); */
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-/* if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/build")));
+// if (process.env.NODE_ENV === "production") {
+app.use(express.static(path.join(__dirname, "../frontend/build")));
 
-  app.get("*", (req, res) => res.sendFile(path.resolve(__dirname, "../", "frontend", "build", "index.html")));
-} else {
-  app.get("/", (req, res) => res.send("Please set to production"));
-} */
+app.get("*", (req, res) => res.sendFile(path.resolve(__dirname, "../", "frontend", "build", "index.html")));
+// } else {
+//   app.get("/", (req, res) => res.send("Please set to production"));
+// }
 
 mongoose
-  .connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
-  .catch((error) => console.log(error.message));
+    .connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
+    .catch((error) => console.log(error.message));
