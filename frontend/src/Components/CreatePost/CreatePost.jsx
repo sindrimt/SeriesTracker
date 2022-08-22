@@ -56,8 +56,8 @@ const CreatePost = () => {
 
                 let shuffeledMergedObject = shuffle(mergedObject);
 
-                setTopAnime(shuffeledMergedObject);
-                setFiltered(shuffeledMergedObject);
+                setTopAnime(mergedObject);
+                setFiltered(mergedObject);
                 setLoading(false);
             })
             .catch((error) => {
@@ -92,9 +92,9 @@ const CreatePost = () => {
     return (
         <>
             <CreatePostOuter>
-                <DropDownOuter>
+                {/* <DropDownOuter>
                     <DropDownMenu>Anime Manga</DropDownMenu>
-                </DropDownOuter>
+                </DropDownOuter> */}
                 <SearchOuter isFixed={fixed}>
                     <input type="text" placeholder="Search" onChange={(e) => setSearchTerm(e.target.value)} />
                 </SearchOuter>
