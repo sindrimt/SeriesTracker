@@ -117,13 +117,7 @@ const AnimeCard = ({ title, episodes, image, description, episodeLength }) => {
                             <LeftOuter onClick={() => console.log(animeTitle)}>
                                 <AnimeImage src={preview ? preview : image} alt="Image" />
                                 <Title>
-                                    <input
-                                        type="text"
-                                        defaultValue={title}
-                                        className="title-input"
-                                        onChange={(e) => setAnimeTitle(e.target.value)}
-                                        autoFocus
-                                    />
+                                    <input type="text" defaultValue={title} className="title-input" onChange={(e) => setAnimeTitle(e.target.value)} />
                                     {/*  {animeTitle === "" ? title : title?.slice(0, 40)} */}
                                 </Title>
                             </LeftOuter>
@@ -135,6 +129,7 @@ const AnimeCard = ({ title, episodes, image, description, episodeLength }) => {
                                         defaultValue={0}
                                         className="episodes-input"
                                         onChange={(e) => setEpisodesWatched(e.target.value)}
+                                        autoFocus
                                     />
                                     / {episodes}
                                     {/*  {episodesWatched === ""

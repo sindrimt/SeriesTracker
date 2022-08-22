@@ -45,7 +45,7 @@ const Home = () => {
     }, [done]);
 
     if (loading) {
-        return <Loading />;
+        return <></>;
     }
 
     //TODO: Legg til api request user posts her => pass down resultatet til content, og lenge til contentRight
