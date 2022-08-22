@@ -64,7 +64,7 @@ const Content = ({ series }) => {
                     <span className="pickupSpan">Pick up where you left</span>
                     <SearchOuterContainer>
                         <form style={{ width: "100%" }}>
-                            <SearchOuter type="search" placeholder="search" onChange={(e) => setSearchTerm(e.target.value)} />
+                            <SearchOuter type="search" placeholder="Search your series" onChange={(e) => setSearchTerm(e.target.value)} />
                         </form>
                         <Filter src={colorTheme === "light" ? filter : colorTheme === "dark" ? filter_darkmode : filter_hotdog} />
                     </SearchOuterContainer>
@@ -119,10 +119,9 @@ const Content = ({ series }) => {
                     </ContentContainerGrid>
                 )}
             </ContentContainerOuter>
-            <Link to="/createPost">
-                {/*  //TODO Add series button was here */}
+            {/* <Link to="/create-post">
                 <AddSerieButton />
-            </Link>
+            </Link> */}
         </>
     );
 };

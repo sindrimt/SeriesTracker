@@ -40,8 +40,6 @@ const CreatePost = () => {
             //https://api.jikan.moe/v4/top/type/page/subtype
             .then(({ data }) => {
                 animeAndMangaObject.anime = data;
-
-                console.log(data.data);
                 // setTopAnime(data.data);
                 // setFiltered(data.data);
             })
@@ -54,6 +52,8 @@ const CreatePost = () => {
 
                 let mergedObject = animeAndMangaObject.anime.data.concat(animeAndMangaObject.manga.data);
 
+                //console.log(mergedObject);
+
                 let shuffeledMergedObject = shuffle(mergedObject);
 
                 setTopAnime(mergedObject);
@@ -65,13 +65,19 @@ const CreatePost = () => {
             });
     };
 
+    let init = true;
     useEffect(() => {
-        console.log("Fetched anime");
-        GetTopAnime();
+        if (init) {
+            console.log("Fetched anime");
+            GetTopAnime();
+            init = false;
+        } else {
+            console.log("poop");
+        }
     }, []);
 
     useEffect(() => {
-        let animeFilter = topAnime.filter((anime) => {
+        let animeFilter = topAnime?.filter((anime) => {
             return anime?.title_english?.toLowerCase().includes(searchTerm.toLowerCase());
         });
         setFiltered(animeFilter);
