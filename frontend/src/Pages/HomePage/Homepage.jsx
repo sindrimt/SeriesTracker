@@ -12,57 +12,57 @@ import { useAuth } from "../../firebase";
 import axios from "axios";
 
 const Home = () => {
-  const [loading, setLoading] = useState(false);
-  const [series, setSeries] = useState([]);
-  const [done, setDone] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [series, setSeries] = useState([]);
+    const [done, setDone] = useState(false);
 
-  const currentUser = useAuth();
+    const currentUser = useAuth();
 
-  const getUserSeries = () => {
-    setLoading(true);
-    console.log(currentUser);
-    axios
-      .get(`api/series/${currentUser?.uid}`)
-      .then(({ data }) => {
-        setSeries(data);
-        console.log(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+    const getUserSeries = () => {
+        setLoading(true);
+        console.log(currentUser);
+        axios
+            .get(`api/series/${currentUser?.uid}`)
+            .then(({ data }) => {
+                setSeries(data);
+                console.log(data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
 
-  useEffect(() => {
-    if (currentUser) {
-      console.log(currentUser);
-      getUserSeries();
-    } else {
-      setTimeout(() => {
-        setDone(!done);
-      }, 100);
+    useEffect(() => {
+        if (currentUser) {
+            console.log(currentUser);
+            getUserSeries();
+        } else {
+            setTimeout(() => {
+                setDone(!done);
+            }, 100);
+        }
+    }, [done]);
+
+    if (loading) {
+        return <Loading />;
     }
-  }, [done]);
 
-  if (loading) {
-    return <Loading />;
-  }
+    //TODO: Legg til api request user posts her => pass down resultatet til content, og lenge til contentRight
 
-  //TODO: Legg til api request user posts her => pass down resultatet til content, og lenge til contentRight
-
-  return (
-    <>
-      {currentUser ? (
+    return (
         <>
-          <Sidebar />
-          <Content series={series} />
-          <ContentRight arrayLength={series.length} />
+            {currentUser ? (
+                <>
+                    <Sidebar />
+                    <Content series={series} />
+                    <ContentRight arrayLength={series.length} />
+                </>
+            ) : (
+                <Login />
+            )}
         </>
-      ) : (
-        <Login />
-      )}
-    </>
-  );
+    );
 };
 
 export default Home;
