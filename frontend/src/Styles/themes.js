@@ -193,7 +193,7 @@ export const hotDogTheme = {
         search: hotDogPalette.yellow,
         backgroundColor: hotDogPalette.red,
         accentColor: "rgb(229, 22, 0)",
-        panelItem: hotDogPalette.red,
+        panelItem: hotDogPalette.yellow,
         buttonBorder: "#a63fcb",
     },
     animeCard: {
