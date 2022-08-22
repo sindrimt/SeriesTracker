@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import {
     AnimeCardOuter,
@@ -32,6 +32,8 @@ const AnimeCard = ({ title, episodes, image, description, episodeLength }) => {
     const [rating, setRating] = useState(1);
     const [watchTime, setWatchTime] = useState("");
     const [totalEpisodes, setTotalEpisodes] = useState(episodes);
+
+    const inputRef = useRef(null);
 
     //TODO Add episodeCount to useState så bruker kan bestemme hvor mange episode det er i serien.
 
@@ -110,49 +112,48 @@ const AnimeCard = ({ title, episodes, image, description, episodeLength }) => {
         <>
             <Dialog open={open} onClose={handleClose}>
                 <DialogOuter>
-                    <AnimeCardOuter hover={false}>
-                        <LeftOuter>
-                            <AnimeImage src={preview ? preview : image} alt="Image" />
-                            <Title>{animeTitle === "" ? title : animeTitle?.slice(0, 40)}</Title>
-                        </LeftOuter>
-                        <MiddleOuter></MiddleOuter>
-                        <RightOuter>
-                            <EpisodeCount style={{ color: episodesWatched > episodes ? "red" : "" }}>
-                                {episodesWatched === ""
-                                    ? 1 + " / " + (totalEpisodes === "" ? episodes : totalEpisodes)
-                                    : episodesWatched + " / " + (totalEpisodes === "" ? episodes : totalEpisodes)}
-                            </EpisodeCount>
-                            <CounterButton src={plus} alt="Plus" />
-                        </RightOuter>
-                    </AnimeCardOuter>
+                    <form>
+                        <AnimeCardOuter hover={false} onClick={() => console.log(title)}>
+                            <LeftOuter onClick={() => console.log(animeTitle)}>
+                                <AnimeImage src={preview ? preview : image} alt="Image" />
+                                <Title>
+                                    <input
+                                        type="text"
+                                        defaultValue={title}
+                                        className="title-input"
+                                        onChange={(e) => setAnimeTitle(e.target.value)}
+                                        autoFocus
+                                    />
+                                    {/*  {animeTitle === "" ? title : title?.slice(0, 40)} */}
+                                </Title>
+                            </LeftOuter>
+                            <MiddleOuter></MiddleOuter>
+                            <RightOuter>
+                                <EpisodeCount style={{ color: episodesWatched > episodes ? "red" : "" }}>
+                                    <input
+                                        type="number"
+                                        defaultValue={0}
+                                        className="episodes-input"
+                                        onChange={(e) => setEpisodesWatched(e.target.value)}
+                                    />
+                                    / {episodes}
+                                    {/*  {episodesWatched === ""
+                                        ? 1 + " / " + (totalEpisodes === "" ? episodes : episodes)
+                                        : episodesWatched + " / " + (totalEpisodes === "" ? episodes : episodes)} */}
+                                </EpisodeCount>
+                                {/* <CounterButton src={plus} alt="Plus" /> */}
+                            </RightOuter>
+                        </AnimeCardOuter>
+                    </form>
                     <FormFieldOuter>
                         <form onSubmit={handleSubmit}>
-                            <FormField
-                                type="text"
-                                placeholder="Anime Title"
-                                change={(e) => setAnimeTitle(e.target.value)}
-                            />
-                            <FormField
-                                type="number"
-                                placeholder="episodes watched"
-                                change={(e) => setEpisodesWatched(e.target.value)}
-                            />
-                            <FormField
-                                type="text"
-                                placeholder={episodeLength + " (Optional)"}
-                                change={(e) => setWatchTime(e.target.value)}
-                            />
-                            <FormField
-                                type="text"
-                                placeholder={episodes}
-                                change={(e) => setTotalEpisodes(e.target.value)}
-                            />
+                            {/* <FormField type="text" placeholder="Anime Title" change={(e) => setAnimeTitle(e.target.value)} />
+                            <FormField type="number" placeholder="episodes watched" change={(e) => setEpisodesWatched(e.target.value)} /> */}
+                            <FormField type="text" placeholder={episodeLength + " (Optional)"} change={(e) => setWatchTime(e.target.value)} />
+                            {/*  <FormField type="text" placeholder={episodes} change={(e) => setTotalEpisodes(e.target.value)} /> */}
                             <input type="file" onChange={onSelectFile} />
                             {preview && (
-                                <span
-                                    onClick={handleRemoveImage}
-                                    style={{ backgroundColor: "papayawhip", color: "red", padding: "2px" }}
-                                >
+                                <span onClick={handleRemoveImage} style={{ backgroundColor: "papayawhip", color: "red", padding: "2px" }}>
                                     Remove image
                                 </span>
                             )}

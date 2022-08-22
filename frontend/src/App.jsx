@@ -24,64 +24,64 @@ import { lightTheme, darkTheme, hotDogTheme, spillTheme, GlobalStyles } from "./
 import axios from "axios";
 
 const App = () => {
-  const currentUser = useAuth();
-  const [done, setDone] = useState(false);
+    const currentUser = useAuth();
+    const [done, setDone] = useState(false);
 
-  const colorTheme = useSelector((state) => state.theme.theme);
+    const colorTheme = useSelector((state) => state.theme.theme);
 
-  const globalUser = useSelector((state) => state.user.user);
-  const dispatch = useDispatch();
+    const globalUser = useSelector((state) => state.user.user);
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (currentUser) {
-      console.log(currentUser);
-      fetchUser();
-    } else {
-      setTimeout(200);
-      setDone(!done);
-    }
-  }, [done]);
+    useEffect(() => {
+        if (currentUser) {
+            console.log(currentUser);
+            fetchUser();
+        } else {
+            setTimeout(200);
+            setDone(!done);
+        }
+    }, [done]);
 
-  const fetchUser = () => {
-    axios
-      .get(`api/users/${currentUser?.uid}`)
-      .then(({ data }) => {
-        console.log(data);
-        dispatch(loginUser(data));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+    const fetchUser = () => {
+        axios
+            .get(`api/users/${currentUser?.uid}`)
+            .then(({ data }) => {
+                console.log(data);
+                dispatch(loginUser(data));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 
-  const chooseColorTheme = () => {
-    if (colorTheme === "light") return lightTheme;
-    else if (colorTheme === "dark") return darkTheme;
-    else if (colorTheme === "hotDog") return hotDogTheme;
-    else if (colorTheme === "spill") return spillTheme;
-  };
+    const chooseColorTheme = () => {
+        if (colorTheme === "light") return lightTheme;
+        else if (colorTheme === "dark") return darkTheme;
+        else if (colorTheme === "hotDog") return hotDogTheme;
+        else if (colorTheme === "spill") return spillTheme;
+    };
 
-  return (
-    <ThemeProvider theme={chooseColorTheme()}>
-      <>
-        <GlobalStyles />
-        <BrowserRouter>
-          {currentUser ? (
+    return (
+        <ThemeProvider theme={chooseColorTheme()}>
             <>
-              <Navbar />
-              <Routes>
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/createPost" element={<CreatePost />} />
-                <Route path="/" element={<Homepage />} />
-              </Routes>
+                <GlobalStyles />
+                <BrowserRouter>
+                    {currentUser ? (
+                        <>
+                            <Navbar />
+                            <Routes>
+                                <Route path="/profile" element={<Profile />} />
+                                <Route path="/create-post" element={<CreatePost />} />
+                                <Route path="/" element={<Homepage />} />
+                            </Routes>
+                        </>
+                    ) : (
+                        <Login />
+                    )}
+                </BrowserRouter>
             </>
-          ) : (
-            <Login />
-          )}
-        </BrowserRouter>
-      </>
-    </ThemeProvider>
-  );
+        </ThemeProvider>
+    );
 };
 
 export default App;

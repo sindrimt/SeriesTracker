@@ -93,7 +93,9 @@ const Navbar = () => {
                     onClick={() => navigate("/")}
                 />
                 <NavbarLinksOuter>
-                    <div className="findsSeries">Find Series</div>
+                    <div className="findsSeries" onClick={() => navigate("/create-post")}>
+                        Find Series
+                    </div>
                     <div className="findfriends">Find Friends</div>
                     <ThemeIcon>
                         {colorTheme === "light" && <MdOutlineLightMode onClick={() => setShowMore(!showMore)} size={25} />}
