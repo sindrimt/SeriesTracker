@@ -21,7 +21,7 @@ const CreatePost = () => {
 
     const [searchAll, setSearchAll] = useState({});
 
-    const [toggleHeader, setToggleHeader] = useState(true);
+    const [displayHeader, setDisplayHeader] = useState(true);
 
     const scrollPosition = useScroll();
 
@@ -93,7 +93,8 @@ const CreatePost = () => {
 
     const handleSearch = (e) => {
         setSearchTerm(e.target.value);
-        setToggleHeader(!toggleHeader);
+        let val = e.target.value;
+        val == 0 ? setDisplayHeader(true) : setDisplayHeader(false);
     };
 
     const handleOpen = () => {
@@ -109,6 +110,14 @@ const CreatePost = () => {
         searchAllAnimeAndManga(searchTerm).then((searchObject) => {
             console.log(searchObject);
             setFiltered(searchObject);
+            // return new Promise((resolve) => {
+            //     setSearchAll(searchObject);
+            //     resolve();
+            // }).then(() => {
+            //     searchAll.anime.forEach((anime) => {
+            //         return <AnimeCard key={anime.mal_id} anime={anime} />;
+            //     });
+            // });
         });
     };
 
@@ -147,12 +156,12 @@ const CreatePost = () => {
                         <input type="text" placeholder="Search" onChange={(e) => handleSearch(e)} />
                     </form>
                 </SearchOuter>
-                {toggleHeader && (
+                {displayHeader && (
                     <PageHeaderOuter>
                         <PageHeader>Here's something you might like</PageHeader>
                     </PageHeaderOuter>
-                )}
-                {!toggleHeader && (
+                )}{" "}
+                {!displayHeader && (
                     <PageHeaderOuter>
                         <PageHeader>Search results</PageHeader>
                     </PageHeaderOuter>
@@ -179,6 +188,7 @@ const CreatePost = () => {
                                 .split("min")[0]
                                 .trim()}:00`}`;
                         }
+
                         return (
                             <>
                                 <AnimeCard
