@@ -65,10 +65,10 @@ export const DropDownMenu = styled.div`
 `;
 
 export const PageHeaderOuter = styled.div`
-    height: 50px;
     position: absolute;
-    left: 180px;
+    height: 50px;
     top: 150px;
+    margin-right: 56vw;
 `;
 
 export const PageHeader = styled.div`
