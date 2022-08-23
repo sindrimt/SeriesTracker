@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useRef, useState, useEffect } from "react";
-import { CreatePostOuter, Gridcontainer, SearchOuter, DropDownOuter, DropDownMenu } from "./CreatePostStyles";
+import { CreatePostOuter, Gridcontainer, SearchOuter, DropDownOuter, DropDownMenu, PageHeaderOuter, PageHeader } from "./CreatePostStyles";
 
 import Loading from "../../Pages/LoadingPage/Loading";
 
@@ -18,6 +18,8 @@ const CreatePost = () => {
     const [searchTerm, setSearchTerm] = useState("");
 
     const [filtered, setFiltered] = useState([]);
+
+    const [searchAll, setSearchAll] = useState({});
 
     const scrollPosition = useScroll();
 
@@ -95,6 +97,46 @@ const CreatePost = () => {
         setOpen(false);
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        searchAllAnimeAndManga(searchTerm).then((searchObject) => {
+            console.log(searchObject);
+            setFiltered(searchObject);
+            // return new Promise((resolve) => {
+            //     setSearchAll(searchObject);
+            //     resolve();
+            // }).then(() => {
+            //     searchAll.anime.forEach((anime) => {
+            //         return <AnimeCard key={anime.mal_id} anime={anime} />;
+            //     });
+            // });
+        });
+    };
+
+    const searchAllAnimeAndManga = (searchTerm) => {
+        let searchAllanimeAndMangaObject = {};
+
+        return new Promise((resolve, reject) => {
+            return axios
+                .get(`https://api.jikan.moe/v4/anime?q=${searchTerm}&order_by=mal_id&limit=10`)
+                .then(({ data }) => {
+                    searchAllanimeAndMangaObject.anime = data.data;
+                })
+                .then(() => {
+                    return axios.get(`https://api.jikan.moe/v4/manga?q=${searchTerm}&order_by=mal_id&limit=10`);
+                })
+                .then(({ data }) => {
+                    searchAllanimeAndMangaObject.manga = data.data;
+
+                    let animeAndMangaMergedObject = searchAllanimeAndMangaObject.anime.concat(searchAllanimeAndMangaObject.manga);
+                    resolve(animeAndMangaMergedObject);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    };
+
     return (
         <>
             <CreatePostOuter>
@@ -102,8 +144,13 @@ const CreatePost = () => {
                     <DropDownMenu>Anime Manga</DropDownMenu>
                 </DropDownOuter> */}
                 <SearchOuter isFixed={fixed}>
-                    <input type="text" placeholder="Search" onChange={(e) => setSearchTerm(e.target.value)} />
+                    <form onSubmit={handleSubmit}>
+                        <input type="text" placeholder="Search" onChange={(e) => setSearchTerm(e.target.value)} />
+                    </form>
                 </SearchOuter>
+                <PageHeaderOuter>
+                    <PageHeader>Here's something you might like</PageHeader>
+                </PageHeaderOuter>
                 <Gridcontainer>
                     {filtered?.map((anime, index) => {
                         let animeDurationAsNumber;

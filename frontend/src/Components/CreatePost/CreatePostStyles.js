@@ -63,3 +63,14 @@ export const DropDownMenu = styled.div`
     border-radius: 0.25rem;
     box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
 `;
+
+export const PageHeaderOuter = styled.div`
+    height: 50px;
+    position: absolute;
+    left: 180px;
+    top: 150px;
+`;
+
+export const PageHeader = styled.div`
+    font-size: 20px;
+`;
