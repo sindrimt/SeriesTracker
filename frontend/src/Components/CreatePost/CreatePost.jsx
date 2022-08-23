@@ -21,6 +21,8 @@ const CreatePost = () => {
 
     const [searchAll, setSearchAll] = useState({});
 
+    const [toggleHeader, setToggleHeader] = useState(true);
+
     const scrollPosition = useScroll();
 
     let fixed = false;
@@ -89,6 +91,11 @@ const CreatePost = () => {
         return <Loading />;
     }
 
+    const handleSearch = (e) => {
+        setSearchTerm(e.target.value);
+        setToggleHeader(!toggleHeader);
+    };
+
     const handleOpen = () => {
         setOpen(true);
     };
@@ -145,12 +152,15 @@ const CreatePost = () => {
                 </DropDownOuter> */}
                 <SearchOuter isFixed={fixed}>
                     <form onSubmit={handleSubmit}>
-                        <input type="text" placeholder="Search" onChange={(e) => setSearchTerm(e.target.value)} />
+                        <input type="text" placeholder="Search" onChange={(e) => handleSearch(e)} />
                     </form>
                 </SearchOuter>
-                <PageHeaderOuter>
-                    <PageHeader>Here's something you might like</PageHeader>
-                </PageHeaderOuter>
+                {toggleHeader && (
+                    <PageHeaderOuter>
+                        <PageHeader>Here's something you might like</PageHeader>
+                    </PageHeaderOuter>
+                )}
+
                 <Gridcontainer>
                     {filtered?.map((anime, index) => {
                         let animeDurationAsNumber;
