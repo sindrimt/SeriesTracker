@@ -112,6 +112,7 @@ const Content = ({ series }) => {
                                         description={
                                             serie?.description ? serie?.description : "Gol D. Roger obtained everything the world had to offer ..."
                                         }
+                                        id={serie?._id}
                                     />
                                 </>
                             ))
