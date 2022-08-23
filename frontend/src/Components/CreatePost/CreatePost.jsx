@@ -109,14 +109,6 @@ const CreatePost = () => {
         searchAllAnimeAndManga(searchTerm).then((searchObject) => {
             console.log(searchObject);
             setFiltered(searchObject);
-            // return new Promise((resolve) => {
-            //     setSearchAll(searchObject);
-            //     resolve();
-            // }).then(() => {
-            //     searchAll.anime.forEach((anime) => {
-            //         return <AnimeCard key={anime.mal_id} anime={anime} />;
-            //     });
-            // });
         });
     };
 
@@ -160,7 +152,11 @@ const CreatePost = () => {
                         <PageHeader>Here's something you might like</PageHeader>
                     </PageHeaderOuter>
                 )}
-
+                {!toggleHeader && (
+                    <PageHeaderOuter>
+                        <PageHeader>Search results</PageHeader>
+                    </PageHeaderOuter>
+                )}
                 <Gridcontainer>
                     {filtered?.map((anime, index) => {
                         let animeDurationAsNumber;
@@ -183,7 +179,6 @@ const CreatePost = () => {
                                 .split("min")[0]
                                 .trim()}:00`}`;
                         }
-
                         return (
                             <>
                                 <AnimeCard
