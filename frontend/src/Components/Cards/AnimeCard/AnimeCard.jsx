@@ -41,10 +41,12 @@ const AnimeCard = ({ title, episodes, image, description, episodeLength }) => {
 
     const handleClose = () => {
         setOpen(false);
+        //setAnimeTitle(title);
     };
 
     const handleClick = () => {
         setOpen(true);
+        setAnimeTitle(title);
     };
 
     const handleSliderChange = (name) => (e, value) => {
