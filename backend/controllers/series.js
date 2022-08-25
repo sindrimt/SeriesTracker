@@ -66,6 +66,29 @@ export const patchSerieBySerieId = async (req, res) => {
     }
 };
 
+export const deleteSerieById = async (req, res) => {
+    console.log("DELETE");
+    const serie = req.params.serieId;
+    const serieToDelete = { _id: serie };
+
+    try {
+        const result = await Series.findByIdAndRemove(serieToDelete, (error, success) => {
+            console.log(req.body);
+            if (error) {
+                console.log(error);
+                // res.status(404).json({ message: error.message });
+            } else {
+                console.log(success);
+                //res.status(200).json(success);
+            }
+        });
+
+        res.status(200).json(result);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+};
+
 export const createSerie = async (req, res) => {
     const newSerie = new Series({
         userId: req.body.userId,
