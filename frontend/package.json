@@ -1,7 +1,7 @@
 {
     "name": "seriestracker",
     "version": "0.1.0",
-    "proxy": "http://localhost:83388338",
+    "proxy": "http://localhost:29896",
     "engines": {
         "node": "16.x"
     },
