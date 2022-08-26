@@ -132,7 +132,7 @@ export const darkTheme = {
     homepageCard: {
         fontColor: "",
         background: darkModePalette.grey,
-        border: " rgba(0, 0, 0, 0.1)",
+        border: "rgba(200, 200, 200, 0.1)",
         episodeLineLeft: "#a63fcb",
         episodeLineRight: "rgba(201, 201, 201, 0.8)",
         ProgressLineLeft: "#a63fcb",
@@ -161,8 +161,8 @@ export const darkTheme = {
         counter: "rgba(130, 130, 130, 1)",
     },
     contentRight: {
-        backgroundColor: "#1c1c1c",
-        accentColor: "#1f1f1f",
+        backgroundColor: "#1c1a1c",
+        accentColor: darkModePalette.grey,
     },
     search: {
         fontColor: darkModePalette.white,
