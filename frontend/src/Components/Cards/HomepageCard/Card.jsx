@@ -25,7 +25,7 @@ import loffi from "../../../Assets/Images/loffi.png";
 import star from "../../../Assets/Content/Star.svg";
 import { useAuth } from "../../../firebase";
 
-import { AiOutlinePlusCircle, AiOutlineMinusCircle, AiFillDelete } from "react-icons/ai";
+import { AiOutlinePlusCircle, AiOutlineMinusCircle, AiFillDelete, AiOutlineCloseCircle } from "react-icons/ai";
 import axios from "axios";
 
 import DeleteCardPopup from "../../Popups/DeleteCardPopup";
@@ -112,8 +112,9 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
                         </EpisodeContainer>
                         {/* <CardDescription>{description.slice(0, 60)}</CardDescription> */}
                         <CardDescription>
-                            <AiOutlinePlusCircle size={20} className="plus" onClick={handleAddEpisode} />
-                            <AiOutlineMinusCircle size={20} className="minus" onClick={handleSubtractEpisode} />
+                            <AiOutlinePlusCircle size={22} className="plus" onClick={handleAddEpisode} />
+                            <AiOutlineMinusCircle size={22} className="minus" onClick={handleSubtractEpisode} />
+                            <AiOutlineCloseCircle size={22} className="delete" color={"red"} onClick={handleDeleteCard} />
                         </CardDescription>
                     </CardInformationContainer>
 
@@ -123,7 +124,6 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
                             <CardRatingTxt>{rating}</CardRatingTxt>
                         </CardRatingCenter>
                     </CardRatingContainer>
-                    <AiFillDelete size={25} className="delete" onClick={handleDeleteCard} />
                 </SeriesCardInner>
                 {/* <WatchTimeContainer />
                 {watchTime && (
