@@ -15,6 +15,7 @@ const Home = () => {
     const [loading, setLoading] = useState(false);
     const [series, setSeries] = useState([]);
     const [done, setDone] = useState(false);
+    const [isDeleted, setIsDeleted] = useState(false);
 
     const currentUser = useAuth();
 
@@ -42,7 +43,7 @@ const Home = () => {
                 setDone(!done);
             }, 100);
         }
-    }, [done]);
+    }, [done, isDeleted]);
 
     if (loading) {
         return <></>;
@@ -55,7 +56,7 @@ const Home = () => {
             {currentUser ? (
                 <>
                     <Sidebar />
-                    <Content series={series} />
+                    <Content series={series} setIsDeleted={setIsDeleted} isDeleted={isDeleted} />
                     <ContentRight arrayLength={series.length} />
                 </>
             ) : (

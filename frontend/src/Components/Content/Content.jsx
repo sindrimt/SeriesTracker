@@ -39,23 +39,28 @@ import { useSelector } from "react-redux";
 
 import { useAuth } from "../../firebase";
 
-const Content = ({ series }) => {
+const Content = ({ series, setIsDeleted, isDeleted }) => {
     const [iconView, setIconView] = useState(false);
     const [loading, setLoading] = useState(false);
     const [seriesArray, setSeriesArray] = useState(series);
     const [filtered, setFiltered] = useState(series);
     const [searchTerm, setSearchTerm] = useState("");
+    const [update, setUpdate] = useState(false);
 
     const colorTheme = useSelector((state) => state.theme.theme);
     const currentUser = useAuth();
 
     useEffect(() => {
         console.log("e");
+        filterSeries();
+    }, [searchTerm]);
+
+    const filterSeries = () => {
         let filter = seriesArray.filter((serie) => {
             return serie?.title?.toLowerCase().includes(searchTerm.toLowerCase());
         });
         setFiltered(filter);
-    }, [searchTerm]);
+    };
 
     return (
         <>
@@ -103,6 +108,9 @@ const Content = ({ series }) => {
                             filtered?.map((serie) => (
                                 <>
                                     <HomepageCard
+                                        isDeleted={isDeleted}
+                                        setIsDeleted={setIsDeleted}
+                                        update={setUpdate}
                                         title={serie?.title}
                                         episodesWatched={serie?.episodesWatched}
                                         episodeCount={serie?.episodeCount}

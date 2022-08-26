@@ -30,7 +30,7 @@ export const SeriesCardInner = styled.div`
     .delete {
         fill: ${(props) => props.theme.homepageCard.deleteBtn};
         float: right;
-        
+
         &:hover {
             fill: ${(props) => props.theme.homepageCard.deleteBtnHover};
         }

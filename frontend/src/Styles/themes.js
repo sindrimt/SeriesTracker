@@ -64,7 +64,7 @@ export const lightTheme = {
     },
     homepageCard: {
         fontColor: "",
-        background: "white",
+        background: "#f7f7f7",
         border: " rgba(0, 0, 0, 0.1)",
         episodeLineLeft: "#a63fcb",
         episodeLineRight: "rgba(201, 201, 201, 0.8)",
@@ -72,7 +72,6 @@ export const lightTheme = {
         ProgressLineRight: "rgba(201, 201, 201, 0.8)",
         deleteBtn: "#676767",
         deleteBtnHover: "#a63fcb",
-        
     },
     sidebar: {
         background: "rgb(240, 240, 240)",
@@ -104,7 +103,7 @@ export const lightTheme = {
     },
     popup: {
         body: "rgba(220, 220, 220, 0.9)",
-    }
+    },
 };
 export const darkTheme = {
     currentTheme: "darkTheme",
@@ -170,7 +169,7 @@ export const darkTheme = {
     },
     popup: {
         body: "rgba(100, 100, 100, 0.9)",
-    }
+    },
 };
 
 export const hotDogTheme = {
@@ -231,7 +230,7 @@ export const hotDogTheme = {
     },
     popup: {
         body: hotDogPalette.yellow,
-    }
+    },
 };
 
 export const spillTheme = {
@@ -296,7 +295,7 @@ export const spillTheme = {
     },
     popup: {
         body: spillPalette.blue,
-    }
+    },
 };
 
 export const GlobalStyles = createGlobalStyle`
