@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const SidebarOuter = styled.div`
     //position: ${(props) => (props.isFixed ? "fixed" : "absolute")};
     position: fixed;
-    background-color: ${(props) => props.theme.sidebar.backgroundColor};
+    background-color: ${(props) => props.theme.sidebar.background};
     // margin-top: ${(props) => (props.isFixed ? "73px" : "111px")};
     margin-top: 110px;
     font-family: "Anek Malayalam", sans-serif;
@@ -19,7 +19,7 @@ export const SidebarOuter = styled.div`
     grid-template-rows: 8fr 2fr 1fr;
 
     ::-webkit-scrollbar {
-        background-color: ${(props) => props.theme.sidebar.backgroundColor};
+        background-color: ${(props) => props.theme.sidebar.background};
         //background-color: red;
     }
 
@@ -37,7 +37,7 @@ export const SidebarOuter = styled.div`
             background-color: ${(props) => props.theme.scrollbar.background};
         }
         ::-webkit-scrollbar {
-            background-color: ${(props) => props.theme.sidebar.backgroundColor};
+            background-color: ${(props) => props.theme.sidebar.background};
         }
     }
 
@@ -79,7 +79,7 @@ export const PanelOuterAccount = styled.div`
     grid-template-rows: repeat(50px);
     grid-row-gap: 0px;
     padding-bottom: 50px;
-    background-color: ${(props) => props.theme.sidebar.backgroundColor};
+    background-color: ${(props) => props.theme.sidebar.background};
 `;
 
 export const SidebarBottomLine = styled.div`

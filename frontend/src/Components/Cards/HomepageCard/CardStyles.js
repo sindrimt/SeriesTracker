@@ -4,7 +4,7 @@ export const SeriesCardOuter = styled.div`
     width: 100%;
     padding: ${(props) => (props.showProgress ? " 10px 10px 10px 10px" : " 10px 10px 10px 10px")};
     height: 130px;
-    box-shadow: 0px 4px 4px rgba(100, 100, 100, 0.1);
+    box-shadow: "";
     background-color: #fcfcfc;
     transition: 0.1s ease;
     border-radius: 3px;
@@ -16,6 +16,10 @@ export const SeriesCardOuter = styled.div`
         //background-color: rgba(166, 63, 203, 0.1);
         background-color: ${(props) => props.theme.lightgrey};
         cursor: pointer;
+
+        .delete {
+            visibility: visible;
+        }
     }
 `;
 
@@ -26,13 +30,16 @@ export const SeriesCardInner = styled.div`
     height: 100%;
     width: 100%;
     display: flex;
+
     /* background-color: #fdfd77; */
     .delete {
-        fill: ${(props) => props.theme.homepageCard.deleteBtn};
-        float: right;
+        visibility: hidden;
+        margin-left: 10px;
+        //fill: ${(props) => props.theme.homepageCard.deleteBtn};
 
         &:hover {
-            fill: ${(props) => props.theme.homepageCard.deleteBtnHover};
+            //fill: ${(props) => props.theme.homepageCard.deleteBtnHover};
+            fill: rgb(220, 0, 0);
         }
     }
 `;
@@ -129,7 +136,7 @@ export const CardDescription = styled.div`
 
     .plus {
         border-radius: 50%;
-        background-color: #f7f7f7;
+        //background-color: #f7f7f7;
 
         &:hover {
             color: grey;
@@ -139,7 +146,7 @@ export const CardDescription = styled.div`
     .minus {
         border-radius: 50%;
         margin-left: 10px;
-        background-color: #f7f7f7;
+        //background-color: #f7f7f7;
 
         &:hover {
             color: grey;
