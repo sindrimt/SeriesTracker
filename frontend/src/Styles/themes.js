@@ -70,6 +70,9 @@ export const lightTheme = {
         episodeLineRight: "rgba(201, 201, 201, 0.8)",
         ProgressLineLeft: "#a63fcb",
         ProgressLineRight: "rgba(201, 201, 201, 0.8)",
+        deleteBtn: "#676767",
+        deleteBtnHover: "#a63fcb",
+        
     },
     sidebar: {
         background: "rgb(240, 240, 240)",
@@ -99,6 +102,9 @@ export const lightTheme = {
     search: {
         fontColor: lightPalette.white,
     },
+    popup: {
+        body: "rgba(220, 220, 220, 0.9)",
+    }
 };
 export const darkTheme = {
     currentTheme: "darkTheme",
@@ -132,6 +138,8 @@ export const darkTheme = {
         episodeLineRight: "rgba(201, 201, 201, 0.8)",
         ProgressLineLeft: "#a63fcb",
         ProgressLineRight: "rgba(201, 201, 201, 0.8)",
+        deleteBtn: "ffffff",
+        deleteBtnHover: "#a63fcb",
     },
     sidebar: {
         background: darkModePalette.grey,
@@ -160,6 +168,9 @@ export const darkTheme = {
     search: {
         fontColor: darkModePalette.white,
     },
+    popup: {
+        body: "rgba(100, 100, 100, 0.9)",
+    }
 };
 
 export const hotDogTheme = {
@@ -218,6 +229,9 @@ export const hotDogTheme = {
     search: {
         fontColor: hotDogPalette.yellow,
     },
+    popup: {
+        body: hotDogPalette.yellow,
+    }
 };
 
 export const spillTheme = {
@@ -280,6 +294,9 @@ export const spillTheme = {
     search: {
         fontColor: spillPalette.black,
     },
+    popup: {
+        body: spillPalette.blue,
+    }
 };
 
 export const GlobalStyles = createGlobalStyle`
