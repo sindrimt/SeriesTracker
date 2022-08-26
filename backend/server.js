@@ -15,7 +15,7 @@ import seriesRoutes from "./routes/series.js";
 
 const app = express();
 
-const PORT = process.env.PORT || 83388338;
+const PORT = process.env.PORT || 29896;
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
@@ -25,7 +25,7 @@ app.use(cors());
 import { createProxyMiddleware } from "http-proxy-middleware";
 
 createProxyMiddleware({
-    target: "http://localhost:8080",
+    target: "http://localhost:29896",
     changeOrigin: true,
 });
 
