@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const SeriesCardOuter = styled.div`
-    width: 100%;
+    position: relative;
+    width: 89%;
     padding: ${(props) => (props.showProgress ? " 10px 10px 10px 10px" : " 10px 10px 10px 10px")};
     height: 130px;
     box-shadow: "";
