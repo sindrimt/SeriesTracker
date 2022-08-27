@@ -29,8 +29,16 @@ import { useScroll } from "../../Hooks/useScroll";
 
 import SidebarButton from "../../Components/Buttons/SidebarButton/SidebarButton";
 
+import { VscMenu } from "react-icons/vsc";
+import { useNavigate } from "react-router-dom";
+import useWindowDimensions from "../../Hooks/useWindowDimensions";
+
 const Sidebar = () => {
+    const [showSidebar, setShowSidebar] = useState(false);
+    let navigate = useNavigate();
     const scrollPosition = useScroll();
+
+    const { width } = useWindowDimensions();
 
     let fixed = false;
 
@@ -38,38 +46,52 @@ const Sidebar = () => {
         fixed = true;
     }
 
+    useEffect(() => {
+        if (width >= 640) {
+            setShowSidebar(true);
+        } else {
+            setShowSidebar(false);
+        }
+    }, [width]);
+
+    console.log(width);
+
     return (
         <>
-            <SidebarOuter isFixed={fixed}>
-                {/*  <SearchOuter>
+            <VscMenu className="menuButton" onClick={() => setShowSidebar(!showSidebar)} size={25} />
+            {showSidebar && (
+                <SidebarOuter isFixed={fixed}>
+                    {/*  <SearchOuter>
           Search series
           <form className="searchForm" onSubmit={/*) => e.preventDefault()}>
             <label htmlFor="searchSeries">Search series</label>
             <input id="searchSeries" type="text" role="searchbox" placeholder="Search" />
           </form>
         </SearchOuter> */}
-                <PanelOuter>
-                    <SidebarButton icon={dashboard} text="Dashboard" />
-                    <SidebarButton icon={notifications} text="Notifications" />
-                    <SidebarButton icon={messages} text="Messages" />
-                    <SidebarButton icon={friends} text="Friends" />
-                    <SidebarButton icon={settings} text="Settings" />
-                    <SidebarLine />
-                </PanelOuter>
-                <PanelOuterAccount>
-                    <AccountHeader>Account</AccountHeader>
-                    <SidebarButton icon={analytics} text="Analytics" />
-                    <SidebarButton icon={settings} text="Settings" />
-                    <SidebarButton icon={analytics} text="Analytics" />
-                    <SidebarButton icon={settings} text="Settings" />
-                </PanelOuterAccount>
-                <a href="https://github.com/sindrimt/SeriesTracker">
-                    <GithubBack>
-                        <Github src={github} />
-                    </GithubBack>
-                </a>
-                <Trademark>SeriesTracker 2022&reg;</Trademark>
-            </SidebarOuter>
+                    <PanelOuter>
+                        <SidebarButton icon={dashboard} text="Dashboard" />
+                        {/* <SidebarButton icon={notifications} text="Notifications" /> */}
+                        <SidebarButton icon={notifications} text="Find Series" clickAction={() => navigate("/create-post")} />
+                        <SidebarButton icon={messages} text="Messages" />
+                        <SidebarButton icon={friends} text="Friends" />
+                        <SidebarButton icon={settings} text="Settings" />
+                        <SidebarLine />
+                    </PanelOuter>
+                    <PanelOuterAccount>
+                        <AccountHeader>Account</AccountHeader>
+                        <SidebarButton icon={analytics} text="Stats" />
+                        <SidebarButton icon={settings} text="Updates" />
+                        <SidebarButton icon={analytics} text="Trending" />
+                        <SidebarButton icon={settings} text="Settings" />
+                    </PanelOuterAccount>
+                    <a href="https://github.com/sindrimt/SeriesTracker">
+                        <GithubBack>
+                            <Github src={github} />
+                        </GithubBack>
+                    </a>
+                    <Trademark>SeriesTracker 2022&reg;</Trademark>
+                </SidebarOuter>
+            )}
         </>
     );
 };

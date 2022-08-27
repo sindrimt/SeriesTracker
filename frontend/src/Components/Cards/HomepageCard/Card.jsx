@@ -19,6 +19,7 @@ import {
     ProgressLine,
     ProgressLineGray,
     ProgressLineText,
+    SeriesCardImageContainer,
 } from "./CardStyles";
 
 import loffi from "../../../Assets/Images/loffi.png";
@@ -100,7 +101,9 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
             )}
             <SeriesCardOuter showProgress={watchTime}>
                 <SeriesCardInner>
-                    <SeriesCardImage src={image?.includes("upload") ? `api/${image}` : image} />
+                    <SeriesCardImageContainer>
+                        <SeriesCardImage src={image?.includes("upload") ? `api/${image}` : image} />
+                    </SeriesCardImageContainer>
                     <CardInformationContainer>
                         <CardTitle>{title}</CardTitle>
                         <EpisodeContainer hasWatchTime={watchTime}>

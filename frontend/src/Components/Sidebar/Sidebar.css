@@ -1,19 +1,37 @@
 .searchForm label {
-  position: absolute;
-  left: -99999px;
+    position: absolute;
+    left: -99999px;
 }
 
 .searchForm input[type="text"] {
-  flex-grow: 1;
-  max-width: 100%;
-  min-height: 48px;
-  font-size: 1rem;
-  border-radius: 5px;
-  padding: 10px;
-  outline: none;
-  border: none;
+    flex-grow: 1;
+    max-width: 100%;
+    min-height: 48px;
+    font-size: 1rem;
+    border-radius: 5px;
+    padding: 10px;
+    outline: none;
+    border: none;
 }
 
 ul {
-  list-style: none;
+    list-style: none;
+}
+
+.menuButton {
+    position: fixed;
+    top: 25px;
+    left: 20px;
+    z-index: 999999999999999999;
+    visibility: hidden;
+}
+
+.menuButton:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 640px) {
+    .menuButton {
+        visibility: visible;
+    }
 }
