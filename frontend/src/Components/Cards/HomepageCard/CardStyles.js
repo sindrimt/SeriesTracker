@@ -21,6 +21,11 @@ export const SeriesCardOuter = styled.div`
             visibility: visible;
         }
     }
+
+    @media (max-width: 640px) {
+        width: 96.5vw;
+        height: 115px;
+    }
 `;
 
 /* background-color: #F7F7F7;
@@ -44,11 +49,26 @@ export const SeriesCardInner = styled.div`
     }
 `;
 
+export const SeriesCardImageContainer = styled.div`
+    @media (max-width: 640px) {
+        width: 80px;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 2px;
+    }
+`;
+
 export const SeriesCardImage = styled.img`
-    width: 150px;
+    width: 130px;
     height: 100%;
     object-fit: cover;
-    border-radius: 2px;
+
+    @media (max-width: 640px) {
+        width: 80px;
+        height: 100%;
+        object-fit: fill;
+        border-radius: 2px;
+    }
 `;
 
 export const WatchTimeContainer = styled.div`
@@ -66,8 +86,17 @@ export const CardInformationContainer = styled.div`
 `;
 
 export const CardTitle = styled.div`
+    position: relative;
     font-size: 26px;
     font-weight: 300;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @media (max-width: 640px) {
+        font-size: 22px;
+    }
 `;
 
 export const EpisodeContainer = styled.div`
@@ -101,7 +130,6 @@ export const EpisodeLineProgress = styled.div`
 export const CardRatingContainer = styled.div`
     position: relative;
     display: flex;
-    padding-left: 70px;
     margin-top: 12px;
     justify-content: center;
     align-items: center;

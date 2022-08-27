@@ -13,7 +13,9 @@ export const ContentContainerOuter = styled.div`
     width: 70%;
 
     @media (max-width: 640px) {
-        padding-left: 30px;
+        padding-left: 7px;
+        padding-right: 7px;
+        margin-top: 100px;
     }
 
     @media (max-width: 1060px) {
@@ -26,6 +28,10 @@ export const ContentContainerGrid = styled.div`
     display: grid;
     row-gap: 1rem;
     padding-bottom: 10px;
+
+    @media (max-width: 640px) {
+        row-gap: 0.5rem;
+    }
 `;
 
 export const ContentContainerGridIcons = styled.div`
@@ -95,7 +101,7 @@ export const SearchOuter = styled.input`
     text-decoration: none;
     border: none;
 
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid ${(props) => props.theme.content.searchBorder};
     //border-radius: 5px;
     /* border-left: 1px solid black;
     border-right: 1px solid black;

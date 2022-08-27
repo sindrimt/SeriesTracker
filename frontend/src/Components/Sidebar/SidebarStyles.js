@@ -17,6 +17,11 @@ export const SidebarOuter = styled.div`
     display: grid;
     letter-spacing: 1.7px;
     grid-template-rows: 8fr 2fr 1fr;
+    z-index: 99999999;
+
+    .menuButton {
+        fill: ${(props) => props.theme.navbar.menuButton};
+    }
 
     ::-webkit-scrollbar {
         background-color: ${(props) => props.theme.sidebar.background};
@@ -41,8 +46,11 @@ export const SidebarOuter = styled.div`
         }
     }
 
-    @media (max-width: 638px) {
-        display: none;
+    @media (max-width: 640px) {
+        //display: none;
+        margin-top: 80px;
+        height: calc(100% - 80px);
+        width: 85%;
     }
 `;
 

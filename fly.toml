@@ -1,4 +1,4 @@
-# fly.toml file generated for seriestracker on 2022-08-26T16:07:31+02:00
+# fly.toml file generated for seriestracker on 2022-08-26T22:14:51+02:00
 
 app = "seriestracker"
 kill_signal = "SIGINT"

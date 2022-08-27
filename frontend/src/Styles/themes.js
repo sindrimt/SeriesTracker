@@ -57,10 +57,12 @@ export const lightTheme = {
         fontColor: "",
         line: "rgba(137, 137, 137, 0.15)",
         underline: "rgba(166, 63, 203, 1)",
+        menuButton: "rgb(50, 50, 50)",
     },
     content: {
         background: "white",
         filter: "",
+        searchBorder: "rgba(166, 63, 203, 1)",
     },
     homepageCard: {
         fontColor: "",
@@ -124,10 +126,12 @@ export const darkTheme = {
         fontColor: darkModePalette.white,
         line: "rgba(137, 137, 137, 0.15)",
         underline: "rgba(166, 63, 203, 1)",
+        menuButton: "rgb(220, 220, 220)",
     },
     content: {
         background: darkModePalette.dark2,
         filter: darkModePalette.white,
+        searchBorder: darkModePalette.white,
     },
     homepageCard: {
         fontColor: "",
@@ -184,10 +188,12 @@ export const hotDogTheme = {
         fontColor: hotDogPalette.red,
         line: "rgba(0, 0, 0, 1)",
         underline: hotDogPalette.red,
+        menuButton: "rgb(255, 0, 0)",
     },
     content: {
         background: hotDogPalette.yellow,
         filter: hotDogPalette.red,
+        searchBorder: darkModePalette.red,
     },
     homepageCard: {
         fontColor: hotDogPalette.yellow,
@@ -250,10 +256,12 @@ export const spillTheme = {
         fontColor2: "white",
         line: "rgba(0, 0, 0, 1)",
         underline: spillPalette.yellow,
+        menuButton: spillPalette.yellow,
     },
     content: {
         background: spillPalette.blue,
         filter: spillPalette.yellow,
+        searchBorder: darkModePalette.black,
     },
     homepageCard: {
         fontColor: spillPalette.black,
