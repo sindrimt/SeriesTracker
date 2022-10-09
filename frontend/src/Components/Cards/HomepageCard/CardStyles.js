@@ -3,8 +3,9 @@ import styled from "styled-components";
 export const SeriesCardOuter = styled.div`
     //position: relative;
     width: 100%;
-    // padding: ${(props) => (props.showProgress ? " 10px 10px 10px 10px" : " 10px 10px 10px 10px")};
+    //padding: ${(props) => (props.showProgress ? " 10px 10px 10px 10px" : " 10px 10px 10px 10px")};
     height: 130px;
+    padding: 5px;
     box-shadow: "";
     background-color: #fcfcfc;
     transition: 0.1s ease;
@@ -24,7 +25,7 @@ export const SeriesCardOuter = styled.div`
     }
 
     @media (max-width: 720px) {
-        width: 96.5vw;
+        width: 90vw;
         height: 115px;
     }
 `;
