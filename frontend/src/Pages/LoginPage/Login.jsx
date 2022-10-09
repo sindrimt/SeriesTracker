@@ -156,7 +156,7 @@ const Login = () => {
                 <LoginOuterContainer>
                     <LoginPreviewOuter>
                         <TxtOuter>
-                            <LoginPreviewHeader>Track your series</LoginPreviewHeader>
+                            <LoginPreviewHeader>Track your series!</LoginPreviewHeader>
                             <LoginPreviewTxt>Save your series' progress, rate them, discover new ones, and connect with friends!</LoginPreviewTxt>
                         </TxtOuter>
                         <LoginPreviewImg src={previewImg} alt="Homescreen preview" />
@@ -168,8 +168,8 @@ const Login = () => {
                             </LoginBoxLogoOuter>
 
                             <LoginFields>
-                                <FormField ref={emailRef} type="text" placeholder="email" />
-                                <FormField ref={passwordRef} type="password" placeholder="password" />
+                                <FormField ref={emailRef} type="text" placeholder="email" name="email" />
+                                <FormField ref={passwordRef} type="password" placeholder="password" name="password" />
                                 {register ? (
                                     <FButton buttonText="Sign Up" action={handleSignup} />
                                 ) : (
@@ -200,7 +200,7 @@ const Login = () => {
                         </LoginBoxSecondary>
                     </LoginBoxOuter>
                 </LoginOuterContainer>
-                <Footer />
+                {/* <Footer /> */}
             </PageContainer>
         </>
     );
