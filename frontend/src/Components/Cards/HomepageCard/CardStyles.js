@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const SeriesCardOuter = styled.div`
-    position: relative;
+    //position: relative;
     width: 100%;
-    padding: ${(props) => (props.showProgress ? " 10px 10px 10px 10px" : " 10px 10px 10px 10px")};
+    // padding: ${(props) => (props.showProgress ? " 10px 10px 10px 10px" : " 10px 10px 10px 10px")};
     height: 130px;
     box-shadow: "";
     background-color: #fcfcfc;
@@ -67,7 +67,7 @@ export const SeriesCardImage = styled.img`
     @media (max-width: 720px) {
         width: 80px;
         height: 100%;
-        object-fit: fill;
+        object-fit: cover;
         border-radius: 2px;
     }
 `;
@@ -90,7 +90,6 @@ export const CardTitle = styled.div`
     position: relative;
     font-size: 26px;
     font-weight: 300;
-    width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

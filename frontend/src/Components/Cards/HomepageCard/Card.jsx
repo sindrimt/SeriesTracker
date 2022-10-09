@@ -105,7 +105,7 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
                         <SeriesCardImage src={image?.includes("upload") ? `api/${image}` : image} />
                     </SeriesCardImageContainer>
                     <CardInformationContainer>
-                        <CardTitle>{title}</CardTitle>
+                        <CardTitle>{title.slice(0, 20)}</CardTitle>
                         <EpisodeContainer hasWatchTime={watchTime}>
                             <EpisodeCount>
                                 Ep {episodesWatchedState} / {episodeCount}

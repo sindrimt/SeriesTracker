@@ -13,7 +13,7 @@ export const ContentContainerOuter = styled.div`
     width: 70%;
 
     @media (max-width: 720px) {
-        padding-left: 7px;
+        padding-left: 11px;
         padding-right: 7px;
         margin-top: 100px;
     }
