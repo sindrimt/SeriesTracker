@@ -21,8 +21,9 @@ const ContentRight = ({ arrayLength }) => {
     const fetchTopAnimes = () => {
         return new Promise((resolve, reject) => {
             axios
-                .get(`https://api.jikan.moe/v3/top/anime/1/bypopularity`)
+                .get(`https://api.jikan.moe/v4/top/anime`)
                 .then(({ data }) => {
+                    console.log(data);
                     resolve([data, arrayLength]);
                 })
                 .catch((error) => {
@@ -52,7 +53,7 @@ const ContentRight = ({ arrayLength }) => {
             console.log(res);
             //let shuffledArray = shuffle(res[0].top);
 
-            setTopAnimes(res[0].top.slice(0, 9));
+            setTopAnimes(res[0].data.slice(0, 9));
         });
     }, [arrayLength]);
 
@@ -73,7 +74,15 @@ const ContentRight = ({ arrayLength }) => {
                         </ImageInformation>
                     </TopAnimeOuter>
                     {topAnimes?.map((anime, index) => {
-                        return <ChartCard key={index} image={anime.image_url} title={anime.title} rating={anime.score} number={index} />;
+                        return (
+                            <ChartCard
+                                key={index}
+                                image={anime.images.webp.image_url ? anime.images.webp.image_url : anime.images.jpg.image_url}
+                                title={anime.title}
+                                rating={anime.score}
+                                number={index}
+                            />
+                        );
                     })}
                 </ChartsContainer>
             </ContentRightOuter>

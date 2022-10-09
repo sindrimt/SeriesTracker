@@ -115,7 +115,7 @@ export const NavbarLinksOuter = styled.div`
         transition: 0.1s;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 650px) {
         display: none;
     }
 

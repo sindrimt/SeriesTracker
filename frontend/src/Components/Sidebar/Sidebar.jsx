@@ -54,8 +54,6 @@ const Sidebar = () => {
         }
     }, [width]);
 
-    console.log(width);
-
     return (
         <>
             <VscMenu className="menuButton" onClick={() => setShowSidebar(!showSidebar)} size={25} />
