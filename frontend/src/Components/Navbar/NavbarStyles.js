@@ -45,7 +45,7 @@ export const Logo = styled.img`
     }
 
     @media (max-width: 640px) {
-        visibility: hidden;
+        display: none;
     }
 `;
 
@@ -110,13 +110,39 @@ export const NavbarLinksOuter = styled.div`
     column-gap: 10px;
     white-space: nowrap;
 
+    .navtext {
+        display: flex;
+        justify-content: space-between;
+        //width: 280px;
+
+        white-space: nowrap;
+    }
+
     div {
         border-bottom: 1px solid rgba(166, 63, 203, 0);
         transition: 0.1s;
     }
 
-    @media (max-width: 650px) {
-        display: none;
+    .themes {
+        display: flex;
+        justify-content: space-between;
+        //width: 280px;
+
+        white-space: nowrap;
+    }
+
+    @media (max-width: 640px) {
+        .navtext {
+            display: flex;
+            justify-content: space-between;
+            color: red;
+            display: none;
+        }
+
+        .themes {
+            margin-left: 70px;
+            margin-top: 8px;
+        }
     }
 
     .findfriends:hover {

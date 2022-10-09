@@ -93,53 +93,57 @@ const Navbar = () => {
                     onClick={() => navigate("/")}
                 />
                 <NavbarLinksOuter>
-                    <div className="findsSeries" onClick={() => navigate("/create-post")}>
-                        Find Series
+                    <div className="navtext">
+                        <div className="findsSeries" onClick={() => navigate("/create-post")}>
+                            Find Series
+                        </div>
+                        <div className="findfriends">Find Friends</div>
                     </div>
-                    <div className="findfriends">Find Friends</div>
-                    <ThemeIcon>
-                        {colorTheme === "light" && <MdOutlineLightMode onClick={() => setShowMore(!showMore)} size={25} />}
-                        {colorTheme === "spill" && <Spill src={SpillLogo} onClick={() => setShowMore(!showMore)} />}
-                        {colorTheme === "dark" && <MdOutlineDarkMode onClick={() => setShowMore(!showMore)} size={25} />}
-                        {colorTheme === "hotDog" && <GiHotDog size={25} onClick={() => setShowMore(!showMore)} />}
-                    </ThemeIcon>
-                    {showMore && (
-                        <ShowMore>
-                            {colorTheme === "light" && (
-                                <>
-                                    <MdOutlineDarkMode size={25} onClick={() => handleColorTheme("dark")} className="icon" />
-                                    <GiHotDog size={25} onClick={() => handleColorTheme("hotDog")} className="icon" />
-                                    <Spill src={SpillLogo} onClick={() => handleColorTheme("spill")} className="icon" />
-                                </>
-                            )}
-                            {colorTheme === "dark" && (
-                                <>
-                                    <MdOutlineLightMode onClick={() => handleColorTheme("light")} size={25} className="icon" />
-                                    <GiHotDog size={25} onClick={() => handleColorTheme("hotDog")} className="icon" />
-                                    <Spill src={SpillLogo} onClick={() => handleColorTheme("spill")} className="icon" />
-                                </>
-                            )}
-                            {colorTheme === "hotDog" && (
-                                <>
-                                    <MdOutlineDarkMode size={25} onClick={() => handleColorTheme("dark")} className="icon" />
-                                    <MdOutlineLightMode onClick={() => handleColorTheme("light")} size={25} className="icon" />
-                                    <Spill src={SpillLogo} onClick={() => handleColorTheme("spill")} className="icon" />
-                                </>
-                            )}
-                            {colorTheme === "spill" && (
-                                <>
-                                    <MdOutlineDarkMode size={25} onClick={() => handleColorTheme("dark")} className="icon" />
-                                    <MdOutlineLightMode onClick={() => handleColorTheme("light")} size={25} className="icon" />
-                                    <GiHotDog size={25} onClick={() => handleColorTheme("hotDog")} className="icon" />
-                                </>
-                            )}
-                        </ShowMore>
-                    )}
-                    {showMore ? (
-                        <MdExpandMore size={22} onClick={() => setShowMore(!showMore)} className="showless" />
-                    ) : (
-                        <MdExpandMore size={22} onClick={() => setShowMore(!showMore)} className="showmore" />
-                    )}
+                    <div className="themes">
+                        <ThemeIcon>
+                            {colorTheme === "light" && <MdOutlineLightMode onClick={() => setShowMore(!showMore)} size={25} />}
+                            {colorTheme === "spill" && <Spill src={SpillLogo} onClick={() => setShowMore(!showMore)} />}
+                            {colorTheme === "dark" && <MdOutlineDarkMode onClick={() => setShowMore(!showMore)} size={25} />}
+                            {colorTheme === "hotDog" && <GiHotDog size={25} onClick={() => setShowMore(!showMore)} />}
+                        </ThemeIcon>
+                        {showMore && (
+                            <ShowMore>
+                                {colorTheme === "light" && (
+                                    <>
+                                        <MdOutlineDarkMode size={25} onClick={() => handleColorTheme("dark")} className="icon" />
+                                        <GiHotDog size={25} onClick={() => handleColorTheme("hotDog")} className="icon" />
+                                        <Spill src={SpillLogo} onClick={() => handleColorTheme("spill")} className="icon" />
+                                    </>
+                                )}
+                                {colorTheme === "dark" && (
+                                    <>
+                                        <MdOutlineLightMode onClick={() => handleColorTheme("light")} size={25} className="icon" />
+                                        <GiHotDog size={25} onClick={() => handleColorTheme("hotDog")} className="icon" />
+                                        <Spill src={SpillLogo} onClick={() => handleColorTheme("spill")} className="icon" />
+                                    </>
+                                )}
+                                {colorTheme === "hotDog" && (
+                                    <>
+                                        <MdOutlineDarkMode size={25} onClick={() => handleColorTheme("dark")} className="icon" />
+                                        <MdOutlineLightMode onClick={() => handleColorTheme("light")} size={25} className="icon" />
+                                        <Spill src={SpillLogo} onClick={() => handleColorTheme("spill")} className="icon" />
+                                    </>
+                                )}
+                                {colorTheme === "spill" && (
+                                    <>
+                                        <MdOutlineDarkMode size={25} onClick={() => handleColorTheme("dark")} className="icon" />
+                                        <MdOutlineLightMode onClick={() => handleColorTheme("light")} size={25} className="icon" />
+                                        <GiHotDog size={25} onClick={() => handleColorTheme("hotDog")} className="icon" />
+                                    </>
+                                )}
+                            </ShowMore>
+                        )}
+                        {showMore ? (
+                            <MdExpandMore size={22} onClick={() => setShowMore(!showMore)} className="showless" />
+                        ) : (
+                            <MdExpandMore size={22} onClick={() => setShowMore(!showMore)} className="showmore" />
+                        )}
+                    </div>
                 </NavbarLinksOuter>
                 <NavbarProfileOuter>
                     <div>
