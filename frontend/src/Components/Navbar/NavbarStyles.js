@@ -44,7 +44,7 @@ export const Logo = styled.img`
         cursor: pointer;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 720px) {
         display: none;
     }
 `;
@@ -131,7 +131,7 @@ export const NavbarLinksOuter = styled.div`
         white-space: nowrap;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 720px) {
         .navtext {
             display: flex;
             justify-content: space-between;
