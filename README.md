@@ -24,4 +24,4 @@ Install dependencies by running:
   
   
 PS.
-You also need a .env file with MogoDbUri connection string and Port number :)
+You also need a .env file with MongoDbUri connection string and Port number :)
