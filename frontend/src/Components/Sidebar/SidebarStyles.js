@@ -46,7 +46,7 @@ export const SidebarOuter = styled.div`
         }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 720px) {
         //display: none;
         margin-top: 80px;
         height: calc(100% - 80px);

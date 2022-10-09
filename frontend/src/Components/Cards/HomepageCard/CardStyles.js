@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SeriesCardOuter = styled.div`
     position: relative;
-    width: 89%;
+    width: 100%;
     padding: ${(props) => (props.showProgress ? " 10px 10px 10px 10px" : " 10px 10px 10px 10px")};
     height: 130px;
     box-shadow: "";
@@ -23,7 +23,7 @@ export const SeriesCardOuter = styled.div`
         }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 720px) {
         width: 96.5vw;
         height: 115px;
     }
@@ -51,7 +51,7 @@ export const SeriesCardInner = styled.div`
 `;
 
 export const SeriesCardImageContainer = styled.div`
-    @media (max-width: 640px) {
+    @media (max-width: 720px) {
         width: 80px;
         height: 100%;
         object-fit: cover;
@@ -64,7 +64,7 @@ export const SeriesCardImage = styled.img`
     height: 100%;
     object-fit: cover;
 
-    @media (max-width: 640px) {
+    @media (max-width: 720px) {
         width: 80px;
         height: 100%;
         object-fit: fill;
@@ -95,7 +95,7 @@ export const CardTitle = styled.div`
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    @media (max-width: 640px) {
+    @media (max-width: 720px) {
         font-size: 22px;
     }
 `;

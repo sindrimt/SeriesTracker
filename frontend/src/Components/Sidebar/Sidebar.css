@@ -30,7 +30,7 @@ ul {
     cursor: pointer;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 720px) {
     .menuButton {
         visibility: visible;
     }

@@ -12,7 +12,7 @@ export const ContentContainerOuter = styled.div`
     padding-left: 250px;
     width: 70%;
 
-    @media (max-width: 640px) {
+    @media (max-width: 720px) {
         padding-left: 7px;
         padding-right: 7px;
         margin-top: 100px;
@@ -29,7 +29,7 @@ export const ContentContainerGrid = styled.div`
     row-gap: 1rem;
     padding-bottom: 10px;
 
-    @media (max-width: 640px) {
+    @media (max-width: 720px) {
         row-gap: 0.5rem;
     }
 `;
