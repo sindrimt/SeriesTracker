@@ -13,11 +13,10 @@ export const LoginOuterContainer = styled.div`
     padding-right: 2vw;
     padding-left: 2vw;
     display: grid;
-    height: 100vh;
+    height: 90vh;
     grid-template-columns: 2fr 1fr;
     grid-column-gap: 20px;
     grid-row-gap: 20px;
-    padding-bottom: 120px;
 
     @media (max-width: 1250px) {
         grid-template-columns: 1fr;
@@ -47,6 +46,10 @@ export const TxtOuter = styled.div`
     width: 100%;
     align-items: center;
     justify-content: flex-end;
+
+    @media (max-width: 800px) {
+        display: none;
+    }
 `;
 
 export const LoginPreviewHeader = styled.div`
