@@ -118,10 +118,16 @@ const AnimeCard = ({ title, episodes, image, description, episodeLength }) => {
                         <AnimeCardOuter hover={false} onClick={() => console.log(title)}>
                             <LeftOuter onClick={() => console.log(animeTitle)}>
                                 <AnimeImage src={preview ? preview : image} alt="Image" />
-                                <Title>
-                                    <input type="text" defaultValue={title} className="title-input" onChange={(e) => setAnimeTitle(e.target.value)} />
-                                    {/*  {animeTitle === "" ? title : title?.slice(0, 40)} */}
-                                </Title>
+                                {
+                                    <Title>
+                                        <input
+                                            type="text"
+                                            defaultValue={title}
+                                            className="title-input"
+                                            onChange={(e) => setAnimeTitle(e.target.value)}
+                                        />
+                                    </Title>
+                                }
                             </LeftOuter>
                             <MiddleOuter></MiddleOuter>
                             <RightOuter>

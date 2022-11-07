@@ -6,14 +6,21 @@ export const PageContainer = styled.div`
     display: grid;
     grid-template-rows: 5fr;
     grid-row-gap: 20px;
+    background: linear-gradient(45deg, rgba(110, 68, 253, 0.8), rgba(166, 63, 203, 0.9));
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const LoginOuterContainer = styled.div`
-    width: 100%;
+    width: calc(100vw - 40px);
+    border-radius: 12px;
     padding-right: 2vw;
+    background-color: white;
     padding-left: 2vw;
     display: grid;
-    height: 90vh;
+    height: calc(100vh - 40px);
     grid-template-columns: 2fr 1fr;
     grid-column-gap: 20px;
     grid-row-gap: 20px;

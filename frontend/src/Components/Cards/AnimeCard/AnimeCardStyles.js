@@ -14,6 +14,10 @@ export const AnimeCardOuter = styled.div`
         cursor: ${(props) => (props.hover ? "pointer" : "")};
         background-color: rgba(166, 63, 203, 0.1);
     }
+
+    @media (max-width: 400px) {
+        width: 80%;
+    }
 `;
 
 export const LeftOuter = styled.div`
@@ -51,6 +55,10 @@ export const Title = styled.div`
             border: none;
             text-decoration: none;
         }
+    }
+
+    @media (max-width: 400px) {
+        display: none;
     }
 `;
 

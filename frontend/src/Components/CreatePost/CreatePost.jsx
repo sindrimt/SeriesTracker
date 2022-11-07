@@ -110,14 +110,6 @@ const CreatePost = () => {
         searchAllAnimeAndManga(searchTerm).then((searchObject) => {
             console.log(searchObject);
             setFiltered(searchObject);
-            // return new Promise((resolve) => {
-            //     setSearchAll(searchObject);
-            //     resolve();
-            // }).then(() => {
-            //     searchAll.anime.forEach((anime) => {
-            //         return <AnimeCard key={anime.mal_id} anime={anime} />;
-            //     });
-            // });
         });
     };
 

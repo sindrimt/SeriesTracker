@@ -25,10 +25,12 @@ export const CreatePostOuter = styled.div`
 export const Gridcontainer = styled.div`
     position: relative;
     padding: 10px;
-    width: 70%;
+    background-color: red;
+    justify-content: center;
+    width: 100vw;
     height: 100px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     row-gap: 1rem;
     column-gap: 2rem;
 `;
@@ -57,7 +59,7 @@ export const DropDownMenu = styled.div`
     width: 50px;
     height: 40px;
     left: 0;
-    top: clac(100% + 0.25rem);
+    top: calc(100% + 0.25rem);
     background-color: white;
     padding: 0.75rem;
     border-radius: 0.25rem;
@@ -73,4 +75,8 @@ export const PageHeaderOuter = styled.div`
 
 export const PageHeader = styled.div`
     font-size: 20px;
+
+    @media (max-width: 750px) {
+        display: none;
+    }
 `;
