@@ -17,6 +17,7 @@ import {
     AlternativeLoginMethods,
     FileLabel,
     PageContainer,
+    LoginBoxOuterBg,
 } from "./LoginStyles";
 
 import "./login.css";
@@ -24,7 +25,14 @@ import "./login.css";
 import previewImg from "../../Assets/Login/homescreen.png";
 import Footer from "../../Components/Footer/Footer";
 
-import { signup, logIn, userProfileUpdate, signInWithGoogle, saveData, getGoogleRedirectResults } from "../../firebase.js";
+import {
+    signup,
+    logIn,
+    userProfileUpdate,
+    signInWithGoogle,
+    saveData,
+    getGoogleRedirectResults,
+} from "../../firebase.js";
 import GoogleLoginButton from "../../Components/Buttons/GoogleButton/GoogleLoginButton";
 import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 
@@ -157,48 +165,60 @@ const Login = () => {
                     <LoginPreviewOuter>
                         <TxtOuter>
                             <LoginPreviewHeader>Track your series!</LoginPreviewHeader>
-                            <LoginPreviewTxt>Save your series' progress, rate them, discover new ones, and connect with friends!</LoginPreviewTxt>
+                            <LoginPreviewTxt>
+                                Save your series' progress, rate them, discover new ones, and connect with friends!
+                            </LoginPreviewTxt>
                         </TxtOuter>
                         <LoginPreviewImg src={previewImg} alt="Homescreen preview" />
                     </LoginPreviewOuter>
-                    <LoginBoxOuter>
-                        <LoginBoxMain>
-                            <LoginBoxLogoOuter>
-                                <LoginBoxLogo src={SeriesTrackerLogo} />
-                            </LoginBoxLogoOuter>
+                    <LoginBoxOuterBg>
+                        <LoginBoxOuter>
+                            <LoginBoxMain>
+                                <LoginBoxLogoOuter>
+                                    <LoginBoxLogo src={SeriesTrackerLogo} />
+                                </LoginBoxLogoOuter>
 
-                            <LoginFields>
-                                <FormField ref={emailRef} type="text" placeholder="email" name="email" />
-                                <FormField ref={passwordRef} type="password" placeholder="password" name="password" />
-                                {register ? (
-                                    <FButton buttonText="Sign Up" action={handleSignup} />
-                                ) : (
-                                    <FButtonInverted buttonText="Log In" action={handleLogin} />
-                                )}
-                                {register ? (
-                                    <FileLabel>
-                                        <input type="file" multiple accept="image/*" onChange={onImageChange} />
-                                    </FileLabel>
-                                ) : (
-                                    <></>
-                                )}
-                            </LoginFields>
-                            <AlternativeLoginMethods>
-                                <GoogleLoginButton action={handleGoogleSignIn} text={register ? "Sign up with Google" : "Sign in with Google"} />
-                            </AlternativeLoginMethods>
-                        </LoginBoxMain>
-                        <LoginBoxSecondary>
-                            {register ? "Already have an account?" : "Don't have an account?"}
-                            <RegisterText
-                                onClick={() => {
-                                    setRegister(!register);
-                                    setButtonColor(!buttonColor);
-                                }}
-                            >
-                                {register ? "Log In" : "Register Here"}
-                            </RegisterText>
-                        </LoginBoxSecondary>
-                    </LoginBoxOuter>
+                                <LoginFields>
+                                    <FormField ref={emailRef} type="text" placeholder="email" name="email" />
+                                    <FormField
+                                        ref={passwordRef}
+                                        type="password"
+                                        placeholder="password"
+                                        name="password"
+                                    />
+                                    {register ? (
+                                        <FButton buttonText="Sign Up" action={handleSignup} />
+                                    ) : (
+                                        <FButtonInverted buttonText="Log In" action={handleLogin} />
+                                    )}
+                                    {register ? (
+                                        <FileLabel>
+                                            <input type="file" multiple accept="image/*" onChange={onImageChange} />
+                                        </FileLabel>
+                                    ) : (
+                                        <></>
+                                    )}
+                                </LoginFields>
+                                <AlternativeLoginMethods>
+                                    <GoogleLoginButton
+                                        action={handleGoogleSignIn}
+                                        text={register ? "Sign up with Google" : "Sign in with Google"}
+                                    />
+                                </AlternativeLoginMethods>
+                                <LoginBoxSecondary>
+                                    {register ? "Already have an account?" : "Don't have an account?"}
+                                    <RegisterText
+                                        onClick={() => {
+                                            setRegister(!register);
+                                            setButtonColor(!buttonColor);
+                                        }}
+                                    >
+                                        {register ? "Log In" : "Register Here"}
+                                    </RegisterText>
+                                </LoginBoxSecondary>
+                            </LoginBoxMain>
+                        </LoginBoxOuter>
+                    </LoginBoxOuterBg>
                 </LoginOuterContainer>
                 {/* <Footer /> */}
             </PageContainer>
