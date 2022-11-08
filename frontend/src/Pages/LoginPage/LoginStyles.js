@@ -46,7 +46,22 @@ export const LoginPreviewOuter = styled.div`
             border-radius: 5px;
         }
     }
+
+    animation: float 3s ease-in-out infinite;
+
+    @keyframes float {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
 `;
+
 export const TxtOuter = styled.div`
     display: flex;
     flex-direction: column;
