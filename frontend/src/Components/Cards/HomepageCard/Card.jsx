@@ -28,9 +28,13 @@ import { useAuth } from "../../../firebase";
 
 import { AiOutlinePlusCircle, AiOutlineMinusCircle, AiFillDelete, AiOutlineCloseCircle } from "react-icons/ai";
 import axios from "axios";
-
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
 import DeleteCardPopup from "../../Popups/DeleteCardPopup";
 import { render } from "react-dom";
+import { flexbox } from "@mui/system";
 
 const Card = ({ title, episodesWatched, episodeCount, description, rating, image, watchTime, id, update, setIsDeleted, isDeleted }) => {
     const totalSeconds = 22 * 60;
@@ -38,6 +42,26 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
     const ratio = (totalSecondsWatched / totalSeconds) * 100;
     const [episodesWatchedState, setEpisodesWatchesState] = useState(episodesWatched);
     const [deletePopup, setDeletePopup] = useState(false);
+
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
+    const style = {
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        width: "60%",
+        height: "50%",
+        bgcolor: "background.paper",
+        border: "1px solid #b1b1b1",
+        boxShadow: 24,
+        p: 4,
+    };
+    const modalStyle = {
+        zIndex: "140000000000001400000000000014000000000000140000000000001400000000000014000000000001400000000000014000000000000140000000000001400000000000014000000000000",
+    };
 
     const currentUser = useAuth();
 
@@ -99,7 +123,7 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
                     handleOptionRight={handleDeclineDelete}
                 />
             )}
-            <SeriesCardOuter showProgress={watchTime}>
+            <SeriesCardOuter showProgress={watchTime} onClick={handleOpen}>
                 <SeriesCardInner>
                     <SeriesCardImageContainer>
                         <SeriesCardImage src={image?.includes("upload") ? `api/${image}` : image} />
@@ -141,6 +165,16 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
                     </>
                 )} */}
             </SeriesCardOuter>
+            <Modal sx={modalStyle} open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+                <Box sx={style}>
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                        {title}
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                    </Typography>
+                </Box>
+            </Modal>
         </>
     );
 };

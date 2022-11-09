@@ -18,10 +18,12 @@ export const LoginOuterContainer = styled.div`
     height: calc(100% - 60px);
     grid-template-columns: 4.5fr 3fr;
     grid-column-gap: 20px;
+
     grid-row-gap: 20px;
 
     @media (max-width: 1250px) {
         grid-template-columns: 1fr;
+        grid-template-rows: 1fr 7fr;
         grid-row-gap: 0px;
     }
 `;
@@ -76,11 +78,15 @@ export const LoginPreviewImg = styled.img`
 export const LoginBoxOuterBg = styled.div`
     width: 100%;
     height: 100%;
-    background-color: rgb(250, 250, 250);
+    background-color: rgb(245, 245, 245);
     margin: auto;
     display: flex;
     align-items: center;
     border-radius: 0 10px 10px 0;
+
+    @media (max-width: 1250px) {
+        background-color: white;
+    }
 `;
 
 export const LoginBoxOuter = styled.div`
@@ -99,7 +105,7 @@ export const LoginBoxMain = styled.div`
     height: 100%;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     border-radius: 5px;
-    padding-bottom: 20px;
+    padding-top: 20px;
     background-color: white;
 
     @media (max-width: 1250px) {
