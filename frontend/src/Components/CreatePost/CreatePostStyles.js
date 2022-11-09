@@ -25,7 +25,6 @@ export const CreatePostOuter = styled.div`
 export const Gridcontainer = styled.div`
     position: relative;
     padding: 10px;
-    background-color: red;
     justify-content: center;
     width: 100vw;
     height: 100px;
