@@ -34,10 +34,9 @@ const App = () => {
 
     useEffect(() => {
         if (currentUser) {
-            console.log(currentUser);
             fetchUser();
         } else {
-            setTimeout(200);
+            setTimeout(500);
             setDone(!done);
         }
     }, [done]);
@@ -46,7 +45,6 @@ const App = () => {
         axios
             .get(`api/users/${currentUser?.uid}`)
             .then(({ data }) => {
-                console.log(data);
                 dispatch(loginUser(data));
             })
             .catch((err) => {

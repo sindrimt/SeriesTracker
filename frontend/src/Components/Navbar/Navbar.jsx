@@ -31,11 +31,13 @@ import { toggleTheme } from "../../redux/features/theme/colorThemeSlice";
 
 import { MdOutlineLightMode, MdOutlineDarkMode, MdExpandMore } from "react-icons/md";
 import { GiHotDog } from "react-icons/gi";
+import { useAuth } from "./../../firebase.js";
 
 const Navbar = () => {
     //const [scrollPosition, setScrollPosition] = useState(0);
     const [loading, setLoading] = useState(false);
     const [showMore, setShowMore] = useState(false);
+    const currentUser = useAuth();
 
     const scrollPosition = useScroll();
     const globalUser = useSelector((state) => state.user.user);
@@ -68,8 +70,12 @@ const Navbar = () => {
     const decideProfilePic = () => {
         if (globalUser?.googlePhotoUrl) {
             return globalUser?.googlePhotoUrl;
-        } else if (globalUser?.photoUrl) {
+        }
+        if (globalUser?.photoUrl) {
             return `api/${globalUser?.photoUrl}`;
+        }
+        if (currentUser?.photoURL) {
+            return currentUser?.photoURL;
         } else {
             return "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
         }
@@ -148,7 +154,8 @@ const Navbar = () => {
                 <NavbarProfileOuter>
                     <div>
                         <WelcomeBack>
-                            WELCOME BACK <span style={{ fontWeight: "400" }}>{globalUser?.username}</span>
+                            WELCOME BACK{" "}
+                            <span style={{ fontWeight: "400" }}>{globalUser?.username ? globalUser?.username : currentUser?.displayName}</span>
                         </WelcomeBack>
                     </div>
                     <NavbarProfileImgBack>
