@@ -24,6 +24,7 @@ import {
 
 import loffi from "../../../Assets/Images/loffi.png";
 import star from "../../../Assets/Content/Star.svg";
+import chainsaw from "../../../Assets/Cards/AnimeCard/chainsaw.svg";
 import { useAuth } from "../../../firebase";
 
 import { AiOutlinePlusCircle, AiOutlineMinusCircle, AiFillDelete, AiOutlineCloseCircle } from "react-icons/ai";
@@ -35,6 +36,7 @@ import Modal from "@mui/material/Modal";
 import DeleteCardPopup from "../../Popups/DeleteCardPopup";
 import { render } from "react-dom";
 import { flexbox } from "@mui/system";
+import styled from "styled-components";
 
 const Card = ({ title, episodesWatched, episodeCount, description, rating, image, watchTime, id, update, setIsDeleted, isDeleted }) => {
     const totalSeconds = 22 * 60;
@@ -152,31 +154,127 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
                         </CardRatingCenter>
                     </CardRatingContainer>
                 </SeriesCardInner>
-                {/* <WatchTimeContainer />
-                {watchTime && (
-                    <>
-                        <ProgressLineText>{watchTime} / 22:00</ProgressLineText>
-                    </>
-                )}
-                {watchTime && (
-                    <>
-                        <ProgressLine progress={ratio} />
-                        <ProgressLineGray />
-                    </>
-                )} */}
             </SeriesCardOuter>
             <Modal sx={modalStyle} open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
-                <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        {title}
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                    </Typography>
-                </Box>
+                <>
+                    <PopupOuter>
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                            {/* <LeftBall />
+                            <BottomBall /> */}
+                            <PopupImage src={image?.includes("upload") ? `api/${image}` : image} />
+                        </div>
+                        <PoputTextBoxOuter>
+                            <PopupHeader>
+                                {title}
+
+                                <div>
+                                    {episodesWatchedState} / {episodeCount} episodes watched
+                                </div>
+                            </PopupHeader>
+                            <PopupDescription>{description}</PopupDescription>
+                            <div>
+                                <WatchTimeContainer>
+                                    {watchTime && (
+                                        <>
+                                            <ProgressLineText>{watchTime} / 22:00</ProgressLineText>
+                                        </>
+                                    )}
+                                    {watchTime && (
+                                        <>
+                                            <ProgressLine progress={ratio} />
+                                            <ProgressLineGray />
+                                        </>
+                                    )}
+                                </WatchTimeContainer>
+                            </div>
+                        </PoputTextBoxOuter>
+                        <PopupCharacterImage src={chainsaw} />
+                    </PopupOuter>
+                </>
             </Modal>
         </>
     );
 };
+
+const PopupOuter = styled.div`
+    position: absolute;
+    width: 65%;
+    height: 300px;
+    background-color: #fdf9f9;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    //overflow: hidden;
+    align-items: center;
+`;
+
+const PopupImage = styled.img`
+    width: 150px;
+    height: 220px;
+    margin-left: 40px;
+    border-radius: 8px;
+    z-index: 10;
+`;
+
+const LeftBall = styled.div`
+    position: absolute;
+    height: 130%;
+    background-color: #e96c6c;
+    left: -105px;
+    top: -45px;
+    border-radius: 50%;
+    width: 200px;
+    z-index: -10;
+`;
+
+const BottomBall = styled.div`
+    position: absolute;
+    height: 100px;
+    background-color: #e96c6c;
+    left: 250px;
+    bottom: -75px;
+    border-radius: 50%;
+    width: 380px;
+    z-index: -10;
+`;
+
+const PoputTextBoxOuter = styled.div`
+    display: flex;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    align-items: center;
+    margin-left: 30px;
+    height: 90%;
+`;
+
+const PopupHeader = styled.div`
+    font-size: 20px;
+    font-weight: 600;
+
+    div {
+        font-size: 16px;
+    }
+`;
+
+const PopupDescription = styled.div`
+    font-size: 16px;
+    margin-top: 10px;
+    color: #2f2f2f;
+`;
+
+const PopupCharacterImage = styled.img`
+    position: absolute;
+    right: -65px;
+    top: -60px;
+    width: 280px;
+    height: auto;
+    transform: scale(1);
+`;
 
 export default Card;

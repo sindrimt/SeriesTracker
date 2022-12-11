@@ -75,8 +75,8 @@ export const SeriesCardImage = styled.img`
 
 export const WatchTimeContainer = styled.div`
     position: relative;
-    bottom: 5px;
-    width: 100%;
+    bottom: -15px;
+    width: 80%;
     height: 20px;
     /* background-color: red; */
 `;
@@ -192,7 +192,7 @@ export const ProgressLine = styled.div`
     bottom: 8px;
     border-radius: 999px;
     z-index: 999;
-    margin-left: 11%;
+    margin-left: 18%;
 
     &:after {
         content: "";
@@ -215,11 +215,11 @@ export const ProgressLineGray = styled.div`
     background-color: ${(props) => props.theme.homepageCard.ProgressLineRight};
     bottom: 10px;
     border-radius: 999px;
-    margin-left: 11%;
+    margin-left: 18%;
 `;
 
 export const ProgressLineText = styled.div`
     position: absolute;
-    font-size: 11px;
+    font-size: 12px;
     transform: translate(0px, -15px);
 `;
