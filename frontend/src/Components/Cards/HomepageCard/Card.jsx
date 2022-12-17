@@ -37,6 +37,8 @@ import DeleteCardPopup from "../../Popups/DeleteCardPopup";
 import { render } from "react-dom";
 import { flexbox } from "@mui/system";
 import styled from "styled-components";
+import { FastAverageColor } from "fast-average-color";
+import { IoMdClose } from "react-icons/io";
 
 const Card = ({ title, episodesWatched, episodeCount, description, rating, image, watchTime, id, update, setIsDeleted, isDeleted }) => {
     const totalSeconds = 22 * 60;
@@ -44,6 +46,25 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
     const ratio = (totalSecondsWatched / totalSeconds) * 100;
     const [episodesWatchedState, setEpisodesWatchesState] = useState(episodesWatched);
     const [deletePopup, setDeletePopup] = useState(false);
+    const [imageAvgColor, setImageAvgColor] = useState("");
+
+    const fac = new FastAverageColor();
+
+    fac.getColorAsync(image)
+        .then((color) => {
+            //console.log("Average color", color);
+            setImageAvgColor(color.rgba);
+        })
+        .catch((e) => {
+            fac.getColorAsync(`api/${image}`)
+                .then((color) => {
+                    //console.log("Average color", color);
+                    setImageAvgColor(color.rgba);
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
+        });
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -85,7 +106,6 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
             .then((response) => {})
             .catch((err) => {
                 setEpisodesWatchesState(episodesWatchedState - 1);
-                console.log(err);
             });
     };
 
@@ -125,12 +145,12 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
                     handleOptionRight={handleDeclineDelete}
                 />
             )}
-            <SeriesCardOuter showProgress={watchTime} onClick={handleOpen}>
+            <SeriesCardOuter>
                 <SeriesCardInner>
                     <SeriesCardImageContainer>
                         <SeriesCardImage src={image?.includes("upload") ? `api/${image}` : image} />
                     </SeriesCardImageContainer>
-                    <CardInformationContainer>
+                    <CardInformationContainer showProgress={watchTime} onClick={handleOpen}>
                         <CardTitle>{title.slice(0, 20)}</CardTitle>
                         <EpisodeContainer hasWatchTime={watchTime}>
                             <EpisodeCount>
@@ -158,6 +178,13 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
             <Modal sx={modalStyle} open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                 <>
                     <PopupOuter>
+                        <QuitSymbol onClick={handleClose}>
+                            <IoMdClose size={22} />
+                        </QuitSymbol>
+                        <OuterOuter>
+                            <LeftBall bgColor={imageAvgColor} />
+                            <BottomBall bgColor={imageAvgColor} />
+                        </OuterOuter>
                         <div style={{ display: "flex", alignItems: "center" }}>
                             {/* <LeftBall />
                             <BottomBall /> */}
@@ -171,7 +198,7 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
                                     {episodesWatchedState} / {episodeCount} episodes watched
                                 </div>
                             </PopupHeader>
-                            <PopupDescription>{description}</PopupDescription>
+                            <PopupDescription>{description.slice(0, 240)}</PopupDescription>
                             <div>
                                 <WatchTimeContainer>
                                     {watchTime && (
@@ -196,11 +223,26 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
     );
 };
 
+const OuterOuter = styled.div`
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    background-color: transparent;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 12px;
+    overflow: hidden;
+`;
+
 const PopupOuter = styled.div`
     position: absolute;
     width: 65%;
     height: 300px;
-    background-color: #fdf9f9;
+    background-color: #f7f7f7;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -214,29 +256,49 @@ const PopupOuter = styled.div`
     align-items: center;
 `;
 
+const QuitSymbol = styled.div`
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    transition: 0.15s ease-in-out;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.25);
+    }
+`;
+
 const PopupImage = styled.img`
     width: 150px;
     height: 220px;
     margin-left: 40px;
     border-radius: 8px;
-    z-index: 10;
+    z-index: 1;
 `;
 
 const LeftBall = styled.div`
     position: absolute;
     height: 130%;
-    background-color: #e96c6c;
-    left: -105px;
+    background-color: ${(props) => props.bgColor};
+    left: -115px;
     top: -45px;
     border-radius: 50%;
     width: 200px;
-    z-index: -10;
+    z-index: -11;
 `;
 
 const BottomBall = styled.div`
     position: absolute;
     height: 100px;
-    background-color: #e96c6c;
+    background-color: ${(props) => props.bgColor};
     left: 250px;
     bottom: -75px;
     border-radius: 50%;
@@ -266,15 +328,20 @@ const PopupDescription = styled.div`
     font-size: 16px;
     margin-top: 10px;
     color: #2f2f2f;
+    width: 80%;
 `;
 
 const PopupCharacterImage = styled.img`
     position: absolute;
-    right: -65px;
-    top: -60px;
-    width: 280px;
+    right: -75px;
+    top: -90px;
+    width: 320px;
     height: auto;
     transform: scale(1);
+
+    @media (max-width: 1100px) {
+        display: none;
+    }
 `;
 
 export default Card;

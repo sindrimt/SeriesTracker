@@ -76,7 +76,7 @@ export const SeriesCardImage = styled.img`
 export const WatchTimeContainer = styled.div`
     position: relative;
     bottom: -15px;
-    width: 80%;
+    width: 60%;
     height: 20px;
     /* background-color: red; */
 `;
