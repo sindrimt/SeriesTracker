@@ -181,7 +181,7 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
                         <QuitSymbol onClick={handleClose}>
                             <IoMdClose size={22} />
                         </QuitSymbol>
-                        <OuterOuter>
+                        <OuterOuter borderColor={imageAvgColor}>
                             <LeftBall bgColor={imageAvgColor} />
                             <BottomBall bgColor={imageAvgColor} />
                         </OuterOuter>
@@ -236,6 +236,7 @@ const OuterOuter = styled.div`
     padding: 10px;
     border-radius: 12px;
     overflow: hidden;
+    border: 2px solid ${(props) => props.borderColor};
 `;
 
 const PopupOuter = styled.div`
@@ -252,8 +253,13 @@ const PopupOuter = styled.div`
     border-radius: 12px;
     display: grid;
     grid-template-columns: 1fr 5fr;
-    //overflow: hidden;
     align-items: center;
+    color: ${(props) => props.theme.homepageCard.fontColor};
+    background-color: ${(props) => props.theme.homepageCard.background};
+
+    @media (max-width: 1100px) {
+        width: 80%;
+    }
 `;
 
 const QuitSymbol = styled.div`
@@ -313,11 +319,13 @@ const PoputTextBoxOuter = styled.div`
     align-items: center;
     margin-left: 30px;
     height: 90%;
+    color: ${(props) => props.theme.homepageCard.fontColor};
 `;
 
 const PopupHeader = styled.div`
     font-size: 20px;
     font-weight: 600;
+    color: ${(props) => props.theme.homepageCard.fontColor};
 
     div {
         font-size: 16px;
@@ -327,7 +335,7 @@ const PopupHeader = styled.div`
 const PopupDescription = styled.div`
     font-size: 16px;
     margin-top: 10px;
-    color: #2f2f2f;
+    color: ${(props) => props.theme.homepageCard.fontColor};
     width: 80%;
 `;
 
