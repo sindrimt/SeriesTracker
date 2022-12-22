@@ -1,14 +1,22 @@
 import styled from "styled-components";
 
 export const ContentRightOuter = styled.div`
-    position: absolute;
-    margin: 140px 0px 0px 0px;
+    position: ${(props) => (props.isFixed ? "fixed" : "absolute")};
+    margin-top: ${(props) => (props.isFixed ? "110px" : "155px")};
     width: 27%;
-    height: 500px;
+    height: 85vh;
     right: 1.3%;
+    overflow-y: scroll;
 
     @media (max-width: 1060px) {
         display: none;
+    }
+
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+
+    &::-webkit-scrollbar {
+        display: none; /* Safari and Chrome */
     }
 `;
 
