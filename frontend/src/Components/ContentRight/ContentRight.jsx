@@ -14,9 +14,13 @@ import {
     ImageRating,
 } from "../ContentRight/ContentRightStyles";
 import { TopAnimeOuter } from "../ContentRight/ContentRightStyles";
+import { useScroll } from "../../Hooks/useScroll";
 
 const ContentRight = ({ arrayLength }) => {
     const [topAnimes, setTopAnimes] = useState([]);
+    const scrollPosition = useScroll();
+
+    let isFixed = false;
 
     const fetchTopAnimes = () => {
         return new Promise((resolve, reject) => {
@@ -31,6 +35,10 @@ const ContentRight = ({ arrayLength }) => {
                 });
         });
     };
+
+    if (scrollPosition >= 45) {
+        isFixed = true;
+    }
 
     const shuffle = (array) => {
         let currentIndex = array.length,
@@ -61,7 +69,7 @@ const ContentRight = ({ arrayLength }) => {
 
     return (
         <>
-            <ContentRightOuter>
+            <ContentRightOuter isFixed={isFixed}>
                 <ChartsContainer>
                     <TopAnimeOuter>
                         <TopAnimeImage
