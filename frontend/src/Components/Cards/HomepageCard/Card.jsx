@@ -134,6 +134,15 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
         setDeletePopup(false);
     };
 
+    // Check wether the user clicked episode button or not
+    // If not, open the popup
+    const handleOpenPopup = (e) => {
+        if (["plus", "minus", "delete"].includes(e.target.className.animVal)) return;
+        else {
+            handleOpen();
+        }
+    };
+
     return (
         <>
             {deletePopup && (
@@ -145,12 +154,12 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
                     handleOptionRight={handleDeclineDelete}
                 />
             )}
-            <SeriesCardOuter>
+            <SeriesCardOuter onClick={(e) => handleOpenPopup(e)}>
                 <SeriesCardInner>
                     <SeriesCardImageContainer>
                         <SeriesCardImage src={image?.includes("upload") ? `api/${image}` : image} />
                     </SeriesCardImageContainer>
-                    <CardInformationContainer showProgress={watchTime} onClick={handleOpen}>
+                    <CardInformationContainer showProgress={watchTime}>
                         <CardTitle>{title.slice(0, 20)}</CardTitle>
                         <EpisodeContainer hasWatchTime={watchTime}>
                             <EpisodeCount>
