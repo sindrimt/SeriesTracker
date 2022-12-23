@@ -42,7 +42,7 @@ export const TopAnimeOuter = styled.div`
     }
 
     &:hover {
-        cursor: pointer;
+        //cursor: pointer;
         &:after {
             box-shadow: inset 0px -25px 60px 5px black;
             content: "";

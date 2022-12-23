@@ -158,7 +158,7 @@ export const darkTheme = {
         border: "1px solid rgba(200, 200, 200, 0.2)",
     },
     scrollbar: {
-        background: "rgb(40, 38, 40)",
+        background: darkModePalette.white,
     },
     chartCard: {
         fontColor: darkModePalette.white,
