@@ -41,19 +41,7 @@ import styled from "styled-components";
 import { FastAverageColor } from "fast-average-color";
 import { IoMdClose } from "react-icons/io";
 
-const Card = ({
-    title,
-    episodesWatched,
-    episodeCount,
-    description,
-    rating,
-    image,
-    watchTime,
-    id,
-    update,
-    setIsDeleted,
-    isDeleted,
-}) => {
+const Card = ({ title, episodesWatched, episodeCount, description, rating, image, watchTime, id, update, setIsDeleted, isDeleted }) => {
     const totalSeconds = 22 * 60;
     const totalSecondsWatched = parseInt(watchTime?.split(":")[0]) * 60 + parseInt(watchTime?.split(":")[1]);
     const ratio = (totalSecondsWatched / totalSeconds) * 100;
@@ -96,7 +84,7 @@ const Card = ({
         p: 4,
     };
     const modalStyle = {
-        zIndex: "999999",
+        zIndex: "99999999999999999999999",
     };
 
     const currentUser = useAuth();
@@ -186,12 +174,7 @@ const Card = ({
                         <CardDescription>
                             <AiOutlinePlusCircle size={22} className="plus" onClick={handleAddEpisode} />
                             <AiOutlineMinusCircle size={22} className="minus" onClick={handleSubtractEpisode} />
-                            <AiOutlineCloseCircle
-                                size={22}
-                                className="delete"
-                                color={"red"}
-                                onClick={handleDeleteCard}
-                            />
+                            <AiOutlineCloseCircle size={22} className="delete" color={"red"} onClick={handleDeleteCard} />
                         </CardDescription>
                     </CardInformationContainer>
 
@@ -203,13 +186,7 @@ const Card = ({
                     </CardRatingContainer>
                 </SeriesCardInner>
             </SeriesCardOuter>
-            <Modal
-                sx={modalStyle}
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
+            <Modal sx={modalStyle} open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                 <>
                     <PopupOuter>
                         <QuitSymbol onClick={handleClose}>

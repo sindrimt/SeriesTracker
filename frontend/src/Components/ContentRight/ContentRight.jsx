@@ -78,7 +78,7 @@ const ContentRight = ({ arrayLength }) => {
                         <ImageInformation>
                             <ImageNumber>1</ImageNumber>
                             <ImageHeader>One Piece</ImageHeader>
-                            <ImageRating>9.8</ImageRating>
+                            <ImageRating>9.80</ImageRating>
                         </ImageInformation>
                     </TopAnimeOuter>
                     {topAnimes?.map((anime, index) => {
