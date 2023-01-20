@@ -20,6 +20,7 @@ import {
     ProgressLineGray,
     ProgressLineText,
     SeriesCardImageContainer,
+    ProgressLines,
 } from "./CardStyles";
 
 import loffi from "../../../Assets/Images/loffi.png";
@@ -240,8 +241,10 @@ const Card = ({
                                     )}
                                     {watchTime && (
                                         <>
-                                            <ProgressLine progress={ratio} />
-                                            <ProgressLineGray />
+                                            <ProgressLines>
+                                                <ProgressLine progress={ratio} />
+                                                <ProgressLineGray />
+                                            </ProgressLines>
                                         </>
                                     )}
                                 </WatchTimeContainer>

@@ -81,6 +81,27 @@ export const WatchTimeContainer = styled.div`
     /* background-color: red; */
 `;
 
+export const ProgressLines = styled.div`
+    position: relative;
+    width: 90%;
+    float: right;
+    @media (max-width: 900px) {
+        width: 80%;
+    }
+    @media (max-width: 700px) {
+        width: 70%;
+    }
+    @media (max-width: 640px) {
+        width: 60%;
+    }
+    @media (max-width: 600px) {
+        width: 50%;
+    }
+    @media (max-width: 599px) {
+        display: none;
+    }
+`;
+
 export const CardInformationContainer = styled.div`
     margin-left: 20px;
     width: 60%;
