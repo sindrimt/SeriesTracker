@@ -96,7 +96,7 @@ const Card = ({
         p: 4,
     };
     const modalStyle = {
-        zIndex: "140",
+        zIndex: "999999",
     };
 
     const currentUser = useAuth();

@@ -45,13 +45,6 @@ export const SidebarOuter = styled.div`
             background-color: ${(props) => props.theme.sidebar.background};
         }
     }
-
-    @media (max-width: 720px) {
-        //display: none;
-        margin-top: 80px;
-        height: calc(100% - 80px);
-        width: 85%;
-    }
 `;
 
 export const SearchOuter = styled.div`
