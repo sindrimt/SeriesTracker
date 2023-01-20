@@ -1,13 +1,23 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import largepanel from "../../Assets/Login/largepanel.png";
 
 export const PageContainer = styled.div`
     position: absolute;
     width: 100%;
-    background: linear-gradient(45deg, rgba(110, 68, 253, 0.8), rgba(166, 63, 203, 0.9));
+    background-image: url(${largepanel});
+    background-size: cover;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: animate 25s infinite;
+    animation-timing-function: linear;
+
+    @keyframes animate {
+        100% {
+            background-position: 600px 600px;
+        }
+    }
 `;
 
 export const LoginOuterContainer = styled.div`
