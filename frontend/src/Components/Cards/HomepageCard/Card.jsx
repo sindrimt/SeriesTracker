@@ -150,7 +150,8 @@ const Card = ({
     // Check wether the user clicked episode button or not
     // If not, open the popup
     const handleOpenPopup = (e) => {
-        if (["plus", "minus", "delete"].includes(e.target.className.animVal)) return;
+        console.log("You clicked: ", e.target.className.animVal);
+        if (["plus", "minus", "delete", "", "undefined"].includes(e.target.className.animVal)) return;
         else {
             handleOpen();
         }
