@@ -20,6 +20,7 @@ import {
     ProgressLineGray,
     ProgressLineText,
     SeriesCardImageContainer,
+    ProgressLines,
 } from "./CardStyles";
 
 import loffi from "../../../Assets/Images/loffi.png";
@@ -40,7 +41,19 @@ import styled from "styled-components";
 import { FastAverageColor } from "fast-average-color";
 import { IoMdClose } from "react-icons/io";
 
-const Card = ({ title, episodesWatched, episodeCount, description, rating, image, watchTime, id, update, setIsDeleted, isDeleted }) => {
+const Card = ({
+    title,
+    episodesWatched,
+    episodeCount,
+    description,
+    rating,
+    image,
+    watchTime,
+    id,
+    update,
+    setIsDeleted,
+    isDeleted,
+}) => {
     const totalSeconds = 22 * 60;
     const totalSecondsWatched = parseInt(watchTime?.split(":")[0]) * 60 + parseInt(watchTime?.split(":")[1]);
     const ratio = (totalSecondsWatched / totalSeconds) * 100;
@@ -83,7 +96,7 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
         p: 4,
     };
     const modalStyle = {
-        zIndex: "140000000000001400000000000014000000000000140000000000001400000000000014000000000001400000000000014000000000000140000000000001400000000000014000000000000",
+        zIndex: "999999",
     };
 
     const currentUser = useAuth();
@@ -173,7 +186,12 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
                         <CardDescription>
                             <AiOutlinePlusCircle size={22} className="plus" onClick={handleAddEpisode} />
                             <AiOutlineMinusCircle size={22} className="minus" onClick={handleSubtractEpisode} />
-                            <AiOutlineCloseCircle size={22} className="delete" color={"red"} onClick={handleDeleteCard} />
+                            <AiOutlineCloseCircle
+                                size={22}
+                                className="delete"
+                                color={"red"}
+                                onClick={handleDeleteCard}
+                            />
                         </CardDescription>
                     </CardInformationContainer>
 
@@ -185,7 +203,13 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
                     </CardRatingContainer>
                 </SeriesCardInner>
             </SeriesCardOuter>
-            <Modal sx={modalStyle} open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+            <Modal
+                sx={modalStyle}
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
                 <>
                     <PopupOuter>
                         <QuitSymbol onClick={handleClose}>
@@ -218,8 +242,10 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
                                     )}
                                     {watchTime && (
                                         <>
-                                            <ProgressLine progress={ratio} />
-                                            <ProgressLineGray />
+                                            <ProgressLines>
+                                                <ProgressLine progress={ratio} />
+                                                <ProgressLineGray />
+                                            </ProgressLines>
                                         </>
                                     )}
                                 </WatchTimeContainer>
@@ -330,6 +356,13 @@ const PoputTextBoxOuter = styled.div`
     margin-left: 30px;
     height: 90%;
     color: ${(props) => props.theme.homepageCard.fontColor};
+    @media (max-width: 900px) {
+        grid-template-rows: auto auto auto;
+    }
+    @media (max-width: 600px) {
+        overflow-y: scroll;
+        z-index: 999;
+    }
 `;
 
 const PopupHeader = styled.div`
