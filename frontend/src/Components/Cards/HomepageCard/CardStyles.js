@@ -4,7 +4,7 @@ export const SeriesCardOuter = styled.div`
     //position: relative;
     width: 100%;
     //padding: ${(props) => (props.showProgress ? " 10px 10px 10px 10px" : " 10px 10px 10px 10px")};
-    height: 130px;
+    height: fit-content;
     padding: 5px;
     box-shadow: "";
     background-color: #fcfcfc;
