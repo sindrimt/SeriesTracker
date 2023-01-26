@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
-import largepanel from "../../Assets/Login/largepanel.png";
+//import largepanel from "../../Assets/Login/largepanel.png";
+import largepanel from "../../Assets/Login/largepanel-min.png";
 
 export const PageContainer = styled.div`
     position: absolute;
