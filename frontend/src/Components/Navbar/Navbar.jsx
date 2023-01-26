@@ -159,7 +159,12 @@ const Navbar = () => {
                         </WelcomeBack>
                     </div>
                     <NavbarProfileImgBack>
-                        <NavbarProfileImg onClick={() => navigate("/profile")} src={decideProfilePic()} alt="Profile pic" />
+                        <NavbarProfileImg
+                            onClick={() => navigate("/profile")}
+                            src={decideProfilePic()}
+                            alt="Profile pic"
+                            referrerPolicy="no-referrer"
+                        />
                     </NavbarProfileImgBack>
                     <span className="signout" style={{ whiteSpace: "nowrap" }} onClick={handleLogOut}>
                         SIGN OUT

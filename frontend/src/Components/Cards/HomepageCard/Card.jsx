@@ -228,7 +228,7 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
                                 </WatchTimeContainer>
                             </div>
                         </PoputTextBoxOuter>
-                        <PopupCharacterImage src={chainsaw} />
+                        {/*  <PopupCharacterImage src={chainsaw} /> */}
                     </PopupOuter>
                 </>
             </Modal>
