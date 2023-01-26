@@ -105,6 +105,7 @@ const Login = () => {
 
     const handleGoogleSignIn = () => {
         setLoading(true);
+        sessionStorage.setItem("myPage.expectSignIn", "1");
         return signInWithGoogle()
             .then(() => {
                 return getGoogleRedirectResults();

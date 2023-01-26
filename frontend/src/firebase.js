@@ -72,6 +72,7 @@ export const useAuth = () => {
     useEffect(() => {
         const unsub = onAuthStateChanged(auth, (user) => {
             setCurrentUser(user);
+            sessionStorage.removeItem("myPage.expectSignIn");
         });
         return unsub;
     }, []);

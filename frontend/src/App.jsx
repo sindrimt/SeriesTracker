@@ -22,6 +22,7 @@ import styled, { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme, hotDogTheme, spillTheme, GlobalStyles } from "./Styles/themes.js";
 
 import axios from "axios";
+import Loading from "./Pages/LoadingPage/Loading";
 
 const App = () => {
     const currentUser = useAuth();
@@ -58,6 +59,14 @@ const App = () => {
         else if (colorTheme === "hotDog") return hotDogTheme;
         else if (colorTheme === "spill") return spillTheme;
     };
+
+    if (sessionStorage.getItem("myPage.expectSignIn")) {
+        return (
+            <>
+                <Loading />
+            </>
+        );
+    }
 
     return (
         <ThemeProvider theme={chooseColorTheme()}>

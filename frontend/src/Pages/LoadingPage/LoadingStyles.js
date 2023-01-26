@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const LoadingOuter = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${(props) => props.theme.body.background};
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
 `;
