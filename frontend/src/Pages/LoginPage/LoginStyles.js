@@ -4,7 +4,7 @@ import largepanel from "../../Assets/Login/largepanel-min.png";
 
 export const PageContainer = styled.div`
     position: absolute;
-    width: 100%;
+    width: 100vw;
     background-image: url(${largepanel});
     background-size: cover;
     height: 100vh;
@@ -27,22 +27,10 @@ export const LoginOuterContainer = styled.div`
     background-color: white;
     display: grid;
     height: calc(100% - 60px);
-    grid-template-columns: 4.5fr 3fr;
-    grid-column-gap: 20px;
-
-    grid-row-gap: 20px;
-
-    @media (max-width: 1250px) {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 7fr;
-        grid-row-gap: 0px;
-    }
+    grid-template-columns: auto;
 `;
 
-export const LoginPreviewOuter = styled.div`
-    justify-self: center;
-    align-self: center;
-`;
+export const HomepagePreview = styled.div``;
 
 export const TxtOuter = styled.div`
     display: flex;
@@ -51,18 +39,18 @@ export const TxtOuter = styled.div`
     align-items: center;
     justify-content: flex-end;
 
-    @media (max-width: 800px) {
+    @media (max-width: 600px) {
         display: none;
     }
 `;
 
-export const LoginPreviewHeader = styled.div`
+export const HomepagePreviewHeader = styled.div`
     font-size: 30px;
     color: #a63fcb;
     margin-bottom: 3px;
 `;
 
-export const LoginPreviewTxt = styled.div`
+export const HomepagePreviewTxt = styled.div`
     font-size: 18px;
     width: 70%;
     text-align: center;
@@ -75,7 +63,7 @@ export const LoginPreviewTxt = styled.div`
     }
 `;
 
-export const LoginPreviewImg = styled.img`
+export const HomepagePreviewImg = styled.img`
     width: 45vw;
     object-fit: fill;
     border-radius: 3px;

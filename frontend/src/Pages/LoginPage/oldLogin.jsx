@@ -2,11 +2,11 @@ import React, { useRef, useState, useEffect } from "react";
 
 import {
     LoginOuterContainer,
-    HomepagePreview,
-    HomepagePreviewTxt,
-    HomepagePreviewHeader,
+    LoginPreviewOuter,
+    LoginPreviewTxt,
+    LoginPreviewHeader,
     TxtOuter,
-    HomepagePreviewImg,
+    LoginPreviewImg,
     LoginBoxMain,
     LoginBoxLogo,
     LoginBoxLogoOuter,
@@ -163,16 +163,67 @@ const Login = () => {
         <>
             <PageContainer>
                 <LoginOuterContainer>
-                    <HomepagePreview>
+                    <LoginPreviewOuter>
                         <TxtOuter>
-                            <HomepagePreviewHeader>Track your series!</HomepagePreviewHeader>
-                            <HomepagePreviewTxt>
+                            <LoginPreviewHeader>Track your series!</LoginPreviewHeader>
+                            <LoginPreviewTxt>
                                 Save your series' progress, rate them, discover new ones, and connect with friends!
-                            </HomepagePreviewTxt>
+                            </LoginPreviewTxt>
                         </TxtOuter>
-                        <HomepagePreviewImg src={previewImg} alt="Homescreen preview" />
-                    </HomepagePreview>
+                        <LoginPreviewImg src={previewImg} alt="Homescreen preview" />
+                    </LoginPreviewOuter>
+                    {
+                        <LoginBoxOuterBg>
+                            <LoginBoxOuter>
+                                <LoginBoxMain>
+                                    <LoginBoxLogoOuter>
+                                        <LoginBoxLogo src={SeriesTrackerLogo} />
+                                    </LoginBoxLogoOuter>
+
+                                    <LoginFields>
+                                        <FormField ref={emailRef} type="text" placeholder="email" name="email" />
+                                        <FormField
+                                            ref={passwordRef}
+                                            type="password"
+                                            placeholder="password"
+                                            name="password"
+                                        />
+                                        {register ? (
+                                            <FButton buttonText="Sign Up" action={handleSignup} />
+                                        ) : (
+                                            <FButtonInverted buttonText="Log In" action={handleLogin} />
+                                        )}
+                                        {register ? (
+                                            <FileLabel>
+                                                <input type="file" multiple accept="image/*" onChange={onImageChange} />
+                                            </FileLabel>
+                                        ) : (
+                                            <></>
+                                        )}
+                                    </LoginFields>
+                                    <AlternativeLoginMethods>
+                                        <GoogleLoginButton
+                                            action={handleGoogleSignIn}
+                                            text={register ? "Sign up with Google" : "Sign in with Google"}
+                                        />
+                                    </AlternativeLoginMethods>
+                                    <LoginBoxSecondary>
+                                        {register ? "Already have an account?" : "Don't have an account?"}
+                                        <RegisterText
+                                            onClick={() => {
+                                                setRegister(!register);
+                                                setButtonColor(!buttonColor);
+                                            }}
+                                        >
+                                            {register ? "Log In" : "Register Here"}
+                                        </RegisterText>
+                                    </LoginBoxSecondary>
+                                </LoginBoxMain>
+                            </LoginBoxOuter>
+                        </LoginBoxOuterBg>
+                    }
                 </LoginOuterContainer>
+                {/* <Footer /> */}
             </PageContainer>
         </>
     );
