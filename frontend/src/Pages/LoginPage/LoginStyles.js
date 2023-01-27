@@ -32,6 +32,8 @@ export const LoginOuterContainer = styled.div`
 
     @media (max-width: 600px) {
         grid-template-columns: 1fr;
+        width: calc(100% - 30px);
+        height: calc(100% - 30px);
     }
 `;
 
@@ -102,20 +104,29 @@ export const LoginBoxOuterBg = styled.div`
     display: flex;
     align-items: center;
     border-radius: 0 10px 10px 0;
+    //Takes up the whole screen if the screen is less than 600px
+    @media (max-width: 600px) {
+        border-radius: 10px;
+    }
 `;
 
 export const LoginBoxContainer = styled.div`
-    display: grid;
-    grid-row-gap: 20px;
     width: 90%;
     height: 90%;
     margin: auto;
     border-radius: 10px;
-    background-color: white;
+    background-color: #d5d5d5;
+    @media (max-width: 600px) {
+        height: 95%;
+    }
 `;
 
+//Grid containing the logo and the login fields
 export const LoginBoxMain = styled.div`
     width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 3fr;
 `;
 
 export const LoginBoxSecondary = styled.div`
@@ -123,23 +134,38 @@ export const LoginBoxSecondary = styled.div`
 `;
 
 export const LoginBoxLogo = styled.img`
-    width: 260px;
+    width: 250px;
+    padding-top: 10px;
+    //set static logo size if the screen is less than 600px
+    @media (max-width: 700px) {
+        width: 200px;
+    }
+    @media (max-width: 350px) {
+        width: 170px;
+    }
+    @media (max-width: 250px) {
+        width: 90%;
+    }
 `;
 export const LoginBoxLogoOuter = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    padding-top: 70px;
 `;
 
 export const LoginFields = styled.div`
     display: grid;
-    grid-template-columns: 1fr;
-    width: 60%;
-    grid-row-gap: 10px;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+    grid-template-columns: repeat(auto);
+    width: 100%;
+    height: 100%;
+    grid-row-gap: 20px;
+    background-color: #ffffff;
+    margin: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-radius: 20px 20px 10px 10px;
 `;
 
 export const RegisterText = styled.span`

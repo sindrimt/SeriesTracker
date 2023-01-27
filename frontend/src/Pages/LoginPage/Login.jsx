@@ -163,6 +163,8 @@ const Login = () => {
         <>
             {/*Displays the anime background*/}
             <PageContainer>
+                {/*Login page grid containing the homepage preview
+                and login box*/}
                 <LoginOuterContainer>
                     {/*Displays a preview of our homepage
                     when the screen width is big enough*/}
@@ -178,7 +180,34 @@ const Login = () => {
                     {/*The second column in the grid. Contains the login box*/}
                     <LoginBoxOuterBg>
                         {/*Displays the login box*/}
-                        <LoginBoxContainer></LoginBoxContainer>
+                        <LoginBoxContainer>
+                            <LoginBoxMain>
+                                <LoginBoxLogoOuter>
+                                    <LoginBoxLogo src={SeriesTrackerLogo} />
+                                </LoginBoxLogoOuter>
+                                <LoginFields>
+                                    <FormField ref={emailRef} type="text" placeholder="email" name="email" />
+                                    <FormField
+                                        ref={passwordRef}
+                                        type="password"
+                                        placeholder="password"
+                                        name="password"
+                                    />
+                                    {register ? (
+                                        <FButton buttonText="Sign Up" action={handleSignup} />
+                                    ) : (
+                                        <FButtonInverted buttonText="Log In" action={handleLogin} />
+                                    )}
+                                    {register ? (
+                                        <FileLabel>
+                                            <input type="file" multiple accept="image/*" onChange={onImageChange} />
+                                        </FileLabel>
+                                    ) : (
+                                        <></>
+                                    )}
+                                </LoginFields>
+                            </LoginBoxMain>
+                        </LoginBoxContainer>
                     </LoginBoxOuterBg>
                 </LoginOuterContainer>
             </PageContainer>
