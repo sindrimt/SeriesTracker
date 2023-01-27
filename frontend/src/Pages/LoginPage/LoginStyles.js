@@ -25,19 +25,36 @@ export const LoginOuterContainer = styled.div`
     width: calc(100% - 60px);
     border-radius: 10px;
     background-color: white;
-    display: grid;
     height: calc(100% - 60px);
-    grid-template-columns: auto;
+    background-color: lightgreen;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @media (max-width: 600px) {
+        grid-template-columns: 1fr;
+    }
 `;
 
-export const HomepagePreview = styled.div``;
+export const HomepagePreview = styled.div`
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-row-gap: 20px;
+    background-color: lightblue;
+    margin: auto;
+
+    //If less than 600px, the preview should dissappear
+    //and only the login box should be visible
+    @media (max-width: 600px) {
+        display: none;
+    }
+`;
 
 export const TxtOuter = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: center;
-    justify-content: flex-end;
 
     @media (max-width: 600px) {
         display: none;
@@ -69,57 +86,40 @@ export const HomepagePreviewImg = styled.img`
     border-radius: 3px;
     filter: drop-shadow(0px 6px 4px rgba(0, 0, 0, 0.25));
 
-    @media (max-width: 1250px) {
+    @media (max-width: 900px) {
         display: none;
     }
+
+    //Centers the image in the left grid-column
+    margin: auto;
 `;
 
 export const LoginBoxOuterBg = styled.div`
     width: 100%;
     height: 100%;
-    background-color: rgb(245, 245, 245);
+    background-color: papayawhip;
     margin: auto;
     display: flex;
     align-items: center;
     border-radius: 0 10px 10px 0;
-
-    @media (max-width: 1250px) {
-        background-color: white;
-    }
 `;
 
-export const LoginBoxOuter = styled.div`
+export const LoginBoxContainer = styled.div`
     display: grid;
     grid-row-gap: 20px;
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    height: 90%;
     margin: auto;
-`;
-export const LoginBoxMain = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-self: center;
-    width: 100%;
-    height: 100%;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-    border-radius: 5px;
-    padding-top: 20px;
+    border-radius: 10px;
     background-color: white;
+`;
 
-    @media (max-width: 1250px) {
-        width: 340px;
-    }
+export const LoginBoxMain = styled.div`
+    width: 100%;
 `;
 
 export const LoginBoxSecondary = styled.div`
-    display: flex;
     width: 100%;
-    align-items: center;
-    justify-content: center;
-    @media (max-width: 1250px) {
-        width: 340px;
-    }
 `;
 
 export const LoginBoxLogo = styled.img`

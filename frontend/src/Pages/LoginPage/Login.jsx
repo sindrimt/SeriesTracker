@@ -12,7 +12,7 @@ import {
     LoginBoxLogoOuter,
     LoginFields,
     LoginBoxSecondary,
-    LoginBoxOuter,
+    LoginBoxContainer,
     RegisterText,
     AlternativeLoginMethods,
     FileLabel,
@@ -161,8 +161,11 @@ const Login = () => {
 
     return (
         <>
+            {/*Displays the anime background*/}
             <PageContainer>
                 <LoginOuterContainer>
+                    {/*Displays a preview of our homepage
+                    when the screen width is big enough*/}
                     <HomepagePreview>
                         <TxtOuter>
                             <HomepagePreviewHeader>Track your series!</HomepagePreviewHeader>
@@ -170,8 +173,13 @@ const Login = () => {
                                 Save your series' progress, rate them, discover new ones, and connect with friends!
                             </HomepagePreviewTxt>
                         </TxtOuter>
-                        <HomepagePreviewImg src={previewImg} alt="Homescreen preview" />
+                        <HomepagePreviewImg src={previewImg} alt="Homepage preview" />
                     </HomepagePreview>
+                    {/*The second column in the grid. Contains the login box*/}
+                    <LoginBoxOuterBg>
+                        {/*Displays the login box*/}
+                        <LoginBoxContainer></LoginBoxContainer>
+                    </LoginBoxOuterBg>
                 </LoginOuterContainer>
             </PageContainer>
         </>
