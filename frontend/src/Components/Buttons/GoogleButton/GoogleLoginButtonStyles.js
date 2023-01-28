@@ -9,16 +9,13 @@ export const GoogleButtonOuter = styled.div`
     border-radius: 2px;
     white-space: nowrap;
     background-color: rgb(252, 252, 252);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px 2px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     border-radius: 3px;
 
     &:hover {
         transition: 0.1s ease-in-out;
         cursor: pointer;
         background-color: rgb(245, 245, 245);
-    }
-    @media (max-width: 100px) {
-        width: 90%;
     }
 `;
 
