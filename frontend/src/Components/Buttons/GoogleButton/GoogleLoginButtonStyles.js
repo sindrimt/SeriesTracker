@@ -28,7 +28,7 @@ export const Text = styled.span`
     font-weight: 300;
     font-size: 15px;
     color: #757575;
-    @media (max-width: 250px) {
+    @media (max-width: 270px) {
         display: none;
     }
 `;

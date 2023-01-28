@@ -19,6 +19,9 @@ export const PageContainer = styled.div`
             background-position: 600px 600px;
         }
     }
+    @media (max-width: 200px) {
+        width: 200px;
+    }
 `;
 
 export const LoginOuterContainer = styled.div`
@@ -185,7 +188,6 @@ export const RegisterBox = styled.span`
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-top: 20px;
     flex-direction: column;
     text-align: center;
 `;
@@ -214,7 +216,7 @@ export const AlternativeLoginMethods = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-top: 20px;
+    margin-top: 5px;
 `;
 
 export const FileLabel = styled.label`
