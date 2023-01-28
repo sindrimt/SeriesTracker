@@ -152,7 +152,6 @@ export const LoginBoxLogoOuter = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding-top: 70px;
 `;
 
 export const LoginFields = styled.div`
@@ -165,6 +164,8 @@ export const LoginFields = styled.div`
     margin: auto;
     padding-top: 50px;
     padding-bottom: 50px;
+    padding-right: 5%;
+    padding-left: 5%;
     border-radius: 20px 20px 10px 10px;
 `;
 
