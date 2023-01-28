@@ -26,9 +26,13 @@ export const LoginOuterContainer = styled.div`
     border-radius: 10px;
     background-color: white;
     height: calc(100% - 60px);
-    background-color: lightgreen;
+    background-color: #e7e7e7;
     display: grid;
     grid-template-columns: 1fr 1fr;
+
+    @media (max-width: 800px) {
+        grid-template-columns: 1fr 2fr;
+    }
 
     @media (max-width: 600px) {
         grid-template-columns: 1fr;
@@ -42,8 +46,10 @@ export const HomepagePreview = styled.div`
     display: grid;
     grid-template-rows: auto auto;
     grid-row-gap: 20px;
-    background-color: lightblue;
+    background-color: #e7e7e7;
     margin: auto;
+    padding-bottom: 10px;
+    border-radius: 10px 0px 0px 10px;
 
     //If less than 600px, the preview should dissappear
     //and only the login box should be visible
@@ -57,6 +63,8 @@ export const TxtOuter = styled.div`
     flex-direction: column;
     width: 100%;
     align-items: center;
+    padding: 0px 10px 0px 0px;
+    margin: auto;
 
     @media (max-width: 600px) {
         display: none;
@@ -66,7 +74,7 @@ export const TxtOuter = styled.div`
 export const HomepagePreviewHeader = styled.div`
     font-size: 30px;
     color: #a63fcb;
-    margin-bottom: 3px;
+    text-align: center;
 `;
 
 export const HomepagePreviewTxt = styled.div`
@@ -85,10 +93,11 @@ export const HomepagePreviewTxt = styled.div`
 export const HomepagePreviewImg = styled.img`
     width: 45vw;
     object-fit: fill;
+    margin-bottom: 10px;
     border-radius: 3px;
-    filter: drop-shadow(0px 6px 4px rgba(0, 0, 0, 0.25));
-
-    @media (max-width: 900px) {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    @media (max-width: 800px) {
         display: none;
     }
 
@@ -99,7 +108,8 @@ export const HomepagePreviewImg = styled.img`
 export const LoginBoxOuterBg = styled.div`
     width: 100%;
     height: 100%;
-    background-color: papayawhip;
+    background-color: #a7a6ba;
+    //#c4c3d0 lighter gray-purple
     margin: auto;
     display: flex;
     align-items: center;
@@ -115,9 +125,10 @@ export const LoginBoxContainer = styled.div`
     height: 90%;
     margin: auto;
     border-radius: 10px;
-    background-color: #d5d5d5;
+    background-color: #e7e7e7;
     @media (max-width: 600px) {
-        height: 95%;
+        height: 100%;
+        width: 100%;
     }
 `;
 

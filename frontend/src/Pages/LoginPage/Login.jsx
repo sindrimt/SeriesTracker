@@ -24,7 +24,8 @@ import "./login.css";
 
 import previewImg from "../../Assets/Login/homescreen.png";
 import animeCollageW from "../../Assets/Login/animeCollageW.png";
-import animeCollageP from "../../Assets/Login/AnimeCollageP.png";
+import animeCollageP from "../../Assets/Login/animeCollageP.png";
+import animeCollageS from "../../Assets/Login/animeCollageS.png";
 import Footer from "../../Components/Footer/Footer";
 
 import {
