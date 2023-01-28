@@ -29,6 +29,7 @@ export const LoginOuterContainer = styled.div`
     background-color: #e7e7e7;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    transition: 1s;
 
     @media (max-width: 800px) {
         grid-template-columns: 1fr 2fr;
@@ -137,7 +138,7 @@ export const LoginBoxMain = styled.div`
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-rows: 1fr 3fr;
+    grid-template-rows: 1fr 5fr;
 `;
 
 export const LoginBoxSecondary = styled.div`
@@ -145,7 +146,7 @@ export const LoginBoxSecondary = styled.div`
 `;
 
 export const LoginBoxLogo = styled.img`
-    width: 250px;
+    width: 200px;
     padding-top: 10px;
     //set static logo size if the screen is less than 600px
     @media (max-width: 700px) {
@@ -175,8 +176,8 @@ export const LoginFields = styled.div`
     margin: auto;
     padding-top: 50px;
     padding-bottom: 20px;
-    padding-right: 5%;
-    padding-left: 5%;
+    padding-right: 10%;
+    padding-left: 10%;
     border-radius: 20px 20px 10px 10px;
 `;
 
@@ -190,17 +191,27 @@ export const RegisterBox = styled.span`
 `;
 
 export const RegisterText = styled.span`
-    border-bottom: 1px solid #a63fcb;
-
-    &:hover {
-        cursor: pointer;
-        color: rgba(166, 63, 203, 0.6);
+    margin: 0px 10px 0px 10px;
+    &:nth-child(2) {
+        color: #a63fcb;
+        font-weight: 400;
+        font-size: 1.1rem;
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
     }
+`;
+
+export const AlternativeText = styled.div`
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    text-align: center;
 `;
 
 export const AlternativeLoginMethods = styled.div`
     width: 100%;
-    border-top: 1px solid rgba(137, 137, 137, 0.2);
     display: flex;
     justify-content: center;
     padding-top: 20px;

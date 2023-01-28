@@ -19,6 +19,7 @@ import {
     PageContainer,
     LoginBoxOuterBg,
     RegisterBox,
+    AlternativeText,
 } from "./LoginStyles";
 
 import "./login.css";
@@ -190,7 +191,7 @@ const Login = () => {
                                     <LoginBoxLogo src={SeriesTrackerLogo} />
                                 </LoginBoxLogoOuter>
                                 <LoginFields>
-                                    <FormField ref={emailRef} type="text" placeholder="email" name="email" />
+                                    <FormField ref={emailRef} type="text" placeholder="e-mail" name="email" />
                                     <FormField
                                         ref={passwordRef}
                                         type="password"
@@ -200,20 +201,10 @@ const Login = () => {
                                     {register ? (
                                         <FButton buttonText="Sign Up" action={handleSignup} />
                                     ) : (
-                                        <FButtonInverted buttonText="Log In" action={handleLogin} />
-                                    )}
-                                    {register ? (
-                                        <FileLabel>
-                                            <input type="file" multiple accept="image/*" onChange={onImageChange} />
-                                        </FileLabel>
-                                    ) : (
-                                        <></>
+                                        <FButton buttonText="Log In" action={handleLogin} />
                                     )}
                                     <AlternativeLoginMethods>
-                                        <GoogleLoginButton
-                                            action={handleGoogleSignIn}
-                                            text={register ? "Sign up with Google" : "Sign in with Google"}
-                                        />
+                                        <GoogleLoginButton action={handleGoogleSignIn} text={"Continue with Google"} />
                                     </AlternativeLoginMethods>
                                     <RegisterBox>
                                         <RegisterText style={{ border: "0" }}>
@@ -224,7 +215,7 @@ const Login = () => {
                                                 setRegister(!register);
                                             }}
                                         >
-                                            {register ? "Log In" : "Register Here"}
+                                            {register ? "Log In" : "Create an account"}
                                         </RegisterText>
                                     </RegisterBox>
                                 </LoginFields>
