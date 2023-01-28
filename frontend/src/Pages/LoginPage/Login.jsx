@@ -23,6 +23,8 @@ import {
 import "./login.css";
 
 import previewImg from "../../Assets/Login/homescreen.png";
+import animeCollageW from "../../Assets/Login/animeCollageW.png";
+import animeCollageP from "../../Assets/Login/AnimeCollageP.png";
 import Footer from "../../Components/Footer/Footer";
 
 import {
@@ -175,7 +177,7 @@ const Login = () => {
                                 Save your series' progress, rate them, discover new ones, and connect with friends!
                             </HomepagePreviewTxt>
                         </TxtOuter>
-                        <HomepagePreviewImg src={previewImg} alt="Homepage preview" />
+                        <HomepagePreviewImg src={animeCollageW} alt="Homepage preview" />
                     </HomepagePreview>
                     {/*The second column in the grid. Contains the login box*/}
                     <LoginBoxOuterBg>
