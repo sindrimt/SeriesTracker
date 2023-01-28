@@ -18,6 +18,7 @@ import {
     FileLabel,
     PageContainer,
     LoginBoxOuterBg,
+    RegisterBox,
 } from "./LoginStyles";
 
 import "./login.css";
@@ -208,6 +209,24 @@ const Login = () => {
                                     ) : (
                                         <></>
                                     )}
+                                    <AlternativeLoginMethods>
+                                        <GoogleLoginButton
+                                            action={handleGoogleSignIn}
+                                            text={register ? "Sign up with Google" : "Sign in with Google"}
+                                        />
+                                    </AlternativeLoginMethods>
+                                    <RegisterBox>
+                                        <RegisterText style={{ border: "0" }}>
+                                            {register ? "Already have an account?" : "Don't have an account?"}
+                                        </RegisterText>
+                                        <RegisterText
+                                            onClick={() => {
+                                                setRegister(!register);
+                                            }}
+                                        >
+                                            {register ? "Log In" : "Register Here"}
+                                        </RegisterText>
+                                    </RegisterBox>
                                 </LoginFields>
                             </LoginBoxMain>
                         </LoginBoxContainer>

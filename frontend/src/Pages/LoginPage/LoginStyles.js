@@ -63,7 +63,7 @@ export const TxtOuter = styled.div`
     flex-direction: column;
     width: 100%;
     align-items: center;
-    padding: 0px 10px 0px 0px;
+    padding: 0px 20px 0px 20px;
     margin: auto;
 
     @media (max-width: 600px) {
@@ -127,8 +127,8 @@ export const LoginBoxContainer = styled.div`
     border-radius: 10px;
     background-color: #e7e7e7;
     @media (max-width: 600px) {
-        height: 100%;
-        width: 100%;
+        height: 95%;
+        width: 95%;
     }
 `;
 
@@ -170,19 +170,27 @@ export const LoginFields = styled.div`
     grid-template-columns: repeat(auto);
     width: 100%;
     height: 100%;
-    grid-row-gap: 20px;
+    grid-row-gap: 5px;
     background-color: #ffffff;
     margin: auto;
     padding-top: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
     padding-right: 5%;
     padding-left: 5%;
     border-radius: 20px 20px 10px 10px;
 `;
 
+export const RegisterBox = styled.span`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    flex-direction: column;
+    text-align: center;
+`;
+
 export const RegisterText = styled.span`
     border-bottom: 1px solid #a63fcb;
-    margin-left: 5px;
 
     &:hover {
         cursor: pointer;
@@ -191,11 +199,11 @@ export const RegisterText = styled.span`
 `;
 
 export const AlternativeLoginMethods = styled.div`
-    padding: 30px 0 30px 0;
-    width: 60%;
+    width: 100%;
+    border-top: 1px solid rgba(137, 137, 137, 0.2);
     display: flex;
     justify-content: center;
-    border-top: 1px solid rgba(137, 137, 137, 0.2);
+    padding-top: 20px;
 `;
 
 export const FileLabel = styled.label`
