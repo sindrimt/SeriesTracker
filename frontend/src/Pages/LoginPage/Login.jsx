@@ -2,30 +2,42 @@ import React, { useRef, useState, useEffect } from "react";
 
 import {
     LoginOuterContainer,
-    LoginPreviewOuter,
-    LoginPreviewTxt,
-    LoginPreviewHeader,
+    HomepagePreview,
+    HomepagePreviewTxt,
+    HomepagePreviewHeader,
     TxtOuter,
-    LoginPreviewImg,
+    HomepagePreviewImg,
     LoginBoxMain,
     LoginBoxLogo,
     LoginBoxLogoOuter,
     LoginFields,
     LoginBoxSecondary,
-    LoginBoxOuter,
+    LoginBoxContainer,
     RegisterText,
     AlternativeLoginMethods,
     FileLabel,
     PageContainer,
     LoginBoxOuterBg,
+    RegisterBox,
+    AlternativeText,
 } from "./LoginStyles";
 
 import "./login.css";
 
 import previewImg from "../../Assets/Login/homescreen.png";
+import animeCollageW from "../../Assets/Login/animeCollageW.png";
+import animeCollageP from "../../Assets/Login/animeCollageP.png";
+import animeCollageS from "../../Assets/Login/animeCollageS.png";
 import Footer from "../../Components/Footer/Footer";
 
-import { signup, logIn, userProfileUpdate, signInWithGoogle, saveData, getGoogleRedirectResults } from "../../firebase.js";
+import {
+    signup,
+    logIn,
+    userProfileUpdate,
+    signInWithGoogle,
+    saveData,
+    getGoogleRedirectResults,
+} from "../../firebase.js";
 import GoogleLoginButton from "../../Components/Buttons/GoogleButton/GoogleLoginButton";
 import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 
@@ -154,62 +166,64 @@ const Login = () => {
 
     return (
         <>
+            {/*Displays the anime background*/}
             <PageContainer>
+                {/*Login page grid containing the homepage preview
+                and login box*/}
                 <LoginOuterContainer>
-                    <LoginPreviewOuter>
+                    {/*Displays a preview of our homepage
+                    when the screen width is big enough*/}
+                    <HomepagePreview>
                         <TxtOuter>
-                            <LoginPreviewHeader>Track your series!</LoginPreviewHeader>
-                            <LoginPreviewTxt>Save your series' progress, rate them, discover new ones, and connect with friends!</LoginPreviewTxt>
+                            <HomepagePreviewHeader>Track your series!</HomepagePreviewHeader>
+                            <HomepagePreviewTxt>
+                                Save your series' progress, rate them, discover new ones, and connect with friends!
+                            </HomepagePreviewTxt>
                         </TxtOuter>
-                        <LoginPreviewImg src={previewImg} alt="Homescreen preview" />
-                    </LoginPreviewOuter>
-                    {
-                        <LoginBoxOuterBg>
-                            <LoginBoxOuter>
-                                <LoginBoxMain>
-                                    <LoginBoxLogoOuter>
-                                        <LoginBoxLogo src={SeriesTrackerLogo} />
-                                    </LoginBoxLogoOuter>
-
-                                    <LoginFields>
-                                        <FormField ref={emailRef} type="text" placeholder="email" name="email" />
-                                        <FormField ref={passwordRef} type="password" placeholder="password" name="password" />
-                                        {register ? (
-                                            <FButton buttonText="Sign Up" action={handleSignup} />
-                                        ) : (
-                                            <FButtonInverted buttonText="Log In" action={handleLogin} />
-                                        )}
-                                        {register ? (
-                                            <FileLabel>
-                                                <input type="file" multiple accept="image/*" onChange={onImageChange} />
-                                            </FileLabel>
-                                        ) : (
-                                            <></>
-                                        )}
-                                    </LoginFields>
+                        <HomepagePreviewImg src={animeCollageW} alt="Homepage preview" />
+                    </HomepagePreview>
+                    {/*The second column in the grid. Contains the login box*/}
+                    <LoginBoxOuterBg>
+                        {/*Displays the login box*/}
+                        <LoginBoxContainer>
+                            {/*The grid for the logo and the login fields*/}
+                            <LoginBoxMain>
+                                <LoginBoxLogoOuter>
+                                    <LoginBoxLogo src={SeriesTrackerLogo} />
+                                </LoginBoxLogoOuter>
+                                <LoginFields>
+                                    <FormField ref={emailRef} type="text" placeholder="e-mail" name="email" />
+                                    <FormField
+                                        ref={passwordRef}
+                                        type="password"
+                                        placeholder="password"
+                                        name="password"
+                                    />
+                                    {register ? (
+                                        <FButton buttonText="Sign Up" action={handleSignup} />
+                                    ) : (
+                                        <FButton buttonText="Log In" action={handleLogin} />
+                                    )}
                                     <AlternativeLoginMethods>
-                                        <GoogleLoginButton
-                                            action={handleGoogleSignIn}
-                                            text={register ? "Sign up with Google" : "Sign in with Google"}
-                                        />
+                                        <GoogleLoginButton action={handleGoogleSignIn} text={"Continue with Google"} />
                                     </AlternativeLoginMethods>
-                                    <LoginBoxSecondary>
-                                        {register ? "Already have an account?" : "Don't have an account?"}
+                                    <RegisterBox>
+                                        <RegisterText style={{ border: "0" }}>
+                                            {register ? "Already have an account?" : "Don't have an account?"}
+                                        </RegisterText>
                                         <RegisterText
                                             onClick={() => {
                                                 setRegister(!register);
-                                                setButtonColor(!buttonColor);
                                             }}
                                         >
-                                            {register ? "Log In" : "Register Here"}
+                                            {register ? "Log In" : "Create an account"}
                                         </RegisterText>
-                                    </LoginBoxSecondary>
-                                </LoginBoxMain>
-                            </LoginBoxOuter>
-                        </LoginBoxOuterBg>
-                    }
+                                    </RegisterBox>
+                                </LoginFields>
+                            </LoginBoxMain>
+                        </LoginBoxContainer>
+                    </LoginBoxOuterBg>
                 </LoginOuterContainer>
-                {/* <Footer /> */}
             </PageContainer>
         </>
     );

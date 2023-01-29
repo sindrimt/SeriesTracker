@@ -4,7 +4,7 @@ import largepanel from "../../Assets/Login/largepanel-min.png";
 
 export const PageContainer = styled.div`
     position: absolute;
-    width: 100%;
+    width: 100vw;
     background-image: url(${largepanel});
     background-size: cover;
     height: 100vh;
@@ -19,29 +19,52 @@ export const PageContainer = styled.div`
             background-position: 600px 600px;
         }
     }
+    @media (max-width: 200px) {
+        width: 200px;
+    }
 `;
 
 export const LoginOuterContainer = styled.div`
     width: calc(100% - 60px);
     border-radius: 10px;
     background-color: white;
-    display: grid;
     height: calc(100% - 60px);
-    grid-template-columns: 4.5fr 3fr;
-    grid-column-gap: 20px;
+    background-color: #e7e7e7;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    transition: 1s;
 
-    grid-row-gap: 20px;
+    //Tablet mode
+    @media (min-height: 900px) and (min-width: 760px) and (max-width: 1000px) {
+        grid-template-columns: 1fr 2fr;
+    }
 
-    @media (max-width: 1250px) {
+    @media (max-width: 800px) {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    @media (max-width: 600px) {
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 7fr;
-        grid-row-gap: 0px;
+        width: calc(100% - 30px);
+        height: calc(100% - 30px);
     }
 `;
 
-export const LoginPreviewOuter = styled.div`
-    justify-self: center;
-    align-self: center;
+export const HomepagePreview = styled.div`
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-row-gap: 20px;
+    background-color: #e7e7e7;
+    margin: auto;
+    padding-bottom: 10px;
+    border-radius: 10px 0px 0px 10px;
+
+    //If less than 600px, the preview should dissappear
+    //and only the login box should be visible
+    @media (max-width: 600px) {
+        display: none;
+    }
 `;
 
 export const TxtOuter = styled.div`
@@ -49,21 +72,22 @@ export const TxtOuter = styled.div`
     flex-direction: column;
     width: 100%;
     align-items: center;
-    justify-content: flex-end;
+    padding: 0px 20px 0px 20px;
+    margin: auto;
 
-    @media (max-width: 800px) {
+    @media (max-width: 600px) {
         display: none;
     }
 `;
 
-export const LoginPreviewHeader = styled.div`
-    font-size: 30px;
+export const HomepagePreviewHeader = styled.div`
+    font-size: 1.8rem;
     color: #a63fcb;
-    margin-bottom: 3px;
+    text-align: center;
 `;
 
-export const LoginPreviewTxt = styled.div`
-    font-size: 18px;
+export const HomepagePreviewTxt = styled.div`
+    font-size: 1.5rem;
     width: 70%;
     text-align: center;
     margin-bottom: 7px;
@@ -75,67 +99,86 @@ export const LoginPreviewTxt = styled.div`
     }
 `;
 
-export const LoginPreviewImg = styled.img`
+export const HomepagePreviewImg = styled.img`
     width: 45vw;
     object-fit: fill;
+    margin-bottom: 10px;
     border-radius: 3px;
-    filter: drop-shadow(0px 6px 4px rgba(0, 0, 0, 0.25));
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
-    @media (max-width: 1250px) {
+    //Tablet mode
+    @media (min-height: 900px) and (min-width: 760px) and (max-width: 1000px) {
         display: none;
     }
+    @media (max-width: 800px) {
+        display: none;
+    }
+
+    //Centers the image in the left grid-column
+    margin: auto;
 `;
 
 export const LoginBoxOuterBg = styled.div`
     width: 100%;
     height: 100%;
-    background-color: rgb(245, 245, 245);
+    background-color: #a7a6ba;
+    //#c4c3d0 lighter gray-purple
     margin: auto;
     display: flex;
     align-items: center;
     border-radius: 0 10px 10px 0;
-
-    @media (max-width: 1250px) {
-        background-color: white;
+    //Takes up the whole screen if the screen is less than 600px
+    @media (max-width: 600px) {
+        border-radius: 10px;
     }
 `;
 
-export const LoginBoxOuter = styled.div`
-    display: grid;
-    grid-row-gap: 20px;
-    width: 80%;
-    height: 80%;
+export const LoginBoxContainer = styled.div`
+    width: 90%;
+    height: 90%;
     margin: auto;
+    border-radius: 10px;
+    background-color: #e7e7e7;
+    @media (max-width: 600px) {
+        height: 95%;
+        width: 95%;
+    }
+    //Tablet mode
+    @media (min-height: 900px) and (min-width: 760px) and (max-width: 1000px) {
+        padding-top: 25%;
+    }
 `;
+
+//Grid containing the logo and the login fields
 export const LoginBoxMain = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-self: center;
     width: 100%;
     height: 100%;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-    border-radius: 5px;
-    padding-top: 20px;
-    background-color: white;
-
-    @media (max-width: 1250px) {
-        width: 340px;
-    }
+    display: grid;
+    grid-template-rows: 1fr 5fr;
 `;
 
 export const LoginBoxSecondary = styled.div`
-    display: flex;
     width: 100%;
-    align-items: center;
-    justify-content: center;
-    @media (max-width: 1250px) {
-        width: 340px;
-    }
 `;
 
 export const LoginBoxLogo = styled.img`
-    width: 260px;
+    width: 280px;
+    padding-top: 10px;
+    //set static logo size if the screen is less than 600px
+    @media (max-width: 700px) {
+        width: 250px;
+    }
+    @media (max-width: 350px) {
+        width: 220px;
+    }
+    @media (max-width: 300px) {
+        width: 90%;
+    }
+    //Tablet mode
+    @media (min-height: 900px) and (min-width: 760px) and (max-width: 1000px) {
+        width: 300px;
+    }
 `;
 export const LoginBoxLogoOuter = styled.div`
     display: flex;
@@ -146,30 +189,53 @@ export const LoginBoxLogoOuter = styled.div`
 
 export const LoginFields = styled.div`
     display: grid;
-    grid-template-columns: 1fr;
-    width: 60%;
-    grid-row-gap: 10px;
+    grid-template-columns: repeat(auto);
+    width: 100%;
+    height: 100%;
+    grid-row-gap: 5px;
+    background-color: #ffffff;
+    margin: auto;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    padding-right: 10%;
+    padding-left: 10%;
+    border-radius: 20px 20px 10px 10px;
+`;
+
+export const RegisterBox = styled.span`
+    width: 100%;
+    display: flex;
     justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+    flex-direction: column;
+    text-align: center;
 `;
 
 export const RegisterText = styled.span`
-    border-bottom: 1px solid #a63fcb;
-    margin-left: 5px;
-
-    &:hover {
-        cursor: pointer;
-        color: rgba(166, 63, 203, 0.6);
+    margin: 0px 10px 0px 10px;
+    font-size: 1.1rem;
+    &:nth-child(2) {
+        color: #a63fcb;
+        font-weight: 400;
+        font-size: 1.2rem;
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
     }
 `;
 
+export const AlternativeText = styled.div`
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    text-align: center;
+`;
+
 export const AlternativeLoginMethods = styled.div`
-    padding: 30px 0 30px 0;
-    width: 60%;
+    width: 100%;
     display: flex;
     justify-content: center;
-    border-top: 1px solid rgba(137, 137, 137, 0.2);
+    margin-top: 5px;
 `;
 
 export const FileLabel = styled.label`

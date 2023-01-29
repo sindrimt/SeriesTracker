@@ -8,7 +8,7 @@ export const FieldContainer = styled.div`
         outline: none;
         font-size: 1.2rem;
         padding: 0.5rem 0.5rem;
-        background-color: transparent;
+        background-color: lightcyan;
         color: ${(props) => props.theme.text};
         border-bottom: 1px solid ${(props) => props.theme.text};
         transition: all 0.3s ease-in-out;
