@@ -186,6 +186,7 @@ const Login = () => {
                     <LoginBoxOuterBg>
                         {/*Displays the login box*/}
                         <LoginBoxContainer>
+                            {/*The grid for the logo and the login fields*/}
                             <LoginBoxMain>
                                 <LoginBoxLogoOuter>
                                     <LoginBoxLogo src={SeriesTrackerLogo} />

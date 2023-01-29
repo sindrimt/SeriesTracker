@@ -34,6 +34,11 @@ export const LoginOuterContainer = styled.div`
     grid-template-columns: 1fr 1fr;
     transition: 1s;
 
+    //Tablet mode
+    @media (min-height: 900px) and (min-width: 760px) and (max-width: 1000px) {
+        grid-template-columns: 1fr 2fr;
+    }
+
     @media (max-width: 800px) {
         grid-template-columns: 1fr 2fr;
     }
@@ -76,13 +81,13 @@ export const TxtOuter = styled.div`
 `;
 
 export const HomepagePreviewHeader = styled.div`
-    font-size: 30px;
+    font-size: 1.8rem;
     color: #a63fcb;
     text-align: center;
 `;
 
 export const HomepagePreviewTxt = styled.div`
-    font-size: 18px;
+    font-size: 1.5rem;
     width: 70%;
     text-align: center;
     margin-bottom: 7px;
@@ -101,6 +106,11 @@ export const HomepagePreviewImg = styled.img`
     border-radius: 3px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
         rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+    //Tablet mode
+    @media (min-height: 900px) and (min-width: 760px) and (max-width: 1000px) {
+        display: none;
+    }
     @media (max-width: 800px) {
         display: none;
     }
@@ -134,6 +144,10 @@ export const LoginBoxContainer = styled.div`
         height: 95%;
         width: 95%;
     }
+    //Tablet mode
+    @media (min-height: 900px) and (min-width: 760px) and (max-width: 1000px) {
+        padding-top: 25%;
+    }
 `;
 
 //Grid containing the logo and the login fields
@@ -149,17 +163,21 @@ export const LoginBoxSecondary = styled.div`
 `;
 
 export const LoginBoxLogo = styled.img`
-    width: 200px;
+    width: 280px;
     padding-top: 10px;
     //set static logo size if the screen is less than 600px
     @media (max-width: 700px) {
-        width: 200px;
+        width: 250px;
     }
     @media (max-width: 350px) {
-        width: 170px;
+        width: 220px;
     }
-    @media (max-width: 250px) {
+    @media (max-width: 300px) {
         width: 90%;
+    }
+    //Tablet mode
+    @media (min-height: 900px) and (min-width: 760px) and (max-width: 1000px) {
+        width: 300px;
     }
 `;
 export const LoginBoxLogoOuter = styled.div`
@@ -194,10 +212,11 @@ export const RegisterBox = styled.span`
 
 export const RegisterText = styled.span`
     margin: 0px 10px 0px 10px;
+    font-size: 1.1rem;
     &:nth-child(2) {
         color: #a63fcb;
         font-weight: 400;
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         &:hover {
             cursor: pointer;
             text-decoration: underline;
