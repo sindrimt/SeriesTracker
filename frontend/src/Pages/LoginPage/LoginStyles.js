@@ -27,9 +27,8 @@ export const PageContainer = styled.div`
 export const LoginOuterContainer = styled.div`
     width: calc(100% - 60px);
     border-radius: 10px;
-    background-color: white;
     height: calc(100% - 60px);
-    background-color: #e7e7e7;
+    background-color: rgb(245, 245, 245);
     display: grid;
     grid-template-columns: 1fr 1fr;
     transition: 1s;
@@ -55,7 +54,7 @@ export const HomepagePreview = styled.div`
     display: grid;
     grid-template-rows: auto auto;
     grid-row-gap: 20px;
-    background-color: #e7e7e7;
+    background-color: rgb(245, 245, 245);
     margin: auto;
     padding-bottom: 10px;
     border-radius: 10px 0px 0px 10px;
@@ -81,13 +80,13 @@ export const TxtOuter = styled.div`
 `;
 
 export const HomepagePreviewHeader = styled.div`
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     color: #a63fcb;
     text-align: center;
 `;
 
 export const HomepagePreviewTxt = styled.div`
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     width: 70%;
     text-align: center;
     margin-bottom: 7px;
@@ -122,12 +121,13 @@ export const HomepagePreviewImg = styled.img`
 export const LoginBoxOuterBg = styled.div`
     width: 100%;
     height: 100%;
-    background-color: #a7a6ba;
+    background-color: rgb(250, 250, 250);
     //#c4c3d0 lighter gray-purple
     margin: auto;
     display: flex;
     align-items: center;
     border-radius: 0 10px 10px 0;
+
     //Takes up the whole screen if the screen is less than 600px
     @media (max-width: 600px) {
         border-radius: 10px;
@@ -135,11 +135,15 @@ export const LoginBoxOuterBg = styled.div`
 `;
 
 export const LoginBoxContainer = styled.div`
-    width: 90%;
-    height: 90%;
+    width: 80%;
+    height: 85%;
     margin: auto;
     border-radius: 10px;
-    background-color: #e7e7e7;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.05)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
+
     @media (max-width: 600px) {
         height: 95%;
         width: 95%;
@@ -152,7 +156,7 @@ export const LoginBoxContainer = styled.div`
 
 //Grid containing the logo and the login fields
 export const LoginBoxMain = styled.div`
-    width: 100%;
+    width: 80%;
     height: 100%;
     display: grid;
     grid-template-rows: 1fr 5fr;
@@ -166,7 +170,10 @@ export const LoginBoxLogo = styled.img`
     width: 280px;
     padding-top: 10px;
     //set static logo size if the screen is less than 600px
-    @media (max-width: 700px) {
+    @media (max-width: 950px) {
+        width: 250px;
+    }
+    @media (max-width: 800px) {
         width: 250px;
     }
     @media (max-width: 350px) {
@@ -195,7 +202,7 @@ export const LoginFields = styled.div`
     grid-row-gap: 5px;
     background-color: #ffffff;
     margin: auto;
-    padding-top: 50px;
+    padding-top: 20px;
     padding-bottom: 20px;
     padding-right: 10%;
     padding-left: 10%;

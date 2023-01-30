@@ -37,10 +37,10 @@ const App = () => {
         if (currentUser) {
             fetchUser();
         } else {
-            setTimeout(500);
-            setDone(!done);
+            //setTimeout(500);
+            //setDone(!done);
         }
-    }, [done]);
+    }, [currentUser]);
 
     const fetchUser = () => {
         axios
