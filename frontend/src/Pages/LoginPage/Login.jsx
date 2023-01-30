@@ -186,7 +186,7 @@ const Login = () => {
                                     <LoginBoxLogo src={SeriesTrackerLogo} />
                                 </LoginBoxLogoOuter>
                                 <LoginFields>
-                                    <FormField ref={emailRef} type="text" placeholder="e-mail" name="email" />
+                                    <FormField ref={emailRef} type="text" placeholder="username" name="email" />
                                     <FormField ref={passwordRef} type="password" placeholder="password" name="password" />
                                     {register ? (
                                         <FButton buttonText="Sign Up" action={handleSignup} />

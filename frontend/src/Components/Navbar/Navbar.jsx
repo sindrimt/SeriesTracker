@@ -160,7 +160,7 @@ const Navbar = () => {
                     </div>
                     <NavbarProfileImgBack>
                         <NavbarProfileImg
-                            onClick={() => navigate("/profile")}
+                            //onClick={() => navigate("/profile")}
                             src={decideProfilePic()}
                             alt="Profile pic"
                             referrerPolicy="no-referrer"

@@ -7,7 +7,7 @@ import "./FormField.css";
 
 const FormField = forwardRef(({ type, placeholder, change }, ref, name) => (
     <div className="field_outer_container">
-        {placeholder === "e-mail" ? (
+        {placeholder === "username" ? (
             <HiOutlineUser size={20} color={"rgb(100, 100, 100)"} />
         ) : (
             <HiOutlineKey size={20} color={"rgb(100, 100, 100)"} />
