@@ -79,7 +79,7 @@ export const PanelOuterAccount = styled.div`
     display: grid;
     grid-template-rows: repeat(50px);
     grid-row-gap: 0px;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
     background-color: ${(props) => props.theme.sidebar.background};
 `;
 
