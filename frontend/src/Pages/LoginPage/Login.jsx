@@ -23,6 +23,7 @@ import {
 } from "./LoginStyles";
 
 import "./login.css";
+import { HiOutlineUser } from "react-icons/hi";
 
 import previewImg from "../../Assets/Login/homescreen.png";
 import animeCollageW from "../../Assets/Login/animeCollageW.png";
@@ -30,14 +31,7 @@ import animeCollageP from "../../Assets/Login/animeCollageP.png";
 import animeCollageS from "../../Assets/Login/animeCollageS.png";
 import Footer from "../../Components/Footer/Footer";
 
-import {
-    signup,
-    logIn,
-    userProfileUpdate,
-    signInWithGoogle,
-    saveData,
-    getGoogleRedirectResults,
-} from "../../firebase.js";
+import { signup, logIn, userProfileUpdate, signInWithGoogle, saveData, getGoogleRedirectResults } from "../../firebase.js";
 import GoogleLoginButton from "../../Components/Buttons/GoogleButton/GoogleLoginButton";
 import SeriesTrackerLogo from "../../Assets/Images/logo.png";
 
@@ -193,12 +187,7 @@ const Login = () => {
                                 </LoginBoxLogoOuter>
                                 <LoginFields>
                                     <FormField ref={emailRef} type="text" placeholder="e-mail" name="email" />
-                                    <FormField
-                                        ref={passwordRef}
-                                        type="password"
-                                        placeholder="password"
-                                        name="password"
-                                    />
+                                    <FormField ref={passwordRef} type="password" placeholder="password" name="password" />
                                     {register ? (
                                         <FButton buttonText="Sign Up" action={handleSignup} />
                                     ) : (
