@@ -13,10 +13,10 @@
 .input_field {
     position: relative;
     width: 80%;
-
     border: none;
     outline: none;
     padding-left: 20px;
+    margin: auto;
     margin: 5px 0px 5px 0px;
     text-overflow: ellipsis;
     font-size: 1rem;

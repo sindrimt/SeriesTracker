@@ -11,7 +11,7 @@ export const PageContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: animate 25s infinite;
+    animation: animate 40s infinite;
     animation-timing-function: linear;
 
     @keyframes animate {
@@ -30,19 +30,19 @@ export const LoginOuterContainer = styled.div`
     height: calc(100% - 60px);
     background-color: rgb(245, 245, 245);
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 3fr 2fr;
     transition: 1s;
 
     //Tablet mode
-    @media (min-height: 900px) and (min-width: 760px) and (max-width: 1000px) {
+    /* @media (min-height: 900px) and (min-width: 760px) and (max-width: 1000px) {
         grid-template-columns: 1fr 2fr;
-    }
+    } */
 
     @media (max-width: 800px) {
         grid-template-columns: 1fr 2fr;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
         grid-template-columns: 1fr;
         width: calc(100% - 30px);
         height: calc(100% - 30px);
@@ -107,9 +107,9 @@ export const HomepagePreviewImg = styled.img`
         rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
     //Tablet mode
-    @media (min-height: 900px) and (min-width: 760px) and (max-width: 1000px) {
+    /* @media (min-height: 900px) and (min-width: 760px) and (max-width: 1000px) {
         display: none;
-    }
+    } */
     @media (max-width: 800px) {
         display: none;
     }
@@ -135,7 +135,7 @@ export const LoginBoxOuterBg = styled.div`
 `;
 
 export const LoginBoxContainer = styled.div`
-    width: 80%;
+    width: 60%;
     height: 85%;
     margin: auto;
     border-radius: 10px;
@@ -145,21 +145,25 @@ export const LoginBoxContainer = styled.div`
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.05)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
 
     @media (max-width: 600px) {
-        height: 95%;
-        width: 95%;
+        height: 100%;
+        width: 100%;
     }
-    //Tablet mode
+    /* //Tablet mode
     @media (min-height: 900px) and (min-width: 760px) and (max-width: 1000px) {
         padding-top: 25%;
-    }
+    } */
 `;
 
 //Grid containing the logo and the login fields
 export const LoginBoxMain = styled.div`
-    width: 80%;
+    width: 100%;
     height: 100%;
     display: grid;
     grid-template-rows: 1fr 5fr;
+
+    @media (max-width: 900px) {
+        width: 100%;
+    }
 `;
 
 export const LoginBoxSecondary = styled.div`
@@ -170,22 +174,22 @@ export const LoginBoxLogo = styled.img`
     width: 280px;
     padding-top: 10px;
     //set static logo size if the screen is less than 600px
-    @media (max-width: 950px) {
+    @media (max-width: 1500px) {
         width: 250px;
     }
-    @media (max-width: 800px) {
-        width: 250px;
+    @media (max-width: 1350px) {
+        width: 230px;
     }
-    @media (max-width: 350px) {
-        width: 220px;
+    @media (max-width: 1250px) {
+        width: 210px;
     }
-    @media (max-width: 300px) {
+    @media (max-width: 1050px) {
         width: 90%;
     }
     //Tablet mode
-    @media (min-height: 900px) and (min-width: 760px) and (max-width: 1000px) {
+    /* @media (min-height: 900px) and (min-width: 760px) and (max-width: 1000px) {
         width: 300px;
-    }
+    } */
 `;
 export const LoginBoxLogoOuter = styled.div`
     display: flex;
