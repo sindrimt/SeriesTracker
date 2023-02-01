@@ -36,6 +36,7 @@ import iconViewIcon_hotdog from "../../Assets/Content/Apps_hotdog.svg";
 import loffi from "../../Assets/Images/loffi.png";
 import AddSerieButton from "../AddSerie/AddSerieButton/AddSerieButton";
 import { useSelector } from "react-redux";
+import { AiOutlineSearch } from "react-icons/ai";
 
 import { useAuth } from "../../firebase";
 
@@ -69,6 +70,7 @@ const Content = ({ series, setIsDeleted, isDeleted }) => {
                     <span className="pickupSpan">Pick up where you left</span>
                     <SearchOuterContainer>
                         <form style={{ width: "100%" }}>
+                            {/* <AiOutlineSearch /> */}
                             <SearchOuter type="search" placeholder="Search your series" onChange={(e) => setSearchTerm(e.target.value)} />
                         </form>
                         <Filter src={colorTheme === "light" ? filter : colorTheme === "dark" ? filter_darkmode : filter_hotdog} />

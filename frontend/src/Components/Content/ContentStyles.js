@@ -88,9 +88,9 @@ export const GridTypeIcons = styled.div`
 `;
 
 export const SearchOuter = styled.input`
+    border-radius: 0px;
     position: relative;
     display: flex;
-    //background-color: ${(props) => props.theme.contentRight.accentColor};
     background-color: transparent;
     height: 35px;
     width: 100%;
@@ -99,13 +99,7 @@ export const SearchOuter = styled.input`
     color: ${(props) => props.theme.search.fontColor};
     text-decoration: none;
     border: none;
-
-    border-bottom: 1px solid ${(props) => props.theme.content.searchBorder};
-    //border-radius: 5px;
-    /* border-left: 1px solid black;
-    border-right: 1px solid black;
-    border-top: 1px solid black; */
-    //box-shadow: 0px 4px 4px rgba(100, 100, 100, 0.1);
+    border-bottom: 1.5px solid ${(props) => props.theme.content.searchBorder};
     text-overflow: ellipsis;
     margin-left: 5px;
 
@@ -119,7 +113,6 @@ export const SearchOuter = styled.input`
 `;
 
 export const SearchOuterContainer = styled.div`
-    height: 35px;
     display: flex;
     width: 37%;
 `;
