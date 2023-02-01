@@ -40,6 +40,8 @@ import { flexbox } from "@mui/system";
 import styled from "styled-components";
 import { FastAverageColor } from "fast-average-color";
 import { IoMdClose } from "react-icons/io";
+import AddButton from "../../Buttons/EpisodeButtons/AddButton/AddButton";
+import DeleteButton from "../../Buttons/EpisodeButtons/DeleteButton/DeleteButton";
 
 const Card = ({ title, episodesWatched, episodeCount, description, rating, image, watchTime, id, update, setIsDeleted, isDeleted }) => {
     const totalSeconds = 22 * 60;
@@ -172,8 +174,10 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
                         </EpisodeContainer>
                         {/* <CardDescription>{description.slice(0, 60)}</CardDescription> */}
                         <CardDescription>
-                            <AiOutlinePlusCircle size={22} className="plus" onClick={handleAddEpisode} />
-                            <AiOutlineMinusCircle size={22} className="minus" onClick={handleSubtractEpisode} />
+                            <AddButton />
+                            <DeleteButton />
+                            {/*   <AiOutlinePlusCircle size={22} className="plus" onClick={handleAddEpisode} /> */}
+                            {/*  <AiOutlineMinusCircle size={22} className="minus" onClick={handleSubtractEpisode} /> */}
                             <AiOutlineCloseCircle size={22} className="delete" color={"red"} onClick={handleDeleteCard} />
                         </CardDescription>
                     </CardInformationContainer>
@@ -181,7 +185,7 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
                     <CardRatingContainer>
                         <CardRatingCenter>
                             <CardRatingImg src={star} alt="Star" />
-                            <CardRatingTxt>{rating}</CardRatingTxt>
+                            <CardRatingTxt>{rating} / 10</CardRatingTxt>
                         </CardRatingCenter>
                     </CardRatingContainer>
                 </SeriesCardInner>

@@ -26,7 +26,7 @@ export const SeriesCardOuter = styled.div`
 
     @media (max-width: 720px) {
         width: 90vw;
-        height: 115px;
+        // height: 115px;
     }
 `;
 
@@ -111,7 +111,7 @@ export const CardInformationContainer = styled.div`
 export const CardTitle = styled.div`
     position: relative;
     font-size: 26px;
-    font-weight: 300;
+    font-weight: 400;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -128,7 +128,7 @@ export const EpisodeContainer = styled.div`
 
 export const EpisodeCount = styled.div`
     font-size: 14px;
-    font-weight: 300;
+    font-weight: 400;
 `;
 
 export const EpisodeLineGray = styled.div`
@@ -160,7 +160,7 @@ export const CardRatingContainer = styled.div`
 
 export const CardRatingImg = styled.img`
     display: flex;
-    width: 23px;
+    width: 30px;
 `;
 
 export const CardRatingTxt = styled.div`
@@ -180,7 +180,11 @@ export const CardRatingCenter = styled.div`
 `;
 
 export const CardDescription = styled.div`
-    margin-top: 5px;
+    position: relative;
+    gap: 5px;
+    align-items: center;
+    display: flex;
+    margin-top: 10px;
     font-size: 24px;
     left: 0;
 
