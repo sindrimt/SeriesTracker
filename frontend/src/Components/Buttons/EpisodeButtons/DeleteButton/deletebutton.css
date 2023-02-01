@@ -1,0 +1,95 @@
+.main-hr {
+    width: 30%;
+    border: none;
+    border-top: 1px solid #c3c3c3;
+}
+.icon-btn {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #cdcdcd;
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+    transition: width 0.2s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.01);
+}
+.add-btn:hover {
+    cursor: pointer;
+
+    width: 120px;
+}
+.add-btn::before,
+.add-btn::after {
+    transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 10px;
+    top: calc(50% - 2px);
+    background: #a63fcb;
+}
+.add-btn::after {
+    right: 14px;
+    overflow: hidden;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+.add-btn::before {
+    left: 14px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+.icon-btn:focus {
+    outline: none;
+}
+.btn-txt {
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+.add-btn:hover::before,
+.add-btn:hover::after {
+    cursor: pointer;
+
+    width: 4px;
+    border-radius: 2px;
+}
+.add-btn:hover .btn-txt {
+    cursor: pointer;
+
+    opacity: 1;
+}
+.add-icon::after,
+.add-icon::before {
+    transition: all 0.2s ease-in-out;
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 2px;
+    top: calc(50% - 10px);
+    background: #a63fcb;
+    overflow: hidden;
+}
+.add-icon::before {
+    left: 22px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+.add-icon::after {
+    right: 22px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+.add-btn:hover .add-icon::before {
+    cursor: pointer;
+    left: 15px;
+    height: 4px;
+    top: calc(50% - 2px);
+}
+.add-btn:hover .add-icon::after {
+    cursor: pointer;
+
+    right: 15px;
+    height: 4px;
+    top: calc(50% - 2px);
+}
