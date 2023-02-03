@@ -7,6 +7,7 @@ import Sidebar from "./Components/Sidebar/Sidebar.jsx";
 import Content from "./Components/Content/Content.jsx";
 import Login from "./Pages/LoginPage/Login.jsx";
 import Profile from "./Pages/ProfilePage/Profile.jsx";
+import Settings from "./Pages/SettingsPage/Settings.jsx";
 import "./Styles/app.css";
 import ContentRight from "./Components/ContentRight/ContentRight.jsx";
 import Homepage from "./Pages/HomePage/Homepage";
@@ -80,6 +81,7 @@ const App = () => {
                                 <Route path="/profile" element={<Profile />} />
                                 <Route path="/create-post" element={<CreatePost />} />
                                 <Route path="/" element={<Homepage />} />
+                                <Route path="/settings" element={<Settings />} />
                             </Routes>
                         </>
                     ) : (
