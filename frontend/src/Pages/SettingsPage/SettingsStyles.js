@@ -29,7 +29,7 @@ export const SettingsBox = styled.div`
     height: fit-content;
     min-height: 50%;
     //width of sidebar is 250px
-    background-color: #ffffff;
+    background-color: #f8f8f8;
     border-radius: 20px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     overflow: hidden;
@@ -66,10 +66,12 @@ export const ButtonsGrid = styled.div`
     margin: 0 auto 0 auto;
     display: grid;
     grid-gap: 10px;
+    row-gap: 15px;
     //The boxes in the grid will have a width of at least 140px
     //if you want to adjust the size of the button, change the width of the
     //button too
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    transition: 0.2s;
 `;
 
 export const SettingsButton = styled.div`
