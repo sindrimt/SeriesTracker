@@ -70,10 +70,14 @@ const Sidebar = () => {
                     <PanelOuter>
                         <SidebarButton icon={dashboard} text="Dashboard" />
                         {/* <SidebarButton icon={notifications} text="Notifications" /> */}
-                        <SidebarButton icon={notifications} text="Find Series" clickAction={() => navigate("/create-post")} />
+                        <SidebarButton
+                            icon={notifications}
+                            text="Find Series"
+                            clickAction={() => navigate("/create-post")}
+                        />
                         <SidebarButton icon={messages} text="Messages" />
                         <SidebarButton icon={friends} text="Friends" />
-                        <SidebarButton icon={settings} text="Settings" />
+                        <SidebarButton icon={settings} text="Settings" clickAction={() => navigate("/settings")} />
                         <SidebarLine />
                     </PanelOuter>
                     <PanelOuterAccount>
