@@ -5,9 +5,9 @@ import {
     SettingsOuter,
     HeaderOuter,
     Header,
-    DashboardContainer,
-    Dashboard,
-    SettingsButtons,
+    SettingsBox,
+    SettingsBoxGrid,
+    ButtonsGrid,
     SettingsButton,
 } from "./SettingsStyles";
 import Sidebar from "../../Components/Sidebar/Sidebar.jsx";
@@ -21,12 +21,12 @@ const Settings = () => {
         <>
             <Sidebar />
             <SettingsOuter>
-                <DashboardContainer>
-                    <Dashboard>
+                <SettingsBox>
+                    <SettingsBoxGrid>
                         <HeaderOuter>
                             <Header>User settings</Header>
                         </HeaderOuter>
-                        <SettingsButtons>
+                        <ButtonsGrid>
                             <SettingsButton>
                                 Change <br></br> Password
                             </SettingsButton>
@@ -48,9 +48,9 @@ const Settings = () => {
                             <SettingsButton>
                                 Change <br></br> Favorite Anime
                             </SettingsButton>
-                        </SettingsButtons>
-                    </Dashboard>
-                </DashboardContainer>
+                        </ButtonsGrid>
+                    </SettingsBoxGrid>
+                </SettingsBox>
             </SettingsOuter>
         </>
     );

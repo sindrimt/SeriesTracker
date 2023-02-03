@@ -21,7 +21,8 @@ export const SettingsOuter = styled.div`
     }
 `;
 
-export const DashboardContainer = styled.div`
+//Wrapper for the settingsbox
+export const SettingsBox = styled.div`
     width: 90%;
     //Height will be 50% of screen or bigger
     //if on mobile
@@ -35,8 +36,9 @@ export const DashboardContainer = styled.div`
     margin: 0 auto 0 auto;
 `;
 
-export const Dashboard = styled.div`
+export const SettingsBoxGrid = styled.div`
     width: 100%;
+    padding-bottom: 20px;
     //Grid for the elements in the settings box
     display: grid;
     grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));
@@ -56,10 +58,11 @@ export const Header = styled.div`
     padding-left: 6%;
 `;
 
-export const SettingsButtons = styled.div`
+export const ButtonsGrid = styled.div`
     //Grid containing the buttons for the settings
     width: 90%;
     height: 100%;
+    padding-top: 20px;
     margin: 0 auto 0 auto;
     display: grid;
     grid-gap: 10px;
@@ -67,7 +70,6 @@ export const SettingsButtons = styled.div`
     //if you want to adjust the size of the button, change the width of the
     //button too
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    transition: 2s;
 `;
 
 export const SettingsButton = styled.div`
@@ -82,9 +84,10 @@ export const SettingsButton = styled.div`
     border-radius: 8px;
     white-space: nowrap;
     font-size: 1.2rem;
-    background-color: rgba(115, 147, 179, 0.6);
+    background-color: rgba(115, 147, 179, 0.4);
     &:hover {
         cursor: pointer;
-        background-color: rgba(115, 147, 179, 0.9);
+        background-color: rgba(115, 147, 179, 0.6);
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     }
 `;
