@@ -24,16 +24,30 @@ const Settings = () => {
                 <DashboardContainer>
                     <Dashboard>
                         <HeaderOuter>
-                            <Header>Settings</Header>
+                            <Header>User settings</Header>
                         </HeaderOuter>
                         <SettingsButtons>
-                            <SettingsButton>Change Password</SettingsButton>
-                            <SettingsButton>Change Email</SettingsButton>
-                            <SettingsButton>Change Username</SettingsButton>
-                            <SettingsButton>Change Profile Picture</SettingsButton>
-                            <SettingsButton>Change Banner Picture</SettingsButton>
-                            <SettingsButton>Change Bio</SettingsButton>
-                            <SettingsButton>Change Theme</SettingsButton>
+                            <SettingsButton>
+                                Change <br></br> Password
+                            </SettingsButton>
+                            <SettingsButton>
+                                Change <br></br> Email
+                            </SettingsButton>
+                            <SettingsButton>
+                                Change <br></br> Username
+                            </SettingsButton>
+                            <SettingsButton>
+                                Change <br></br> Profile Picture
+                            </SettingsButton>
+                            <SettingsButton>
+                                Change <br></br> Banner Picture
+                            </SettingsButton>
+                            <SettingsButton>
+                                Change <br></br> Bio
+                            </SettingsButton>
+                            <SettingsButton>
+                                Change <br></br> Favorite Anime
+                            </SettingsButton>
                         </SettingsButtons>
                     </Dashboard>
                 </DashboardContainer>
