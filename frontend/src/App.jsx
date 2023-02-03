@@ -8,6 +8,8 @@ import Content from "./Components/Content/Content.jsx";
 import Login from "./Pages/LoginPage/Login.jsx";
 import Profile from "./Pages/ProfilePage/Profile.jsx";
 import Settings from "./Pages/SettingsPage/Settings.jsx";
+import Friends from "./Pages/FriendsPage/Friends.jsx";
+
 import "./Styles/app.css";
 import ContentRight from "./Components/ContentRight/ContentRight.jsx";
 import Homepage from "./Pages/HomePage/Homepage";
@@ -82,6 +84,7 @@ const App = () => {
                                 <Route path="/create-post" element={<CreatePost />} />
                                 <Route path="/" element={<Homepage />} />
                                 <Route path="/settings" element={<Settings />} />
+                                <Route path="/friends" element={<Friends />} />
                             </Routes>
                         </>
                     ) : (
