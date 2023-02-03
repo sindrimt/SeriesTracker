@@ -23,7 +23,10 @@ export const SettingsOuter = styled.div`
 
 export const DashboardContainer = styled.div`
     width: 90%;
-    height: 90%;
+    //Height will be 50% of screen or bigger
+    //if on mobile
+    height: fit-content;
+    min-height: 50%;
     //width of sidebar is 250px
     background-color: #ffffff;
     border-radius: 20px;
@@ -36,20 +39,13 @@ export const Dashboard = styled.div`
     width: 100%;
     //Grid for the elements in the settings box
     display: grid;
-    grid-template-rows: 1fr 6fr;
-    /*     display: grid;
-    grid-template-rows: repeat(auto-fit, minmax(100px, 150px));
-    grid-column-gap: 10px;
-    &:nth-child(1) {
-        grid-template-rows: 1fr;
-    } */
+    grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));
 `;
 
 export const HeaderOuter = styled.div`
     width: 100%;
     height: 100%;
     border-bottom: 1px solid rgba(200, 200, 200, 0.3);
-    background-color: lightgreen;
 `;
 
 export const Header = styled.div`
@@ -57,24 +53,38 @@ export const Header = styled.div`
     font-weight: 400;
     color: rgb(60, 60, 60);
     padding: 10px;
-    padding-left: 20px;
+    padding-left: 6%;
 `;
 
 export const SettingsButtons = styled.div`
-    width: 100%;
+    //Grid containing the buttons for the settings
+    width: 90%;
     height: 100%;
+    margin: 0 auto 0 auto;
     display: grid;
-    background-color: papayawhip;
-    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-    grid-template-rows: repeat(1fr min-content);
+    grid-gap: 10px;
+    //The boxes in the grid will have a width of at least 140px
+    //if you want to adjust the size of the button, change the width of the
+    //button too
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    transition: 2s;
 `;
 
 export const SettingsButton = styled.div`
+    //Button for the settings
+    width: 90%;
+    //The width of the button will be no more than 130px
+    //Leaves 10px for padding
     width: minmax(auto, 130px);
+    margin: auto;
     text-align: center;
-    height: 7vh;
-    background-color: lightcoral;
+    height: minmax(7vh, min-content);
     border-radius: 8px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1.2rem;
+    background-color: rgba(115, 147, 179, 0.6);
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(115, 147, 179, 0.9);
+    }
 `;
