@@ -76,7 +76,7 @@ const Sidebar = () => {
                             clickAction={() => navigate("/create-post")}
                         />
                         <SidebarButton icon={messages} text="Messages" />
-                        <SidebarButton icon={friends} text="Friends" />
+                        <SidebarButton icon={friends} text="Friends" clickAction={() => navigate("/friends")} />
                         <SidebarButton icon={settings} text="Settings" clickAction={() => navigate("/settings")} />
                         <SidebarLine />
                     </PanelOuter>
