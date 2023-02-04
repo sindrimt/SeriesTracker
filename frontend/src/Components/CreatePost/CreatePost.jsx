@@ -1,35 +1,62 @@
 import axios from "axios";
 import React, { useRef, useState, useEffect } from "react";
-import { CreatePostOuter, Gridcontainer, SearchOuter, DropDownOuter, DropDownMenu, PageHeaderOuter, PageHeader } from "./CreatePostStyles";
+import {
+    CreatePostOuter,
+    Gridcontainer,
+    SearchOuter,
+    DropDownOuter,
+    DropDownMenu,
+    PageHeaderOuter,
+    PageHeader,
+    SearchOuterContainer,
+    InputField,
+    TopContainer,
+    FilterButtonContainer,
+    FilterButton,
+    FilterExpandedOuterContainer,
+    FilterExpandedContent,
+    SubmitButton,
+    SearchMostOuterContainer,
+    ShowingResults,
+} from "./CreatePostStyles";
 
+import {
+    Outer,
+    ImageContainer,
+    Image,
+    Title,
+    Upload,
+    Views,
+    ViewsContainer,
+    Information,
+    Profile,
+    ProfilePicture,
+    ProfileName,
+    Duration,
+    Description,
+} from "./CreatePostStyles";
+
+import { AiOutlineSearch } from "react-icons/ai";
 import Loading from "../../Pages/LoadingPage/Loading";
-
 import AnimeCard from "../Cards/AnimeCard/AnimeCard";
-
 import { useScroll } from "../../Hooks/useScroll";
+import { useSelector } from "react-redux";
+import filter from "../../Assets/CreatePost/filter.svg";
+import { CgScreen } from "react-icons/cg";
+import SearchCard from "../Cards/SearchCard/SearchCard";
 
 const CreatePost = () => {
     const [topAnime, setTopAnime] = useState([]);
-
     const [loading, setLoading] = useState(false);
-
     const [open, setOpen] = useState(false);
-
     const [searchTerm, setSearchTerm] = useState("");
-
     const [filtered, setFiltered] = useState([]);
-
     const [searchAll, setSearchAll] = useState({});
-
     const [displayHeader, setDisplayHeader] = useState(true);
+    const [expandFilter, setExpandFilter] = useState(false);
+    const [showingResults, setShowingResults] = useState("Top 50 Anime");
 
-    const scrollPosition = useScroll();
-
-    let fixed = false;
-
-    if (scrollPosition > 30) {
-        fixed = true;
-    }
+    const colorTheme = useSelector((state) => state.theme.theme);
 
     //TODO: For more indepth filtering and such, use this format:
     //TODO https://api.jikan.moe/v4/top/anime?type=tv&filter=bypopularity
@@ -43,22 +70,28 @@ const CreatePost = () => {
             .get(`https://api.jikan.moe/v4/top/anime`)
             //https://api.jikan.moe/v4/top/type/page/subtype
             .then(({ data }) => {
+                console.log(data);
+
                 animeAndMangaObject.anime = data;
                 // setTopAnime(data.data);
                 // setFiltered(data.data);
             })
-            .then(async () => {
-                await new Promise((r) => setTimeout(r, 1000));
+            //TODO The code undereath is for getting mangas
+            /* .then(async () => {
+                //  await new Promise((r) => setTimeout(r, 1000));
                 return axios.get(`https://api.jikan.moe/v4/top/manga`);
-            })
-            .then(({ data }) => {
-                animeAndMangaObject.manga = data;
+            }) */
+            .then((/* { data } */) => {
+                //animeAndMangaObject.manga = data;
 
-                let mergedObject = animeAndMangaObject.anime.data.concat(animeAndMangaObject.manga.data);
+                //TODO The commented code under neath is the code for having mangas
+                //let mergedObject = animeAndMangaObject.anime.data.concat(animeAndMangaObject.manga.data);
+
+                let mergedObject = animeAndMangaObject.anime.data;
 
                 //console.log(mergedObject);
 
-                let shuffeledMergedObject = shuffle(mergedObject);
+                //let shuffeledMergedObject = shuffle(mergedObject);
 
                 setTopAnime(mergedObject);
                 setFiltered(mergedObject);
@@ -71,6 +104,8 @@ const CreatePost = () => {
 
     let init = true;
     useEffect(() => {
+        //TODO ADD IF TO CHECK WETHER THE ANIMES HAS ALDREADY BEEN FETCHED
+        //TODO SAVE THE FETCHED ANIMES IN A GLOBAL STATE
         if (init) {
             console.log("Fetched anime");
             GetTopAnime();
@@ -81,11 +116,14 @@ const CreatePost = () => {
     }, []);
 
     useEffect(() => {
+        if (searchTerm.length === 0) {
+            setShowingResults("Top 50 Anime");
+        }
         let animeFilter = topAnime?.filter((anime) => {
             return anime?.title_english?.toLowerCase().includes(searchTerm.toLowerCase());
         });
         setFiltered(animeFilter);
-    }, [searchTerm]);
+    }, [searchTerm.length === 0]);
 
     if (loading) {
         return <Loading />;
@@ -94,7 +132,7 @@ const CreatePost = () => {
     const handleSearch = (e) => {
         setSearchTerm(e.target.value);
         let val = e.target.value;
-        val == 0 ? setDisplayHeader(true) : setDisplayHeader(false);
+        val === 0 ? setDisplayHeader(true) : setDisplayHeader(false);
     };
 
     const handleOpen = () => {
@@ -106,11 +144,17 @@ const CreatePost = () => {
     };
 
     const handleSubmit = (e) => {
+        setShowingResults(searchTerm);
+        setLoading(true);
         e.preventDefault();
-        searchAllAnimeAndManga(searchTerm).then((searchObject) => {
-            console.log(searchObject);
-            setFiltered(searchObject);
-        });
+        searchAllAnimeAndManga(searchTerm)
+            .then((searchObject) => {
+                setFiltered(searchObject);
+                setLoading(false);
+            })
+            .catch(() => {
+                setLoading(false);
+            });
     };
 
     const searchAllAnimeAndManga = (searchTerm) => {
@@ -118,7 +162,7 @@ const CreatePost = () => {
 
         return new Promise((resolve, reject) => {
             return axios
-                .get(`https://api.jikan.moe/v4/anime?q=${searchTerm}&order_by=mal_id&limit=10`)
+                .get(`https://api.jikan.moe/v4/anime?q=${searchTerm}&order_by=mal_id&sort=asc`)
                 .then(({ data }) => {
                     searchAllanimeAndMangaObject.anime = data.data;
                 })
@@ -143,59 +187,48 @@ const CreatePost = () => {
                 {/* <DropDownOuter>
                     <DropDownMenu>Anime Manga</DropDownMenu>
                 </DropDownOuter> */}
-                <SearchOuter isFixed={fixed}>
+                <TopContainer>
                     <form onSubmit={handleSubmit}>
-                        <input type="text" placeholder="Search" onChange={(e) => handleSearch(e)} />
+                        <SearchMostOuterContainer>
+                            <SearchOuterContainer>
+                                <AiOutlineSearch size={28} color="rgb(80, 80, 80)" />
+                                <InputField placeholder="Search among series" onChange={(e) => setSearchTerm(e.target.value)} />
+                            </SearchOuterContainer>
+                            <SubmitButton>
+                                {/* <AiOutlineSearch size={22} color="rgb(80, 80, 80)" /> */}
+                                Search
+                            </SubmitButton>
+                        </SearchMostOuterContainer>
                     </form>
-                </SearchOuter>
-                {displayHeader && (
-                    <PageHeaderOuter>
-                        <PageHeader>Here's something you might like</PageHeader>
-                    </PageHeaderOuter>
-                )}{" "}
-                {!displayHeader && (
-                    <PageHeaderOuter>
-                        <PageHeader>Search results</PageHeader>
-                    </PageHeaderOuter>
-                )}
-                <Gridcontainer>
-                    {filtered?.map((anime, index) => {
-                        let animeDurationAsNumber;
-                        let animeDurationAsText;
 
-                        // If anime duration in in minutes
-                        if (anime?.duration?.includes("per")) {
-                            animeDurationAsNumber = parseInt(anime?.duration.split("per")[0]);
-                            animeDurationAsText = `${anime?.duration.split("min")[0].replace(" ", "")}:00`;
-                        }
-
-                        // If anime is in hours
-                        else if (anime?.duration?.includes("hr")) {
-                            // Convert hours into minutes
-                            animeDurationAsNumber = parseInt(anime?.duration.split("hr")[1]) + parseInt(anime?.duration.split("hr")[0]) * 60;
-
-                            // Convert hours into 00:00 format
-                            animeDurationAsText = `0${anime?.duration.split("hr")[0].trim()}:${`${anime?.duration
-                                .split("hr")[1]
-                                .split("min")[0]
-                                .trim()}:00`}`;
-                        }
-
-                        return (
-                            <>
-                                <AnimeCard
-                                    title={anime?.title_english ? anime?.title_english : anime?.title}
-                                    episodes={anime?.episodes ? anime?.episodes : 0} //TODO: Rather pass something else
-                                    image={anime?.images?.jpg?.large_image_url}
-                                    description={anime?.background}
-                                    episodeLength={animeDurationAsText}
-                                    key={index}
-                                    setOpen={setOpen}
-                                />
-                            </>
-                        );
-                    })}
-                </Gridcontainer>
+                    <FilterButtonContainer>
+                        <FilterButton src={filter} onClick={() => setExpandFilter(!expandFilter)} />
+                    </FilterButtonContainer>
+                </TopContainer>
+                <FilterExpandedOuterContainer isExpanded={expandFilter}>
+                    <FilterExpandedContent isExpanded={expandFilter}>
+                        Filter<br></br>sdfdsf sdfsd<br></br>sdfdsf sdfsd<br></br>sdfdsf sdfsd<br></br>sdfdsf sdfsd<br></br>sdfdsf sdfsd<br></br>sdfdsf
+                        sdfsd<br></br>sdfdsf sdfsd<br></br>sdfdsf sdfsd
+                    </FilterExpandedContent>
+                </FilterExpandedOuterContainer>
+                <ShowingResults>
+                    Showing results for: <span style={{ fontWeight: "400", marginLeft: "5px" }}>{showingResults}</span>
+                </ShowingResults>
+                {filtered?.map((anime, index) => {
+                    return (
+                        <SearchCard
+                            title={anime?.title_english ? anime?.title_english : anime?.title}
+                            episodes={anime?.episodes ? anime?.episodes : 0}
+                            image={anime?.images?.jpg?.large_image_url}
+                            description={anime?.background}
+                            airing={anime?.airing}
+                            duration={anime?.duration}
+                            type={anime?.type}
+                            key={index}
+                        />
+                    );
+                })}
+                <SearchCard />
             </CreatePostOuter>
         </>
     );
