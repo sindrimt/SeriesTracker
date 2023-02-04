@@ -94,6 +94,7 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
     const episodeRatio = (episodesWatchedState / episodeCount) * 100;
 
     const handleAddEpisode = (e) => {
+        console.log("Clicked add button");
         return axios
             .patch(`/api/series/${id}`, { operation: "add" })
             .then((response) => {})
@@ -140,8 +141,18 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
     // Check wether the user clicked episode button or not
     // If not, open the popup
     const handleOpenPopup = (e) => {
-        console.log("You clicked: ", e.target.className.animVal);
-        if (["plus", "minus", "delete", "", "undefined"].includes(e.target.className.animVal)) return;
+        // Just a check if the user clicked a button or the outer element
+        if (["undefined", "btn-txt", ""].includes(e.target.className) || ["delete", ""].includes(e.target.className.animVal)) {
+            // If the user clicked add episode, add an episode
+            if (e.target.innerHTML === "Add") {
+                handleAddEpisode();
+            }
+            // If the user clicked remove episode, remove an episode
+            else if (e.target.innerHTML === "Remove") {
+                handleSubtractEpisode();
+            }
+        }
+        // If the outer element was clicked, open the popup
         else {
             handleOpen();
         }
@@ -174,8 +185,8 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
                         </EpisodeContainer>
                         {/* <CardDescription>{description.slice(0, 60)}</CardDescription> */}
                         <CardDescription>
-                            <AddButton />
-                            <DeleteButton />
+                            <AddButton className="plus" />
+                            <DeleteButton className="minus" />
                             {/*   <AiOutlinePlusCircle size={22} className="plus" onClick={handleAddEpisode} /> */}
                             {/*  <AiOutlineMinusCircle size={22} className="minus" onClick={handleSubtractEpisode} /> */}
                             <AiOutlineCloseCircle size={22} className="delete" color={"red"} onClick={handleDeleteCard} />
