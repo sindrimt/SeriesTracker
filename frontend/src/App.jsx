@@ -76,6 +76,7 @@ const App = () => {
                     {currentUser ? (
                         <>
                             <Navbar />
+                            <Sidebar />
                             <Routes>
                                 <Route path="/profile" element={<Profile />} />
                                 <Route path="/create-post" element={<CreatePost />} />
