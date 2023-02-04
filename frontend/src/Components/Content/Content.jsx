@@ -68,13 +68,7 @@ const Content = ({ series, setIsDeleted, isDeleted }) => {
             <ContentContainerOuter>
                 <PickUp>
                     <span className="pickupSpan">Pick up where you left</span>
-                    <SearchOuterContainer>
-                        <form style={{ width: "100%" }}>
-                            {/* <AiOutlineSearch /> */}
-                            <SearchOuter type="search" placeholder="Search your series" onChange={(e) => setSearchTerm(e.target.value)} />
-                        </form>
-                        <Filter src={colorTheme === "light" ? filter : colorTheme === "dark" ? filter_darkmode : filter_hotdog} />
-                    </SearchOuterContainer>
+
                     <GridTypeIcons>
                         <Icon src={colorTheme === "light" ? rowView : colorTheme === "dark" ? rowView_darkmode : rowView_hotdog} />
                         <Icon
