@@ -85,7 +85,7 @@ const Sidebar = () => {
                     </PanelOuterAccount>
                     <SidebarLine />
                     <Contact>
-                        Contact us at: <br></br>
+                        Reach us at: <br></br>
                     </Contact>
                     <Email>business@seriestracker.net</Email>
                     <a href="https://github.com/sindrimt/SeriesTracker">

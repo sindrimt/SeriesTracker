@@ -55,7 +55,7 @@ const Home = () => {
         <>
             {currentUser ? (
                 <>
-                    <Sidebar />
+                    {/* <Sidebar /> */}
                     <Content series={series} setIsDeleted={setIsDeleted} isDeleted={isDeleted} />
                     <ContentRight arrayLength={series.length} />
                 </>
