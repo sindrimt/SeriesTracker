@@ -36,7 +36,7 @@ const ContentRight = ({ arrayLength }) => {
         });
     };
 
-    if (scrollPosition >= 45) {
+    if (scrollPosition >= 30) {
         isFixed = true;
     }
 
