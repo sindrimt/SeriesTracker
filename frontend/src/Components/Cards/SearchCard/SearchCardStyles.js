@@ -1,94 +1,8 @@
 import styled from "styled-components";
 
-export const CreatePostOuter = styled.div`
-    position: absolute;
-    width: calc(100% - 265px);
-    display: flex;
-    margin-left: 255px;
-    row-gap: 20px;
-    flex-direction: column;
-    padding-top: 75px;
-    padding-bottom: 20px;
-
-    background: ${(props) =>
-        props.theme.currentTheme === "spillTheme" &&
-        `repeating-linear-gradient(-65deg,${props.theme.blue} 0 30px,${props.theme.lightblue} 25px 60px)`};
-
-    @media (max-width: 1100px) {
-        height: 1000vh;
-    }
-
-    @media (min-width: 1600px) {
-        height: 300vh;
-    }
-    @media (max-width: 720px) {
-        margin-left: 20px;
-        width: calc(100% - 20px);
-    }
-`;
-
-export const Gridcontainer = styled.div`
-    position: relative;
-    padding: 10px;
-    justify-content: center;
-    width: 100vw;
-    height: 100px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    row-gap: 1rem;
-    column-gap: 2rem;
-`;
-
-export const SearchOuter = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: ${(props) => (props.isFixed ? "fixed" : "absolute")};
-    width: 400px;
-    height: 70px;
-    top: ${(props) => (props.isFixed ? "100px" : "130px")};
-    background-color: ${(props) => (props.isFixed ? props.theme.animeCard.background : "")};
-    z-index: 10000000000000;
-`;
-
-export const DropDownOuter = styled.div`
-    position: relative;
-    width: 70px;
-    height: 40px;
-    background-color: papayawhip;
-`;
-
-export const DropDownMenu = styled.div`
-    position: absolute;
-    width: 50px;
-    height: 40px;
-    left: 0;
-    top: calc(100% + 0.25rem);
-    background-color: white;
-    padding: 0.75rem;
-    border-radius: 0.25rem;
-    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
-`;
-
-export const PageHeaderOuter = styled.div`
-    position: absolute;
-    height: 50px;
-    top: 150px;
-    margin-right: 56vw;
-`;
-
-export const PageHeader = styled.div`
-    font-size: 20px;
-
-    @media (max-width: 750px) {
-        display: none;
-    }
-`;
-
 export const Outer = styled.div`
     z-index: 10;
     color: #fefefe;
-
     background-color: none;
     height: 222px;
     //width: calc(100vw - 285px);
@@ -98,8 +12,13 @@ export const Outer = styled.div`
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.05);
 
     &:hover {
+        // background-color: rgb(240, 240, 240);
+        background-color: ${(props) => props.theme.lightgrey};
         cursor: pointer;
-        background-color: rgb(240, 240, 240);
+    }
+
+    @media (max-width: 720px) {
+        width: calc(100% - 20px);
     }
 `;
 
@@ -165,6 +84,10 @@ export const Description = styled.span`
     margin-top: 10px;
     color: rgb(80, 80, 80);
     font-size: 14px;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `;
 export const ViewsContainer = styled.div`
     display: flex;
@@ -229,17 +152,9 @@ export const TopContainer = styled.div`
     width: 100%;
     align-items: flex-end;
     height: 50px;
-    grid-template-columns: 4fr 5fr;
+    grid-template-columns: 3fr 5fr;
     justify-content: space-between;
-    transform: translateY(30px);
-
-    @media (max-width: 850px) {
-        grid-template-columns: 6fr 4fr;
-    }
-
-    @media (max-width: 450px) {
-        grid-template-columns: 7fr 3fr;
-    }
+    transform: translateY(20px);
 `;
 
 export const FilterButtonContainer = styled.div`
@@ -257,7 +172,7 @@ export const FilterButton = styled.img`
 `;
 
 export const FilterExpandedOuterContainer = styled.div`
-    margin-top: ${(props) => (props.isExpanded ? "20px" : "10px")};
+    margin-top: 10px;
     transition: 0.3s ease-in-out;
     padding: ${(props) => (props.isExpanded ? "0px" : "0px")};
     height: ${(props) => (props.isExpanded ? "250px" : "0px")};
@@ -271,41 +186,4 @@ export const FilterExpandedContent = styled.div`
     width: 100%;
     height: 100%;
     display: ${(props) => (props.isExpanded ? "show" : "none")};
-`;
-
-export const SubmitButton = styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 70px;
-    height: 30px;
-    border-radius: 10px;
-    background-color: rgb(250, 250, 250);
-    // border: none;
-
-    border-color: #a63fcb;
-
-    &:hover {
-        cursor: pointer;
-        background-color: rgb(240, 240, 240);
-    }
-`;
-
-export const SearchMostOuterContainer = styled.div`
-    display: grid;
-    width: 100%;
-    grid-template-columns: 4fr 1fr;
-    align-items: center;
-    gap: 10px;
-`;
-
-export const ShowingResults = styled.div`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    height: 30px;
-    font-weight: 300;
-    float: right;
-    font-size: 22px;
-    letter-spacing: 1px;
 `;

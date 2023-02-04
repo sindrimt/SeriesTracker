@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 export const ContentContainerOuter = styled.div`
     float: left;
-    margin: 140px 0px 0px 0px;
+    margin: 120px 0px 0px 0px;
     padding-left: 250px;
     width: 70%;
 

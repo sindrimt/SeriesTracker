@@ -11,7 +11,7 @@ export const NavbarOuter = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 110px;
+    height: 90px;
     font-family: "Anek Malayalam", sans-serif;
     font-weight: 300;
 
@@ -23,7 +23,7 @@ export const NavbarOuter = styled.div`
 export const NavbarLine = styled.div`
     position: absolute;
     transition: 0.3s ease;
-    top: 110px;
+    top: 90px;
     //border-radius: 5px;
     left: 0px;
     //left: 3%;

@@ -31,6 +31,8 @@ export const Text = styled.div`
     column-gap: 20px;
     padding: 0 15px 0 0;
     top: 6px;
+    font-weight: 400;
+    color: rgb(80, 80, 80);
 `;
 
 export const Icon = styled.img`

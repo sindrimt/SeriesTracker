@@ -5,11 +5,11 @@ export const SidebarOuter = styled.div`
     position: fixed;
     background-color: ${(props) => props.theme.sidebar.background};
     // margin-top: ${(props) => (props.isFixed ? "73px" : "111px")};
-    margin-top: 110px;
+    margin-top: 90px;
     font-family: "Anek Malayalam", sans-serif;
     font-weight: 300;
     width: 230px;
-    height: calc(100% - 110px);
+    height: calc(100% - 90px);
     overflow-y: scroll;
     font-size: 15px;
     padding: 22px 0 0 0;

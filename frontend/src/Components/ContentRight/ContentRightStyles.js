@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ContentRightOuter = styled.div`
     position: ${(props) => (props.isFixed ? "fixed" : "absolute")};
-    margin-top: ${(props) => (props.isFixed ? "110px" : "155px")};
+    margin-top: ${(props) => (props.isFixed ? "90px" : "125px")};
     width: 27%;
     height: 85vh;
     right: 1.3%;
@@ -39,6 +39,7 @@ export const TopAnimeOuter = styled.div`
         position: absolute;
         top: 0px;
         width: 100%;
+        border-radius: 20px 20px 0 0;
     }
 
     &:hover {
@@ -56,9 +57,11 @@ export const TopAnimeOuter = styled.div`
 `;
 
 export const TopAnimeImage = styled.img`
-    filter: brightness(80%);
+    filter: brightness(85%);
     position: relative;
     padding: 0px 0 0px 0;
+    border-radius: 20px 20px 0 0;
+
     width: 100%;
     height: 100%;
     object-fit: cover;
