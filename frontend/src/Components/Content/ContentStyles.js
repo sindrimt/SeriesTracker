@@ -99,12 +99,14 @@ export const SearchOuter = styled.input`
     color: ${(props) => props.theme.search.fontColor};
     text-decoration: none;
     border: none;
-    border-bottom: 1.5px solid ${(props) => props.theme.content.searchBorder};
+    border-bottom: 1.5px solid rgb(170, 170, 170);
     text-overflow: ellipsis;
     margin-left: 5px;
+    transition: 0.2s ease-in-out;
 
     &:focus {
         outline: none;
+        border-color: ${(props) => props.theme.content.searchBorder};
     }
 
     &:focus::placeholder {
@@ -115,4 +117,9 @@ export const SearchOuter = styled.input`
 export const SearchOuterContainer = styled.div`
     display: flex;
     width: 37%;
+`;
+
+export const PaginationContainer = styled.div`
+    width: fit-content;
+    margin-top: 10px;
 `;
