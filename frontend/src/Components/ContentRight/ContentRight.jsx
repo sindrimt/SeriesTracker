@@ -16,9 +16,14 @@ import {
 import { TopAnimeOuter } from "../ContentRight/ContentRightStyles";
 import { useScroll } from "../../Hooks/useScroll";
 
+import { useSelector, useDispatch } from "react-redux";
+import { setTopAnimesState } from "../../redux/features/topAnimes/topAnimesSlice";
+
 const ContentRight = ({ arrayLength }) => {
-    const [topAnimes, setTopAnimes] = useState([]);
+    //const [topAnimes, setTopAnimes] = useState([]);
     const scrollPosition = useScroll();
+    const topAnimesState = useSelector((state) => state.topAnimes.topAnimes);
+    const dispatch = useDispatch();
 
     let isFixed = false;
 
@@ -57,13 +62,17 @@ const ContentRight = ({ arrayLength }) => {
     };
 
     useEffect(() => {
-        fetchTopAnimes().then((res) => {
-            console.log(res);
-            //let shuffledArray = shuffle(res[0].top);
-
-            setTopAnimes(res[0].data.slice(0, 9));
-        });
-    }, [arrayLength]);
+        if (topAnimesState?.data?.length > 0) {
+            console.log("Already fetched");
+            return;
+        } else {
+            console.log("FETCHING ANIMES");
+            fetchTopAnimes().then((res) => {
+                dispatch(setTopAnimesState(res[0]));
+                //setTopAnimes(res[0].data.slice(0, 9));
+            });
+        }
+    }, []);
 
     //console.log(topAnimes[0]?.image_url);
 
@@ -81,7 +90,7 @@ const ContentRight = ({ arrayLength }) => {
                             <ImageRating>9.80</ImageRating>
                         </ImageInformation>
                     </TopAnimeOuter>
-                    {topAnimes?.map((anime, index) => {
+                    {topAnimesState?.data?.slice(0, 9)?.map((anime, index) => {
                         return (
                             <ChartCard
                                 key={index}

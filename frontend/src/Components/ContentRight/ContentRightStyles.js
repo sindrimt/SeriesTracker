@@ -4,9 +4,10 @@ export const ContentRightOuter = styled.div`
     position: ${(props) => (props.isFixed ? "fixed" : "absolute")};
     margin-top: ${(props) => (props.isFixed ? "90px" : "125px")};
     width: 27%;
-    height: 85vh;
+    height: calc(100vh - 90px);
     right: 1.3%;
     overflow-y: scroll;
+    border-radius: 20px 20px 0 0;
 
     @media (max-width: 1060px) {
         display: none;
