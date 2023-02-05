@@ -20,33 +20,15 @@ import {
     ShowingResults,
 } from "./CreatePostStyles";
 
-import {
-    Outer,
-    ImageContainer,
-    Image,
-    Title,
-    Upload,
-    Views,
-    ViewsContainer,
-    Information,
-    Profile,
-    ProfilePicture,
-    ProfileName,
-    Duration,
-    Description,
-} from "./CreatePostStyles";
-
 import { AiOutlineSearch } from "react-icons/ai";
 import Loading from "../../Pages/LoadingPage/Loading";
-import AnimeCard from "../Cards/AnimeCard/AnimeCard";
-import { useScroll } from "../../Hooks/useScroll";
-import { useSelector } from "react-redux";
 import filter from "../../Assets/CreatePost/filter.svg";
-import { CgScreen } from "react-icons/cg";
 import SearchCard from "../Cards/SearchCard/SearchCard";
 
+import { useSelector, useDispatch } from "react-redux";
+import { setTopAnimesState } from "../../redux/features/topAnimes/topAnimesSlice";
+
 const CreatePost = () => {
-    const [topAnime, setTopAnime] = useState([]);
     const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
@@ -56,62 +38,75 @@ const CreatePost = () => {
     const [expandFilter, setExpandFilter] = useState(false);
     const [showingResults, setShowingResults] = useState("Top 50 Anime");
 
+    const topAnimesState = useSelector((state) => state.topAnimes.topAnimes);
+    const dispatch = useDispatch();
+
     const colorTheme = useSelector((state) => state.theme.theme);
 
     //TODO: For more indepth filtering and such, use this format:
     //TODO https://api.jikan.moe/v4/top/anime?type=tv&filter=bypopularity
 
     const GetTopAnime = () => {
-        setLoading(true);
+        return new Promise((resolve, reject) => {
+            setLoading(true);
 
-        let animeAndMangaObject = {};
+            let animeAndMangaObject = {};
 
-        axios
-            .get(`https://api.jikan.moe/v4/top/anime`)
-            //https://api.jikan.moe/v4/top/type/page/subtype
-            .then(({ data }) => {
-                console.log(data);
+            axios
+                .get(`https://api.jikan.moe/v4/top/anime`)
+                //https://api.jikan.moe/v4/top/type/page/subtype
+                .then(({ data }) => {
+                    console.log(data);
 
-                animeAndMangaObject.anime = data;
-                // setTopAnime(data.data);
-                // setFiltered(data.data);
-            })
-            //TODO The code undereath is for getting mangas
-            /* .then(async () => {
-                //  await new Promise((r) => setTimeout(r, 1000));
-                return axios.get(`https://api.jikan.moe/v4/top/manga`);
-            }) */
-            .then((/* { data } */) => {
-                //animeAndMangaObject.manga = data;
+                    animeAndMangaObject.anime = data;
+                    // setTopAnime(data.data);
+                    // setFiltered(data.data);
+                })
+                //TODO The code undereath is for getting mangas
+                /* .then(async () => {
+                    //  await new Promise((r) => setTimeout(r, 1000));
+                    return axios.get(`https://api.jikan.moe/v4/top/manga`);
+                }) */
+                .then((/* { data } */) => {
+                    //animeAndMangaObject.manga = data;
 
-                //TODO The commented code under neath is the code for having mangas
-                //let mergedObject = animeAndMangaObject.anime.data.concat(animeAndMangaObject.manga.data);
+                    //TODO The commented code under neath is the code for having mangas
+                    //let mergedObject = animeAndMangaObject.anime.data.concat(animeAndMangaObject.manga.data);
 
-                let mergedObject = animeAndMangaObject.anime.data;
+                    let mergedObject = animeAndMangaObject.anime.data;
 
-                //console.log(mergedObject);
+                    //console.log(mergedObject);
 
-                //let shuffeledMergedObject = shuffle(mergedObject);
+                    //let shuffeledMergedObject = shuffle(mergedObject);
 
-                setTopAnime(mergedObject);
-                setFiltered(mergedObject);
-                setLoading(false);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+                    //setTopAnime(mergedObject);
+                    setFiltered(mergedObject);
+                    setLoading(false);
+                    resolve(mergedObject);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    setLoading(false);
+                    reject(error);
+                });
+        });
     };
 
     let init = true;
+
     useEffect(() => {
-        //TODO ADD IF TO CHECK WETHER THE ANIMES HAS ALDREADY BEEN FETCHED
-        //TODO SAVE THE FETCHED ANIMES IN A GLOBAL STATE
-        if (init) {
-            console.log("Fetched anime");
-            GetTopAnime();
-            init = false;
+        setLoading(true);
+        if (topAnimesState?.data?.length > 0) {
+            console.log("Already fetched");
+            setLoading(false);
+            return;
         } else {
-            console.log("poop");
+            console.log("FETCHING ANIMES");
+            GetTopAnime().then((res) => {
+                dispatch(setTopAnimesState(res[0].data));
+                setLoading(false);
+                //setTopAnimes(res[0].data.slice(0, 9));
+            });
         }
     }, []);
 
@@ -119,15 +114,11 @@ const CreatePost = () => {
         if (searchTerm.length === 0) {
             setShowingResults("Top 50 Anime");
         }
-        let animeFilter = topAnime?.filter((anime) => {
+        let animeFilter = topAnimesState?.data?.filter((anime) => {
             return anime?.title_english?.toLowerCase().includes(searchTerm.toLowerCase());
         });
         setFiltered(animeFilter);
     }, [searchTerm.length === 0]);
-
-    if (loading) {
-        return <Loading />;
-    }
 
     const handleSearch = (e) => {
         setSearchTerm(e.target.value);
@@ -181,6 +172,10 @@ const CreatePost = () => {
         });
     };
 
+    if (loading) {
+        return <Loading />;
+    }
+
     return (
         <>
             <CreatePostOuter>
@@ -214,21 +209,22 @@ const CreatePost = () => {
                 <ShowingResults>
                     Showing results for: <span style={{ fontWeight: "400", marginLeft: "5px" }}>{showingResults}</span>
                 </ShowingResults>
-                {filtered?.map((anime, index) => {
-                    return (
-                        <SearchCard
-                            title={anime?.title_english ? anime?.title_english : anime?.title}
-                            episodes={anime?.episodes ? anime?.episodes : 0}
-                            image={anime?.images?.jpg?.large_image_url}
-                            description={anime?.background}
-                            airing={anime?.airing}
-                            duration={anime?.duration}
-                            type={anime?.type}
-                            key={index}
-                        />
-                    );
-                })}
-                <SearchCard />
+                <Gridcontainer>
+                    {filtered?.map((anime, index) => {
+                        return (
+                            <SearchCard
+                                title={anime?.title_english ? anime?.title_english : anime?.title}
+                                episodes={anime?.episodes ? anime?.episodes : 0}
+                                image={anime?.images?.jpg?.large_image_url}
+                                description={anime?.background}
+                                airing={anime?.airing}
+                                duration={anime?.duration}
+                                type={anime?.type}
+                                key={index}
+                            />
+                        );
+                    })}
+                </Gridcontainer>
             </CreatePostOuter>
         </>
     );

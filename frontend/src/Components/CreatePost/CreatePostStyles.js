@@ -9,6 +9,7 @@ export const CreatePostOuter = styled.div`
     flex-direction: column;
     padding-top: 75px;
     padding-bottom: 20px;
+    grid-template-columns: 1fr 1fr;
 
     background: ${(props) =>
         props.theme.currentTheme === "spillTheme" &&
@@ -30,13 +31,11 @@ export const CreatePostOuter = styled.div`
 export const Gridcontainer = styled.div`
     position: relative;
     padding: 10px;
-    justify-content: center;
-    width: 100vw;
-    height: 100px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
     row-gap: 1rem;
     column-gap: 2rem;
+    padding-bottom: 20px;
 `;
 
 export const SearchOuter = styled.div`
