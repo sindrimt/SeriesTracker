@@ -37,14 +37,14 @@ const App = () => {
     const globalUser = useSelector((state) => state.user.user);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        if (currentUser) {
-            fetchUser();
-        } else {
-            //setTimeout(500);
-            //setDone(!done);
-        }
-    }, [currentUser]);
+    // useEffect(() => {
+    //     if (currentUser) {
+    //         fetchUser();
+    //     } else {
+    //         //setTimeout(500);
+    //         //setDone(!done);
+    //     }
+    // }, [currentUser]);
 
     const fetchUser = () => {
         axios
