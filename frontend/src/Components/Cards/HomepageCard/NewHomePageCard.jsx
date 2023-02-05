@@ -136,13 +136,12 @@ const SearchCard = ({
     const episodeRatio = (episodesWatchedState / episodeCount) * 100;
 
     const handleAddEpisode = (e) => {
-        console.log("Clicked add button");
         return axios
             .patch(`/api/series/${id}`, { operation: "add" })
             .then((response) => {})
             .catch((err) => {
                 setEpisodesWatchesState(episodesWatchedState + 1);
-                console.log(err);
+                //console.log(err);
             });
     };
 
@@ -156,21 +155,22 @@ const SearchCard = ({
     };
 
     const handleDeleteCard = () => {
-        console.log("Clicked delete button");
+        setIsExpanded(true);
         setDeletePopup(!deletePopup);
     };
 
     const handleConfirmDelete = () => {
-        console.log("Series deleted successfully.");
         axios
             .delete(`/api/series/${id}`)
             .then((response) => {
                 console.log("Series deleted successfully.");
                 console.log(response);
                 setIsDeleted(!isDeleted);
+                setIsExpanded(false);
             })
             .catch((err) => {
                 setIsDeleted(!isDeleted);
+                setIsExpanded(false);
             });
         setDeletePopup(false);
     };
@@ -178,31 +178,45 @@ const SearchCard = ({
     const handleDeclineDelete = () => {
         console.log("Series was not deleted.");
         setDeletePopup(false);
+        setIsExpanded(false);
     };
 
-    // Check wether the user clicked episode button or not
-    // If not, open the popup
-    const handleOpenPopup = (e) => {
-        // Just a check if the user clicked a button or the outer element
-        if (["undefined", "btn-txt", ""].includes(e.target.className) || ["delete", ""].includes(e.target.className.animVal)) {
-            // If the user clicked add episode, add an episode
-            if (e.target.innerHTML === "Add") {
-                handleAddEpisode();
-            }
-            // If the user clicked remove episode, remove an episode
-            else if (e.target.innerHTML === "Remove") {
-                handleSubtractEpisode();
-            }
-        }
-        // If the outer element was clicked, open the popup
-        else {
-            handleOpen();
+    const handleExpand = (e) => {
+        console.log(e.target.className);
+        if (e.target.innerHTML === "Remove") {
+            console.log("RMOVE");
+            setIsExpanded(true);
+            handleSubtractEpisode();
+        } else if (e.target?.innerHTML === "Add") {
+            console.log("ADDD");
+            setIsExpanded(true);
+            handleAddEpisode();
+        } else if (["undefined", "delete", ""].includes(e.target.className.animVal)) {
+            setIsExpanded(true);
+            handleDeleteCard();
+        } else {
+            setIsExpanded(!isExpanded);
         }
     };
 
     return (
         <>
-            <Outer onClick={() => setIsExpanded(!isExpanded)} isExpanded={isExpanded}>
+            {deletePopup && (
+                <DeleteCardPopup
+                    popupText="Are you sure you want to delete the series?"
+                    optionLeft="Yes"
+                    optionRight="No"
+                    handleOptionLeft={handleConfirmDelete}
+                    handleOptionRight={handleDeclineDelete}
+                />
+            )}
+            <Outer
+                onClick={(e) => {
+                    setIsExpanded(!isExpanded);
+                    handleExpand(e);
+                }}
+                isExpanded={isExpanded}
+            >
                 <ImageContainer>
                     <Image src={image?.includes("upload") ? `api/${image}` : image} alt="Image" />
                     {/*  <Duration>{episodeLength}</Duration> */}
@@ -211,66 +225,34 @@ const SearchCard = ({
                         <Title>{title}</Title>
                         <ViewsContainer>
                             <Views>{!episodes ? "N/A" : episodes + " Episodes"}</Views>
-                            <Upload>{airing ? "Airing" : "Not airing"}</Upload>
+                            {/* //TODO Remember to change Not airing to Airing when we have the airing field */}
+                            <Upload>{airing ? "Not Airing" : "Not airing"}</Upload>
                         </ViewsContainer>
                         <Profile>
                             {/* <ProfilePicture /> */}
                             <CgScreen color="rgb(60, 60, 60)" size={22} />
-                            <ProfileName>
-                                {type === "Movie" ? "Anime / Movie" : "Anime"} - {duration}
-                            </ProfileName>
+                            <ProfileName>{type === "Movie" ? "Anime / Movie" : "Anime"}</ProfileName>
                         </Profile>
-
+                        <EpisodeContainer hasWatchTime={watchTime}>
+                            <EpisodeCount>
+                                Ep {episodesWatchedState} / {episodeCount}
+                            </EpisodeCount>
+                            <EpisodeLineGray />
+                            <EpisodeLineProgress progress={episodeRatio} />
+                        </EpisodeContainer>
                         <Description>{changedDescription}</Description>
+                        {isExpanded && (
+                            <CardDescription>
+                                <AddButton className="plus" />
+                                <DeleteButton className="minus" />
+                                {/*   <AiOutlinePlusCircle size={22} className="plus" onClick={handleAddEpisode} /> */}
+                                {/*  <AiOutlineMinusCircle size={22} className="minus" onClick={handleSubtractEpisode} /> */}
+                                <AiOutlineCloseCircle size={26} className="delete" color={"red"} style={{ zIndex: 1 }} />
+                            </CardDescription>
+                        )}
                     </Information>
                 </ImageContainer>
             </Outer>
-            <Modal sx={modalStyle} open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
-                <>
-                    <PopupOuter>
-                        <QuitSymbol onClick={handleClose}>
-                            <IoMdClose size={22} />
-                        </QuitSymbol>
-                        <OuterOuter borderColor={imageAvgColor}>
-                            <LeftBall bgColor={imageAvgColor} />
-                            <BottomBall bgColor={imageAvgColor} />
-                        </OuterOuter>
-                        <div style={{ display: "flex", alignItems: "center" }}>
-                            {/* <LeftBall />
-                            <BottomBall /> */}
-                            <PopupImage src={image?.includes("upload") ? `api/${image}` : image} />
-                        </div>
-                        <PoputTextBoxOuter>
-                            <PopupHeader>
-                                {title}
-
-                                <div>
-                                    {episodesWatchedState} / {episodeCount} episodes watched
-                                </div>
-                            </PopupHeader>
-                            <PopupDescription>{description.slice(0, 240)}</PopupDescription>
-                            <div>
-                                <WatchTimeContainer>
-                                    {watchTime && (
-                                        <>
-                                            <ProgressLineText>{watchTime} / 22:00</ProgressLineText>
-                                        </>
-                                    )}
-                                    {watchTime && (
-                                        <>
-                                            <ProgressLines>
-                                                <ProgressLine progress={ratio} />
-                                                <ProgressLineGray />
-                                            </ProgressLines>
-                                        </>
-                                    )}
-                                </WatchTimeContainer>
-                            </div>
-                        </PoputTextBoxOuter>
-                        {/*  <PopupCharacterImage src={chainsaw} /> */}
-                    </PopupOuter>
-                </>
-            </Modal>
         </>
     );
 };

@@ -318,8 +318,11 @@ export const EpisodeContainer = styled.div`
 `;
 
 export const EpisodeCount = styled.div`
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
+    padding-bottom: 5px;
+
+    color: rgb(100, 100, 100);
 `;
 
 export const EpisodeLineGray = styled.div`
