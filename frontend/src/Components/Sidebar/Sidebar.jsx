@@ -68,13 +68,9 @@ const Sidebar = () => {
           </form>
         </SearchOuter> */}
                     <PanelOuter>
-                        <SidebarButton icon={dashboard} text="Dashboard" />
+                        <SidebarButton icon={dashboard} text="Dashboard" clickAction={() => navigate("/")} />
                         {/* <SidebarButton icon={notifications} text="Notifications" /> */}
-                        <SidebarButton
-                            icon={notifications}
-                            text="Find Series"
-                            clickAction={() => navigate("/create-post")}
-                        />
+                        <SidebarButton icon={notifications} text="Find Series" clickAction={() => navigate("/create-post")} />
                         <SidebarButton icon={messages} text="Messages" clickAction={() => navigate("/messages")} />
                         <SidebarButton icon={friends} text="Friends" clickAction={() => navigate("/friends")} />
                         <SidebarButton icon={settings} text="Settings" clickAction={() => navigate("/settings")} />

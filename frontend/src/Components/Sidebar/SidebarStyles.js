@@ -17,7 +17,7 @@ export const SidebarOuter = styled.div`
     display: grid;
     letter-spacing: 1.7px;
     grid-template-rows: 8fr 2fr 1fr;
-    z-index: 99999999;
+    z-index: 15;
 
     .menuButton {
         fill: ${(props) => props.theme.navbar.menuButton};
