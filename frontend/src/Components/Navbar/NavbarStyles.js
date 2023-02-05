@@ -66,12 +66,12 @@ export const NavbarProfileOuter = styled.div`
 
     div,
     span {
-        border-bottom: 1px solid rgba(166, 63, 203, 0);
+        border-bottom: 2px solid rgba(166, 63, 203, 0);
         transition: 0.1s;
     }
 
     & .signout:hover {
-        border-bottom: 1px solid ${(props) => props.theme.navbar.underline};
+        border-bottom: 2px solid ${(props) => props.theme.navbar.underline};
         cursor: pointer;
     }
 `;
@@ -119,7 +119,7 @@ export const NavbarLinksOuter = styled.div`
     }
 
     div {
-        border-bottom: 1px solid rgba(166, 63, 203, 0);
+        border-bottom: 2px solid rgba(166, 63, 203, 0);
         transition: 0.1s;
     }
 
@@ -146,7 +146,7 @@ export const NavbarLinksOuter = styled.div`
     }
 
     .findfriends:hover {
-        border-bottom: 1px solid ${(props) => props.theme.navbar.underline};
+        border-bottom: 2px solid ${(props) => props.theme.navbar.underline};
         cursor: pointer;
     }
 
@@ -155,7 +155,7 @@ export const NavbarLinksOuter = styled.div`
     }
 
     .findsSeries:hover {
-        border-bottom: 1px solid ${(props) => props.theme.navbar.underline};
+        border-bottom: 2px solid ${(props) => props.theme.navbar.underline};
         cursor: pointer;
     }
 
