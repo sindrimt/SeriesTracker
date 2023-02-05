@@ -4,12 +4,15 @@ export const Outer = styled.div`
     z-index: 10;
     color: #fefefe;
     background-color: none;
-    height: 222px;
+    height: ${(props) => (props.isExpanded ? "400px" : "222px")};
     //width: calc(100vw - 285px);
     padding-right: 20px;
+    transition: 0.25s ease-in-out;
+
     border-radius: 20px 20px 20px 20px;
     background-color: rgb(250, 250, 250);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.05);
+    background-color: ${(props) => props.theme.homepageCard.background};
 
     &:hover {
         // background-color: rgb(240, 240, 240);
@@ -29,8 +32,11 @@ export const ImageContainer = styled.div`
 `;
 export const Information = styled.div`
     gap: 6px;
-    padding-left: 15px;
+    padding-left: 20px;
+    width: 90%;
+
     padding-top: 5px;
+    margin-top: 8px;
     display: flex;
     flex-direction: column;
 `;
@@ -85,6 +91,7 @@ export const Description = styled.span`
     color: rgb(80, 80, 80);
     font-size: 14px;
     width: 100%;
+    font-weight: 400;
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -186,4 +193,40 @@ export const FilterExpandedContent = styled.div`
     width: 100%;
     height: 100%;
     display: ${(props) => (props.isExpanded ? "show" : "none")};
+`;
+
+export const FormFieldOuter = styled.div`
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    margin-left: 15%;
+    margin-bottom: 5px;
+`;
+
+export const SliderContainer = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+`;
+
+export const SubmitButton = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    //background-color: rgb(250, 250, 250);
+    border-radius: 50%;
+    bottom: 10px;
+    right: 10px;
+    border: 1.5px solid #a63fcb;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgb(240, 240, 240);
+    }
 `;
