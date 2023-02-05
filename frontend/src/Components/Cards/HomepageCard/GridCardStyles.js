@@ -8,7 +8,7 @@ export const SeriesCardOuter = styled.div`
     box-shadow: 0px 4px 4px rgba(100, 100, 100, 0.1);
     background-color: #fcfcfc;
     transition: 0.1s ease;
-    border-radius: 5px;
+    border-radius: 7px;
     color: ${(props) => props.theme.homepageCard.fontColor};
     background-color: ${(props) => props.theme.homepageCard.background};
     border: 1.5px solid ${(props) => props.theme.homepageCard.border};
