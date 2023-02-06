@@ -21,6 +21,7 @@ import { setTopAnimesState } from "../../redux/features/topAnimes/topAnimesSlice
 
 const ContentRight = ({ arrayLength }) => {
     //const [topAnimes, setTopAnimes] = useState([]);
+
     const scrollPosition = useScroll();
     const topAnimesState = useSelector((state) => state.topAnimes.topAnimes);
     const dispatch = useDispatch();
@@ -32,7 +33,7 @@ const ContentRight = ({ arrayLength }) => {
             axios
                 .get(`https://api.jikan.moe/v4/top/anime`)
                 .then(({ data }) => {
-                    console.log(data);
+                    //console.log(data);
                     resolve([data, arrayLength]);
                 })
                 .catch((error) => {
@@ -45,28 +46,12 @@ const ContentRight = ({ arrayLength }) => {
         isFixed = true;
     }
 
-    const shuffle = (array) => {
-        let currentIndex = array.length,
-            randomIndex;
-
-        // While there remain elements to shuffle.
-        while (currentIndex != 0) {
-            // Pick a remaining element.
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex--;
-
-            // And swap it with the current element.
-            [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-        }
-        return array;
-    };
-
     useEffect(() => {
         if (topAnimesState?.data?.length > 0) {
-            console.log("Already fetched");
+            //console.log("Already fetched");
             return;
         } else {
-            console.log("FETCHING ANIMES");
+            //console.log("FETCHING ANIMES");
             fetchTopAnimes().then((res) => {
                 dispatch(setTopAnimesState(res[0]));
                 //setTopAnimes(res[0].data.slice(0, 9));

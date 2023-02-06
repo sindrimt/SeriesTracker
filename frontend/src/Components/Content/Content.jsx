@@ -126,13 +126,13 @@ const Content = ({ series, setIsDeleted, isDeleted }) => {
                                 ?.map((serie, index) => (
                                     <>
                                         <GridCard
+                                            key={index}
                                             title={serie?.title}
                                             episodesWatched={serie?.episodesWatched}
                                             episodeCount={serie?.episodeCount}
                                             rating={serie?.rating}
                                             image={serie?.photoUrl}
                                             watchTime={serie?.watchTime}
-                                            key={index}
                                         />
                                         {/* <SearchCard
                                         title={serie?.title}
@@ -173,6 +173,7 @@ const Content = ({ series, setIsDeleted, isDeleted }) => {
                                         id={serie?._id}
                                     /> */}
                                         <NewHomePageCard
+                                            key={index}
                                             title={serie?.title}
                                             episodes={serie?.episodesWatched}
                                             image={serie?.photoUrl}
@@ -188,7 +189,6 @@ const Content = ({ series, setIsDeleted, isDeleted }) => {
                                             episodeCount={serie?.episodeCount}
                                             rating={serie?.rating}
                                             watchTime={serie?.watchTime}
-                                            key={index}
                                         />
                                         {/*  <SearchCard
                                         title={serie?.title}

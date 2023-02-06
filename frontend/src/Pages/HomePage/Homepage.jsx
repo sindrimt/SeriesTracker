@@ -21,22 +21,22 @@ const Home = () => {
 
     const getUserSeries = () => {
         setLoading(true);
-        console.log(currentUser);
+        //console.log(currentUser);
         axios
             .get(`api/series/${currentUser?.uid}`)
             .then(({ data }) => {
                 setSeries(data);
-                console.log(data);
+                //console.log(data);
                 setLoading(false);
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             });
     };
 
     useEffect(() => {
         if (currentUser) {
-            console.log(currentUser);
+            // console.log(currentUser);
             getUserSeries();
         } else {
             setTimeout(() => {

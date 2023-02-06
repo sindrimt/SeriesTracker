@@ -116,7 +116,11 @@ export const SearchOuter = styled.input`
 
 export const SearchOuterContainer = styled.div`
     display: flex;
-    width: 37%;
+    width: 40%;
+
+    @media (max-width: 450px) {
+        width: 55%;
+    }
 `;
 
 export const PaginationContainer = styled.div`

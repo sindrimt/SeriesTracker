@@ -163,8 +163,8 @@ const SearchCard = ({
         axios
             .delete(`/api/series/${id}`)
             .then((response) => {
-                console.log("Series deleted successfully.");
-                console.log(response);
+                // console.log("Series deleted successfully.");
+                // console.log(response);
                 setIsDeleted(!isDeleted);
                 setIsExpanded(false);
             })
@@ -176,13 +176,13 @@ const SearchCard = ({
     };
 
     const handleDeclineDelete = () => {
-        console.log("Series was not deleted.");
+        //console.log("Series was not deleted.");
         setDeletePopup(false);
         setIsExpanded(false);
     };
 
     const handleExpand = (e) => {
-        console.log(e.target.className);
+        //console.log(e.target.className);
         if (e.target.innerHTML === "Remove") {
             console.log("RMOVE");
             setIsExpanded(true);

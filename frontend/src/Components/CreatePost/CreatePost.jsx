@@ -56,7 +56,7 @@ const CreatePost = () => {
                 .get(`https://api.jikan.moe/v4/top/anime`)
                 //https://api.jikan.moe/v4/top/type/page/subtype
                 .then(({ data }) => {
-                    console.log(data);
+                    //console.log(data);
 
                     animeAndMangaObject.anime = data;
                     // setTopAnime(data.data);
@@ -85,7 +85,7 @@ const CreatePost = () => {
                     resolve(mergedObject);
                 })
                 .catch((error) => {
-                    console.log(error);
+                    // console.log(error);
                     setLoading(false);
                     reject(error);
                 });
@@ -97,11 +97,11 @@ const CreatePost = () => {
     useEffect(() => {
         setLoading(true);
         if (topAnimesState?.data?.length > 0) {
-            console.log("Already fetched");
+            //console.log("Already fetched");
             setLoading(false);
             return;
         } else {
-            console.log("FETCHING ANIMES");
+            // console.log("FETCHING ANIMES");
             GetTopAnime().then((res) => {
                 dispatch(setTopAnimesState(res[0].data));
                 setLoading(false);

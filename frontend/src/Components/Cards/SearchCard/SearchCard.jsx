@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, forwardRef } from "react";
 
 import {
     Outer,
@@ -146,7 +146,7 @@ const SearchCard = ({ title, episodes, image, description, episodeLength, airing
         if (e.target.innerHTML === "Close") {
             return;
         } else if (e.target?.innerHTML.includes('type = "range"')) {
-            console.log("ØAOSIDHFUASDHGF");
+            // console.log("ØAOSIDHFUASDHGF");
             return;
         } else {
             setIsExpanded(!isExpanded);
@@ -159,7 +159,7 @@ const SearchCard = ({ title, episodes, image, description, episodeLength, airing
         return Math.floor((Math.random() * (max - min) + min) * 10);
     };
 
-    const Alert = React.forwardRef(function Alert(props, ref) {
+    const Alert = forwardRef((props, ref) => {
         return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} /* sx={{ background: "#a64fcb" }}  */ />;
     });
 
