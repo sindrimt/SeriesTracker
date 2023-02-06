@@ -307,4 +307,8 @@ export const ShowingResults = styled.div`
     float: right;
     font-size: 22px;
     letter-spacing: 1px;
+
+    @media (max-width: 395px) {
+        display: none;
+    }
 `;

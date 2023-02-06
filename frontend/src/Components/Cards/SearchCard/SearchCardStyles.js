@@ -50,6 +50,14 @@ export const Image = styled.img`
     width: 170px;
     object-fit: cover;
     border-radius: 20px 0 0 20px;
+
+    @media (max-width: 395px) {
+        width: 110px;
+    }
+
+    @media (max-width: 335px) {
+        width: 90px;
+    }
 `;
 
 export const ProfilePicture = styled.img`

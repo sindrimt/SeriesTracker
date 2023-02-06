@@ -20,8 +20,12 @@ export const Outer = styled.div`
     }
 
     @media (max-width: 720px) {
-        width: calc(100% - 20px);
+        width: calc(100% - 15px);
     }
+
+    /*  @media (max-width: 395px) {
+        width: calc(90%);
+    } */
 `;
 
 export const ImageContainer = styled.div`
@@ -47,6 +51,14 @@ export const Image = styled.img`
     width: 170px;
     object-fit: cover;
     border-radius: 20px 0 0 20px;
+
+    @media (max-width: 395px) {
+        width: 110px;
+    }
+
+    @media (max-width: 335px) {
+        width: 90px;
+    }
 `;
 
 export const ProfilePicture = styled.img`
