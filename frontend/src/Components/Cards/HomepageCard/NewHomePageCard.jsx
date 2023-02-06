@@ -14,20 +14,10 @@ import {
     ProfileName,
     Duration,
     Description,
-    WatchTimeContainer,
-    ProgressLines,
-    SeriesCardOuter,
-    SeriesCardInner,
-    SeriesCardImage,
-    CardInformationContainer,
     EpisodeContainer,
-    CardTitle,
     EpisodeCount,
     EpisodeLineGray,
     EpisodeLineProgress,
-    CardRatingImg,
-    CardRatingContainer,
-    CardRatingTxt,
     CardDescription,
     CardRatingCenter,
     ProgressLine,
@@ -75,6 +65,7 @@ const SearchCard = ({
     episodeCount,
     rating,
     watchTime,
+    updateState,
 }) => {
     let changedDescription = "";
     if (description?.length >= 200) {
@@ -111,6 +102,10 @@ const SearchCard = ({
                 });
         });
 
+    useEffect(() => {
+        setEpisodesWatchesState(episodesWatched);
+    }, [updateState]);
+
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -138,7 +133,9 @@ const SearchCard = ({
     const handleAddEpisode = (e) => {
         return axios
             .patch(`/api/series/${id}`, { operation: "add" })
-            .then((response) => {})
+            .then((response) => {
+                setEpisodesWatchesState(episodesWatchedState + 1);
+            })
             .catch((err) => {
                 setEpisodesWatchesState(episodesWatchedState + 1);
                 //console.log(err);
@@ -148,7 +145,9 @@ const SearchCard = ({
     const handleSubtractEpisode = (e) => {
         return axios
             .patch(`/api/series/${id}`, { operation: "subtract" })
-            .then((response) => {})
+            .then((response) => {
+                setEpisodesWatchesState(episodesWatchedState - 1);
+            })
             .catch((err) => {
                 setEpisodesWatchesState(episodesWatchedState - 1);
             });
@@ -224,7 +223,7 @@ const SearchCard = ({
                     <Information>
                         <Title>{title}</Title>
                         <ViewsContainer>
-                            <Views>{!episodes ? "N/A" : episodes + " Episodes"}</Views>
+                            <Views>{!episodeCount ? "N/A" : episodeCount + " Episodes"}</Views>
                             {/* //TODO Remember to change Not airing to Airing when we have the airing field */}
                             <Upload>{airing ? "Not Airing" : "Not airing"}</Upload>
                         </ViewsContainer>

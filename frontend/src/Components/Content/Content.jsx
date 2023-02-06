@@ -58,6 +58,7 @@ const Content = ({ series, setIsDeleted, isDeleted }) => {
     const [update, setUpdate] = useState(false);
     const [pageNumber, setPageNumber] = useState(1);
     const [pageCount, setPageCount] = useState(Math.ceil(series?.length / resultsPrPage));
+    const [updateState, setUpdateState] = useState(false);
 
     const colorTheme = useSelector((state) => state.theme.theme);
     const currentUser = useAuth();
@@ -82,6 +83,10 @@ const Content = ({ series, setIsDeleted, isDeleted }) => {
     const handleChange = (event, value) => {
         setPageNumber(value);
     };
+
+    useEffect(() => {
+        setUpdateState(!updateState);
+    }, [pageNumber]);
 
     return (
         <>
@@ -175,7 +180,7 @@ const Content = ({ series, setIsDeleted, isDeleted }) => {
                                         <NewHomePageCard
                                             key={index}
                                             title={serie?.title}
-                                            episodes={serie?.episodesWatched}
+                                            episodes={serie?.episodes}
                                             image={serie?.photoUrl}
                                             description={""}
                                             airing={"not airing"}
@@ -189,6 +194,7 @@ const Content = ({ series, setIsDeleted, isDeleted }) => {
                                             episodeCount={serie?.episodeCount}
                                             rating={serie?.rating}
                                             watchTime={serie?.watchTime}
+                                            updateState={updateState}
                                         />
                                         {/*  <SearchCard
                                         title={serie?.title}

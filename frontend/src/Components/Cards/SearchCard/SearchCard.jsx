@@ -123,6 +123,7 @@ const SearchCard = ({ title, episodes, image, description, episodeLength, airing
         })
             .then((res) => res.text())
             .then((resBody) => {
+                console.log(resBody);
                 setSeverity("success");
                 setProgress(progress + 100);
                 setOpenSnackbar(true);
