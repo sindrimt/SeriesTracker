@@ -11,6 +11,7 @@ export const ContentContainerOuter = styled.div`
     margin: 120px 0px 0px 0px;
     padding-left: 250px;
     width: 70%;
+    min-height: 100vh;
 
     @media (max-width: 720px) {
         padding-left: 5vw;
@@ -57,7 +58,7 @@ export const PickUp = styled.div`
     color: ${(props) => props.theme.navbar.fontColor2};
 
     .pickupSpan {
-        @media (max-width: 1060px) {
+        @media (max-width: 1100px) {
             display: none;
         }
     }
@@ -118,6 +119,10 @@ export const SearchOuterContainer = styled.div`
     display: flex;
     width: 40%;
 
+    @media (max-width: 850px) {
+        width: 50%;
+    }
+
     @media (max-width: 450px) {
         width: 55%;
     }
@@ -126,4 +131,44 @@ export const SearchOuterContainer = styled.div`
 export const PaginationContainer = styled.div`
     width: fit-content;
     margin-top: 10px;
+`;
+
+export const SubmitButton = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    //background-color: rgb(20, 250, 250);
+    border-radius: 50%;
+    border: 1.8px solid #a63fcb;
+    animation: pulse 1.5s infinite;
+
+    @keyframes pulse {
+        0% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 rgba(166, 63, 203, 0.5);
+        }
+        70% {
+            transform: scale(1);
+            box-shadow: 0 0 0 10px rgba(166, 63, 203, 0);
+        }
+        100% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 rgba(166, 63, 203, 0);
+        }
+    }
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgb(240, 240, 240);
+    }
+`;
+
+export const ButtonContainer = styled.div`
+    width: fit-content;
+    display: flex;
+    gap: 10px;
+    align-items: center;
 `;

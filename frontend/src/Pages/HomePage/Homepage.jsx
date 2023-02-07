@@ -46,7 +46,7 @@ const Home = () => {
     }, [done, isDeleted]);
 
     if (loading) {
-        return <></>;
+        return <Loading />;
     }
 
     //TODO: Legg til api request user posts her => pass down resultatet til content, og lenge til contentRight
@@ -56,7 +56,7 @@ const Home = () => {
             {currentUser ? (
                 <>
                     {/* <Sidebar /> */}
-                    <Content series={series} setIsDeleted={setIsDeleted} isDeleted={isDeleted} />
+                    <Content series={series} setIsDeleted={setIsDeleted} isDeleted={isDeleted} loading={loading} />
                     <ContentRight arrayLength={series.length} />
                 </>
             ) : (

@@ -11,6 +11,8 @@ import {
     SearchOuter,
     SearchOuterContainer,
     PaginationContainer,
+    SubmitButton,
+    ButtonContainer,
 } from "./ContentStyles";
 
 import Loading from "../../Pages/LoadingPage/Loading";
@@ -43,15 +45,16 @@ import { FaLessThan, FaGreaterThan } from "react-icons/fa";
 
 import { useAuth } from "../../firebase";
 import SearchCard from "../Cards/SearchCard/SearchCard";
+import { AiOutlinePlus } from "react-icons/ai";
 
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import { useNavigate } from "react-router-dom";
 
-const Content = ({ series, setIsDeleted, isDeleted }) => {
+const Content = ({ series, setIsDeleted, isDeleted, loading }) => {
     const resultsPrPage = 8;
 
     const [iconView, setIconView] = useState(false);
-    const [loading, setLoading] = useState(false);
     const [seriesArray, setSeriesArray] = useState(series);
     const [filtered, setFiltered] = useState(series);
     const [searchTerm, setSearchTerm] = useState("");
@@ -62,6 +65,7 @@ const Content = ({ series, setIsDeleted, isDeleted }) => {
 
     const colorTheme = useSelector((state) => state.theme.theme);
     const currentUser = useAuth();
+    let navigate = useNavigate();
 
     useEffect(() => {
         setPageNumber(1);
@@ -87,6 +91,10 @@ const Content = ({ series, setIsDeleted, isDeleted }) => {
     useEffect(() => {
         setUpdateState(!updateState);
     }, [pageNumber]);
+
+    if (loading) {
+        return <></>;
+    }
 
     return (
         <>
@@ -124,7 +132,18 @@ const Content = ({ series, setIsDeleted, isDeleted }) => {
                 {iconView ? (
                     <ContentContainerGridIcons>
                         {filtered?.length === 0 ? (
-                            <span style={{ fontSize: "18px", paddingTop: "20px" }}>No results!</span>
+                            <>
+                                {!loading ? (
+                                    ""
+                                ) : (
+                                    <ButtonContainer>
+                                        <SubmitButton onClick={() => navigate("/create-post")}>
+                                            <AiOutlinePlus size={25} color={"rgb(80, 80, 80)"} />
+                                        </SubmitButton>
+                                        <span style={{ fontSize: "18px", fontWeight: "400" }}>Add your first serie!</span>
+                                    </ButtonContainer>
+                                )}
+                            </>
                         ) : (
                             filtered
                                 .slice((pageNumber - 1) * resultsPrPage, (pageNumber - 1) * resultsPrPage + resultsPrPage)
@@ -156,7 +175,18 @@ const Content = ({ series, setIsDeleted, isDeleted }) => {
                 ) : (
                     <ContentContainerGrid>
                         {filtered?.length === 0 ? (
-                            <span style={{ fontSize: "18px", paddingTop: "20px" }}>No results!</span>
+                            <>
+                                {!loading ? (
+                                    ""
+                                ) : (
+                                    <ButtonContainer>
+                                        <SubmitButton onClick={() => navigate("/create-post")}>
+                                            <AiOutlinePlus size={25} color={"rgb(80, 80, 80)"} />
+                                        </SubmitButton>
+                                        <span style={{ fontSize: "18px", fontWeight: "400" }}>Add your first serie!</span>
+                                    </ButtonContainer>
+                                )}
+                            </>
                         ) : (
                             filtered
                                 ?.slice((pageNumber - 1) * resultsPrPage, (pageNumber - 1) * resultsPrPage + resultsPrPage)
