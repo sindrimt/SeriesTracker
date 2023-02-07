@@ -12,7 +12,7 @@ import { useAuth } from "../../firebase";
 import axios from "axios";
 
 const Home = () => {
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [series, setSeries] = useState([]);
     const [done, setDone] = useState(false);
     const [isDeleted, setIsDeleted] = useState(false);
@@ -30,6 +30,7 @@ const Home = () => {
                 setLoading(false);
             })
             .catch((error) => {
+                setLoading(false);
                 //console.log(error);
             });
     };

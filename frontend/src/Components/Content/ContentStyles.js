@@ -167,6 +167,7 @@ export const SubmitButton = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
+    display: ${(props) => (props.show ? "show" : "none")};
     width: fit-content;
     display: flex;
     gap: 10px;

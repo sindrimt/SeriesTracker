@@ -131,18 +131,14 @@ const Content = ({ series, setIsDeleted, isDeleted, loading }) => {
                 </PaginationContainer>
                 {iconView ? (
                     <ContentContainerGridIcons>
-                        {filtered?.length === 0 ? (
+                        {filtered?.length === 0 && !loading ? (
                             <>
-                                {!loading ? (
-                                    ""
-                                ) : (
-                                    <ButtonContainer>
-                                        <SubmitButton onClick={() => navigate("/create-post")}>
-                                            <AiOutlinePlus size={25} color={"rgb(80, 80, 80)"} />
-                                        </SubmitButton>
-                                        <span style={{ fontSize: "18px", fontWeight: "400" }}>Add your first serie!</span>
-                                    </ButtonContainer>
-                                )}
+                                <ButtonContainer>
+                                    <SubmitButton onClick={() => navigate("/create-post")}>
+                                        <AiOutlinePlus size={25} color={"rgb(80, 80, 80)"} />
+                                    </SubmitButton>
+                                    <span style={{ fontSize: "18px", fontWeight: "400" }}>Add your first serie!</span>
+                                </ButtonContainer>
                             </>
                         ) : (
                             filtered
@@ -174,18 +170,14 @@ const Content = ({ series, setIsDeleted, isDeleted, loading }) => {
                     </ContentContainerGridIcons>
                 ) : (
                     <ContentContainerGrid>
-                        {filtered?.length === 0 ? (
+                        {filtered?.length === 0 && !loading ? (
                             <>
-                                {!loading ? (
-                                    ""
-                                ) : (
-                                    <ButtonContainer>
-                                        <SubmitButton onClick={() => navigate("/create-post")}>
-                                            <AiOutlinePlus size={25} color={"rgb(80, 80, 80)"} />
-                                        </SubmitButton>
-                                        <span style={{ fontSize: "18px", fontWeight: "400" }}>Add your first serie!</span>
-                                    </ButtonContainer>
-                                )}
+                                <ButtonContainer show={loading}>
+                                    <SubmitButton onClick={() => navigate("/create-post")}>
+                                        <AiOutlinePlus size={25} color={"rgb(80, 80, 80)"} />
+                                    </SubmitButton>
+                                    <span style={{ fontSize: "18px", fontWeight: "400" }}>Add your first serie!</span>
+                                </ButtonContainer>
                             </>
                         ) : (
                             filtered
