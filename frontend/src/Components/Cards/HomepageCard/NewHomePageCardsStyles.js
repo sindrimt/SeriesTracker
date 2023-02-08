@@ -390,7 +390,9 @@ export const CardDescription = styled.div`
     position: relative;
     gap: 5px;
     align-items: center;
-    display: flex;
+    display: grid;
+    grid-template-rows: repeat(1fr);
+    grid-row-gap: 10px;
     margin-top: 10px;
     font-size: 24px;
     left: 0;

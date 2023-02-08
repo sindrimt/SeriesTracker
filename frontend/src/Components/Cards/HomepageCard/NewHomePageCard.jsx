@@ -272,12 +272,14 @@ const RemoveSeriesButton = styled.div`
     line-height: 37px;
     font-size: 1rem;
     font-weight: 600;
-    color: ${(props) => props.theme.chartCard.fontColor};
-    border: 1px solid ${(props) => props.theme.navbar.fontColor2};
+    //Bg is transparent for darkmode
+    background-color: ${(props) => props.theme.cardButtonBG};
+    color: ${(props) => props.theme.chartCard};
+    border: 0.01em solid ${(props) => props.theme.navbar.fontColor2};
     &:hover {
         cursor: pointer;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-        background-color: #df6a6a;
+        background-color: rgba(197, 45, 45, 0.5);
         width: 120px;
     }
 `;
