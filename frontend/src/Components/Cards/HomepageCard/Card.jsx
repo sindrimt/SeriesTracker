@@ -42,8 +42,21 @@ import { FastAverageColor } from "fast-average-color";
 import { IoMdClose } from "react-icons/io";
 import AddButton from "../../Buttons/EpisodeButtons/AddButton/AddButton";
 import DeleteButton from "../../Buttons/EpisodeButtons/DeleteButton/DeleteButton";
+import BasicModal from "../../../Components/MUI_Modals/BasicModal";
 
-const Card = ({ title, episodesWatched, episodeCount, description, rating, image, watchTime, id, update, setIsDeleted, isDeleted }) => {
+const Card = ({
+    title,
+    episodesWatched,
+    episodeCount,
+    description,
+    rating,
+    image,
+    watchTime,
+    id,
+    update,
+    setIsDeleted,
+    isDeleted,
+}) => {
     const totalSeconds = 22 * 60;
     const totalSecondsWatched = parseInt(watchTime?.split(":")[0]) * 60 + parseInt(watchTime?.split(":")[1]);
     const ratio = (totalSecondsWatched / totalSeconds) * 100;
@@ -142,7 +155,10 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
     // If not, open the popup
     const handleOpenPopup = (e) => {
         // Just a check if the user clicked a button or the outer element
-        if (["undefined", "btn-txt", ""].includes(e.target.className) || ["delete", ""].includes(e.target.className.animVal)) {
+        if (
+            ["undefined", "btn-txt", ""].includes(e.target.className) ||
+            ["delete", ""].includes(e.target.className.animVal)
+        ) {
             // If the user clicked add episode, add an episode
             if (e.target.innerHTML === "Add") {
                 handleAddEpisode();
@@ -160,15 +176,7 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
 
     return (
         <>
-            {deletePopup && (
-                <DeleteCardPopup
-                    popupText="Are you sure you want to delete the series?"
-                    optionLeft="Yes"
-                    optionRight="No"
-                    handleOptionLeft={handleConfirmDelete}
-                    handleOptionRight={handleDeclineDelete}
-                />
-            )}
+            {deletePopup && <BasicModal />}
             <SeriesCardOuter onClick={(e) => handleOpenPopup(e)}>
                 <SeriesCardInner>
                     <SeriesCardImageContainer>
@@ -189,7 +197,12 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
                             <DeleteButton className="minus" />
                             {/*   <AiOutlinePlusCircle size={22} className="plus" onClick={handleAddEpisode} /> */}
                             {/*  <AiOutlineMinusCircle size={22} className="minus" onClick={handleSubtractEpisode} /> */}
-                            <AiOutlineCloseCircle size={22} className="delete" color={"red"} onClick={handleDeleteCard} />
+                            <AiOutlineCloseCircle
+                                size={22}
+                                className="delete"
+                                color={"red"}
+                                onClick={handleDeleteCard}
+                            />
                         </CardDescription>
                     </CardInformationContainer>
 
@@ -201,7 +214,13 @@ const Card = ({ title, episodesWatched, episodeCount, description, rating, image
                     </CardRatingContainer>
                 </SeriesCardInner>
             </SeriesCardOuter>
-            <Modal sx={modalStyle} open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+            <Modal
+                sx={modalStyle}
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
                 <>
                     <PopupOuter>
                         <QuitSymbol onClick={handleClose}>

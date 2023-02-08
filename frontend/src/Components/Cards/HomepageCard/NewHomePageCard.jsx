@@ -47,6 +47,7 @@ import { FastAverageColor } from "fast-average-color";
 import { IoMdClose } from "react-icons/io";
 import AddButton from "../../Buttons/EpisodeButtons/AddButton/AddButton";
 import DeleteButton from "../../Buttons/EpisodeButtons/DeleteButton/DeleteButton";
+import BasicModal from "../../MUI_Modals/BasicModal";
 
 const SearchCard = ({
     title,
@@ -130,6 +131,14 @@ const SearchCard = ({
 
     const episodeRatio = (episodesWatchedState / episodeCount) * 100;
 
+    const toggleModal = () => {
+        if (open) {
+            handleClose();
+        } else {
+            handleOpen();
+        }
+    };
+
     const handleAddEpisode = (e) => {
         return axios
             .patch(`/api/series/${id}`, { operation: "add" })
@@ -200,15 +209,6 @@ const SearchCard = ({
 
     return (
         <>
-            {deletePopup && (
-                <DeleteCardPopup
-                    popupText="Are you sure you want to delete the series?"
-                    optionLeft="Yes"
-                    optionRight="No"
-                    handleOptionLeft={handleConfirmDelete}
-                    handleOptionRight={handleDeclineDelete}
-                />
-            )}
             <Outer
                 onClick={(e) => {
                     setIsExpanded(!isExpanded);
@@ -229,7 +229,7 @@ const SearchCard = ({
                         </ViewsContainer>
                         <Profile>
                             {/* <ProfilePicture /> */}
-                            <CgScreen color="rgb(60, 60, 60)" size={22} />
+                            <CgScreen color="rgb(100, 100, 100)" size={22} />
                             <ProfileName>{type === "Movie" ? "Anime / Movie" : "Anime"}</ProfileName>
                         </Profile>
                         <EpisodeContainer hasWatchTime={watchTime}>
@@ -246,15 +246,43 @@ const SearchCard = ({
                                 <DeleteButton className="minus" />
                                 {/*   <AiOutlinePlusCircle size={22} className="plus" onClick={handleAddEpisode} /> */}
                                 {/*  <AiOutlineMinusCircle size={22} className="minus" onClick={handleSubtractEpisode} /> */}
-                                <AiOutlineCloseCircle size={26} className="delete" color={"red"} style={{ zIndex: 1 }} />
+                                <RemoveSeriesButton
+                                    onClick={() => {
+                                        toggleModal();
+                                    }}
+                                >
+                                    Delete
+                                </RemoveSeriesButton>
                             </CardDescription>
                         )}
                     </Information>
                 </ImageContainer>
             </Outer>
+            <BasicModal open={open} handleOpen={handleOpen} handleClose={handleClose} />
         </>
     );
 };
+
+const RemoveSeriesButton = styled.div`
+    width: 80px;
+    height: 40px;
+    border-radius: 20px;
+    transition: 0.2s;
+    text-align: center;
+    line-height: 37px;
+    font-size: 1rem;
+    font-weight: 600;
+    //Bg is transparent for darkmode
+    background-color: ${(props) => props.theme.cardButtonBG};
+    color: ${(props) => props.theme.chartCard};
+    border: 0.01em solid ${(props) => props.theme.navbar.fontColor2};
+    &:hover {
+        cursor: pointer;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        background-color: rgba(197, 45, 45, 0.5);
+        width: 120px;
+    }
+`;
 
 const OuterOuter = styled.div`
     position: absolute;

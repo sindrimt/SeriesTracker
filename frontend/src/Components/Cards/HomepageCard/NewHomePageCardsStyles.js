@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Outer = styled.div`
     z-index: 10;
-    color: #fefefe;
+    color: ${(props) => (props.isExpanded ? "420px" : "222px")};
     background-color: none;
     height: ${(props) => (props.isExpanded ? "420px" : "222px")};
     transition: 0.3s ease;
@@ -12,10 +12,11 @@ export const Outer = styled.div`
     border-radius: 20px 20px 20px 20px;
     background-color: rgb(250, 250, 250);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.05);
+    background-color: ${(props) => props.theme.cardBG};
 
     &:hover {
         // background-color: rgb(240, 240, 240);
-        background-color: ${(props) => props.theme.lightgrey};
+        background-color: ${(props) => props.theme.cardBGHover};
         cursor: pointer;
     }
 
@@ -69,17 +70,17 @@ export const ProfilePicture = styled.img`
 export const ProfileName = styled.span`
     margin-left: 6px;
     font-size: 14px;
-    color: rgb(60, 60, 60);
+    color: ${(props) => props.theme.cardFontPrimary}; ;
 `;
 
 export const Title = styled.span`
     display: flex;
     font-size: 22px;
     font-weight: 300;
-    color: black;
+    color: ${(props) => props.theme.cardBGHeader};
 `;
 export const Views = styled.span`
-    color: rgb(60, 60, 60);
+    color: ${(props) => props.theme.cardFontPrimary};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -92,12 +93,12 @@ export const Views = styled.span`
 `;
 
 export const Upload = styled.span`
-    color: grey;
+    color: ${(props) => props.theme.cardFontSecondary};
     font-size: 14px;
 `;
 export const Description = styled.span`
     margin-top: 10px;
-    color: rgb(80, 80, 80);
+    color: ${(props) => props.theme.cardFontSecondary};
     font-size: 14px;
     width: 100%;
     display: block;
@@ -334,7 +335,7 @@ export const EpisodeCount = styled.div`
     font-weight: 400;
     padding-bottom: 5px;
 
-    color: rgb(100, 100, 100);
+    color: ${(props) => props.theme.cardFontSecondary};
 `;
 
 export const EpisodeLineGray = styled.div`
@@ -389,7 +390,9 @@ export const CardDescription = styled.div`
     position: relative;
     gap: 5px;
     align-items: center;
-    display: flex;
+    display: grid;
+    grid-template-rows: repeat(1fr);
+    grid-row-gap: 10px;
     margin-top: 10px;
     font-size: 24px;
     left: 0;

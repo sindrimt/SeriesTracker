@@ -24,6 +24,7 @@ import settings from "../../Assets/Sidebar/settings.svg";
 import friends from "../../Assets/Sidebar/users.svg";
 import github from "../../Assets/Sidebar/github.svg";
 import analytics from "../../Assets/Sidebar/analytics.svg";
+import { AiFillLinkedin } from "react-icons/ai";
 
 import { useScroll } from "../../Hooks/useScroll";
 
@@ -71,7 +72,11 @@ const Sidebar = () => {
                     <PanelOuter>
                         <SidebarButton icon={dashboard} text="Dashboard" clickAction={() => navigate("/")} />
                         {/* <SidebarButton icon={notifications} text="Notifications" /> */}
-                        <SidebarButton icon={notifications} text="Find Series" clickAction={() => navigate("/create-post")} />
+                        <SidebarButton
+                            icon={notifications}
+                            text="Find Series"
+                            clickAction={() => navigate("/create-post")}
+                        />
                         <SidebarButton icon={messages} text="Messages" clickAction={() => navigate("/messages")} />
                         <SidebarButton icon={friends} text="Friends" clickAction={() => navigate("/friends")} />
                         <SidebarButton icon={settings} text="Settings" clickAction={() => navigate("/settings")} />
@@ -89,11 +94,16 @@ const Sidebar = () => {
                         Reach us at: <br></br>
                     </Contact>
                     <Email>business@seriestracker.net</Email>
-                    <a href="https://github.com/sindrimt/SeriesTracker">
-                        <GithubBack>
-                            <Github src={github} />
-                        </GithubBack>
-                    </a>
+                    <Socials>
+                        <a href="https://github.com/SeriesTracker/SeriesTracker">
+                            <GithubBack>
+                                <Github src={github} />
+                            </GithubBack>
+                        </a>
+                        <a href="https://www.linkedin.com/company/seriestracker">
+                            <AiFillLinkedin size={34} />
+                        </a>
+                    </Socials>
                     <Trademark>SeriesTracker 2022&reg;</Trademark>
                 </SidebarOuter>
             )}
@@ -112,6 +122,24 @@ const Email = styled.div`
     font-size: 12px;
     margin-bottom: 50px;
     margin-top: 5px;
+`;
+
+const Socials = styled.div`
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    bottom: 28px;
+    width: 50%;
+    margin: 0 auto 0 auto;
+    & > * {
+        justify-self: center;
+        transition: 0.4s;
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+    }
 `;
 
 export default Sidebar;

@@ -128,25 +128,9 @@ export const Trademark = styled.div`
 export const Github = styled.img`
     position: relative;
     width: 42px;
+    border-radius: 100%;
 `;
 
 export const GithubBack = styled.div`
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    border-radius: 50%;
-    height: 40px;
-    left: 50%;
-    bottom: 28px;
-    outline: 2px solid rgba(166, 63, 203, 0);
-    transform: translateX(-50%);
-
-    &:hover {
-        transition: 0.2s ease-in-out;
-        outline: 2px solid ${(props) => props.theme.navbar.underline};
-        border-radius: 50%;
-        cursor: pointer;
-    }
+    border-radius: 100%;
 `;

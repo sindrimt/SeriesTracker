@@ -131,6 +131,9 @@ export const SearchOuterContainer = styled.div`
 export const PaginationContainer = styled.div`
     width: fit-content;
     margin-top: 10px;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: ${(props) => props.theme.cardBG};
 `;
 
 export const SubmitButton = styled.div`

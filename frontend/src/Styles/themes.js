@@ -49,6 +49,12 @@ export const lightTheme = {
     pink: "",
     olive: "",
     white: "",
+    cardBG: "150, 63, 190, 1",
+    cardBGHover: "rgba(166, 63, 203, 0.1)",
+    cardHeader: "rgba(60, 60, 60, 1)",
+    cardFontPrimary: "rgba(60, 60, 60, 1)",
+    cardFontSecondary: "rgba(100, 100, 100, 1)",
+    cardButtonBG: "rgba(166,63,203, 0.2)",
 
     body: {
         background: "rgb(247, 247, 247)",
@@ -113,11 +119,17 @@ export const darkTheme = {
     black: "#0a0a0aff",
     lightBlack: "#1a181aff",
     grey: "rgb(31, 29, 31)",
-    lightgrey: "rgb(33, 31, 33)",
+    lightgrey: "rgb(40, 40, 40)",
     pink: "rgba(166, 63, 203, 0.1)",
     olive: "#434038ff",
     white: "#eee3c1ff",
     purple: "#a63fcb",
+    cardBG: "rgb(35, 33, 35)",
+    cardBGHover: "rgb(40, 40, 40)",
+    cardHeader: "rgba(255, 255, 255, 0.87)",
+    cardFontPrimary: "rgba(160, 160, 160, 1)",
+    cardFontSecondary: "rgba(120, 120, 120, 1)",
+    cardButtonBG: "",
 
     body: {
         background: darkModePalette.lightBlack,
