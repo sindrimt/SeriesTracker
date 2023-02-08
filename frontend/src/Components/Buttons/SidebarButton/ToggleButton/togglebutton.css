@@ -21,7 +21,7 @@ label {
     cursor: pointer;
 }
 
-input {
+.input-checkbox {
     position: absolute;
     display: none;
 }

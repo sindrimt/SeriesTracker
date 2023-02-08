@@ -16,6 +16,7 @@ const ToggleButton = () => {
         <div className="toggle-switch">
             <label>
                 <input
+                    className="input-checkbox"
                     type="checkbox"
                     onClick={() => {
                         dispatch(toggleTheme(color));
