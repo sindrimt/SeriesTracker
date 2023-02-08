@@ -47,6 +47,7 @@ import { FastAverageColor } from "fast-average-color";
 import { IoMdClose } from "react-icons/io";
 import AddButton from "../../Buttons/EpisodeButtons/AddButton/AddButton";
 import DeleteButton from "../../Buttons/EpisodeButtons/DeleteButton/DeleteButton";
+import BasicModal from "../../MUI_Modals/BasicModal";
 
 const SearchCard = ({
     title,
@@ -130,6 +131,14 @@ const SearchCard = ({
 
     const episodeRatio = (episodesWatchedState / episodeCount) * 100;
 
+    const toggleModal = () => {
+        if (open) {
+            handleClose();
+        } else {
+            handleOpen();
+        }
+    };
+
     const handleAddEpisode = (e) => {
         return axios
             .patch(`/api/series/${id}`, { operation: "add" })
@@ -200,15 +209,6 @@ const SearchCard = ({
 
     return (
         <>
-            {deletePopup && (
-                <DeleteCardPopup
-                    popupText="Are you sure you want to delete the series?"
-                    optionLeft="Yes"
-                    optionRight="No"
-                    handleOptionLeft={handleConfirmDelete}
-                    handleOptionRight={handleDeclineDelete}
-                />
-            )}
             <Outer
                 onClick={(e) => {
                     setIsExpanded(!isExpanded);
@@ -246,12 +246,21 @@ const SearchCard = ({
                                 <DeleteButton className="minus" />
                                 {/*   <AiOutlinePlusCircle size={22} className="plus" onClick={handleAddEpisode} /> */}
                                 {/*  <AiOutlineMinusCircle size={22} className="minus" onClick={handleSubtractEpisode} /> */}
-                                <AiOutlineCloseCircle size={26} className="delete" color={"red"} style={{ zIndex: 1 }} />
+                                <AiOutlineCloseCircle
+                                    onClick={() => {
+                                        toggleModal();
+                                    }}
+                                    size={26}
+                                    className="delete"
+                                    color={"red"}
+                                    style={{ zIndex: 1 }}
+                                />
                             </CardDescription>
                         )}
                     </Information>
                 </ImageContainer>
             </Outer>
+            <BasicModal open={open} handleOpen={handleOpen} handleClose={handleClose} />
         </>
     );
 };
