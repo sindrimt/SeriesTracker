@@ -173,3 +173,9 @@ export const ButtonContainer = styled.div`
     gap: 10px;
     align-items: center;
 `;
+
+export const Placeholder = styled.div`
+    @media (min-width: 721px) {
+        display: none;
+    }
+`;

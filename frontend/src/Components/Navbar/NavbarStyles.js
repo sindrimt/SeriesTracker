@@ -49,6 +49,22 @@ export const Logo = styled.img`
     }
 `;
 
+export const LogoSmall = styled.img`
+    width: 230px;
+    padding-left: 30px;
+    margin-left: 70px;
+    padding-right: 20px;
+    display: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    @media (max-width: 720px) {
+        display: block;
+    }
+`;
+
 export const WelcomeBack = styled.span`
     white-space: nowrap;
     @media (max-width: 1000px) {
@@ -132,6 +148,7 @@ export const NavbarLinksOuter = styled.div`
     }
 
     @media (max-width: 720px) {
+        display: none;
         .navtext {
             display: flex;
             justify-content: space-between;

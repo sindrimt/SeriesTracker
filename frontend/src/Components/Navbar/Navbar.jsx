@@ -12,6 +12,7 @@ import {
     ThemeIcon,
     ShowMore,
     Spill,
+    LogoSmall,
 } from "./NavbarStyles";
 
 import SeriesTrackerLogoLM from "../../Assets/Images/logo_lightmode.png";
@@ -32,6 +33,7 @@ import { toggleTheme } from "../../redux/features/theme/colorThemeSlice";
 import { MdOutlineLightMode, MdOutlineDarkMode, MdExpandMore } from "react-icons/md";
 import { GiHotDog } from "react-icons/gi";
 import { useAuth } from "./../../firebase.js";
+import { Placeholder } from "../Content/ContentStyles";
 
 const Navbar = () => {
     //const [scrollPosition, setScrollPosition] = useState(0);
@@ -93,11 +95,18 @@ const Navbar = () => {
     return (
         <>
             <NavbarOuter showBgColor={color}>
+                <Placeholder />
                 <Logo
                     src={colorTheme === "light" ? SeriesTrackerLogoLM : colorTheme === "dark" ? SeriesTrackerLogoDM : SeriesTrackerLogoHD}
                     alt="Logo"
                     onClick={() => navigate("/")}
                 />
+                <LogoSmall
+                    src={colorTheme === "light" ? SeriesTrackerLogoLM : colorTheme === "dark" ? SeriesTrackerLogoDM : SeriesTrackerLogoHD}
+                    alt="Logo"
+                    onClick={() => navigate("/")}
+                />
+
                 <NavbarLinksOuter>
                     <div className="navtext">
                         <div className="findsSeries" onClick={() => navigate("/create-post")}>
