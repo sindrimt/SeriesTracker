@@ -18,6 +18,13 @@ export const NavbarOuter = styled.div`
     @media (max-width: 720px) {
         height: 80px;
     }
+
+    .icon {
+        display: none;
+        @media (max-width: 720px) {
+            display: block;
+        }
+    }
 `;
 
 export const NavbarLine = styled.div`
@@ -52,7 +59,7 @@ export const Logo = styled.img`
 export const LogoSmall = styled.img`
     width: 230px;
     padding-left: 30px;
-    margin-left: 70px;
+    margin-left: 12vw;
     padding-right: 20px;
     display: none;
 
@@ -62,6 +69,11 @@ export const LogoSmall = styled.img`
 
     @media (max-width: 720px) {
         display: block;
+    }
+
+    @media (max-width: 500px) {
+        display: block;
+        width: 50%;
     }
 `;
 
@@ -235,5 +247,11 @@ export const Spill = styled.img`
 
     &:hover {
         cursor: pointer;
+    }
+`;
+
+export const SignOut = styled.div`
+    @media (max-width: 720px) {
+        display: none;
     }
 `;

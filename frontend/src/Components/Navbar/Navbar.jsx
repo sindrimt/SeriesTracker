@@ -13,6 +13,7 @@ import {
     ShowMore,
     Spill,
     LogoSmall,
+    SignOut,
 } from "./NavbarStyles";
 
 import SeriesTrackerLogoLM from "../../Assets/Images/logo_lightmode.png";
@@ -34,6 +35,7 @@ import { MdOutlineLightMode, MdOutlineDarkMode, MdExpandMore } from "react-icons
 import { GiHotDog } from "react-icons/gi";
 import { useAuth } from "./../../firebase.js";
 import { Placeholder } from "../Content/ContentStyles";
+import { VscSignOut } from "react-icons/vsc";
 
 const Navbar = () => {
     //const [scrollPosition, setScrollPosition] = useState(0);
@@ -176,7 +178,8 @@ const Navbar = () => {
                         />
                     </NavbarProfileImgBack>
                     <span className="signout" style={{ whiteSpace: "nowrap" }} onClick={handleLogOut}>
-                        SIGN OUT
+                        <SignOut>SIGN OUT</SignOut>
+                        <VscSignOut size={24} className="icon" />
                     </span>
                 </NavbarProfileOuter>
                 <NavbarLine showLine={line} />
