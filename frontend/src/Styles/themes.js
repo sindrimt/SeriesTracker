@@ -52,6 +52,8 @@ export const lightTheme = {
     cardBG: "150, 63, 190, 1",
     cardBGHover: "rgba(166, 63, 203, 0.1)",
     cardHeader: "rgba(60, 60, 60, 1)",
+    cardFontPrimary: "rgba(60, 60, 60, 1)",
+    cardFontSecondary: "rgba(100, 100, 100, 1)",
 
     body: {
         background: "rgb(247, 247, 247)",
@@ -124,6 +126,8 @@ export const darkTheme = {
     cardBG: "rgb(35, 33, 35)",
     cardBGHover: "rgb(40, 40, 40)",
     cardHeader: "rgba(255, 255, 255, 0.87)",
+    cardFontPrimary: "rgba(160, 160, 160, 1)",
+    cardFontSecondary: "rgba(120, 120, 120, 1)",
 
     body: {
         background: darkModePalette.lightBlack,
