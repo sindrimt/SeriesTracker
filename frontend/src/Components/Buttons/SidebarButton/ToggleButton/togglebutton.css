@@ -1,0 +1,58 @@
+:root {
+    --light: #d8dbe0;
+    --dark: #28292c;
+    --link: rgb(27, 129, 112);
+    --link-hover: rgb(24, 94, 82);
+}
+
+.toggle-switch {
+    margin-top: 30px;
+    position: relative;
+    width: 80px;
+    justify-self: center;
+}
+
+label {
+    position: absolute;
+    width: 100%;
+    height: 38px;
+    background-color: var(--dark);
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+input {
+    position: absolute;
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+input:checked ~ .slider {
+    background-color: var(--light);
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 10px;
+    width: 30px;
+    height: 28px;
+    border-radius: 50%;
+    box-shadow: inset 10px -4px 0px 0px var(--light);
+    background-color: var(--dark);
+    transition: 0.3s;
+}
+
+input:checked ~ .slider::before {
+    transform: translateX(35px);
+    background-color: var(--dark);
+    box-shadow: none;
+}
