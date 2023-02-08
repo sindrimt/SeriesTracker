@@ -246,15 +246,13 @@ const SearchCard = ({
                                 <DeleteButton className="minus" />
                                 {/*   <AiOutlinePlusCircle size={22} className="plus" onClick={handleAddEpisode} /> */}
                                 {/*  <AiOutlineMinusCircle size={22} className="minus" onClick={handleSubtractEpisode} /> */}
-                                <AiOutlineCloseCircle
+                                <RemoveSeriesButton
                                     onClick={() => {
                                         toggleModal();
                                     }}
-                                    size={26}
-                                    className="delete"
-                                    color={"red"}
-                                    style={{ zIndex: 1 }}
-                                />
+                                >
+                                    Delete
+                                </RemoveSeriesButton>
                             </CardDescription>
                         )}
                     </Information>
@@ -264,6 +262,25 @@ const SearchCard = ({
         </>
     );
 };
+
+const RemoveSeriesButton = styled.div`
+    width: 80px;
+    height: 40px;
+    border-radius: 20px;
+    transition: 0.2s;
+    text-align: center;
+    line-height: 37px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: ${(props) => props.theme.chartCard.fontColor};
+    border: 1px solid ${(props) => props.theme.navbar.fontColor2};
+    &:hover {
+        cursor: pointer;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        background-color: #df6a6a;
+        width: 120px;
+    }
+`;
 
 const OuterOuter = styled.div`
     position: absolute;
