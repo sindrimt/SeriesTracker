@@ -1,8 +1,9 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import { styled } from "@mui/material";
 
 const style = {
     position: "absolute",
@@ -14,16 +15,12 @@ const style = {
     border: "2px solid #000",
     boxShadow: 24,
     p: 4,
+    zIndex: "9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999",
 };
 
-export default function BasicModal() {
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-
+export default function BasicModal({ open, handleClose }) {
     return (
         <div>
-            <Button onClick={handleOpen}>Open modal</Button>
             <Modal
                 open={open}
                 onClose={handleClose}
