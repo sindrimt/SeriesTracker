@@ -113,6 +113,7 @@ export const Trademark = styled.div`
     left: 16%;
     width: 83%;
     color: ${(props) => props.theme.white};
+    padding-bottom: 20px;
 
     &:before {
         content: "";

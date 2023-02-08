@@ -33,6 +33,7 @@ import { VscMenu } from "react-icons/vsc";
 import { useNavigate } from "react-router-dom";
 import useWindowDimensions from "../../Hooks/useWindowDimensions";
 import styled from "styled-components";
+import ToggleButton from "../Buttons/SidebarButton/ToggleButton/ToggleButton";
 
 const Sidebar = () => {
     const [showSidebar, setShowSidebar] = useState(false);
@@ -83,6 +84,7 @@ const Sidebar = () => {
                         <SidebarButton icon={analytics} text="Trending" />
                     </PanelOuterAccount>
                     <SidebarLine />
+                    <ToggleButton />
                     <Contact>
                         Reach us at: <br></br>
                     </Contact>
@@ -100,7 +102,7 @@ const Sidebar = () => {
 };
 
 const Contact = styled.div`
-    margin-top: 20px;
+    margin-top: 70px;
     justify-self: center;
     font-size: 14px;
 `;

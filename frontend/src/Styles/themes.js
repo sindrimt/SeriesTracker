@@ -33,7 +33,7 @@ const lightPalette = {
     black: "",
     lightBlack: "",
     grey: "rgb(242, 242, 242)",
-    lightgrey: "rgba(166, 63, 203, 0.1)",
+    lightgrey: "rgb(235, 235, 235)",
     pink: "",
     olive: "",
     white: "",
