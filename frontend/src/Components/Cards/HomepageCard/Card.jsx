@@ -42,7 +42,7 @@ import { FastAverageColor } from "fast-average-color";
 import { IoMdClose } from "react-icons/io";
 import AddButton from "../../Buttons/EpisodeButtons/AddButton/AddButton";
 import DeleteButton from "../../Buttons/EpisodeButtons/DeleteButton/DeleteButton";
-import BasicModal from "../../Buttons/BasicModal/BasicModal";
+import BasicModal from "../../../Components/MUI_Modals/BasicModal";
 
 const Card = ({
     title,
@@ -176,15 +176,7 @@ const Card = ({
 
     return (
         <>
-            {deletePopup && (
-                <DeleteCardPopup
-                    popupText="Are you sure you want to delete the series?"
-                    optionLeft="Yes"
-                    optionRight="No"
-                    handleOptionLeft={handleConfirmDelete}
-                    handleOptionRight={handleDeclineDelete}
-                />
-            )}
+            {deletePopup && <BasicModal />}
             <SeriesCardOuter onClick={(e) => handleOpenPopup(e)}>
                 <SeriesCardInner>
                     <SeriesCardImageContainer>
