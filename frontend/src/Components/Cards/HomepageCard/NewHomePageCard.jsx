@@ -229,7 +229,7 @@ const SearchCard = ({
                         </ViewsContainer>
                         <Profile>
                             {/* <ProfilePicture /> */}
-                            <CgScreen color="rgb(60, 60, 60)" size={22} />
+                            <CgScreen color="rgb(100, 100, 100)" size={22} />
                             <ProfileName>{type === "Movie" ? "Anime / Movie" : "Anime"}</ProfileName>
                         </Profile>
                         <EpisodeContainer hasWatchTime={watchTime}>
