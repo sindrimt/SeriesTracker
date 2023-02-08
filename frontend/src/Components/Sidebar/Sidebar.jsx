@@ -95,12 +95,12 @@ const Sidebar = () => {
                     </Contact>
                     <Email>business@seriestracker.net</Email>
                     <Socials>
-                        <a href="https://github.com/SeriesTracker/SeriesTracker">
+                        <a href="https://github.com/SeriesTracker/SeriesTracker" target="_blank">
                             <GithubBack>
                                 <Github src={github} />
                             </GithubBack>
                         </a>
-                        <a href="https://www.linkedin.com/company/seriestracker">
+                        <a href="https://www.linkedin.com/company/seriestracker" target="_blank">
                             <AiFillLinkedin size={34} />
                         </a>
                     </Socials>
