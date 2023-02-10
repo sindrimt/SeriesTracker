@@ -113,6 +113,10 @@ export const SearchOuter = styled.input`
     &:focus::placeholder {
         color: transparent;
     }
+
+    &:hover {
+        border-color: ${(props) => props.theme.cardFontSecondary};
+    }
 `;
 
 export const SearchOuterContainer = styled.div`
