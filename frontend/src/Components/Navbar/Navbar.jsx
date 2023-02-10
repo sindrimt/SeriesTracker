@@ -110,13 +110,13 @@ const Navbar = () => {
                 />
 
                 <NavbarLinksOuter>
-                    <div className="navtext">
+                    {/*  <div className="navtext">
                         <div className="findsSeries" onClick={() => navigate("/create-post")}>
                             Find Series
                         </div>
                         <div className="findfriends">Find Friends</div>
-                    </div>
-                    <div className="themes">
+                    </div> */}
+                    {/*  <div className="themes">
                         <ThemeIcon>
                             {colorTheme === "light" && <MdOutlineLightMode onClick={() => setShowMore(!showMore)} size={25} />}
                             {colorTheme === "spill" && <Spill src={SpillLogo} onClick={() => setShowMore(!showMore)} />}
@@ -160,7 +160,7 @@ const Navbar = () => {
                         ) : (
                             <MdExpandMore size={22} onClick={() => setShowMore(!showMore)} className="showmore" />
                         )}
-                    </div>
+                    </div> */}
                 </NavbarLinksOuter>
                 <NavbarProfileOuter>
                     <div>

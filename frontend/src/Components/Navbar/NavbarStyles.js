@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const NavbarOuter = styled.div`
-    background-color: ${(props) => props.theme.body.background};
+    background-color: ${(props) => props.theme.navbar.background};
     //background-color: ${(props) => (props.showBgColor ? props.theme.body.background : "")};
     transition: 0.2s ease-in-out;
     color: ${(props) => props.theme.navbar.fontColor2};
@@ -14,6 +14,7 @@ export const NavbarOuter = styled.div`
     height: 90px;
     font-family: "Anek Malayalam", sans-serif;
     font-weight: 300;
+    backdrop-filter: blur(8px);
 
     @media (max-width: 720px) {
         height: 80px;
@@ -43,7 +44,7 @@ export const NavbarLine = styled.div`
 `;
 
 export const Logo = styled.img`
-    width: 240px;
+    width: 280px;
     padding-left: 30px;
     padding-right: 20px;
 
@@ -69,6 +70,7 @@ export const LogoSmall = styled.img`
 
     @media (max-width: 720px) {
         display: block;
+        width: 260px;
     }
 
     @media (max-width: 500px) {
@@ -79,7 +81,7 @@ export const LogoSmall = styled.img`
 
 export const WelcomeBack = styled.span`
     white-space: nowrap;
-    @media (max-width: 1000px) {
+    @media (max-width: 720px) {
         display: none;
     }
 `;
