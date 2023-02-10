@@ -80,6 +80,7 @@ export const lightTheme = {
         ProgressLineRight: "rgba(201, 201, 201, 0.8)",
         deleteBtn: "#676767",
         deleteBtnHover: "#a63fcb",
+        borderColor: "transparent",
     },
     sidebar: {
         background: "rgb(240, 240, 240)",
@@ -89,7 +90,7 @@ export const lightTheme = {
         buttonBorder: "#a63fcb",
     },
     animeCard: {
-        fontColor: "",
+        ColorColor: "",
         background: "#fafafa",
         border: "1px solid rgba(200, 200, 200, 0.2)",
     },
@@ -124,8 +125,8 @@ export const darkTheme = {
     olive: "#434038ff",
     white: "#eee3c1ff",
     purple: "#a63fcb",
-    cardBG: "rgb(35, 33, 35)",
-    cardBGHover: "rgb(40, 40, 40)",
+    cardBG: "rgb(28, 24, 28)",
+    cardBGHover: "rgb(32, 30, 32)",
     cardHeader: "rgba(255, 255, 255, 0.87)",
     cardFontPrimary: "rgba(160, 160, 160, 1)",
     cardFontSecondary: "rgba(120, 120, 120, 1)",
@@ -155,6 +156,7 @@ export const darkTheme = {
         ProgressLineRight: "rgba(201, 201, 201, 0.8)",
         deleteBtn: "ffffff",
         deleteBtnHover: "#a63fcb",
+        borderColor: "rgba(238, 227, 193, 0.5)",
     },
     sidebar: {
         background: darkModePalette.grey,
@@ -215,6 +217,7 @@ export const hotDogTheme = {
         episodeLineRight: hotDogPalette.olive,
         ProgressLineLeft: hotDogPalette.yellow,
         ProgressLineRight: hotDogPalette.olive,
+        borderColor: "",
     },
     sidebar: {
         background: hotDogPalette.yellow,
@@ -283,6 +286,7 @@ export const spillTheme = {
         episodeLineRight: spillPalette.lightestblue,
         ProgressLineLeft: spillPalette.blue,
         ProgressLineRight: spillPalette.lightestblue,
+        borderColor: "transparent",
     },
     sidebar: {
         background: spillPalette.yellow,
