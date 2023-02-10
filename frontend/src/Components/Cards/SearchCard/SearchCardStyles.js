@@ -12,11 +12,11 @@ export const Outer = styled.div`
     border-radius: 20px 20px 20px 20px;
     background-color: rgb(250, 250, 250);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.05);
-    background-color: ${(props) => props.theme.homepageCard.background};
-
+    background-color: ${(props) => props.theme.cardBG};
+    box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 10px 2px;
     &:hover {
         // background-color: rgb(240, 240, 240);
-        background-color: ${(props) => props.theme.lightgrey};
+        background-color: ${(props) => props.theme.cardBGHover};
         cursor: pointer;
     }
 
@@ -47,7 +47,8 @@ export const Profile = styled.div`
 `;
 
 export const Image = styled.img`
-    width: 170px;
+    min-width: 155px;
+    max-width: 155px;
     object-fit: cover;
     border-radius: 20px 0 0 20px;
 
@@ -68,17 +69,17 @@ export const ProfilePicture = styled.img`
 export const ProfileName = styled.span`
     margin-left: 6px;
     font-size: 14px;
-    color: rgb(60, 60, 60);
+    color: ${(props) => props.theme.cardFontPrimary};
 `;
 
 export const Title = styled.span`
     display: flex;
     font-size: 22px;
     font-weight: 300;
-    color: black;
+    color: ${(props) => props.theme.cardHeader};
 `;
 export const Views = styled.span`
-    color: rgb(60, 60, 60);
+    color: ${(props) => props.theme.cardFontPrimary};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,12 +92,12 @@ export const Views = styled.span`
 `;
 
 export const Upload = styled.span`
-    color: grey;
+    color: ${(props) => props.theme.cardFontSecondary};
     font-size: 14px;
 `;
 export const Description = styled.span`
     margin-top: 10px;
-    color: rgb(80, 80, 80);
+    color: ${(props) => props.theme.cardFontSecondary};
     font-size: 14px;
     width: 100%;
     font-weight: 400;
