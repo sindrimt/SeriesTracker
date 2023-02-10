@@ -104,43 +104,19 @@ const Content = ({ series, setIsDeleted, isDeleted, loading }) => {
                     <SearchOuterContainer>
                         <form style={{ width: "100%" }}>
                             {/* <AiOutlineSearch /> */}
-                            <SearchOuter
-                                type="search"
-                                placeholder="Search your series"
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                            />
+                            <SearchOuter type="search" placeholder="Search your series" onChange={(e) => setSearchTerm(e.target.value)} />
                         </form>
-                        <Filter
-                            src={
-                                colorTheme === "light"
-                                    ? filter
-                                    : colorTheme === "dark"
-                                    ? filter_darkmode
-                                    : filter_hotdog
-                            }
-                        />
+                        <Filter src={colorTheme === "light" ? filter : colorTheme === "dark" ? filter_darkmode : filter_hotdog} />
                     </SearchOuterContainer>
                     <GridTypeIcons>
                         <Icon
                             aria-label="expanded-card"
-                            src={
-                                colorTheme === "light"
-                                    ? rowView
-                                    : colorTheme === "dark"
-                                    ? rowView_darkmode
-                                    : rowView_hotdog
-                            }
+                            src={colorTheme === "light" ? rowView : colorTheme === "dark" ? rowView_darkmode : rowView_hotdog}
                             onClick={() => setIconView(false)}
                         />
                         <Icon
                             aria-label="icons-card"
-                            src={
-                                colorTheme === "light"
-                                    ? iconViewIcon
-                                    : colorTheme === "dark"
-                                    ? iconViewIcon_darkmode
-                                    : iconViewIcon_hotdog
-                            }
+                            src={colorTheme === "light" ? iconViewIcon : colorTheme === "dark" ? iconViewIcon_darkmode : iconViewIcon_hotdog}
                             onClick={() => setIconView(true)}
                         />
                     </GridTypeIcons>
@@ -155,6 +131,12 @@ const Content = ({ series, setIsDeleted, isDeleted, loading }) => {
                             page={pageNumber}
                             onChange={handleChange}
                             key={`slider-${pageNumber}`}
+                            sx={{
+                                color: "success.main",
+                                "& .MuiPaginationItem-root": {
+                                    color: colorTheme === "light" ? "rgb(80, 80, 80)" : "#eee3c1ff",
+                                },
+                            }}
                         />
                     </Stack>
                 </PaginationContainer>
@@ -171,10 +153,7 @@ const Content = ({ series, setIsDeleted, isDeleted, loading }) => {
                             </>
                         ) : (
                             filtered
-                                .slice(
-                                    (pageNumber - 1) * resultsPrPage,
-                                    (pageNumber - 1) * resultsPrPage + resultsPrPage
-                                )
+                                .slice((pageNumber - 1) * resultsPrPage, (pageNumber - 1) * resultsPrPage + resultsPrPage)
                                 ?.map((serie, index) => (
                                     <>
                                         <GridCard
@@ -213,10 +192,7 @@ const Content = ({ series, setIsDeleted, isDeleted, loading }) => {
                             </>
                         ) : (
                             filtered
-                                ?.slice(
-                                    (pageNumber - 1) * resultsPrPage,
-                                    (pageNumber - 1) * resultsPrPage + resultsPrPage
-                                )
+                                ?.slice((pageNumber - 1) * resultsPrPage, (pageNumber - 1) * resultsPrPage + resultsPrPage)
                                 ?.map((serie, index) => (
                                     <>
                                         {/*  <HomepageCard

@@ -13,6 +13,7 @@ export const Outer = styled.div`
     background-color: rgb(250, 250, 250);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.05);
     background-color: ${(props) => props.theme.cardBG};
+    border: 1.5px solid ${(props) => props.theme.homepageCard.borderColor};
 
     &:hover {
         // background-color: rgb(240, 240, 240);
@@ -23,10 +24,28 @@ export const Outer = styled.div`
     @media (max-width: 720px) {
         width: calc(100% - 15px);
     }
+`;
 
-    /*  @media (max-width: 395px) {
-        width: calc(90%);
-    } */
+export const BorderOuter = styled.div`
+    padding: 1.5px;
+    height: ${(props) => (props.isExpanded ? "423px" : "225px")};
+    border-radius: 20px; /*1*/
+    --angle: 0deg;
+    background: linear-gradient(var(--angle), #a38a00, #ffe55c) border-box; /*3*/
+    -webkit-mask: /*4*/ linear-gradient(#d1b000 0 0) padding-box, linear-gradient(#ffe55c 0 0);
+
+    animation: 7s rotate infinite linear; /*6*/
+
+    @keyframes rotate {
+        to {
+            --angle: 360deg;
+        }
+    }
+    @property --angle {
+        syntax: "<angle>";
+        initial-value: 0deg;
+        inherits: false;
+    }
 `;
 
 export const ImageContainer = styled.div`

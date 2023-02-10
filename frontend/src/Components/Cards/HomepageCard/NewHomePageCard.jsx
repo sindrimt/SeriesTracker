@@ -24,6 +24,7 @@ import {
     ProgressLineGray,
     ProgressLineText,
     SeriesCardImageContainer,
+    BorderOuter,
 } from "./NewHomePageCardsStyles";
 import { CgScreen } from "react-icons/cg";
 import { duration } from "@mui/material";
