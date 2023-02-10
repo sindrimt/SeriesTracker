@@ -14,6 +14,7 @@ export const Outer = styled.div`
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.05);
     background-color: ${(props) => props.theme.cardBG};
     box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 10px 2px;
+    //border: 1.5px solid ${(props) => props.theme.homepageCard.borderColor};
 
     &:hover {
         // background-color: rgb(240, 240, 240);
