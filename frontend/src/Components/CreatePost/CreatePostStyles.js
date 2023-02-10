@@ -202,10 +202,14 @@ export const SearchOuterContainer = styled.div`
     height: 35px;
     border-bottom: 2px solid rgb(200, 200, 200);
     text-overflow: ellipsis;
+    border-radius: 10px 10px 0px 0px;
 
     &:has(input:focus) {
         outline: none;
         border-color: #a63fcb;
+    }
+    &:hover {
+        border-color: ${(props) => props.theme.cardFontSecondary};
     }
 `;
 
@@ -273,20 +277,23 @@ export const FilterExpandedContent = styled.div`
 `;
 
 export const SubmitButton = styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 70px;
+    width: 80px;
     height: 30px;
-    border-radius: 10px;
-    background-color: rgb(250, 250, 250);
-    // border: none;
-
-    border-color: #a63fcb;
-
+    border-radius: 20px;
+    transition: 0.2s;
+    text-align: center;
+    line-height: 27px;
+    font-size: 1rem;
+    font-weight: 600;
+    //Bg is transparent for darkmode
+    background-color: ${(props) => props.theme.cardBGHover};
+    color: ${(props) => props.theme.cardFontPrimary};
+    border: 0.01em solid ${(props) => props.theme.cardFontPrimary};
     &:hover {
         cursor: pointer;
-        background-color: rgb(240, 240, 240);
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        background-color: rgba(166, 63, 203, 0.5);
+        color: ${(props) => props.theme.white};
     }
 `;
 
