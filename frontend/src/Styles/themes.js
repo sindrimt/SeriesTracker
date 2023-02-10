@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const darkModePalette = {
     black: "#0a0a0aff",
     lightBlack: "#1a181aff",
+    navbackground: "rgba(0, 0, 0, 0.8)",
     grey: "rgb(31, 29, 31)",
     pink: "rgba(166, 63, 203, 0.1);",
     olive: "#434038ff",
@@ -57,18 +58,20 @@ export const lightTheme = {
     cardButtonBG: "rgba(166,63,203, 0.2)",
 
     body: {
-        background: "rgb(247, 247, 247)",
+        background: "rgba(247, 247, 247, 0.8)",
     },
     navbar: {
         fontColor: "",
         line: "rgba(137, 137, 137, 0.15)",
         underline: "rgba(166, 63, 203, 1)",
         menuButton: "rgb(50, 50, 50)",
+        background: "rgba(247, 247, 247, 0.8)",
     },
     content: {
         background: "white",
         filter: "",
         searchBorder: "rgba(166, 63, 203, 1)",
+        pickUpColor: "rgba(60, 60, 60, 1)",
     },
     homepageCard: {
         fontColor: "",
@@ -88,6 +91,7 @@ export const lightTheme = {
         accentColor: lightPalette.lightgrey,
         panelItem: "rgb(233,233,233)",
         buttonBorder: "#a63fcb",
+        fontColor: "rgba(60, 60, 60, 1)",
     },
     animeCard: {
         ColorColor: "",
@@ -140,11 +144,13 @@ export const darkTheme = {
         line: "rgba(137, 137, 137, 0.15)",
         underline: "rgba(166, 63, 203, 1)",
         menuButton: "rgb(220, 220, 220)",
+        background: "rgba(26, 24, 26, 0.8)",
     },
     content: {
         background: darkModePalette.dark2,
         filter: darkModePalette.white,
         searchBorder: darkModePalette.white,
+        pickUpColor: darkModePalette.white,
     },
     homepageCard: {
         fontColor: "",
@@ -165,6 +171,7 @@ export const darkTheme = {
         accentColor: "#2c2c2c",
         panelItem: "#2c2c2c",
         buttonBorder: "#a63fcb",
+        fontColor: darkModePalette.white,
     },
     animeCard: {
         fontColor: "",

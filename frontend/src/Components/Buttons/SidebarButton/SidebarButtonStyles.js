@@ -32,7 +32,7 @@ export const Text = styled.div`
     padding: 0 15px 0 0;
     top: 6px;
     font-weight: 400;
-    color: ${(props) => props.theme.navbar.fontColor};
+    color: ${(props) => props.theme.sidebar.fontColor};
 `;
 
 export const Icon = styled.img`

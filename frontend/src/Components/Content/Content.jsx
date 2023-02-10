@@ -23,14 +23,14 @@ import NewHomePageCard from "../Cards/HomepageCard/NewHomePageCard";
 
 import { Link } from "react-router-dom";
 
-import filter from "../../Assets/Content/Adjust.svg";
 import rowView from "../../Assets/Content/Playlist.svg";
-import iconViewIcon from "../../Assets/Content/Apps.svg";
+import iconViewIcon from "../../Assets/Content/Apps.jsx";
 
 /*Darkmode icons*/
+import filter from "../../Assets/Content/Adjust.svg";
 import filter_darkmode from "../../Assets/Content/Adjust_darkmode.svg";
-import rowView_darkmode from "../../Assets/Content/Playlist_darkmode.svg";
-import iconViewIcon_darkmode from "../../Assets/Content/Apps_darkmode.svg";
+import RowView from "../../Assets/Content/Playlist.jsx";
+import IconView from "../../Assets/Content/Apps.jsx";
 
 /*Hotdog icons*/
 import filter_hotdog from "../../Assets/Content/Adjust_hotdog.svg";
@@ -62,6 +62,7 @@ const Content = ({ series, setIsDeleted, isDeleted, loading }) => {
     const [pageNumber, setPageNumber] = useState(1);
     const [pageCount, setPageCount] = useState(Math.ceil(series?.length / resultsPrPage));
     const [updateState, setUpdateState] = useState(false);
+    const [isActive, setIsActive] = useState("row");
 
     const colorTheme = useSelector((state) => state.theme.theme);
     const currentUser = useAuth();
@@ -109,16 +110,45 @@ const Content = ({ series, setIsDeleted, isDeleted, loading }) => {
                         <Filter src={colorTheme === "light" ? filter : colorTheme === "dark" ? filter_darkmode : filter_hotdog} />
                     </SearchOuterContainer>
                     <GridTypeIcons>
-                        <Icon
-                            aria-label="expanded-card"
-                            src={colorTheme === "light" ? rowView : colorTheme === "dark" ? rowView_darkmode : rowView_hotdog}
-                            onClick={() => setIconView(false)}
-                        />
-                        <Icon
-                            aria-label="icons-card"
-                            src={colorTheme === "light" ? iconViewIcon : colorTheme === "dark" ? iconViewIcon_darkmode : iconViewIcon_hotdog}
-                            onClick={() => setIconView(true)}
-                        />
+                        {colorTheme === "light" ? (
+                            <>
+                                <Icon
+                                    onClick={() => {
+                                        setIsActive("row");
+                                        setIconView(false);
+                                    }}
+                                >
+                                    <RowView color={isActive === "row" ? "#a63fcb" : "rgb(60, 60, 60)"} />
+                                </Icon>
+                                <Icon
+                                    onClick={() => {
+                                        setIsActive("icon");
+                                        setIconView(true);
+                                    }}
+                                >
+                                    <IconView color={isActive === "icon" ? "#a63fcb" : "rgb(60, 60, 60)"} />
+                                </Icon>
+                            </>
+                        ) : (
+                            <>
+                                <Icon
+                                    onClick={() => {
+                                        setIsActive("row");
+                                        setIconView(false);
+                                    }}
+                                >
+                                    <RowView color={isActive === "row" ? "#a63fcb" : "#eee3c1ff"} />
+                                </Icon>
+                                <Icon
+                                    onClick={() => {
+                                        setIsActive("icon");
+                                        setIconView(true);
+                                    }}
+                                >
+                                    <IconView color={isActive === "icon" ? "#a63fcb" : "#eee3c1ff"} />
+                                </Icon>
+                            </>
+                        )}
                     </GridTypeIcons>
                 </PickUp>
                 <PaginationContainer>

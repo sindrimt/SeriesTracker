@@ -55,7 +55,7 @@ export const PickUp = styled.div`
     white-space: nowrap;
     align-items: center;
     justify-content: space-between;
-    color: ${(props) => props.theme.navbar.fontColor2};
+    color: ${(props) => props.theme.content.pickUpColor};
 
     .pickupSpan {
         @media (max-width: 1100px) {
@@ -70,9 +70,9 @@ export const Filter = styled.img`
     color: ${(props) => props.theme.content.filter};
 `;
 
-export const Icon = styled.img`
+export const Icon = styled.div`
     width: 25px;
-    margin-left: 20px;
+    margin-left: 10px;
 `;
 
 export const GridTypeIcons = styled.div`
