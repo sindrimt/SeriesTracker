@@ -47,7 +47,8 @@ export const Profile = styled.div`
 `;
 
 export const Image = styled.img`
-    width: 170px;
+    min-width: 155px;
+    max-width: 155px;
     object-fit: cover;
     border-radius: 20px 0 0 20px;
 
