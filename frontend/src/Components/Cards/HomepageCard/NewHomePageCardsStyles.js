@@ -13,7 +13,7 @@ export const Outer = styled.div`
     background-color: rgb(250, 250, 250);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.05);
     background-color: ${(props) => props.theme.cardBG};
-    border: 1.5px solid ${(props) => props.theme.homepageCard.borderColor};
+    box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 10px 2px;
 
     &:hover {
         // background-color: rgb(240, 240, 240);
@@ -96,7 +96,7 @@ export const Title = styled.span`
     display: flex;
     font-size: 22px;
     font-weight: 300;
-    color: ${(props) => props.theme.cardBGHeader};
+    color: ${(props) => props.theme.cardHeader};
 `;
 export const Views = styled.span`
     color: ${(props) => props.theme.cardFontPrimary};
