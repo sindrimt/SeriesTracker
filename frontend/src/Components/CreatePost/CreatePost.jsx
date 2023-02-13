@@ -135,9 +135,9 @@ const CreatePost = () => {
     };
 
     const handleSubmit = (e) => {
+        e.preventDefault();
         setShowingResults(searchTerm);
         setLoading(true);
-        e.preventDefault();
         searchAllAnimeAndManga(searchTerm)
             .then((searchObject) => {
                 setFiltered(searchObject);
@@ -155,6 +155,7 @@ const CreatePost = () => {
             return axios
                 .get(`https://api.jikan.moe/v4/anime?q=${searchTerm}&order_by=mal_id&sort=asc`)
                 .then(({ data }) => {
+                    console.log(data);
                     searchAllanimeAndMangaObject.anime = data.data;
                 })
                 .then(() => {
@@ -220,6 +221,7 @@ const CreatePost = () => {
                                 airing={anime?.airing}
                                 duration={anime?.duration}
                                 type={anime?.type}
+                                anime={anime}
                                 key={index}
                             />
                         );

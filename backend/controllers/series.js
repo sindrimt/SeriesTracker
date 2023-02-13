@@ -103,9 +103,37 @@ export const createSerie = async (req, res) => {
         age: req?.body?.age,
         websiteUrl: req?.body?.websiteUrl,
         episodeLength: req?.body?.episodeLength,
+        background: req?.body?.background,
+        demographics: req?.body?.demographics,
+        duration: req?.body?.duration,
+        genres: req?.body?.genres,
+        mal_id: req?.body?.mal_id,
+        popularity: req?.body?.popularity,
+        producers: req?.body?.producers,
+        rank: req?.body?.rank,
+        ratingPg: req?.body?.ratingPg,
+        scored_by: req?.body?.scored_by,
+        source: req?.body?.source,
+        status: req?.body?.status,
+        studios: req?.body?.studios,
+        synopsis: req?.body?.synopsis,
+        themes: req?.body?.themes,
+        titles: req?.body?.titles,
+        type: req?.body?.type,
+        year: req?.body?.year,
+        malURL: req?.body?.malURL,
     });
     try {
         await newSerie.save();
+
+        // console.log(JSON.parse(newSerie.demographics));
+        // console.log(JSON.parse(newSerie.genres));
+        // console.log(JSON.parse(newSerie.producers));
+        // console.log(JSON.parse(newSerie.studios));
+        // console.log(JSON.parse(newSerie.themes));
+        // console.log(JSON.parse(newSerie.titles));
+
+        console.log(newSerie);
 
         res.status(201).json(newSerie);
     } catch (error) {
