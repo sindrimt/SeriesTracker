@@ -9,7 +9,7 @@
     },
     "scripts": {
         "install_all": "npm install && cd frontend && npm install",
-        "start": "node backend/server.js",
+        "start": "nodemon backend/server.js",
         "server": "nodemon backend/server.js",
         "servernode": "node backend/server.js",
         "client": "npm start --prefix frontend",
