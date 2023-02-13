@@ -68,14 +68,15 @@ const SearchCard = ({
     rating,
     watchTime,
     updateState,
+    serie,
 }) => {
     let changedDescription = "";
-    if (description?.length >= 200) {
-        changedDescription = description.slice(0, 200) + "...";
-    } else if (!description?.length) {
+    if (serie?.synopsis?.length >= 200) {
+        changedDescription = serie?.synopsis.slice(0, 200) + "...";
+    } else if (!serie?.synopsis?.length) {
         changedDescription = "";
     } else {
-        changedDescription = description;
+        changedDescription = serie?.synopsis;
     }
 
     const totalSeconds = 22 * 60;
@@ -240,7 +241,13 @@ const SearchCard = ({
                             <EpisodeLineGray />
                             <EpisodeLineProgress progress={episodeRatio} />
                         </EpisodeContainer>
-                        <Description>{changedDescription}</Description>
+                        {/* 
+                        //TODO Hei marcus!!
+                        //TODO Når man uncommenter description, blir bildet litt mindre, WHYYY
+                        //TODO Du er sånn grid mester så pls fix
+                        */}
+                        {/*  <Description show={isExpanded}>{changedDescription}</Description> */}
+
                         {isExpanded && (
                             <CardDescription>
                                 <AddButton className="plus" />
