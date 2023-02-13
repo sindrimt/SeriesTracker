@@ -32,7 +32,7 @@ import { useAuth } from "../../../firebase";
 import LoadingBar from "react-top-loading-bar";
 import MuiAlert from "@mui/material/Alert";
 
-const SearchCard = ({ title, episodes, image, description, episodeLength, airing, duration, type }) => {
+const SearchCard = ({ title, episodes, image, description, episodeLength, airing, duration, type, anime }) => {
     let changedDescription = "";
     if (description?.length >= 200) {
         changedDescription = description.slice(0, 200) + "...";
@@ -114,6 +114,27 @@ const SearchCard = ({ title, episodes, image, description, episodeLength, airing
         formdata.append("watchTime", watchTime);
         formdata.append("description", !description ? "" : description);
         formdata.append("episodeLength", !episodeLength ? "" : episodeLength);
+        formdata.append("background", anime?.background);
+        formdata.append("demographics", JSON.stringify(anime?.demographics));
+        formdata.append("duration", anime?.duration);
+        formdata.append("genres", JSON.stringify(anime?.genres));
+        formdata.append("mal_id", anime?.mal_id);
+        formdata.append("popularity", anime?.popularity);
+        formdata.append("producers", JSON.stringify(anime?.producers));
+        formdata.append("rank", anime?.rank);
+        formdata.append("ratingPg", anime?.ratingPg);
+        formdata.append("score", anime?.score);
+        formdata.append("scored_by", anime?.scored_by);
+        formdata.append("season", anime?.season);
+        formdata.append("source", anime?.source);
+        formdata.append("status", anime?.status);
+        formdata.append("studios", JSON.stringify(anime?.studios));
+        formdata.append("synopsis", anime?.synopsis);
+        formdata.append("themes", JSON.stringify(anime?.themes));
+        formdata.append("titles", JSON.stringify(anime?.titles));
+        formdata.append("type", anime?.type);
+        formdata.append("year", anime?.year);
+        formdata.append("malURL", anime?.malURL);
 
         // The reason why this ancient technology is used is because multer (image upload)
         //requires form data format or something cringe
@@ -123,7 +144,6 @@ const SearchCard = ({ title, episodes, image, description, episodeLength, airing
         })
             .then((res) => res.text())
             .then((resBody) => {
-                console.log(resBody);
                 setSeverity("success");
                 setProgress(progress + 100);
                 setOpenSnackbar(true);

@@ -53,6 +53,7 @@ export const ImageContainer = styled.div`
     position: relative;
     display: flex;
     height: 100%;
+    width: 100%;
 `;
 export const Information = styled.div`
     gap: 6px;
@@ -120,10 +121,10 @@ export const Description = styled.span`
     margin-top: 10px;
     color: ${(props) => props.theme.cardFontSecondary};
     font-size: 14px;
-    width: 100%;
-    display: block;
     overflow: hidden;
+    position: relative;
     text-overflow: ellipsis;
+    visibility: ${(props) => (props.show ? "visible" : "hidden")};
 `;
 export const ViewsContainer = styled.div`
     display: flex;

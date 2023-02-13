@@ -258,6 +258,7 @@ const Content = ({ series, setIsDeleted, isDeleted, loading }) => {
                                             rating={serie?.rating}
                                             watchTime={serie?.watchTime}
                                             updateState={updateState}
+                                            serie={serie}
                                         />
                                         {/*  <SearchCard
                                         title={serie?.title}
