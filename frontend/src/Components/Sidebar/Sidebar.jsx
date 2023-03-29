@@ -38,6 +38,7 @@ import ToggleButton from "../Buttons/SidebarButton/ToggleButton/ToggleButton";
 
 const Sidebar = () => {
     const [showSidebar, setShowSidebar] = useState(false);
+    const [active, setActive] = useState(1);
     let navigate = useNavigate();
     const scrollPosition = useScroll();
 

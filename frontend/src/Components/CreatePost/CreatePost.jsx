@@ -53,7 +53,7 @@ const CreatePost = () => {
             let animeAndMangaObject = {};
 
             axios
-                .get(`https://api.jikan.moe/v4/top/anime`)
+                .get(`http://staging.jikan.moe/v4/top/anime`)
                 //https://api.jikan.moe/v4/top/type/page/subtype
                 .then(({ data }) => {
                     //console.log(data);
@@ -153,13 +153,13 @@ const CreatePost = () => {
 
         return new Promise((resolve, reject) => {
             return axios
-                .get(`https://api.jikan.moe/v4/anime?q=${searchTerm}&order_by=mal_id&sort=asc`)
+                .get(`http://staging.jikan.moe/v4/anime?q=${searchTerm}`)
                 .then(({ data }) => {
                     console.log(data);
                     searchAllanimeAndMangaObject.anime = data.data;
                 })
                 .then(() => {
-                    return axios.get(`https://api.jikan.moe/v4/manga?q=${searchTerm}&order_by=mal_id&limit=10`);
+                    return axios.get(`http://staging.jikan.moe/v4/manga?q=${searchTerm}&limit=10`);
                 })
                 .then(({ data }) => {
                     searchAllanimeAndMangaObject.manga = data.data;

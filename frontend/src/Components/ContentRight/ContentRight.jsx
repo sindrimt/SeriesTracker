@@ -31,7 +31,7 @@ const ContentRight = ({ arrayLength }) => {
     const fetchTopAnimes = () => {
         return new Promise((resolve, reject) => {
             axios
-                .get(`https://api.jikan.moe/v4/top/anime`)
+                .get(`http://staging.jikan.moe/v4/top/anime`)
                 .then(({ data }) => {
                     //console.log(data);
                     resolve([data, arrayLength]);

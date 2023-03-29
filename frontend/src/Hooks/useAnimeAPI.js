@@ -8,7 +8,7 @@ export const useAnimeAPI = () => {
     const handleAnime = () => {
         setLoading(true);
         axios
-            .get(`https://api.jikan.moe/v4/top/anime`)
+            .get(`http://staging.jikan.moe/v4/top/anime`)
             //https://api.jikan.moe/v3/top/type/page/subtype
             .then(({ data }) => {
                 console.log(data);
